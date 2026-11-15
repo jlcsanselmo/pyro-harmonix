@@ -263,22 +263,31 @@ def calculate_calibration():
         )
 
 
-def harmonize_window(start, end):
+def harmonize_window(start, end, bounds=None):
     factors = {
         calibration.month: calibration
         for calibration in SensorCalibration.objects.all()
     }
     counts = defaultdict(lambda: [0, 0])
-    observations = (
-        FirmsDetection.objects.filter(
-            acquired_at__gte=datetime.combine(start, day_time.min, tzinfo=timezone.utc),
-            acquired_at__lt=datetime.combine(
-                end + timedelta(days=1),
-                day_time.min,
-                tzinfo=timezone.utc,
-            ),
-            source__in=("MODIS_SP", "VIIRS_SNPP_SP"),
+    observations_query = FirmsDetection.objects.filter(
+        acquired_at__gte=datetime.combine(start, day_time.min, tzinfo=timezone.utc),
+        acquired_at__lt=datetime.combine(
+            end + timedelta(days=1),
+            day_time.min,
+            tzinfo=timezone.utc,
+        ),
+        source__in=("MODIS_SP", "VIIRS_SNPP_SP"),
+    )
+    if bounds is not None:
+        south, north, west, east = bounds
+        observations_query = observations_query.filter(
+            latitude__gte=south,
+            latitude__lte=north,
+            longitude__gte=west,
+            longitude__lte=east,
         )
+    observations = (
+        observations_query
         .values("acquired_at__date", "grid_cell", "source")
         .annotate(count=Count("id"))
         .order_by()
@@ -289,7 +298,7 @@ def harmonize_window(start, end):
         index = 0 if row["source"] == "MODIS_SP" else 1
         counts[(day, row["grid_cell"])][index] = row["count"]
 
-    Hotspot.objects.filter(
+    hotspots_query = Hotspot.objects.filter(
         is_automated=True,
         acquired_at__gte=datetime.combine(start, day_time.min, tzinfo=timezone.utc),
         acquired_at__lt=datetime.combine(
@@ -297,7 +306,15 @@ def harmonize_window(start, end):
             day_time.min,
             tzinfo=timezone.utc,
         ),
-    ).delete()
+    )
+    if bounds is not None:
+        hotspots_query = hotspots_query.filter(
+            latitude__gte=south,
+            latitude__lte=north,
+            longitude__gte=west,
+            longitude__lte=east,
+        )
+    hotspots_query.delete()
 
     output = []
     for (day, cell), (modis_count, viirs_count) in counts.items():
@@ -331,9 +348,9 @@ def harmonize_window(start, end):
     return len(output)
 
 
-def harmonize_range(start, end, chunk_days=5):
+def harmonize_range(start, end, chunk_days=5, bounds=None):
     cursor = start
     while cursor <= end:
         chunk_end = min(cursor + timedelta(days=chunk_days - 1), end)
-        harmonize_window(cursor, chunk_end)
+        harmonize_window(cursor, chunk_end, bounds=bounds)
         cursor = chunk_end + timedelta(days=1)

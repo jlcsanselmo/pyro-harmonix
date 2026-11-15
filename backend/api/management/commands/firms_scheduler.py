@@ -108,7 +108,8 @@ def _run_area_request_batch():
             source_start = max(request.next_date, first_day)
             if source_start <= chunk_end:
                 download_source_range(source, source_start, chunk_end, area)
-        harmonize_range(request.next_date, chunk_end)
+        bounds = (request.south, request.north, request.west, request.east)
+        harmonize_range(request.next_date, chunk_end, bounds=bounds)
         if chunk_end >= request.end_date:
             request.status = "ready"
         else:

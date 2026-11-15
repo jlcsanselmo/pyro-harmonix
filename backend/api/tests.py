@@ -236,6 +236,48 @@ class HotspotApiTests(TestCase):
         self.assertEqual(result.harmonized_count, 2)
         self.assertEqual(result.grid_cell, cell)
 
+    def test_area_harmonization_only_replaces_cells_inside_bounds(self):
+        day = datetime(2024, 8, 12, 12, tzinfo=timezone.utc)
+        inside_cell = h3.latlng_to_cell(-10.0, -50.0, 8)
+        outside_cell = h3.latlng_to_cell(-10.0, -30.0, 8)
+        for cell, latitude, longitude in (
+            (inside_cell, -10, -50),
+            (outside_cell, -10, -30),
+        ):
+            FirmsDetection.objects.create(
+                source="MODIS_SP",
+                latitude=latitude,
+                longitude=longitude,
+                acquired_at=day,
+                grid_cell=cell,
+                fingerprint=f"area-{cell}",
+            )
+        Hotspot.objects.create(
+            latitude=-10,
+            longitude=-50,
+            acquired_at=day,
+            sensor="MODIS+VIIRS-SNPP",
+            fingerprint="stale-inside",
+            is_automated=True,
+        )
+        outside_hotspot = Hotspot.objects.create(
+            latitude=-10,
+            longitude=-30,
+            acquired_at=day,
+            sensor="MODIS+VIIRS-SNPP",
+            fingerprint="preserved-outside",
+            is_automated=True,
+        )
+
+        self.assertEqual(
+            harmonize_window(day.date(), day.date(), bounds=(-20, 0, -60, -40)),
+            1,
+        )
+        self.assertTrue(Hotspot.objects.filter(fingerprint="preserved-outside").exists())
+        self.assertFalse(Hotspot.objects.filter(fingerprint="stale-inside").exists())
+        self.assertTrue(Hotspot.objects.filter(grid_cell=inside_cell).exists())
+        self.assertTrue(Hotspot.objects.filter(pk=outside_hotspot.pk).exists())
+
     def test_overlap_calibration_calculates_monthly_modis_to_viirs_ratio(self):
         cell = h3.latlng_to_cell(-10.0, -50.0, 8)
         overlap_year = datetime.now(timezone.utc).year - 1

@@ -38,6 +38,16 @@ Em agosto e setembro de 2024, incêndios afetaram municípios do entorno de Ribe
 
 O mapa interativo usa OpenStreetMap como fundo e mostra as células de atividade detectadas. Ele **não exibe atualmente imagens de satélite como a composição acima nem calcula cicatrizes/áreas queimadas**.
 
+### Exemplo do WebGIS com dados reais: Ribeirão Preto, agosto de 2024
+
+![Painel PyroHarmonix filtrado para Ribeirão Preto e 21 a 31 de agosto de 2024](docs/assets/pyroharmonix-ribeirao-preto-2024-08-webgis.png)
+
+*Captura real da aplicação após concluir a solicitação FIRMS da área (`-50,-23,-46,-20`) para 21–31 ago. 2024. A consulta retornou **12.476 detecções equivalentes**; o mapa exibe até 5.000 células. A mediana histórica está vazia porque esta busca contém somente esse intervalo de 2024.*
+
+![Calendário PyroHarmonix para a janela de 21 a 31 de agosto de 2024 em Ribeirão Preto, com 12.476 detecções equivalentes](docs/assets/pyroharmonix-ribeirao-preto-2024-08-calendario.png)
+
+*No calendário, o valor de agosto corresponde apenas aos dias selecionados (21–31), não ao mês inteiro. Na captura, o backfill nacional ainda estava em andamento e os registros aparecem como **não calibrados**; portanto, trate os números como uma demonstração exploratória, não como comparação científica final ou orientação operacional.*
+
 ## Executar com Docker
 
 Requisitos: Docker Desktop e Docker Compose v2. A chave NASA FIRMS é gratuita; mantenha-a somente no arquivo local `.env`, nunca em `.env.example` ou no Git.
