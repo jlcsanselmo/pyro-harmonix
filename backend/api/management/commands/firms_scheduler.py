@@ -22,6 +22,15 @@ BACKFILL_PAUSE_SECONDS = 10
 DAILY_SYNC_INTERVAL = timedelta(hours=24)
 
 
+def _brazil_backfill_enabled():
+    return os.environ.get("FIRMS_BRAZIL_BACKFILL_ENABLED", "false").strip().lower() in {
+        "1",
+        "true",
+        "yes",
+        "on",
+    }
+
+
 def _pipeline_state():
     state, _ = FirmsPipelineState.objects.get_or_create(pk=1)
     return state
@@ -93,28 +102,35 @@ def _run_daily_sync(state, today):
     state.save(update_fields=["last_sync_at", "status", "updated_at"])
 
 
-def _run_area_request_batch():
-    request = FirmsAreaRequest.objects.filter(status__in=("queued", "downloading")).first()
+def _run_area_request_batch(download_sources=None):
+    requests = FirmsAreaRequest.objects.filter(
+        status__in=("queued", "downloading", "harmonizing")
+    )
+    if download_sources is not None:
+        requests = requests.filter(download_sources=download_sources)
+    request = requests.first()
     if not request:
         return False
 
-    request.status = "downloading"
+    processing_status = "downloading" if request.download_sources else "harmonizing"
+    request.status = processing_status
     request.last_error = ""
     request.save(update_fields=["status", "last_error", "updated_at"])
     chunk_end = min(request.next_date + timedelta(days=4), request.end_date)
     area = f"{request.west},{request.south},{request.east},{request.north}"
     try:
-        for source, first_day in SOURCES:
-            source_start = max(request.next_date, first_day)
-            if source_start <= chunk_end:
-                download_source_range(source, source_start, chunk_end, area)
+        if request.download_sources:
+            for source, first_day in SOURCES:
+                source_start = max(request.next_date, first_day)
+                if source_start <= chunk_end:
+                    download_source_range(source, source_start, chunk_end, area)
         bounds = (request.south, request.north, request.west, request.east)
         harmonize_range(request.next_date, chunk_end, bounds=bounds)
         if chunk_end >= request.end_date:
             request.status = "ready"
         else:
             request.next_date = chunk_end + timedelta(days=1)
-            request.status = "queued"
+            request.status = processing_status
         request.save(update_fields=["status", "next_date", "updated_at"])
         return True
     except FirmsError as error:
@@ -132,6 +148,9 @@ class Command(BaseCommand):
         while True:
             state = _pipeline_state()
             if not os.environ.get("FIRMS_MAP_KEY", "").strip():
+                if _run_area_request_batch(download_sources=False):
+                    time.sleep(BACKFILL_PAUSE_SECONDS)
+                    continue
                 state.status = "waiting_for_key"
                 state.active_source = ""
                 state.last_error = "Configure FIRMS_MAP_KEY no arquivo .env."
@@ -142,25 +161,31 @@ class Command(BaseCommand):
 
             today = datetime.now(timezone.utc).date()
             try:
+                if _run_area_request_batch():
+                    time.sleep(BACKFILL_PAUSE_SECONDS)
+                    continue
+
+                if not _brazil_backfill_enabled():
+                    if state.status != "on_demand" or state.active_source or state.last_error:
+                        state.status = "on_demand"
+                        state.active_source = ""
+                        state.last_error = ""
+                        state.save(
+                            update_fields=["status", "active_source", "last_error", "updated_at"]
+                        )
+                    time.sleep(60)
+                    continue
+
                 if not state.initial_backfill_complete:
                     complete = _run_backfill_batch(state, today)
-                    area_work = _run_area_request_batch()
-                    time.sleep(
-                        BACKFILL_PAUSE_SECONDS
-                        if area_work or not complete
-                        else 60
-                    )
+                    time.sleep(BACKFILL_PAUSE_SECONDS if not complete else 60)
                 elif (
                     state.last_sync_at is None
                     or datetime.now(timezone.utc) - state.last_sync_at >= DAILY_SYNC_INTERVAL
                 ):
                     _run_daily_sync(state, today)
-                    area_work = _run_area_request_batch()
-                    time.sleep(BACKFILL_PAUSE_SECONDS if area_work else 60)
+                    time.sleep(60)
                 else:
-                    if _run_area_request_batch():
-                        time.sleep(BACKFILL_PAUSE_SECONDS)
-                        continue
                     remaining = DAILY_SYNC_INTERVAL - (
                         datetime.now(timezone.utc) - state.last_sync_at
                     )

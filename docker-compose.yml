@@ -46,6 +46,7 @@ services:
       DB_PASSWORD: ${POSTGRES_PASSWORD:-local-development-only}
       DB_HOST: db
       FIRMS_MAP_KEY: ${FIRMS_MAP_KEY:-}
+      FIRMS_BRAZIL_BACKFILL_ENABLED: ${FIRMS_BRAZIL_BACKFILL_ENABLED:-false}
     depends_on:
       api:
         condition: service_healthy

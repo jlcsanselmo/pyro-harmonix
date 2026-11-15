@@ -14,26 +14,32 @@ import {
 
 const MONTHS = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
 const CURRENT_DATE = new Date().toISOString().slice(0, 10);
-const historyStartDate = new Date();
-historyStartDate.setUTCFullYear(historyStartDate.getUTCFullYear() - 5);
-const HISTORY_START = historyStartDate.toISOString().slice(0, 10);
+const CURRENT_YEAR = Number(CURRENT_DATE.slice(0, 4));
+const ANALYSIS_YEAR = 2024;
+const DOWNLOAD_YEARS = Array.from({ length: CURRENT_YEAR - 1999 }, (_, index) => CURRENT_YEAR - index);
 const NUMBER_FORMAT = new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 1 });
 const INITIAL_FILTERS = {
-  start: HISTORY_START,
-  end: CURRENT_DATE,
-  south: "-34",
-  north: "6",
-  west: "-74",
-  east: "-34",
+  start: `${ANALYSIS_YEAR}-01-01`,
+  end: `${ANALYSIS_YEAR}-12-31`,
+  south: "-23",
+  north: "-20",
+  west: "-50",
+  east: "-46",
 };
 
 function areaRequestLabel(status) {
   return {
     queued: "na fila",
     downloading: "baixando",
+    harmonizing: "processando dados",
     ready: "concluído",
+    cancelled: "cancelado",
     error: "erro",
   }[status] || status;
+}
+
+function sensorLabel(source) {
+  return source === "MODIS_SP" ? "MODIS" : "VIIRS-Suomi-NPP";
 }
 
 function queryString(filters) {
@@ -44,6 +50,19 @@ function formatNumber(value) {
   return NUMBER_FORMAT.format(value || 0);
 }
 
+function formatDuration(seconds) {
+  const minutes = Math.max(1, Math.ceil(seconds / 60));
+  if (minutes < 60) return `${minutes} min`;
+  const hours = Math.floor(minutes / 60);
+  const remainder = minutes % 60;
+  return remainder ? `${hours} h ${remainder} min` : `${hours} h`;
+}
+
+function estimateDuration(estimate) {
+  if (!estimate) return "";
+  return `${formatDuration(estimate.estimated_seconds_min)}–${formatDuration(estimate.estimated_seconds_max)}`;
+}
+
 function ingestionLabel(status) {
   return {
     waiting_for_key: "AGUARDANDO CHAVE FIRMS",
@@ -51,6 +70,7 @@ function ingestionLabel(status) {
     harmonizing: "HARMONIZANDO",
     syncing: "ATUALIZANDO",
     ready: "ATUALIZADO",
+    on_demand: "COLETA SOB DEMANDA",
     error: "ERRO NA COLETA",
   }[status] || "CONECTANDO À NASA FIRMS";
 }
@@ -75,9 +95,10 @@ function StatCard({ icon: Icon, label, value, note, accent = false }) {
 
 function Heatmap({ years }) {
   if (!years.length) {
-    return <div className="empty-inline">A coleta automática ainda não carregou observações para esta área e período.</div>;
+    return <div className="empty-inline">Não há focos harmonizados para esta área e período. Processe dados já armazenados ou solicite uma nova coleta FIRMS.</div>;
   }
-  const max = Math.max(1, ...years.flatMap((year) => year.months));
+  const recordedValues = years.flatMap((year) => year.months).filter((count) => count != null);
+  const max = Math.max(1, ...recordedValues);
   return (
     <div className="heatmap-scroll">
       <div className="heatmap">
@@ -91,14 +112,17 @@ function Heatmap({ years }) {
             <strong className="year-label">{year.year}</strong>
             {year.months.map((count, index) => {
               const strength = count ? Math.max(1, Math.ceil((count / max) * 5)) : 0;
+              const label = count == null
+                ? `${MONTHS[index]} ${year.year}: sem registros`
+                : `${MONTHS[index]} ${year.year}: ${formatNumber(count)} detecções equivalentes`;
               return (
                 <span
-                  className={`heat-cell${strength ? ` heat-${strength}` : ""}`}
+                  className={`heat-cell${count == null ? " heat-no-data" : strength ? ` heat-${strength}` : ""}`}
                   key={`${year.year}-${index}`}
-                  title={`${MONTHS[index]} ${year.year}: ${formatNumber(count)} detecções equivalentes`}
-                  aria-label={`${MONTHS[index]} ${year.year}: ${count} detecções`}
+                  title={label}
+                  aria-label={label}
                 >
-                  {count ? formatNumber(count) : "—"}
+                  {count == null ? "—" : count ? formatNumber(count) : "0"}
                 </span>
               );
             })}
@@ -146,6 +170,10 @@ function App() {
   const [areaRequests, setAreaRequests] = useState([]);
   const [requestingArea, setRequestingArea] = useState(false);
   const [areaRequestMessage, setAreaRequestMessage] = useState("");
+  const [downloadYear, setDownloadYear] = useState(String(ANALYSIS_YEAR));
+  const [downloadEstimate, setDownloadEstimate] = useState(null);
+  const [estimateLoading, setEstimateLoading] = useState(false);
+  const [estimateError, setEstimateError] = useState("");
   const appliedFiltersRef = useRef(applied);
   const areaRequestStatusesRef = useRef({});
 
@@ -174,6 +202,42 @@ function App() {
 
   useEffect(() => { loadData(applied); }, [applied, loadData]);
   useEffect(() => { appliedFiltersRef.current = applied; }, [applied]);
+
+  useEffect(() => {
+    let active = true;
+    const controller = new AbortController();
+    const timer = window.setTimeout(async () => {
+      setEstimateLoading(true);
+      setEstimateError("");
+      try {
+        const parameters = new URLSearchParams({
+          year: downloadYear,
+          south: filters.south,
+          north: filters.north,
+          west: filters.west,
+          east: filters.east,
+        });
+        const response = await fetch(`/api/area-requests/estimate/?${parameters}`, {
+          signal: controller.signal,
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "Não foi possível estimar a coleta.");
+        if (active) setDownloadEstimate(result);
+      } catch (estimateRequestError) {
+        if (active && estimateRequestError.name !== "AbortError") {
+          setDownloadEstimate(null);
+          setEstimateError(estimateRequestError.message || "Falha ao estimar o download.");
+        }
+      } finally {
+        if (active) setEstimateLoading(false);
+      }
+    }, 250);
+    return () => {
+      active = false;
+      window.clearTimeout(timer);
+      controller.abort();
+    };
+  }, [downloadYear, filters.east, filters.north, filters.south, filters.west]);
 
   useEffect(() => {
     let active = true;
@@ -262,18 +326,39 @@ function App() {
     window.location.assign(`/api/hotspots.csv?${queryString(applied)}`);
   }
 
-  async function requestAreaData() {
+  async function requestAreaData(downloadSources) {
     setRequestingArea(true);
     setAreaRequestMessage("");
     try {
       const response = await fetch("/api/area-requests/create/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(filters),
+        body: JSON.stringify({
+          year: Number(downloadYear),
+          south: filters.south,
+          north: filters.north,
+          west: filters.west,
+          east: filters.east,
+          download_sources: downloadSources,
+        }),
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "Não foi possível solicitar os dados.");
-      setAreaRequestMessage(`Solicitação #${result.id} adicionada à fila de coleta.`);
+      setAreaRequestMessage(downloadSources
+        ? `Solicitação #${result.id} na fila · estimativa ${estimateDuration(result.estimate)}.`
+        : `Solicitação #${result.id} na fila para processar os dados já armazenados, sem consultar a NASA FIRMS.`,
+      );
+      areaRequestStatusesRef.current = {
+        ...areaRequestStatusesRef.current,
+        [result.id]: result.status,
+      };
+      const selectedYear = {
+        ...filters,
+        start: result.start,
+        end: result.end,
+      };
+      setFilters(selectedYear);
+      setApplied(selectedYear);
       const requestsResponse = await fetch("/api/area-requests/");
       const requestsResult = await requestsResponse.json();
       if (!requestsResponse.ok) throw new Error(requestsResult.error || "Falha ao atualizar a fila.");
@@ -313,7 +398,7 @@ function App() {
         <div className="page-content">
           <section className="page-heading">
             <div>
-              <div className="eyebrow"><span /> OBSERVAÇÃO DA TERRA · BRASIL + ÁREAS SOB DEMANDA</div>
+              <div className="eyebrow"><span /> OBSERVAÇÃO DA TERRA · COBERTURA GLOBAL</div>
               <h1>Regimes de fogo</h1>
               <p>Explore padrões de atividade e compare detecções harmonizadas ao longo do tempo.</p>
             </div>
@@ -321,7 +406,7 @@ function App() {
           </section>
 
           <section className="filter-panel">
-            <div className="filter-heading"><div><MapPin size={16} /><strong>Área de interesse</strong></div><span>Brasil por padrão · outras áreas até 20° × 20° e 5 anos</span></div>
+            <div className="filter-heading"><div><MapPin size={16} /><strong>Área e período de análise</strong></div><span>Qualquer região · retângulo até 20° × 20°</span></div>
             <form onSubmit={(event) => { event.preventDefault(); setApplied({ ...filters }); }} className="filters-form">
               <label className="filter-field date-field"><span>DATA INICIAL</span><input name="start" type="date" value={filters.start} onChange={updateFilter} required /></label>
               <label className="filter-field date-field"><span>DATA FINAL</span><input name="end" type="date" value={filters.end} onChange={updateFilter} required /></label>
@@ -334,10 +419,53 @@ function App() {
                 </label>
               ))}
               <button className="apply-button" type="submit"><Activity size={15} /> Aplicar</button>
-              <button className="request-button" type="button" onClick={requestAreaData} disabled={requestingArea}>
-                <Download size={14} /> {requestingArea ? "Solicitando…" : "Buscar dados FIRMS"}
-              </button>
             </form>
+            <div className="download-request">
+              <label className="filter-field year-field">
+                <span>ANO DOS DADOS</span>
+                <select value={downloadYear} onChange={(event) => setDownloadYear(event.target.value)}>
+                  {DOWNLOAD_YEARS.map((year) => <option value={year} key={year}>{year}</option>)}
+                </select>
+              </label>
+              <div className="request-estimate" aria-live="polite">
+                <span>Estimativa de coleta</span>
+                <strong>
+                  {estimateLoading
+                    ? "Calculando…"
+                    : estimateError
+                      ? "Indisponível"
+                      : `~${estimateDuration(downloadEstimate)}`}
+                </strong>
+                <small>
+                  {estimateError ||
+                    (downloadEstimate
+                      ? `${downloadEstimate.api_requests} chamadas FIRMS · ${downloadEstimate.sources.map(sensorLabel).join(" + ")}`
+                      : "A estimativa varia com o volume e a conexão.")}
+                </small>
+              </div>
+              <div className="request-actions">
+                <button
+                  className="request-button stored-data-button"
+                  type="button"
+                  onClick={() => requestAreaData(false)}
+                  disabled={requestingArea}
+                  title="Reprocessa somente detecções FIRMS já armazenadas para esta área e ano."
+                >
+                  <Activity size={14} /> {requestingArea ? "Solicitando…" : "Processar dados existentes"}
+                </button>
+                <button
+                  className="request-button"
+                  type="button"
+                  onClick={() => requestAreaData(true)}
+                  disabled={requestingArea || estimateLoading || !downloadEstimate || Boolean(estimateError)}
+                >
+                  <Download size={14} /> {requestingArea ? "Solicitando…" : `Baixar + analisar ${downloadYear}`}
+                </button>
+              </div>
+            </div>
+            <p className="request-footnote">
+              “Processar dados existentes” não faz chamadas FIRMS e usa somente registros já armazenados. Para áreas sem dados, escolha “Baixar + analisar”. MODIS desde nov. 2000; VIIRS-Suomi NPP desde jan. 2012.
+            </p>
           </section>
 
           {error && <div role="alert" className="notice notice-error">{error}</div>}
@@ -349,8 +477,10 @@ function App() {
               <strong>Solicitações de outras áreas</strong>
               {areaRequests.slice(0, 3).map((item) => (
                 <span key={item.id} title={item.last_error || undefined}>
-                  #{item.id} · {item.west}, {item.south} → {item.east}, {item.north} · {areaRequestLabel(item.status)}
-                  {item.status === "downloading" && ` · desde ${item.next_date}`}
+                  #{item.id} · {item.start}–{item.end} · {item.west}, {item.south} → {item.east}, {item.north} · {areaRequestLabel(item.status)}
+                  {item.mode === "stored" ? " · dados existentes" : " · coleta FIRMS"}
+                  {["downloading", "harmonizing"].includes(item.status) && ` · desde ${item.next_date}`}
+                  {item.status !== "ready" && item.estimate && ` · estimativa ${estimateDuration(item.estimate)}`}
                   {item.status === "error" && item.last_error && ` · ${item.last_error}`}
                 </span>
               ))}
@@ -358,7 +488,7 @@ function App() {
           )}
           {ingestion?.status === "waiting_for_key" && (
             <div role="status" className="notice notice-info">
-              Coleta automática aguardando a chave gratuita NASA FIRMS. Configure <code>FIRMS_MAP_KEY</code> no arquivo <code>.env</code> e reinicie o Compose.
+              Novos downloads aguardam a chave gratuita NASA FIRMS. Dados já armazenados ainda podem ser processados. Para baixar, configure <code>FIRMS_MAP_KEY</code> no arquivo <code>.env</code> e reinicie o Compose.
             </div>
           )}
           {ingestion?.last_error && ingestion.status === "error" && (
@@ -370,12 +500,16 @@ function App() {
               {" "}{ingestion.sources.map((source) => `${source.source}: desde ${source.next_date}`).join(" · ")}
             </div>
           )}
+          {ingestion?.status === "on_demand" && (
+            <div role="status" className="notice notice-info">
+              Coleta nacional automática pausada para controlar o armazenamento. Os dados já baixados foram preservados; solicite outros anos e regiões acima.
+            </div>
+          )}
 
           <section className="stats-grid">
             <StatCard icon={Flame} label="Detecções harmonizadas (eq.)" value={loading ? "…" : formatNumber(analytics?.total)} note={`${analytics?.start || applied.start} — ${analytics?.end || applied.end}`} accent />
-            <StatCard icon={CalendarDays} label={`Atividade em ${MONTHS[(comparison?.month || 1) - 1]}`} value={loading ? "…" : formatNumber(comparison?.observed)} note={`No ano de ${comparison?.year || applied.end.slice(0, 4)}`} />
-            <StatCard icon={Activity} label="Mediana histórica" value={loading ? "…" : comparison?.historical_median == null ? "—" : formatNumber(comparison.historical_median)} note={comparison?.historical_years ? `Mesmo mês · ${comparison.historical_years} anos anteriores` : "Sem histórico anterior disponível"} />
-            <StatCard icon={Layers3} label="Anomalia vs. mediana" value={loading ? "…" : comparison?.anomaly_percent == null ? "—" : `${comparison.anomaly_percent > 0 ? "+" : ""}${comparison.anomaly_percent}%`} note="Mês selecionado vs. anos anteriores" />
+            <StatCard icon={Activity} label="Mediana histórica" value={loading ? "…" : comparison?.historical_median == null ? "—" : formatNumber(comparison.historical_median)} note={comparison?.historical_median == null ? `Histórico insuficiente · ${comparison?.historical_years || 0} anos com registros` : `Mesmo mês · ${comparison.historical_years} anos com registros`} />
+            <StatCard icon={Layers3} label="Anomalia vs. mediana" value={loading ? "…" : comparison?.anomaly_percent == null ? "—" : `${comparison.anomaly_percent > 0 ? "+" : ""}${comparison.anomaly_percent}%`} note={comparison?.anomaly_percent == null ? "Requer mediana de ao menos 2 anos" : "Mês selecionado vs. histórico disponível"} />
           </section>
 
           <div className="dashboard-grid">
@@ -411,7 +545,7 @@ function App() {
 
             <section className="panel season-panel">
               <div className="panel-heading">
-                <div><h2>Sazonalidade</h2><p>Detecções por mês no período</p></div>
+                <div><h2>Sazonalidade</h2><p>Detecções registradas; ausência de dados não confirma ausência de fogo</p></div>
                 <button className="icon-button subtle" title="Soma mensal para a área e período selecionados"><CircleHelp size={15} /></button>
               </div>
               {analytics ? <SeasonBars totals={analytics.monthly_totals} /> : <div className="empty-inline">Carregando…</div>}

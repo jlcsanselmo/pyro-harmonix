@@ -26,6 +26,8 @@ BRAZIL_AREA = "-74,-34,-34,6"
 MAX_DAYS_PER_REQUEST = 5
 MAX_RESPONSE_BYTES = 200 * 1024 * 1024
 REQUEST_DELAY_SECONDS = 3
+ESTIMATE_BASE_SECONDS_PER_REQUEST = (60, 180)
+ESTIMATE_REFERENCE_AREA_DEGREES = 12
 H3_RESOLUTION = 8
 HISTORY_YEARS = 5
 MIN_CALIBRATION_DETECTIONS = 500
@@ -41,6 +43,28 @@ class FirmsError(Exception):
 
 class FirmsResponseTooLarge(FirmsError):
     pass
+
+
+def estimate_area_download(start, end, south, north, west, east):
+    api_requests = 0
+    sources = []
+    for source, first_day in SOURCES:
+        source_start = max(start, first_day)
+        if source_start <= end:
+            days = (end - source_start).days + 1
+            api_requests += (days + MAX_DAYS_PER_REQUEST - 1) // MAX_DAYS_PER_REQUEST
+            sources.append(source)
+
+    area_degrees = float((north - south) * (east - west))
+    area_factor = max(0.5, math.sqrt(area_degrees / ESTIMATE_REFERENCE_AREA_DEGREES))
+    minimum_seconds = math.ceil(api_requests * ESTIMATE_BASE_SECONDS_PER_REQUEST[0] * area_factor)
+    maximum_seconds = math.ceil(api_requests * ESTIMATE_BASE_SECONDS_PER_REQUEST[1] * area_factor)
+    return {
+        "api_requests": api_requests,
+        "sources": sources,
+        "estimated_seconds_min": minimum_seconds,
+        "estimated_seconds_max": maximum_seconds,
+    }
 
 
 def history_start_date(today=None):

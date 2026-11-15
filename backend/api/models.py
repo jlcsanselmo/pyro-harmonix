@@ -49,6 +49,7 @@ class FirmsCheckpoint(models.Model):
 
 class FirmsAreaRequest(models.Model):
     status = models.CharField(max_length=16, default="queued")
+    download_sources = models.BooleanField(default=True)
     south = models.DecimalField(max_digits=8, decimal_places=4)
     north = models.DecimalField(max_digits=8, decimal_places=4)
     west = models.DecimalField(max_digits=8, decimal_places=4)

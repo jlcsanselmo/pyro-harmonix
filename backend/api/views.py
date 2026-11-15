@@ -14,13 +14,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET, require_POST
 
 from .models import FirmsAreaRequest, FirmsCheckpoint, FirmsPipelineState, Hotspot
-from .services.firms import history_start_date
+from .services.firms import SOURCES, estimate_area_download
 
 MAX_UPLOAD_BYTES = 10 * 1024 * 1024
 MAX_UPLOAD_ROWS = 200_000
 MAP_POINT_LIMIT = 10_000
 AREA_REQUEST_LIMIT = 5
-AREA_REQUEST_MAX_DAYS = 5 * 366
+AREA_REQUEST_MAX_DAYS = 366
 AREA_REQUEST_MAX_SPAN_DEGREES = Decimal("20")
 
 
@@ -116,9 +116,22 @@ def ingestion_status(request):
 
 
 def _area_request_data(row):
+    estimate = (
+        estimate_area_download(
+            row.start_date,
+            row.end_date,
+            row.south,
+            row.north,
+            row.west,
+            row.east,
+        )
+        if row.download_sources
+        else None
+    )
     return {
         "id": row.pk,
         "status": row.status,
+        "mode": "download" if row.download_sources else "stored",
         "south": str(row.south),
         "north": str(row.north),
         "west": str(row.west),
@@ -127,7 +140,74 @@ def _area_request_data(row):
         "end": row.end_date.isoformat(),
         "next_date": row.next_date.isoformat(),
         "last_error": row.last_error,
+        "estimate": estimate,
     }
+
+
+def _area_request_parameters(payload):
+    if not hasattr(payload, "get"):
+        raise RequestError("Informe datas e coordenadas válidas.")
+    today = datetime.now(timezone.utc).date()
+    year_value = payload.get("year")
+    if year_value not in (None, ""):
+        try:
+            year_text = str(year_value).strip()
+            if isinstance(year_value, bool) or not year_text.isdecimal():
+                raise ValueError
+            year = int(year_text)
+        except (TypeError, ValueError):
+            raise RequestError("Selecione um ano válido.") from None
+        if year < SOURCES[0][1].year or year > today.year:
+            raise RequestError(
+                f"Escolha um ano entre {SOURCES[0][1].year} e {today.year}."
+            )
+        start = datetime(year, 1, 1).date()
+        end = min(datetime(year, 12, 31).date(), today)
+    else:
+        try:
+            start = parse_date(str(payload.get("start", "") or ""))
+            end = parse_date(str(payload.get("end", "") or ""))
+        except (TypeError, ValueError):
+            raise RequestError("Informe um intervalo de datas válido.") from None
+        if not start or not end or start > end:
+            raise RequestError("Informe um intervalo de datas válido.")
+        if start.year != end.year:
+            raise RequestError("Cada solicitação deve abranger um único ano.")
+        year = start.year
+        if year < SOURCES[0][1].year or year > today.year:
+            raise RequestError(
+                f"Escolha um ano entre {SOURCES[0][1].year} e {today.year}."
+            )
+
+    start = max(start, SOURCES[0][1])
+    if not start or not end or start > end:
+        raise RequestError(
+            f"Os dados MODIS começam em {SOURCES[0][1].isoformat()}."
+        )
+    if end > today:
+        raise RequestError("A data final não pode ser futura.")
+    if (end - start).days + 1 > AREA_REQUEST_MAX_DAYS:
+        raise RequestError("Cada solicitação pode abranger no máximo um ano.")
+
+    try:
+        south, north, west, east = [
+            Decimal(str(payload.get(name, "")))
+            for name in ("south", "north", "west", "east")
+        ]
+    except (InvalidOperation, TypeError):
+        raise RequestError("Informe datas e coordenadas válidas.") from None
+    if not all(value.is_finite() for value in (south, north, west, east)):
+        raise RequestError("As coordenadas devem ser números finitos.")
+    if south < -90 or north > 90 or south >= north:
+        raise RequestError("A latitude deve estar entre -90 e 90, com sul menor que norte.")
+    if west < -180 or east > 180 or west >= east:
+        raise RequestError("A longitude deve estar entre -180 e 180, com oeste menor que leste.")
+    if (
+        north - south > AREA_REQUEST_MAX_SPAN_DEGREES
+        or east - west > AREA_REQUEST_MAX_SPAN_DEGREES
+    ):
+        raise RequestError("A área deve ter no máximo 20° de largura e 20° de altura.")
+    return start, end, south, north, west, east
 
 
 @require_GET
@@ -137,43 +217,46 @@ def area_requests(request):
     )
 
 
+@require_GET
+def estimate_area_request(request):
+    try:
+        start, end, south, north, west, east = _area_request_parameters(request.GET)
+    except RequestError as error:
+        return _json_error(str(error))
+    return JsonResponse(
+        {
+            "year": start.year,
+            "start": start.isoformat(),
+            "end": end.isoformat(),
+            **estimate_area_download(start, end, south, north, west, east),
+        }
+    )
+
+
 @csrf_exempt
 @require_POST
 def create_area_request(request):
     try:
         payload = json.loads(request.body)
-        start = parse_date(payload.get("start", ""))
-        end = parse_date(payload.get("end", ""))
-        south, north, west, east = [
-            Decimal(str(payload.get(name, "")))
-            for name in ("south", "north", "west", "east")
-        ]
     except (json.JSONDecodeError, UnicodeDecodeError, AttributeError, InvalidOperation, TypeError):
         return _json_error("Informe datas e coordenadas válidas.")
+    if not isinstance(payload, dict):
+        return _json_error("Informe datas e coordenadas válidas.")
 
-    if not start or not end or start > end:
-        return _json_error("Informe um intervalo de datas válido.")
-    if start < history_start_date():
-        return _json_error("A coleta FIRMS está limitada aos últimos cinco anos.")
-    if end > datetime.now(timezone.utc).date():
-        return _json_error("A data final não pode ser futura.")
-    if (end - start).days + 1 > AREA_REQUEST_MAX_DAYS:
-        return _json_error("Cada solicitação pode abranger no máximo cinco anos.")
-    if not all(value.is_finite() for value in (south, north, west, east)):
-        return _json_error("As coordenadas devem ser números finitos.")
-    if south < -90 or north > 90 or south >= north:
-        return _json_error("A latitude deve estar entre -90 e 90, com sul menor que norte.")
-    if west < -180 or east > 180 or west >= east:
-        return _json_error("A longitude deve estar entre -180 e 180, com oeste menor que leste.")
-    if (
-        north - south > AREA_REQUEST_MAX_SPAN_DEGREES
-        or east - west > AREA_REQUEST_MAX_SPAN_DEGREES
-    ):
-        return _json_error("A área deve ter no máximo 20° de largura e 20° de altura.")
-    if FirmsAreaRequest.objects.filter(status__in=("queued", "downloading")).count() >= AREA_REQUEST_LIMIT:
+    try:
+        start, end, south, north, west, east = _area_request_parameters(payload)
+    except RequestError as error:
+        return _json_error(str(error))
+    download_sources = payload.get("download_sources", True)
+    if not isinstance(download_sources, bool):
+        return _json_error("A opção de baixar novos dados deve ser verdadeira ou falsa.")
+    if FirmsAreaRequest.objects.filter(
+        status__in=("queued", "downloading", "harmonizing")
+    ).count() >= AREA_REQUEST_LIMIT:
         return _json_error("A fila está cheia. Tente novamente quando uma solicitação terminar.", 429)
 
     area_request = FirmsAreaRequest.objects.create(
+        download_sources=download_sources,
         south=south,
         north=north,
         west=west,
@@ -264,14 +347,11 @@ def analytics(request):
         .order_by("acquired_at__year", "acquired_at__month")
     )
     area_first_date = area.aggregate(first=Min("acquired_at"))["first"]
-    years = {
-        year: [0] * 12
-        for year in range(start.year, end.year + 1)
-    } if area_first_date else {}
+    years = {}
     for entry in month_counts:
         year = entry["acquired_at__year"]
         month = entry["acquired_at__month"]
-        years.setdefault(year, [0] * 12)[month - 1] = entry["count"]
+        years.setdefault(year, [None] * 12)[month - 1] = entry["count"]
 
     monthly_totals = [0] * 12
     for entry in month_counts:
@@ -286,7 +366,7 @@ def analytics(request):
         acquired_at__month=end.month,
         acquired_at__day__gte=comparison_start_day,
         acquired_at__day__lte=end.day,
-    ).aggregate(count=Sum("harmonized_count"))["count"] or 0
+    ).aggregate(count=Sum("harmonized_count"))["count"]
 
     baseline_values = []
     first_date = area_first_date
@@ -308,18 +388,15 @@ def analytics(request):
             entry["acquired_at__year"]: entry["count"]
             for entry in historical_rows
         }
-        baseline_values = [
-            historical_counts.get(year, 0)
-            for year in range(first_date.year, end.year)
-        ]
+        baseline_values = list(historical_counts.values())
 
-    historical_median = statistics.median(baseline_values) if baseline_values else None
+    historical_median = statistics.median(baseline_values) if len(baseline_values) >= 2 else None
     anomaly_percent = None
-    if historical_median is not None:
-        if historical_median:
-            anomaly_percent = round((end_month_observed - historical_median) / historical_median * 100, 1)
-        else:
-            anomaly_percent = 0 if end_month_observed == 0 else None
+    if historical_median and end_month_observed is not None:
+        anomaly_percent = round(
+            (end_month_observed - historical_median) / historical_median * 100,
+            1,
+        )
 
     return JsonResponse(
         {
@@ -328,7 +405,11 @@ def analytics(request):
             "end": end.isoformat(),
             "monthly_totals": monthly_totals,
             "years": [
-                {"year": year, "months": counts, "total": sum(counts)}
+                {
+                    "year": year,
+                    "months": counts,
+                    "total": sum(count for count in counts if count is not None),
+                }
                 for year, counts in sorted(years.items())
             ],
             "comparison": {

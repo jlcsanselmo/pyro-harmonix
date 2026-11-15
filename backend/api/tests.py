@@ -10,9 +10,14 @@ from .models import FirmsDetection, Hotspot, SensorCalibration
 from .services.firms import (
     _request_csv,
     calculate_calibration,
+    estimate_area_download,
     harmonize_window,
     history_start_date,
     parse_firms_csv,
+)
+from .management.commands.firms_scheduler import (
+    _brazil_backfill_enabled,
+    _run_area_request_batch,
 )
 
 
@@ -74,7 +79,7 @@ class HotspotApiTests(TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertEqual(Hotspot.objects.count(), 0)
 
-    def test_analytics_includes_missing_months_in_historical_median(self):
+    def test_analytics_requires_two_historical_years_with_observations(self):
         for year, count in ((2022, 2), (2024, 4)):
             for index in range(count):
                 Hotspot.objects.create(
@@ -97,7 +102,61 @@ class HotspotApiTests(TestCase):
         )
         self.assertEqual(result.status_code, 200)
         self.assertEqual(result.json()["comparison"]["observed"], 4)
-        self.assertEqual(result.json()["comparison"]["historical_median"], 1)
+        self.assertIsNone(result.json()["comparison"]["historical_median"])
+        self.assertIsNone(result.json()["comparison"]["anomaly_percent"])
+        self.assertEqual(result.json()["comparison"]["historical_years"], 1)
+
+    def test_analytics_median_uses_only_years_with_recorded_observations(self):
+        for year, count in ((2021, 2), (2022, 6), (2024, 4)):
+            for index in range(count):
+                Hotspot.objects.create(
+                    latitude=-10,
+                    longitude=-50,
+                    acquired_at=datetime(year, 8, index + 1, tzinfo=timezone.utc),
+                    sensor="harmonized",
+                    fingerprint=f"median-{year}-{index}",
+                )
+        result = self.client.get(
+            "/api/analytics/",
+            {
+                "start": "2024-01-01",
+                "end": "2024-08-31",
+                "south": "-20",
+                "north": "0",
+                "west": "-60",
+                "east": "-40",
+            },
+        )
+        comparison = result.json()["comparison"]
+        self.assertEqual(comparison["historical_median"], 4)
+        self.assertEqual(comparison["historical_years"], 2)
+        self.assertEqual(comparison["anomaly_percent"], 0)
+
+    def test_analytics_does_not_report_unobserved_period_as_zero(self):
+        Hotspot.objects.create(
+            latitude=-10,
+            longitude=-50,
+            acquired_at=datetime(2024, 8, 21, tzinfo=timezone.utc),
+            sensor="harmonized",
+            fingerprint="observed-2024-08",
+        )
+        result = self.client.get(
+            "/api/analytics/",
+            {
+                "start": "2021-01-01",
+                "end": "2026-11-15",
+                "south": "-20",
+                "north": "0",
+                "west": "-60",
+                "east": "-40",
+            },
+        )
+        comparison = result.json()["comparison"]
+        self.assertIsNone(comparison["observed"])
+        self.assertIsNone(comparison["historical_median"])
+        self.assertIsNone(comparison["anomaly_percent"])
+        self.assertEqual([row["year"] for row in result.json()["years"]], [2024])
+        self.assertIsNone(result.json()["years"][0]["months"][0])
 
     def test_non_finite_area_coordinates_return_validation_error(self):
         response = self.client.get("/api/hotspots/", {"south": "NaN"})
@@ -122,6 +181,103 @@ class HotspotApiTests(TestCase):
         self.assertEqual(response.status_code, 202)
         self.assertEqual(response.json()["status"], "queued")
         self.assertEqual(response.json()["next_date"], start.isoformat())
+        self.assertIn("estimate", response.json())
+
+    def test_area_request_accepts_a_historical_year_and_limits_sensors(self):
+        response = self.client.post(
+            "/api/area-requests/create/",
+            data={
+                "year": 2010,
+                "south": "-10",
+                "north": "0",
+                "west": "-60",
+                "east": "-50",
+            },
+            content_type="application/json",
+        )
+        self.assertEqual(response.status_code, 202)
+        self.assertEqual(response.json()["start"], "2010-01-01")
+        self.assertEqual(response.json()["end"], "2010-12-31")
+        self.assertEqual(response.json()["estimate"]["sources"], ["MODIS_SP"])
+        self.assertEqual(response.json()["estimate"]["api_requests"], 73)
+
+    def test_area_request_can_process_stored_data_without_firms_download(self):
+        response = self.client.post(
+            "/api/area-requests/create/",
+            data={
+                "year": 2024,
+                "south": "-10",
+                "north": "0",
+                "west": "-60",
+                "east": "-50",
+                "download_sources": False,
+            },
+            content_type="application/json",
+        )
+        self.assertEqual(response.status_code, 202)
+        self.assertEqual(response.json()["mode"], "stored")
+        self.assertIsNone(response.json()["estimate"])
+
+        with (
+            patch("api.management.commands.firms_scheduler.download_source_range") as download,
+            patch("api.management.commands.firms_scheduler.harmonize_range") as harmonize,
+        ):
+            self.assertTrue(_run_area_request_batch())
+
+        download.assert_not_called()
+        harmonize.assert_called_once()
+
+    def test_download_estimate_accounts_for_sensor_start_dates_and_area(self):
+        estimate = estimate_area_download(
+            date(2024, 1, 1),
+            date(2024, 12, 31),
+            -23,
+            -20,
+            -50,
+            -46,
+        )
+        self.assertEqual(estimate["api_requests"], 148)
+        self.assertEqual(estimate["sources"], ["MODIS_SP", "VIIRS_SNPP_SP"])
+        self.assertEqual(estimate["estimated_seconds_min"], 8880)
+        self.assertEqual(estimate["estimated_seconds_max"], 26640)
+
+    def test_area_request_estimate_endpoint_returns_download_plan(self):
+        response = self.client.get(
+            "/api/area-requests/estimate/",
+            {
+                "year": "2024",
+                "south": "-23",
+                "north": "-20",
+                "west": "-50",
+                "east": "-46",
+            },
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["year"], 2024)
+        self.assertEqual(response.json()["api_requests"], 148)
+        self.assertEqual(response.json()["sources"], ["MODIS_SP", "VIIRS_SNPP_SP"])
+
+    def test_year_2000_estimate_starts_when_modis_coverage_begins(self):
+        response = self.client.get(
+            "/api/area-requests/estimate/",
+            {
+                "year": "2000",
+                "south": "-10",
+                "north": "0",
+                "west": "-60",
+                "east": "-50",
+            },
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["start"], "2000-11-01")
+        self.assertEqual(response.json()["sources"], ["MODIS_SP"])
+        self.assertEqual(response.json()["api_requests"], 13)
+
+    def test_brazil_backfill_is_opt_in(self):
+        with patch.dict("os.environ", {}, clear=True):
+            self.assertFalse(_brazil_backfill_enabled())
+        with patch.dict("os.environ", {"FIRMS_BRAZIL_BACKFILL_ENABLED": "true"}):
+            self.assertTrue(_brazil_backfill_enabled())
 
     def test_area_request_rejects_global_or_oversized_areas(self):
         start = history_start_date()
@@ -140,13 +296,12 @@ class HotspotApiTests(TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertIn("20°", response.json()["error"])
 
-    def test_area_request_rejects_dates_outside_the_retention_window(self):
-        start = history_start_date() - timedelta(days=1)
+    def test_area_request_rejects_year_before_modis_coverage(self):
         response = self.client.post(
             "/api/area-requests/create/",
             data={
-                "start": start.isoformat(),
-                "end": (start + timedelta(days=9)).isoformat(),
+                "start": "1999-01-01",
+                "end": "1999-12-31",
                 "south": "-10",
                 "north": "0",
                 "west": "-60",
@@ -155,7 +310,7 @@ class HotspotApiTests(TestCase):
             content_type="application/json",
         )
         self.assertEqual(response.status_code, 400)
-        self.assertIn("últimos cinco anos", response.json()["error"])
+        self.assertIn("entre 2000", response.json()["error"])
 
     @patch("api.services.firms.time.sleep")
     @patch("api.services.firms.urllib.request.urlopen")
@@ -172,7 +327,7 @@ class HotspotApiTests(TestCase):
         self.assertIn("/MODIS_SP/-74,-34,-34,6/5/2024-01-01", requested_url)
 
     def test_partial_month_compares_the_same_day_window(self):
-        for year, day in ((2022, 4), (2022, 20), (2024, 5)):
+        for year, day in ((2021, 4), (2021, 20), (2022, 5), (2022, 20), (2024, 5)):
             Hotspot.objects.create(
                 latitude=-10,
                 longitude=-50,
@@ -194,7 +349,8 @@ class HotspotApiTests(TestCase):
         self.assertEqual(result.status_code, 200)
         comparison = result.json()["comparison"]
         self.assertEqual(comparison["observed"], 1)
-        self.assertEqual(comparison["historical_median"], 0.5)
+        self.assertEqual(comparison["historical_median"], 1)
+        self.assertEqual(comparison["historical_years"], 2)
 
     def test_firms_csv_is_parsed_into_original_and_h3_fields(self):
         csv_text = (
