@@ -1,78 +1,138 @@
 # PyroHarmonix
 
-WebGIS para explorar atividade de fogo no Brasil e em áreas selecionadas pelo usuário, usando observações Standard Processing MODIS e VIIRS-SNPP da NASA FIRMS.
+**Um calendário WebGIS de atividade de fogo no Brasil, com observações MODIS e VIIRS harmonizadas.**
+
+O PyroHarmonix foi desenvolvido para apoiar a leitura de padrões sazonais e mudanças na atividade de fogo. A pessoa seleciona uma área e um período, explora focos detectados por satélite e compara a atividade com anos anteriores.
+
+> **Protótipo científico:** a contagem harmonizada é exploratória e não é uma estimativa de área queimada, uma previsão de incêndios ou um produto validado para decisão operacional.
+
+## Caso real: incêndios no interior de São Paulo em 2024
+
+Em agosto e setembro de 2024, incêndios afetaram municípios do entorno de Ribeirão Preto. Segundo dados do BDQueimadas/INPE publicados pelo g1, entre 21 de agosto e 7 de setembro, seis das dez cidades paulistas com mais focos ficavam na região; Altinópolis e Pitangueiras lideravam o ranking. As dez cidades somaram 651 focos no período.
+
+### Imagem de satélite e focos térmicos
+
+![Imagem NASA VIIRS/Suomi-NPP de 24 de agosto de 2024, recortada para a região de Ribeirão Preto, com anomalias térmicas destacadas em vermelho](docs/assets/ribeirao-preto-2024-08-24-viirs.jpg)
+
+*NASA Worldview/GIBS, 24 ago. 2024. Composição VIIRS/Suomi-NPP em cor verdadeira com anomalias térmicas VIIRS de 375 m. O recorte cobre a região de Ribeirão Preto; os realces são detecções de anomalias térmicas, não perímetros de queimadas.*
+
+### Evolução diária observada pelo satélite
+
+![Animação de imagens VIIRS e anomalias térmicas entre 21 e 31 de agosto de 2024 na região de Ribeirão Preto](docs/assets/ribeirao-preto-fire-2024-aug.gif)
+
+*Animação montada pelo projeto a partir de 11 imagens diárias do NASA Worldview/GIBS, uma por dia entre 21 e 31 ago. 2024. Imagens: VIIRS/Suomi-NPP em cor verdadeira; camada de anomalias térmicas VIIRS de 375 m. As nuvens podem encobrir focos e diferenças de observação entre dias não significam necessariamente que o fogo começou ou terminou naquele instante.*
+
+**Fontes do caso:** [g1 Ribeirão Preto — seis das dez cidades com mais focos eram da região](https://g1.globo.com/sp/ribeirao-preto-franca/noticia/2024/09/09/incendios-em-sp-6-das-10-cidades-com-mais-focos-sao-da-regiao-de-ribeirao-preto.ghtml) · [NASA Earthdata — fumaça de incêndios no Brasil e Bolívia, observada em 28 ago. 2024](https://www.earthdata.nasa.gov/news/worldview-image-archive/thick-smoke-from-fires-brazil-bolivia) · [Abrir NASA Worldview](https://worldview.earthdata.nasa.gov/).
+
+**Atribuição das imagens:** reconhecemos o uso de imagens fornecidas pelos serviços NASA Global Imagery Browse Services (GIBS), parte do NASA Earth Science Data and Information System (ESDIS). As imagens acima são exemplos de contexto e **ainda não são uma camada de imagens integrada ao mapa interativo do PyroHarmonix**.
+
+## O que o WebGIS oferece
+
+- Mapa interativo dos focos agregados em células H3/dia.
+- Filtros de período e área por coordenadas.
+- Calendário mensal e gráfico de sazonalidade.
+- Comparação da atividade do mês selecionado com a mediana histórica.
+- Exportação CSV dos resultados filtrados.
+- Solicitação de coleta FIRMS para outra área, dentro dos limites descritos abaixo.
+- Upload de CSV harmonizado externo.
+
+O mapa interativo usa OpenStreetMap como fundo e mostra as células de atividade detectadas. Ele **não exibe atualmente imagens de satélite como a composição acima nem calcula cicatrizes/áreas queimadas**.
 
 ## Executar com Docker
 
-Requisito: Docker Desktop com Docker Compose v2. Crie o arquivo local de configuração e informe sua chave gratuita NASA FIRMS (não a publique nem a envie pelo chat):
+Requisitos: Docker Desktop e Docker Compose v2. A chave NASA FIRMS é gratuita; mantenha-a somente no arquivo local `.env`, nunca em `.env.example` ou no Git.
 
-```bash
-cp .env.example .env
+No PowerShell, na pasta do projeto:
+
+```powershell
+Copy-Item .env.example .env
+notepad .env
 ```
 
-Edite `.env` e substitua `FIRMS_MAP_KEY`. Solicite uma chave em <https://firms.modaps.eosdis.nasa.gov/api/area/>. Depois execute:
+Edite `FIRMS_MAP_KEY` no `.env` com sua chave obtida em <https://firms.modaps.eosdis.nasa.gov/api/area/>. Depois inicie os serviços:
 
-```bash
-docker compose up --build
+```powershell
+docker compose up -d --build
 ```
 
-Abra <http://localhost:8081> (ou a porta definida em `WEB_PORT`). PostgreSQL, API, interface e o worker de sincronização executam em containers; nenhum dado é enviado pelo navegador para a NASA. Os dados ficam nos volumes Docker `postgres_data` e `fire_data`. O volume antigo SQLite `fire_data` é preservado e seus registros são copiados para PostgreSQL na inicialização.
+- WebGIS: <http://localhost:8081> (ou a porta definida por `WEB_PORT`).
+- Saúde da API: <http://localhost:8081/api/health/>.
+- Estado e progresso da coleta: <http://localhost:8081/api/ingestion-status/>.
+- Logs do worker: `docker compose logs -f firms-sync`.
 
-Sem `FIRMS_MAP_KEY`, o aplicativo continua abrindo e o worker mostra `AGUARDANDO CHAVE FIRMS`. Após editar `.env`, recrie o serviço para aplicar a variável:
+O PostgreSQL e o worker rodam em containers. Dados e checkpoints ficam no volume Docker; reiniciar os serviços não apaga a coleta. **Não use `docker compose down -v`** se quiser preservar os dados.
 
-```bash
+Sem uma chave configurada, a interface continua disponível e o worker informa que está aguardando a chave. Depois de alterar `.env`, recrie o worker para atualizar a variável:
+
+```powershell
 docker compose up -d --build --force-recreate firms-sync
 ```
 
-## Coleta automática e harmonização
+## Coleta automática e escolha de outras áreas
 
-O serviço `firms-sync` carrega os últimos cinco anos do Brasil, salva o progresso por sensor e retoma do último intervalo após reiniciar. A API FIRMS limita cada consulta a cinco dias; o worker consulta os produtos em intervalos de até cinco dias, com pausa entre solicitações, e atualiza diariamente os cinco dias mais recentes para incorporar revisões do Standard Processing. O progresso e erros aparecem no painel.
+A coleta contínua está limitada ao Brasil, usando o retângulo FIRMS `-74,-34,-34,6`. O worker carrega os últimos cinco anos de MODIS e VIIRS-SNPP, guarda o progresso por produto e retoma do checkpoint após reinícios. Depois da carga inicial, consulta diariamente os cinco dias mais recentes para incorporar revisões do Standard Processing.
 
-Para outra localidade, informe um retângulo nas coordenadas da área e datas dentro da janela dos últimos cinco anos e use **Buscar dados FIRMS**. Essas solicitações entram em uma fila persistente processada pelo worker, sem iniciar uma carga global automática. Cada pedido aceita no máximo 20° por lado e cinco anos; a fila comporta até cinco pedidos pendentes. A consulta é feita para os mesmos produtos, salva os dados brutos e harmoniza os dias selecionados. A coleta contínua e a atualização diária permanecem limitadas ao Brasil.
+Para pesquisar outra região, informe as datas e o retângulo pelas coordenadas no painel e selecione **Buscar dados FIRMS**. Os pedidos são colocados numa fila persistente e processados pelo worker. Limites atuais:
 
-Nesta versão são usados `MODIS_SP` (a partir de 2000-11) e `VIIRS_SNPP_SP` (a partir de 2012). O pipeline:
+- Até 20° de largura e 20° de altura por área.
+- Datas dentro da janela dos últimos cinco anos; máximo de cinco anos por pedido.
+- Até cinco pedidos pendentes na fila.
+- Requisições de no máximo cinco dias, com pausa entre chamadas.
 
-1. Persiste as detecções de origem e seus atributos FIRMS no PostgreSQL.
-2. Agrega as detecções por célula H3 de resolução 8 (aproximadamente 1 km²) e dia UTC.
-3. Na janela comum carregada dos últimos cinco anos, calcula um fator MODIS/VIIRS por mês do ano, usando as observações do Brasil, se ambos os produtos tiverem ao menos 500 detecções naquele mês.
-4. Em células/dias com os dois sensores, calcula a média entre a contagem MODIS e a contagem VIIRS ajustada; onde só há um sensor, usa sua contagem (ajustada quando calibrada).
+O limite de cinco anos reduz armazenamento, mas não garante por si só que o banco caiba em qualquer disco: o tamanho varia com a atividade de fogo e com as áreas solicitadas. Acompanhe espaço livre e o tamanho do banco. Para pausar sem apagar os dados, execute `docker compose stop firms-sync`; para retomar, `docker compose start firms-sync`.
 
-Esse fator é uma calibração empírica exploratória para comparação de contagens, **não** uma harmonização científica validada nem uma estimativa de área queimada. Quando a janela não tem dados suficientes, o produto é marcado como não calibrado e usa fator 1. Os originais continuam armazenados para permitir reprocessamento. Para evitar misturar as diferenças de órbita de múltiplas plataformas VIIRS, esta primeira versão usa somente VIIRS-SNPP; NOAA-20/21, NRT, mascaramento de nuvens, biome-stratificação e validação independente ainda não estão incluídos.
+## Dados e harmonização
 
-O worker respeita a janela de até cinco dias por solicitação e pausa pelo menos três segundos entre chamadas. A NASA documenta um limite de 5.000 transações por intervalo de 10 minutos; falhas deixam o checkpoint intacto e são tentadas novamente.
+Produtos Standard Processing da NASA FIRMS:
 
-## Importar dados manualmente
+- `MODIS_SP` (Terra/Aqua; cobertura iniciada em 2000, mas a coleta automática desta instalação é limitada aos últimos cinco anos).
+- `VIIRS_SNPP_SP` (Suomi-NPP; série disponível a partir de 2012).
 
-O upload CSV permanece disponível para dados harmonizados externos. Baixe o modelo pelo aplicativo ou em <http://localhost:8081/api/template.csv>. Colunas aceitas:
+O pipeline:
+
+1. Armazena as detecções originais e atributos FIRMS no PostgreSQL.
+2. Agrupa as detecções por célula H3 de resolução 8 (aproximadamente 1 km², variando geograficamente) e dia UTC.
+3. Calcula fatores MODIS/VIIRS por mês do ano a partir das observações sobrepostas carregadas no Brasil, se cada produto tiver pelo menos 500 detecções naquele mês.
+4. Quando ambos os sensores têm registros na mesma célula/dia, calcula a média entre a contagem MODIS e a contagem VIIRS ajustada. Se apenas um sensor tem registros, usa a contagem disponível, ajustada quando aplicável.
+
+Essa razão mensal agregada para a área de estudo é uma **calibração empírica exploratória**, não uma harmonização científica validada. A detecção de anomalia térmica não identifica sozinha a causa do fogo nem mede a área queimada. Os dados brutos permanecem armazenados para possibilitar reprocessamento. Esta versão não inclui VIIRS NOAA-20/21, produtos NRT, mascaramento de nuvens, estratificação por bioma ou validação independente.
+
+O serviço FIRMS limita a consulta a cinco dias e documenta até 5.000 transações por intervalo de dez minutos; consultas mais longas podem consumir mais de uma transação. O worker mantém pausas e checkpoints, mas a chave é compartilhada com qualquer outro uso da mesma MAP_KEY.
+
+## Importar dados harmonizados por CSV
+
+O upload manual continua disponível para conjuntos harmonizados externos. O modelo pode ser baixado no aplicativo ou em <http://localhost:8081/api/template.csv>.
 
 | Coluna | Obrigatória | Descrição |
 | --- | --- | --- |
-| `latitude` | Sim | Latitude decimal, de -90 a 90 |
-| `longitude` | Sim | Longitude decimal, de -180 a 180 |
+| `latitude` | Sim | Latitude decimal de -90 a 90 |
+| `longitude` | Sim | Longitude decimal de -180 a 180 |
 | `acq_datetime` | Sim* | Data/hora ISO 8601, por exemplo `2024-08-12T03:00:00Z` |
-| `acq_date` | Sim* | Data `AAAA-MM-DD`; pode ser usada no lugar de `acq_datetime` |
-| `acq_time` | Não | Hora `HH:MM` quando `acq_date` é usada |
-| `sensor` | Não | Sensor ou origem para rastreabilidade |
+| `acq_date` | Sim* | Data `AAAA-MM-DD`, alternativa a `acq_datetime` |
+| `acq_time` | Não | Hora `HH:MM` quando se usa `acq_date` |
+| `sensor` | Não | Sensor ou origem |
 | `confidence` | Não | Confiança fornecida pelo produto |
 | `frp` | Não | Potência radiativa do fogo, valor não negativo |
 
-Cada linha representa uma detecção e recebe peso 1. Importações são aditivas; registros duplicados são ignorados. Arquivos UTF-8 de até 10 MB e 200.000 linhas são aceitos. Os filtros iniciais mostram os últimos cinco anos e o retângulo do Brasil; ajuste as datas e coordenadas para delimitar uma área. O botão de download exporta todos os pontos que correspondem aos filtros, mesmo quando o mapa limita a quantidade de células exibidas.
+Cada linha representa uma detecção com peso 1. Importações são aditivas; duplicados são ignorados. Arquivos UTF-8 têm limite de 10 MB e 200.000 linhas.
 
 ## API
 
-- `GET /api/health/` — estado do serviço.
+- `GET /api/health/` — saúde do serviço.
 - `GET /api/ingestion-status/` — estado do worker e checkpoints por produto.
-- `GET /api/area-requests/` e `POST /api/area-requests/create/` — consultar a fila e solicitar coleta de uma área delimitada.
-- `GET /api/analytics/` — totais, calendário mensal e comparação com a mediana do mesmo mês em anos anteriores.
-- `GET /api/hotspots/` — hotspots para o mapa; o parâmetro `limit` limita os marcadores (máximo 10.000).
-- `GET /api/hotspots.csv` — exportação CSV sem limite de linhas.
-- `POST /api/upload/` — importar arquivo multipart com campo `file`.
+- `GET /api/area-requests/` — últimas solicitações de área e seus estados.
+- `POST /api/area-requests/create/` — solicitar coleta para uma área e período.
+- `GET /api/analytics/` — totais, calendário mensal e comparação histórica.
+- `GET /api/hotspots/` — células para o mapa; até 10.000 marcadores.
+- `GET /api/hotspots.csv` — exportação CSV em streaming.
+- `GET /api/template.csv` — modelo para upload.
+- `POST /api/upload/` — importar CSV multipart usando o campo `file`.
 
-Os endpoints de consulta aceitam `start`, `end`, `south`, `north`, `west` e `east`. A mediana histórica considera zeros nos anos sem detecções, desde o primeiro ano registrado até o ano anterior ao fim do período selecionado. Se o intervalo selecionado começa dentro do mês final, a comparação usa a mesma janela de dias do mês nos anos anteriores.
+Endpoints analíticos aceitam `start`, `end`, `south`, `north`, `west` e `east`. A comparação histórica inclui anos sem detecções como zeros; para períodos parciais no mês final, compara a mesma janela de dias nos anos anteriores.
 
-## Desenvolvimento local sem Docker
+## Desenvolvimento local
 
-Backend (Python 3.12+). Sem `DB_ENGINE=postgresql`, o Django usa SQLite para desenvolvimento e testes:
+Backend (Python 3.12+):
 
 ```powershell
 cd backend
@@ -84,8 +144,23 @@ python manage.py test
 python manage.py runserver
 ```
 
-Frontend (Node.js 22+): em outro terminal, execute `cd frontend`, `npm ci` e `npm run dev`. Para desenvolvimento, configure o proxy da Vite para a API Docker ou execute o frontend atrás do Nginx do Compose.
+Frontend (Node.js 22+), em outro terminal:
 
-## Escopo e interpretação
+```powershell
+cd frontend
+npm ci
+npm run dev
+```
 
-O valor da mediana é uma comparação descritiva de contagens mensais por área, não uma previsão. A camada de fundo usa OpenStreetMap e requer acesso à internet. Para implantação pública, configure `DJANGO_SECRET_KEY`, `POSTGRES_PASSWORD`, `DJANGO_DEBUG=false`, hosts permitidos, autenticação no upload e um servidor de aplicação adequado.
+## Referências e créditos
+
+- [NASA FIRMS — Area API](https://firms.modaps.eosdis.nasa.gov/api/area/).
+- [NASA Earthdata — NASA Worldview](https://www.earthdata.nasa.gov/data/tools/worldview).
+- [NASA Earthdata — Global Imagery Browse Services (GIBS)](https://www.earthdata.nasa.gov/engage/open-data-services-software/earthdata-developer-portal/gibs-api).
+- [NASA Worldview Snapshots](https://wvs.earthdata.nasa.gov/).
+- [INPE — BDQueimadas](https://data.inpe.br/queimadas/bdqueimadas/).
+- [g1 — incêndios em SP e municípios da região de Ribeirão Preto, 2024](https://g1.globo.com/sp/ribeirao-preto-franca/noticia/2024/09/09/incendios-em-sp-6-das-10-cidades-com-mais-focos-sao-da-regiao-de-ribeirao-preto.ghtml).
+
+## Escopo e limitações
+
+Calendários e medianas são descrições de contagens, não previsões. O aplicativo depende de internet para o mapa-base OpenStreetMap e para consultas à NASA durante a ingestão. Para implantação pública, configure `DJANGO_SECRET_KEY`, `POSTGRES_PASSWORD`, `DJANGO_DEBUG=false`, hosts permitidos, autenticação no upload e um servidor de aplicação de produção.
