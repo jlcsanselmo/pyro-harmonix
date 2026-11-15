@@ -1,0 +1,64 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-pyro_harmonix}
+      POSTGRES_USER: ${POSTGRES_USER:-pyro}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-development-only}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: ./backend
+    command: ["sh", "-c", "python manage.py migrate --noinput && python manage.py migrate_legacy_hotspots && python manage.py runserver 0.0.0.0:8000"]
+    environment:
+      DJANGO_DEBUG: "true"
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-local-development-only-not-for-production}
+      DB_ENGINE: postgresql
+      DB_NAME: ${POSTGRES_DB:-pyro_harmonix}
+      DB_USER: ${POSTGRES_USER:-pyro}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-local-development-only}
+      DB_HOST: db
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - fire_data:/legacy_data:ro
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/health/')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+  firms-sync:
+    build: ./backend
+    command: ["python", "manage.py", "firms_scheduler"]
+    environment:
+      DB_ENGINE: postgresql
+      DB_NAME: ${POSTGRES_DB:-pyro_harmonix}
+      DB_USER: ${POSTGRES_USER:-pyro}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-local-development-only}
+      DB_HOST: db
+      FIRMS_MAP_KEY: ${FIRMS_MAP_KEY:-}
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+  web:
+    build: ./frontend
+    ports:
+      - "${WEB_PORT:-8081}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  fire_data:
