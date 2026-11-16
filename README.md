@@ -1,187 +1,187 @@
 # PyroHarmonix
 
-**Um calendário WebGIS de atividade de fogo para qualquer região, com observações NASA FIRMS MODIS e VIIRS.**
+**A WebGIS calendar for fire activity in any region, using NASA FIRMS MODIS and VIIRS observations.**
 
-O PyroHarmonix combina Django, React e Docker para apoiar a leitura de padrões sazonais e mudanças na atividade de fogo. Selecione uma área e um ano, processe observações FIRMS já armazenadas ou solicite novos dados; explore o mapa, o calendário e compare a atividade com anos anteriores.
+PyroHarmonix combines Django, React, and Docker to support reading seasonal patterns and changes in fire activity. Select an area and year, process FIRMS observations already stored in the database or request new data, and explore the map, calendar, and compare the activity with previous years.
 
-[Apresentação para submissão (PDF, 7 slides)](docs/pyroharmonix-spaceapps-demo.pdf) · [CSV harmonizado de demonstração](docs/data/ribeirao-preto-2024-harmonized-snapshot.csv)
+[Submission presentation (PDF, 7 slides)](docs/pyroharmonix-spaceapps-demo.pdf) · [Demo harmonized CSV](docs/data/ribeirao-preto-2024-harmonized-snapshot.csv)
 
-> **Protótipo científico:** contagens e calibração são exploratórias e não representam área queimada, previsão de incêndios ou produto validado para decisão operacional. Resultados refletem somente os dados presentes no banco; ausência de pontos não significa ausência de fogo.
+> **Scientific prototype:** counts and calibration are exploratory and do not represent burned area, fire prediction, or a validated product for operational decision-making. Results reflect only the data currently in the database; the absence of points does not mean no fire occurred.
 
-## Caso real: incêndios no interior de São Paulo em 2024
+## Real-world case: fires in inland São Paulo in 2024
 
-Em agosto e setembro de 2024, incêndios afetaram municípios do entorno de Ribeirão Preto. Segundo dados do BDQueimadas/INPE publicados pelo g1, entre 21 de agosto e 7 de setembro, seis das dez cidades paulistas com mais focos ficavam na região; Altinópolis e Pitangueiras lideravam o ranking. As dez cidades somaram 651 focos no período.
+In August and September 2024, fires affected municipalities around Ribeirão Preto. According to BDQueimadas/INPE data published by g1, between August 21 and September 7, six of the ten São Paulo cities with the most fire detections were in the region; Altinópolis and Pitangueiras led the ranking. The ten cities totaled 651 detections in the period.
 
-### Imagem de satélite e focos térmicos
+### Satellite image and thermal hotspots
 
-![Imagem NASA VIIRS/Suomi-NPP de 24 de agosto de 2024, recortada para a região de Ribeirão Preto, com anomalias térmicas destacadas em vermelho](docs/assets/ribeirao-preto-2024-08-24-viirs.jpg)
+![NASA VIIRS/Suomi-NPP image from August 24, 2024, cropped to the Ribeirão Preto region, with thermal anomalies highlighted in red](docs/assets/ribeirao-preto-2024-08-24-viirs.jpg)
 
-*NASA Worldview/GIBS, 24 ago. 2024. Composição VIIRS/Suomi-NPP em cor verdadeira com anomalias térmicas VIIRS de 375 m. O recorte cobre a região de Ribeirão Preto; os realces são detecções de anomalias térmicas, não perímetros de queimadas.*
+*NASA Worldview/GIBS, August 24, 2024. True-color VIIRS/Suomi-NPP composite with VIIRS thermal anomalies at 375 m. The crop covers the Ribeirão Preto region; the highlighted areas are thermal anomaly detections, not burn perimeters.*
 
-### Evolução diária observada pelo satélite
+### Daily evolution observed by satellite
 
-![Animação de imagens VIIRS e anomalias térmicas entre 21 e 31 de agosto de 2024 na região de Ribeirão Preto](docs/assets/ribeirao-preto-fire-2024-aug.gif)
+![Animation of VIIRS images and thermal anomalies between August 21 and 31, 2024 in the Ribeirão Preto region](docs/assets/ribeirao-preto-fire-2024-aug.gif)
 
-*Animação montada pelo projeto a partir de 11 imagens diárias do NASA Worldview/GIBS, uma por dia entre 21 e 31 ago. 2024. Imagens: VIIRS/Suomi-NPP em cor verdadeira; camada de anomalias térmicas VIIRS de 375 m. As nuvens podem encobrir focos e diferenças de observação entre dias não significam necessariamente que o fogo começou ou terminou naquele instante.*
+*Animation assembled by the project from 11 daily NASA Worldview/GIBS images, one per day between August 21 and 31, 2024. Images: VIIRS/Suomi-NPP in true color; VIIRS thermal anomaly layer at 375 m. Clouds can obscure hotspots, and differences in observation between days do not necessarily mean the fire began or ended at that instant.*
 
-**Fontes do caso:** [g1 Ribeirão Preto — seis das dez cidades com mais focos eram da região](https://g1.globo.com/sp/ribeirao-preto-franca/noticia/2024/09/09/incendios-em-sp-6-das-10-cidades-com-mais-focos-sao-da-regiao-de-ribeirao-preto.ghtml) · [NASA Earthdata — fumaça de incêndios no Brasil e Bolívia, observada em 28 ago. 2024](https://www.earthdata.nasa.gov/news/worldview-image-archive/thick-smoke-from-fires-brazil-bolivia) · [Abrir NASA Worldview](https://worldview.earthdata.nasa.gov/).
+**Case sources:** [g1 Ribeirão Preto — six of the ten cities with the most hotspots were in the region](https://g1.globo.com/sp/ribeirao-preto-franca/noticia/2024/09/09/incendios-em-sp-6-das-10-cidades-com-mais-focos-sao-da-regiao-de-ribeirao-preto.ghtml) · [NASA Earthdata — smoke from fires in Brazil and Bolivia, observed on August 28, 2024](https://www.earthdata.nasa.gov/news/worldview-image-archive/thick-smoke-from-fires-brazil-bolivia) · [Open NASA Worldview](https://worldview.earthdata.nasa.gov/).
 
-**Atribuição das imagens:** reconhecemos o uso de imagens fornecidas pelos serviços NASA Global Imagery Browse Services (GIBS), parte do NASA Earth Science Data and Information System (ESDIS). As imagens acima são exemplos de contexto e **ainda não são uma camada de imagens integrada ao mapa interativo do PyroHarmonix**.
+**Image attribution:** We acknowledge the use of images provided by the NASA Global Imagery Browse Services (GIBS), part of the NASA Earth Science Data and Information System (ESDIS). The images above are examples for context and are **not yet an integrated image layer in the interactive PyroHarmonix map**.
 
-## O que o WebGIS oferece
+## What the WebGIS offers
 
-- Mapa interativo dos focos agregados em células H3/dia.
-- Filtros de período e área por coordenadas.
-- Calendário mensal e gráfico de sazonalidade.
-- Comparação da atividade do mês selecionado com a mediana histórica.
-- Exportação CSV dos resultados filtrados.
-- Processamento, sem chamadas externas, de dados brutos que já estejam armazenados para uma região e ano.
-- Solicitação sob demanda de novos dados FIRMS para uma região e ano, com estimativa do número de chamadas e do tempo de coleta.
-- Upload de CSV harmonizado externo.
+- Interactive map of hotspots aggregated by H3 cell/day.
+- Filters for period and area by coordinates.
+- Monthly calendar and seasonality chart.
+- Comparison of the selected month’s activity with the historical median.
+- CSV export for filtered results.
+- Processing, without external calls, of raw FIRMS data already stored for a given region and year.
+- On-demand requests for new FIRMS data for a region and year, including estimated number of calls and collection time.
+- Upload of external harmonized CSV data.
 
-O mapa interativo usa OpenStreetMap como fundo e mostra as células de atividade detectadas. Ele **não exibe atualmente imagens de satélite como a composição acima nem calcula cicatrizes/áreas queimadas**.
+The interactive map uses OpenStreetMap as the basemap and shows the detected activity cells. It **currently does not display satellite imagery like the composition above or calculate scars/burned areas**.
 
-### Snapshot de dados para reprodução
+### Data snapshot for reproduction
 
-O repositório inclui um [CSV harmonizado de Ribeirão Preto para 2024](docs/data/ribeirao-preto-2024-harmonized-snapshot.csv), exportado da base local. Ele contém 7.747 registros por célula H3/dia, somando 12.535 detecções equivalentes. As datas com registros estão entre 1º de janeiro e 19 de fevereiro e entre 21 e 31 de agosto de 2024; isso não significa cobertura contínua nesses intervalos. A coleta anual foi interrompida antes do fim. Datas sem registros no CSV não demonstram ausência de incêndios. Todos os registros estão marcados como não calibrados. Use-o para reproduzir o mapa e o calendário, não como série completa ou produto operacional.
+The repository includes a [harmonized CSV for Ribeirão Preto in 2024](docs/data/ribeirao-preto-2024-harmonized-snapshot.csv), exported from the local database. It contains 7,747 records by H3 cell/day, totaling 12,535 equivalent detections. Dates with records fall between January 1 and February 19 and between August 21 and August 31, 2024; this does not mean continuous coverage in those intervals. Annual collection was interrupted before completion. Dates without records in the CSV do not imply absence of fires. All records are marked as uncalibrated. Use it to reproduce the map and calendar, not as a complete time series or as an operational product.
 
-### Como o projeto responde ao desafio
+### How the project addresses the challenge
 
-| Necessidade | Implementação e limite atual |
+| Need | Current implementation and limitation |
 | --- | --- |
-| Série histórica MODIS e continuidade VIIRS | Consulta os produtos FIRMS Standard Processing `MODIS_SP` e `VIIRS_SNPP_SP`, respeitando as datas de início de cada produto. |
-| Região e período escolhidos pelo usuário | Retângulo por coordenadas, um ano por solicitação e área máxima de 20° × 20°. Pode ser usado em qualquer país. |
-| Calendário de atividade de fogo | Agrega detecções por célula H3 e dia; mostra totais mensais, sazonalidade e comparação com a mediana dos anos disponíveis. |
-| Explorar padrões/anomalias | Compara com a mediana histórica da mesma janela quando há pelo menos dois anos anteriores com registros; não é alerta, previsão nem teste estatístico. |
-| Baixar os dados da busca | Exporta os focos exibidos em CSV. |
-| Harmonizar sensores | Calcula uma calibração empírica por mês quando há amostra suficiente. Enquanto não houver calibração disponível, os resultados são marcados como não calibrados e devem ser interpretados com cautela. |
+| MODIS historical series and VIIRS continuity | Queries the FIRMS Standard Processing products `MODIS_SP` and `VIIRS_SNPP_SP`, respecting each product’s start date. |
+| User-selected region and period | Rectangular area by coordinates, one year per request, and a maximum area of 20° × 20°. It can be used anywhere in the world. |
+| Fire activity calendar | Aggregates detections by H3 cell and day; shows monthly totals, seasonality, and comparison with the median of available years. |
+| Explore patterns/anomalies | Compares with the historical median of the same window when there are at least two previous years with records; it is not an alert, forecast, or statistical test. |
+| Download the search data | Exports the displayed hotspots to CSV. |
+| Harmonize sensors | Computes an empirical monthly calibration when enough samples are present. While no calibration is available, results are marked as uncalibrated and should be interpreted cautiously. |
 
-### Exemplo do WebGIS com dados reais: Ribeirão Preto, agosto de 2024
+### Example of the WebGIS with real data: Ribeirão Preto, August 2024
 
-![Painel PyroHarmonix filtrado para Ribeirão Preto em 2024, com mapa, sazonalidade e calendário](docs/assets/pyroharmonix-ribeirao-preto-2024-current.png)
+![PyroHarmonix dashboard filtered for Ribeirão Preto in 2024, with map, seasonality, and calendar](docs/assets/pyroharmonix-ribeirao-preto-2024-current.png)
 
-*Captura real da aplicação filtrada para 2024 na área `-50,-23,-46,-20`. A base local contém **12.535 detecções equivalentes** em registros de janeiro–fevereiro e 21–31 de agosto; o mapa exibe até 5.000 células. A coleta anual foi cancelada antes de terminar. Meses sem registros no painel não devem ser interpretados como meses sem fogo.*
+*Actual application capture filtered for 2024 in the area `-50,-23,-46,-20`. The local database contains **12,535 equivalent detections** in records from January–February and August 21–31; the map displays up to 5,000 cells. The annual collection was cancelled before finishing. Months without records in the dashboard should not be interpreted as months without fire.*
 
-![Calendário PyroHarmonix para a janela de 21 a 31 de agosto de 2024 em Ribeirão Preto, com 12.476 detecções equivalentes](docs/assets/pyroharmonix-ribeirao-preto-2024-08-calendario.png)
+![PyroHarmonix calendar for the window of August 21–31, 2024 in Ribeirão Preto, with 12,476 equivalent detections](docs/assets/pyroharmonix-ribeirao-preto-2024-08-calendario.png)
 
-*O valor de agosto corresponde à solicitação concluída para 21–31 ago. 2024, não ao mês inteiro. O CSV de demonstração [`docs/data/ribeirao-preto-2024-harmonized-snapshot.csv`](docs/data/ribeirao-preto-2024-harmonized-snapshot.csv) contém 7.747 registros H3/dia, todos marcados como **não calibrados**. É uma amostra dos dados efetivamente armazenados, não uma cobertura completa do ano.*
+*The August value corresponds to the completed request for August 21–31, 2024, not the entire month. The demo CSV [`docs/data/ribeirao-preto-2024-harmonized-snapshot.csv`](docs/data/ribeirao-preto-2024-harmonized-snapshot.csv) contains 7,747 H3/day records, all marked as **uncalibrated**. It is a sample of the data actually stored, not a complete annual coverage.*
 
-## Executar com Docker
+## Run with Docker
 
-Requisitos: Docker Desktop e Docker Compose v2. A chave NASA FIRMS é gratuita; mantenha-a somente no arquivo local `.env`, nunca em `.env.example` ou no Git.
+Requirements: Docker Desktop and Docker Compose v2. The NASA FIRMS key is free; keep it only in the local `.env` file, never in `.env.example` or in Git.
 
-No PowerShell, na pasta do projeto:
+In PowerShell, in the project folder:
 
 ```powershell
 Copy-Item .env.example .env
 notepad .env
 ```
 
-Edite `FIRMS_MAP_KEY` no `.env` com sua chave obtida em <https://firms.modaps.eosdis.nasa.gov/api/area/>. Depois inicie os serviços:
+Edit `FIRMS_MAP_KEY` in `.env` with your key from <https://firms.modaps.eosdis.nasa.gov/api/area/>. Then start the services:
 
 ```powershell
 docker compose up -d --build
 ```
 
-- WebGIS: <http://localhost:8081> (ou a porta definida por `WEB_PORT`).
-- Saúde da API: <http://localhost:8081/api/health/>.
-- Estado e progresso da coleta: <http://localhost:8081/api/ingestion-status/>.
-- Logs do worker: `docker compose logs -f firms-sync`.
+- WebGIS: <http://localhost:8081> (or the port defined by `WEB_PORT`).
+- API health: <http://localhost:8081/api/health/>.
+- Collection status and progress: <http://localhost:8081/api/ingestion-status/>.
+- Worker logs: `docker compose logs -f firms-sync`.
 
-O PostgreSQL e o worker rodam em containers. Dados e checkpoints ficam no volume Docker; reiniciar os serviços não apaga a coleta. **Não use `docker compose down -v`** se quiser preservar os dados.
+PostgreSQL and the worker run in containers. Data and checkpoints stay in the Docker volume; restarting the services does not delete the collection. **Do not use `docker compose down -v`** if you want to preserve the data.
 
-Sem uma chave configurada, a interface continua disponível e o worker informa que está aguardando a chave. Depois de alterar `.env`, recrie o worker para atualizar a variável:
+Without a configured key, the interface remains available and the worker reports that it is waiting for the key. After changing `.env`, recreate the worker to update the variable:
 
 ```powershell
 docker compose up -d --build --force-recreate firms-sync
 ```
 
-## Processar dados existentes ou buscar outra região
+## Process existing data or search another region
 
-No painel, escolha um ano e informe o retângulo da área. Há duas ações:
+In the dashboard, choose a year and provide the area rectangle. There are two actions:
 
-1. **Processar dados existentes** reagrupa somente as detecções FIRMS já presentes no banco para a área e o ano escolhidos. Não consulta a NASA nem consome transações da API. É a opção para analisar dados que já foram baixados anteriormente.
-2. **Baixar + analisar** solicita os produtos disponíveis para aquela região e ano, depois os agrega e harmoniza. A fila é persistente e o worker retoma o progresso após reinícios.
+1. **Process existing data** re-aggregates only FIRMS detections already present in the database for the selected area and year. It does not query NASA and does not consume API transactions. This is the option for analyzing data that was downloaded previously.
+2. **Download + analyze** requests the available products for that region and year, then aggregates and harmonizes them. The queue is persistent and the worker resumes progress after restarts.
 
-O mapa, o calendário, as medianas e o CSV consultam os resultados harmonizados armazenados. Uma região/ano sem dados locais pode aparecer vazia no primeiro modo; use **Baixar + analisar** para buscar os registros. A instalação inicial pode começar sem dados; as capturas deste README documentam uma consulta real feita durante o desenvolvimento.
+The map, calendar, medians, and CSV all consult the harmonized results stored in the database. A region/year with no local data may appear empty in the first mode; use **Download + analyze** to fetch the records. The initial installation may start without data; the screenshots in this README document a real query made during development.
 
-Limites atuais:
+Current limits:
 
-- Até 20° de largura e 20° de altura por área; para regiões maiores, divida a busca em retângulos.
-- Um ano por solicitação. São aceitos os anos de 2000 até o ano atual; MODIS começa em 1º de novembro de 2000.
-- Até cinco solicitações pendentes ou em processamento.
-- A FIRMS é consultada em intervalos de até cinco dias, com pausa entre chamadas e checkpoint.
-- O botão **Baixar + analisar** mostra uma faixa heurística de duração. Ela estima 60–180 segundos por chamada, ajustados pela raiz quadrada da área em graus² em relação a 12°². Densidade de focos, rede, resposta FIRMS e desempenho do disco podem aumentar o tempo. A estimativa não inclui processamento local nem prevê o tamanho final do banco.
+- Up to 20° in width and 20° in height per area; for larger regions, split the search into rectangles.
+- One year per request. Years from 2000 to the current year are accepted; MODIS starts on November 1, 2000.
+- Up to five pending or processing requests.
+- FIRMS is queried in intervals of up to five days, with pauses between calls and checkpoints.
+- The **Download + analyze** button shows a heuristic duration range. It estimates 60–180 seconds per call, adjusted by the square root of the area in degrees² relative to 12°². Fire density, network, FIRMS response, and disk performance can increase the time. The estimate does not include local processing and does not predict the final database size.
 
-O backfill nacional contínuo do Brasil está **desativado por padrão** (`FIRMS_BRAZIL_BACKFILL_ENABLED=false`) para evitar downloads e uso de disco não solicitados. A coleta sob demanda funciona para outras áreas e países. Para optar pelo backfill do Brasil, defina `FIRMS_BRAZIL_BACKFILL_ENABLED=true` no `.env` e recrie o serviço `firms-sync`; isso pode consumir bastante armazenamento e tempo. Os dados e checkpoints existentes são preservados. Acompanhe o espaço livre. Para pausar sem apagar os dados, use `docker compose stop firms-sync`; retome com `docker compose start firms-sync`. **Não use `docker compose down -v`** se quiser manter o volume PostgreSQL.
+The continuous national backfill for Brazil is **disabled by default** (`FIRMS_BRAZIL_BACKFILL_ENABLED=false`) to avoid unsolicited downloads and disk usage. On-demand collection works for other areas and countries. To opt into Brazil backfill, set `FIRMS_BRAZIL_BACKFILL_ENABLED=true` in `.env` and recreate the `firms-sync` service; this can consume substantial storage and time. Existing data and checkpoints are preserved. Monitor available disk space. To pause without deleting data, use `docker compose stop firms-sync`; resume with `docker compose start firms-sync`. **Do not use `docker compose down -v`** if you want to keep the PostgreSQL volume.
 
-## Dados e harmonização
+## Data and harmonization
 
-Produtos Standard Processing da NASA FIRMS:
+NASA FIRMS Standard Processing products:
 
-- `MODIS_SP` (Terra/Aqua; cobertura desde 1º nov. 2000).
-- `VIIRS_SNPP_SP` (Suomi-NPP; cobertura desde 20 jan. 2012).
+- `MODIS_SP` (Terra/Aqua; coverage from November 1, 2000).
+- `VIIRS_SNPP_SP` (Suomi-NPP; coverage from January 20, 2012).
 
-O pipeline:
+The pipeline:
 
-1. Armazena as detecções originais e atributos FIRMS no PostgreSQL.
-2. Agrupa as detecções por célula H3 de resolução 8 (aproximadamente 1 km², variando geograficamente) e dia UTC.
-3. Quando uma calibração está disponível, ajusta a contagem VIIRS por mês do ano; cada produto precisa ter pelo menos 500 detecções naquele mês de calibração.
-4. Quando ambos os sensores têm registros na mesma célula/dia, calcula a média entre a contagem MODIS e a contagem VIIRS ajustada. Se apenas um sensor tem registros, usa a contagem disponível, ajustada quando aplicável. Sem calibração disponível, mantém o fator neutro e marca os resultados como não calibrados.
+1. Stores raw fire detections and FIRMS attributes in PostgreSQL.
+2. Groups detections by H3 cell of resolution 8 (approximately 1 km², varying geographically) and UTC day.
+3. When a calibration is available, it adjusts the VIIRS count for each month of the year; each product must have at least 500 detections in that calibration month.
+4. When both sensors have records in the same cell/day, it calculates the average between the MODIS count and the adjusted VIIRS count. If only one sensor has records, it uses the available count, adjusted when applicable. Without a valid calibration, it keeps the neutral factor and marks results as uncalibrated.
 
-### Como MODIS e VIIRS são harmonizados
+### How MODIS and VIIRS are harmonized
 
-O objetivo é transformar as contagens dos dois sensores numa série de células H3/dia que possa alimentar o mesmo mapa e calendário:
+The goal is to transform counts from the two sensors into a single H3/day series that can feed the same map and calendar:
 
-1. As detecções FIRMS originais são guardadas com a identificação do produto (`MODIS_SP` ou `VIIRS_SNPP_SP`), horário, coordenadas e atributos. Essa origem não é apagada: os registros brutos continuam disponíveis para auditoria e reprocessamento.
-2. Cada detecção é atribuída a uma célula H3 de resolução 8 e a um dia UTC. O sistema conta separadamente os registros MODIS e VIIRS em cada célula/dia.
-3. Quando existe uma calibração mensal, calcula-se `fator = total MODIS / total VIIRS` para aquele mês e aplica-se o fator à contagem VIIRS. A calibração implementada usa a área de estudo do Brasil e a janela histórica configurada; só é considerada calibrada quando ambos os produtos têm pelo menos 500 registros no mês.
-4. Se há contagens dos dois sensores na mesma célula/dia, o valor combinado é a média entre a contagem MODIS e a contagem VIIRS ajustada. Se só um sensor tem registros, usa-se a contagem disponível, com o ajuste VIIRS quando houver fator calibrado.
-5. O resultado é gravado como uma observação harmonizada (`MODIS+VIIRS-SNPP`) por célula/dia. O mapa e as análises usam essa série combinada, em vez de apresentar duas séries independentes por sensor.
+1. The original FIRMS detections are stored with the product identifier (`MODIS_SP` or `VIIRS_SNPP_SP`), timestamp, coordinates, and attributes. This source is not deleted: raw records remain available for auditing and reprocessing.
+2. Each detection is assigned to an H3 cell of resolution 8 and to a UTC day. The system counts MODIS and VIIRS records separately for each cell/day.
+3. When a monthly calibration exists, it computes `factor = total MODIS / total VIIRS` for that month and applies the factor to the VIIRS count. The implemented calibration uses the Brazil study area and the configured historical window; it is only considered calibrated when both products have at least 500 records in the month.
+4. If both sensors have counts in the same cell/day, the combined value is the average between the MODIS count and the adjusted VIIRS count. If only one sensor has records, the available count is used, with VIIRS adjustment when a calibrated factor exists.
+5. The result is written as a harmonized observation (`MODIS+VIIRS-SNPP`) per cell/day. The map and analyses use this combined series instead of presenting two independent sensor series.
 
-**Limites importantes:** este é um método empírico exploratório, não uma harmonização científica validada. O fator é agregado para o Brasil e não é recalculado por região, bioma ou área solicitada; aplicá-lo em outra parte do mundo pode não compensar diferenças locais entre sensores. A coleta sob demanda não calcula calibração usando uma amostra parcial. Como o backfill nacional está desativado por padrão, os dados podem permanecer com fator neutro e estado **não calibrado**. Portanto, a origem deixa de ser separada na visualização, mas não deve ser considerada irrelevante na interpretação científica. A detecção de anomalia térmica também não identifica sozinha a causa do fogo nem mede a área queimada. Esta versão não inclui VIIRS NOAA-20/21, produtos NRT, mascaramento de nuvens, estratificação por bioma ou validação independente.
+**Important limitations:** this is an empirical exploratory method, not a validated scientific harmonization. The factor is aggregated for Brazil and is not recalculated by region, biome, or requested area; applying it elsewhere in the world may not compensate for local sensor differences. On-demand collection does not compute calibration from a partial sample. Since national backfill is disabled by default, data may remain with a neutral factor and a **uncalibrated** status. Therefore, the source is no longer separated in the visualization, but it should not be considered irrelevant to scientific interpretation. Thermal anomaly detection also does not by itself identify the cause of the fire or measure burned area. This version does not include VIIRS NOAA-20/21, NRT products, cloud masking, biome stratification, or independent validation.
 
-### Por que a mediana histórica pode aparecer como “—”?
+### Why the historical median may appear as “—”
 
-A mediana e a anomalia só são calculadas quando há dados harmonizados para o período atual e registros em pelo menos **dois anos históricos** na mesma janela de mês/dias. Períodos sem registros não são mais convertidos automaticamente em zeros, porque podem significar que os dados ainda não foram coletados ou processados. Por isso, “—” significa histórico insuficiente, não ausência de incêndios.
+The median and anomaly are calculated only when there are harmonized data for the current period and records in at least **two historical years** in the same month/day window. Periods without records are no longer automatically converted to zeros because they may indicate that data has not yet been collected or processed. Therefore, “—” means insufficient history, not an absence of fire.
 
-Na região do exemplo, a base demonstrada contém a busca de **21–31 de agosto de 2024**; ela não basta para calcular uma mediana de vários anos. Para obter comparação, processe os dados existentes ou baixe e analise, para a mesma área, outros anos que incluam o mês/período desejado. A anomalia é `(observado − mediana) / mediana × 100` e permanece indisponível quando não há mediana confiável. No calendário, `—` e no gráfico, ausência de focos registrados indicam falta de registros armazenados, não provam que não houve fogo e podem refletir cobertura incompleta.
+In the example region, the demonstration database contains the request for **August 21–31, 2024**; that is not enough to calculate a multi-year median. To obtain a comparison, process existing data or download and analyze for the same area other years that include the desired month/period. The anomaly is `(observed − median) / median × 100` and remains unavailable when no reliable median exists. In the calendar, `—` and in the chart, an absence of recorded hotspots indicates missing stored records, not proof that no fire occurred, and may reflect incomplete coverage.
 
-O serviço FIRMS limita a consulta a cinco dias e documenta até 5.000 transações por intervalo de dez minutos; consultas mais longas consomem chamadas adicionais. A estimativa de chamadas não é uma garantia de limite ou duração. O worker mantém pausas e checkpoints, mas a chave é compartilhada com qualquer outro uso da mesma MAP_KEY.
+The FIRMS service limits queries to five days and documents up to 5,000 transactions per ten-minute interval; longer queries consume additional calls. The call estimate is not a guarantee of limits or duration. The worker maintains pauses and checkpoints, but the key is shared with any other use of the same MAP_KEY.
 
-## Importar dados harmonizados por CSV
+## Import harmonized data by CSV
 
-O upload manual continua disponível para conjuntos harmonizados externos. O modelo pode ser baixado pelo botão **Baixar modelo CSV** no aplicativo ou no endpoint `/api/template.csv` da instalação local.
+Manual upload remains available for external harmonized datasets. The template can be downloaded via the **Download CSV Template** button in the application or via the `/api/template.csv` endpoint of the local installation.
 
-| Coluna | Obrigatória | Descrição |
+| Column | Required | Description |
 | --- | --- | --- |
-| `latitude` | Sim | Latitude decimal de -90 a 90 |
-| `longitude` | Sim | Longitude decimal de -180 a 180 |
-| `acq_datetime` | Sim* | Data/hora ISO 8601, por exemplo `2024-08-12T03:00:00Z` |
-| `acq_date` | Sim* | Data `AAAA-MM-DD`, alternativa a `acq_datetime` |
-| `acq_time` | Não | Hora `HH:MM` quando se usa `acq_date` |
-| `sensor` | Não | Sensor ou origem |
-| `confidence` | Não | Confiança fornecida pelo produto |
-| `frp` | Não | Potência radiativa do fogo, valor não negativo |
+| `latitude` | Yes | Decimal latitude from -90 to 90 |
+| `longitude` | Yes | Decimal longitude from -180 to 180 |
+| `acq_datetime` | Yes* | ISO 8601 date/time, for example `2024-08-12T03:00:00Z` |
+| `acq_date` | Yes* | Date `YYYY-MM-DD`, alternative to `acq_datetime` |
+| `acq_time` | No | Time `HH:MM` when using `acq_date` |
+| `sensor` | No | Sensor or source |
+| `confidence` | No | Confidence provided by the product |
+| `frp` | No | Fire radiative power, non-negative value |
 
-Cada linha representa uma detecção com peso 1. Importações são aditivas; duplicados são ignorados. Arquivos UTF-8 têm limite de 10 MB e 200.000 linhas.
+Each row represents one detection with weight 1. Imports are additive; duplicates are ignored. UTF-8 files have a 10 MB limit and 200,000 rows.
 
 ## API
 
-- `GET /api/health/` — saúde do serviço.
-- `GET /api/ingestion-status/` — estado do worker e checkpoints por produto.
-- `GET /api/area-requests/` — últimas solicitações de área e seus estados.
-- `GET /api/area-requests/estimate/?year=2024&south=-23&north=-20&west=-50&east=-46` — estimar chamadas e duração da coleta.
-- `POST /api/area-requests/create/` — processar dados armazenados ou solicitar coleta. Envie `year`, `south`, `north`, `west`, `east` e `download_sources` (`false` para somente dados locais, `true` para baixar e analisar).
-- `GET /api/analytics/` — totais, calendário mensal e comparação histórica.
-- `GET /api/hotspots/` — células para o mapa; até 10.000 marcadores.
-- `GET /api/hotspots.csv` — exportação CSV em streaming.
-- `GET /api/template.csv` — modelo para upload.
-- `POST /api/upload/` — importar CSV multipart usando o campo `file`.
+- `GET /api/health/` — service health.
+- `GET /api/ingestion-status/` — worker status and checkpoints per product.
+- `GET /api/area-requests/` — recent area requests and their states.
+- `GET /api/area-requests/estimate/?year=2024&south=-23&north=-20&west=-50&east=-46` — estimate calls and collection duration.
+- `POST /api/area-requests/create/` — process stored data or request collection. Send `year`, `south`, `north`, `west`, `east`, and `download_sources` (`false` for local data only, `true` for download and analyze).
+- `GET /api/analytics/` — totals, monthly calendar, and historical comparison.
+- `GET /api/hotspots/` — cells for the map; up to 10,000 markers.
+- `GET /api/hotspots.csv` — streaming CSV export.
+- `GET /api/template.csv` — template for upload.
+- `POST /api/upload/` — import multipart CSV using the `file` field.
 
-Endpoints analíticos aceitam `start`, `end`, `south`, `north`, `west` e `east`. A comparação usa os anos anteriores com registros na mesma janela do mês final; exige ao menos dois anos históricos. Períodos sem registros não são assumidos como zeros, pois a cobertura pode estar incompleta.
+Analytical endpoints accept `start`, `end`, `south`, `north`, `west`, and `east`. The comparison uses previous years with records in the same window as the final month and requires at least two historical years. Periods without records are not assumed to be zero because coverage may be incomplete.
 
-## Desenvolvimento local
+## Local development
 
 Backend (Python 3.12+):
 
@@ -195,7 +195,7 @@ python manage.py test
 python manage.py runserver
 ```
 
-Frontend (Node.js 22+), em outro terminal:
+Frontend (Node.js 22+), in another terminal:
 
 ```powershell
 cd frontend
@@ -203,22 +203,22 @@ npm ci
 npm run dev
 ```
 
-## Referências e créditos
+## References and credits
 
 - [NASA FIRMS — Area API](https://firms.modaps.eosdis.nasa.gov/api/area/).
-- [NASA FIRMS — dados de incêndios ativos](https://firms.modaps.eosdis.nasa.gov/).
+- [NASA FIRMS — active fire data](https://firms.modaps.eosdis.nasa.gov/).
 - [NASA Earthdata — NASA Worldview](https://www.earthdata.nasa.gov/data/tools/worldview).
 - [NASA Earthdata — Global Imagery Browse Services (GIBS)](https://www.earthdata.nasa.gov/engage/open-data-services-software/earthdata-developer-portal/gibs-api).
 - [NASA Worldview Snapshots](https://wvs.earthdata.nasa.gov/).
 - [INPE — BDQueimadas](https://data.inpe.br/queimadas/bdqueimadas/).
-- [g1 — incêndios em SP e municípios da região de Ribeirão Preto, 2024](https://g1.globo.com/sp/ribeirao-preto-franca/noticia/2024/09/09/incendios-em-sp-6-das-10-cidades-com-mais-focos-sao-da-regiao-de-ribeirao-preto.ghtml).
-- [OpenStreetMap — direitos autorais e atribuição](https://www.openstreetmap.org/copyright), usado como mapa-base.
-- Tecnologias: [Django](https://www.djangoproject.com/), [React](https://react.dev/), [PostgreSQL](https://www.postgresql.org/), [Docker](https://www.docker.com/), [H3](https://h3geo.org/) e [Leaflet](https://leafletjs.com/).
+- [g1 — fires in SP and municipalities around Ribeirão Preto, 2024](https://g1.globo.com/sp/ribeirao-preto-franca/noticia/2024/09/09/incendios-em-sp-6-das-10-cidades-com-mais-focos-sao-da-regiao-de-ribeirao-preto.ghtml).
+- [OpenStreetMap — copyright and attribution](https://www.openstreetmap.org/copyright), used as the basemap.
+- Technologies: [Django](https://www.djangoproject.com/), [React](https://react.dev/), [PostgreSQL](https://www.postgresql.org/), [Docker](https://www.docker.com/), [H3](https://h3geo.org/), and [Leaflet](https://leafletjs.com/).
 
-## Uso de ferramentas de inteligência artificial
+## Use of AI tools
 
-Um assistente de IA foi utilizado como apoio à implementação e depuração de código, à revisão da documentação e à preparação dos textos de apresentação. O código e os textos foram revisados pela equipe. As imagens de satélite e os focos térmicos são dados/imagens do NASA Worldview/GIBS, com atribuição indicada acima; não foram gerados por IA. Nenhum áudio ou vídeo gerado por IA foi incluído.
+An AI assistant was used to support implementation and debugging, documentation review, and preparation of presentation text. The code and text were reviewed by the team. The satellite images and thermal hotspots are NASA Worldview/GIBS data/images, with attribution provided above; they were not generated by AI. No AI-generated audio or video was included.
 
-## Escopo e limitações
+## Scope and limitations
 
-Calendários e medianas são descrições de contagens, não previsões. Dados MODIS e VIIRS não são diretamente equivalentes; o resultado só deve ser tratado como harmonizado quando a calibração estiver disponível e validada. A cobertura armazenada depende das solicitações feitas e pode ser incompleta, inclusive dentro do ano selecionado. O aplicativo depende de internet para o mapa-base OpenStreetMap e para novos downloads FIRMS. Para implantação pública, configure `DJANGO_SECRET_KEY`, `POSTGRES_PASSWORD`, `DJANGO_DEBUG=false`, hosts permitidos, autenticação no upload e um servidor de aplicação de produção.
+Calendars and medians are summaries of counts, not predictions. MODIS and VIIRS data are not directly equivalent; the result should only be treated as harmonized when calibration is available and validated. Stored coverage depends on the requests made and may be incomplete, even within the selected year. The application depends on internet access for the OpenStreetMap basemap and for new FIRMS downloads. For public deployment, configure `DJANGO_SECRET_KEY`, `POSTGRES_PASSWORD`, `DJANGO_DEBUG=false`, allowed hosts, upload authentication, and a production application server.
