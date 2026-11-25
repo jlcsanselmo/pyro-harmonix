@@ -1,0 +1,5106 @@
+{
+  "protocol": "1.0",
+  "budget_bytes": 1610612736,
+  "pair_cap_mib": 250,
+  "activity_limits": {
+    "D_rainy": {
+      "median": 0.0,
+      "p75": 0,
+      "days": 1274
+    },
+    "D_dry": {
+      "median": 0.0,
+      "p75": 2,
+      "days": 918
+    },
+    "N_rainy": {
+      "median": 0.0,
+      "p75": 0,
+      "days": 1274
+    },
+    "N_dry": {
+      "median": 0.0,
+      "p75": 1,
+      "days": 918
+    }
+  },
+  "baseline_activity": {
+    "2019-08-26": [
+      13,
+      "high"
+    ],
+    "2024-08-24": [
+      430,
+      "high"
+    ]
+  },
+  "selected": [
+    {
+      "plan": "2020-02-23-granule-plan.json",
+      "date": "2020-02-23",
+      "aqua": "MYD14.A2020054.1705.061.2020328182241",
+      "viirs": "VNP14IMG.A2020054.1654.002.2024060152833",
+      "day_night": "DAY",
+      "aqua_start": "2020-02-23T17:05:00.000Z",
+      "viirs_start": "2020-02-23T16:54:00.000Z",
+      "estimated_aqua_max_zenith": 23.14,
+      "estimated_viirs_max_zenith": 23.0,
+      "nominal_gap_minutes": 11.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [],
+      "firms_records": 0,
+      "activity": "low",
+      "decision": "selected",
+      "estimated_mib": 189.25454571197537,
+      "target_activity": "low",
+      "target_delay": "short"
+    },
+    {
+      "plan": "2021-07-19-granule-plan.json",
+      "date": "2021-07-19",
+      "aqua": "MYD14.A2021200.0455.061.2021202155928",
+      "viirs": "VNP14IMG.A2021200.0430.002.2024074024325",
+      "day_night": "NIGHT",
+      "aqua_start": "2021-07-19T04:55:00.000Z",
+      "viirs_start": "2021-07-19T04:30:00.000Z",
+      "estimated_aqua_max_zenith": 47.86,
+      "estimated_viirs_max_zenith": 20.13,
+      "nominal_gap_minutes": 25.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [],
+      "firms_records": 2,
+      "activity": "high",
+      "decision": "selected",
+      "estimated_mib": 193.59124370599383,
+      "target_activity": "high",
+      "target_delay": "moderate"
+    },
+    {
+      "plan": "2022-09-18-granule-plan.json",
+      "date": "2022-09-18",
+      "aqua": "MYD14.A2022261.1710.061.2022263105846",
+      "viirs": "VNP14IMG.A2022261.1712.002.2024077015356",
+      "day_night": "DAY",
+      "aqua_start": "2022-09-18T17:10:00.000Z",
+      "viirs_start": "2022-09-18T17:12:00.000Z",
+      "estimated_aqua_max_zenith": 20.28,
+      "estimated_viirs_max_zenith": 42.95,
+      "nominal_gap_minutes": 2.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [],
+      "firms_records": 1,
+      "activity": "intermediate",
+      "decision": "selected",
+      "estimated_mib": 223.6413391345216,
+      "target_activity": "high",
+      "target_delay": "short"
+    },
+    {
+      "plan": "2023-03-24-granule-plan.json",
+      "date": "2023-03-24",
+      "aqua": "MYD14.A2023083.0455.061.2023083155536",
+      "viirs": "VNP14IMG.A2023083.0436.002.2024078233654",
+      "day_night": "NIGHT",
+      "aqua_start": "2023-03-24T04:55:00.000Z",
+      "viirs_start": "2023-03-24T04:36:00.000Z",
+      "estimated_aqua_max_zenith": 32.27,
+      "estimated_viirs_max_zenith": 30.2,
+      "nominal_gap_minutes": 19.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [],
+      "firms_records": 0,
+      "activity": "low",
+      "decision": "selected",
+      "estimated_mib": 206.3341522527462,
+      "target_activity": "low",
+      "target_delay": "moderate"
+    },
+    {
+      "plan": "2024-05-18-granule-plan.json",
+      "date": "2024-05-18",
+      "aqua": "MYD14.A2024139.1740.061.2024141121221",
+      "viirs": "VNP14IMG.A2024139.1712.002.2024140010349",
+      "day_night": "DAY",
+      "aqua_start": "2024-05-18T17:40:00.000Z",
+      "viirs_start": "2024-05-18T17:12:00.000Z",
+      "estimated_aqua_max_zenith": 26.43,
+      "estimated_viirs_max_zenith": 42.97,
+      "nominal_gap_minutes": 28.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [],
+      "firms_records": 0,
+      "activity": "low",
+      "decision": "selected",
+      "estimated_mib": 218.19683456420918,
+      "target_activity": "low",
+      "target_delay": "moderate"
+    }
+  ],
+  "strata": [
+    {
+      "first": "2020-02-10",
+      "last": "2020-02-25",
+      "turn": "DAY",
+      "activity_target": "low",
+      "delay_target": "short",
+      "selected": {
+        "date": "2020-02-23",
+        "aqua": "MYD14.A2020054.1705.061.2020328182241",
+        "viirs": "VNP14IMG.A2020054.1654.002.2024060152833",
+        "day_night": "DAY",
+        "aqua_start": "2020-02-23T17:05:00.000Z",
+        "viirs_start": "2020-02-23T16:54:00.000Z",
+        "estimated_aqua_max_zenith": 23.14,
+        "estimated_viirs_max_zenith": 23.0,
+        "nominal_gap_minutes": 11.0,
+        "full_roi_in_both_catalog_polygons": true,
+        "reasons": [],
+        "firms_records": 0,
+        "activity": "low",
+        "decision": "selected",
+        "estimated_mib": 189.25454571197537,
+        "target_activity": "low",
+        "target_delay": "short"
+      },
+      "dates_without_same_turn_pair": [],
+      "candidates": [
+        {
+          "date": "2020-02-18",
+          "aqua": "MYD14.A2020049.1645.061.2020327202510",
+          "viirs": "VNP14IMG.A2020049.1648.002.2024060142800",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-18T16:45:00.000Z",
+          "viirs_start": "2020-02-18T16:48:00.000Z",
+          "estimated_aqua_max_zenith": 28.76,
+          "estimated_viirs_max_zenith": 11.36,
+          "nominal_gap_minutes": 3.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 5,
+          "activity": "high",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2020-02-23",
+          "aqua": "MYD14.A2020054.1705.061.2020328182241",
+          "viirs": "VNP14IMG.A2020054.1654.002.2024060152833",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-23T17:05:00.000Z",
+          "viirs_start": "2020-02-23T16:54:00.000Z",
+          "estimated_aqua_max_zenith": 23.14,
+          "estimated_viirs_max_zenith": 23.0,
+          "nominal_gap_minutes": 11.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "selected",
+          "estimated_mib": 189.25454571197537,
+          "target_activity": "low",
+          "target_delay": "short"
+        },
+        {
+          "date": "2020-02-13",
+          "aqua": "MYD14.A2020044.1630.061.2020327170238",
+          "viirs": "VNP14IMG.A2020044.1642.002.2024060124617",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-13T16:30:00.000Z",
+          "viirs_start": "2020-02-13T16:42:00.000Z",
+          "estimated_aqua_max_zenith": 53.68,
+          "estimated_viirs_max_zenith": 11.75,
+          "nominal_gap_minutes": 12.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2020-02-12",
+          "aqua": "MYD14.A2020043.1725.061.2020327162511",
+          "viirs": "VNP14IMG.A2020043.1700.002.2024060122509",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-12T17:25:00.000Z",
+          "viirs_start": "2020-02-12T17:00:00.000Z",
+          "estimated_aqua_max_zenith": 51.7,
+          "estimated_viirs_max_zenith": 33.12,
+          "nominal_gap_minutes": 25.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2020-02-21",
+          "aqua": "MYD14.A2020052.0505.061.2020328171626",
+          "viirs": "VNP14IMG.A2020052.0506.002.2024060150335",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-21T05:05:00.000Z",
+          "viirs_start": "2020-02-21T05:06:00.000Z",
+          "estimated_aqua_max_zenith": 60.04,
+          "estimated_viirs_max_zenith": 63.21,
+          "nominal_gap_minutes": 1.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-21",
+          "aqua": "MYD14.A2020052.0510.061.2020328171606",
+          "viirs": "VNP14IMG.A2020052.0506.002.2024060150335",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-21T05:10:00.000Z",
+          "viirs_start": "2020-02-21T05:06:00.000Z",
+          "estimated_aqua_max_zenith": 59.59,
+          "estimated_viirs_max_zenith": 63.21,
+          "nominal_gap_minutes": 4.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-24",
+          "aqua": "MYD14.A2020055.0400.061.2020328181450",
+          "viirs": "VNP14IMG.A2020055.0406.002.2024060154206",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-24T04:00:00.000Z",
+          "viirs_start": "2020-02-24T04:06:00.000Z",
+          "estimated_aqua_max_zenith": 56.75,
+          "estimated_viirs_max_zenith": 26.97,
+          "nominal_gap_minutes": 6.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-10",
+          "aqua": "MYD14.A2020041.1735.061.2020327152918",
+          "viirs": "VNP14IMG.A2020041.1742.002.2024060113904",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-10T17:35:00.000Z",
+          "viirs_start": "2020-02-10T17:42:00.000Z",
+          "estimated_aqua_max_zenith": 62.12,
+          "estimated_viirs_max_zenith": 68.31,
+          "nominal_gap_minutes": 7.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-13",
+          "aqua": "MYD14.A2020044.0420.061.2020327165252",
+          "viirs": "VNP14IMG.A2020044.0412.002.2024060124607",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-13T04:20:00.000Z",
+          "viirs_start": "2020-02-13T04:12:00.000Z",
+          "estimated_aqua_max_zenith": 33.95,
+          "estimated_viirs_max_zenith": 16.01,
+          "nominal_gap_minutes": 8.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-15",
+          "aqua": "MYD14.A2020046.1615.061.2020327181915",
+          "viirs": "VNP14IMG.A2020046.1606.002.2024060133339",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-15T16:15:00.000Z",
+          "viirs_start": "2020-02-15T16:06:00.000Z",
+          "estimated_aqua_max_zenith": 64.46,
+          "estimated_viirs_max_zenith": 60.25,
+          "nominal_gap_minutes": 9.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-16",
+          "aqua": "MYD14.A2020047.0450.061.2020327185442",
+          "viirs": "VNP14IMG.A2020047.0500.002.2024060140032",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-16T04:50:00.000Z",
+          "viirs_start": "2020-02-16T05:00:00.000Z",
+          "estimated_aqua_max_zenith": 39.42,
+          "estimated_viirs_max_zenith": 58.66,
+          "nominal_gap_minutes": 10.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-21",
+          "aqua": "MYD14.A2020052.1720.061.2020328172540",
+          "viirs": "VNP14IMG.A2020052.1736.002.2024060150318",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-21T17:20:00.000Z",
+          "viirs_start": "2020-02-21T17:36:00.000Z",
+          "estimated_aqua_max_zenith": 44.79,
+          "estimated_viirs_max_zenith": 64.74,
+          "nominal_gap_minutes": 16.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-18",
+          "aqua": "MYD14.A2020049.0435.061.2020327202144",
+          "viirs": "VNP14IMG.A2020049.0418.002.2024060142805",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-18T04:35:00.000Z",
+          "viirs_start": "2020-02-18T04:18:00.000Z",
+          "estimated_aqua_max_zenith": 17.14,
+          "estimated_viirs_max_zenith": 6.81,
+          "nominal_gap_minutes": 17.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-10",
+          "aqua": "MYD14.A2020041.0350.061.2020327145412",
+          "viirs": "VNP14IMG.A2020041.0330.002.2024060114017",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-10T03:50:00.000Z",
+          "viirs_start": "2020-02-10T03:30:00.000Z",
+          "estimated_aqua_max_zenith": 66.55,
+          "estimated_viirs_max_zenith": 65.72,
+          "nominal_gap_minutes": 20.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-20",
+          "aqua": "MYD14.A2020051.1635.061.2020327215605",
+          "viirs": "VNP14IMG.A2020051.1612.002.2024060145033",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-20T16:35:00.000Z",
+          "viirs_start": "2020-02-20T16:12:00.000Z",
+          "estimated_aqua_max_zenith": 47.05,
+          "estimated_viirs_max_zenith": 55.22,
+          "nominal_gap_minutes": 23.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-11",
+          "aqua": "MYD14.A2020042.0430.061.2020327154054",
+          "viirs": "VNP14IMG.A2020042.0454.002.2024060115607",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-11T04:30:00.000Z",
+          "viirs_start": "2020-02-11T04:54:00.000Z",
+          "estimated_aqua_max_zenith": 8.73,
+          "estimated_viirs_max_zenith": 53.11,
+          "nominal_gap_minutes": 24.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-24",
+          "aqua": "MYD14.A2020055.1610.061.2020328184905",
+          "viirs": "VNP14IMG.A2020055.1636.002.2024060154206",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-24T16:10:00.000Z",
+          "viirs_start": "2020-02-24T16:36:00.000Z",
+          "estimated_aqua_max_zenith": 68.21,
+          "estimated_viirs_max_zenith": 23.25,
+          "nominal_gap_minutes": 26.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-15",
+          "aqua": "MYD14.A2020046.0405.061.2020327181204",
+          "viirs": "VNP14IMG.A2020046.0336.002.2024060133336",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-15T04:05:00.000Z",
+          "viirs_start": "2020-02-15T03:36:00.000Z",
+          "estimated_aqua_max_zenith": 50.61,
+          "estimated_viirs_max_zenith": 61.67,
+          "nominal_gap_minutes": 29.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-16",
+          "aqua": "MYD14.A2020047.1700.061.2020327185930",
+          "viirs": "VNP14IMG.A2020047.1730.002.2024060140056",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-16T17:00:00.000Z",
+          "viirs_start": "2020-02-16T17:30:00.000Z",
+          "estimated_aqua_max_zenith": 10.62,
+          "estimated_viirs_max_zenith": 60.53,
+          "nominal_gap_minutes": 30.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-23",
+          "aqua": "MYD14.A2020054.0455.061.2020328180241",
+          "viirs": "VNP14IMG.A2020054.0424.002.2024060152834",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-23T04:55:00.000Z",
+          "viirs_start": "2020-02-23T04:24:00.000Z",
+          "estimated_aqua_max_zenith": 47.97,
+          "estimated_viirs_max_zenith": 18.71,
+          "nominal_gap_minutes": 31.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-17",
+          "aqua": "MYD14.A2020048.1740.061.2020327194405",
+          "viirs": "VNP14IMG.A2020048.1706.002.2024060141532",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-17T17:40:00.000Z",
+          "viirs_start": "2020-02-17T17:06:00.000Z",
+          "estimated_aqua_max_zenith": 66.41,
+          "estimated_viirs_max_zenith": 41.86,
+          "nominal_gap_minutes": 34.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-25",
+          "aqua": "MYD14.A2020056.1655.061.2020328193500",
+          "viirs": "VNP14IMG.A2020056.1618.002.2024060155506",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-25T16:55:00.000Z",
+          "viirs_start": "2020-02-25T16:18:00.000Z",
+          "estimated_aqua_max_zenith": 14.65,
+          "estimated_viirs_max_zenith": 49.22,
+          "nominal_gap_minutes": 37.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2020-02-22",
+          "aqua": "MYD14.A2020053.0410.061.2020328172839",
+          "viirs": "VNP14IMG.A2020053.0448.002.2024060151603",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-22T04:10:00.000Z",
+          "viirs_start": "2020-02-22T04:48:00.000Z",
+          "estimated_aqua_max_zenith": 43.07,
+          "estimated_viirs_max_zenith": 46.84,
+          "nominal_gap_minutes": 38.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-11",
+          "aqua": "MYD14.A2020042.1640.061.2020327160717",
+          "viirs": "VNP14IMG.A2020042.1718.002.2024060115608",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-11T16:40:00.000Z",
+          "viirs_start": "2020-02-11T17:18:00.000Z",
+          "estimated_aqua_max_zenith": 38.94,
+          "estimated_viirs_max_zenith": 55.35,
+          "nominal_gap_minutes": 38.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-20",
+          "aqua": "MYD14.A2020051.0425.061.2020327214922",
+          "viirs": "VNP14IMG.A2020051.0342.002.2024060145033",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-20T04:25:00.000Z",
+          "viirs_start": "2020-02-20T03:42:00.000Z",
+          "estimated_aqua_max_zenith": 21.93,
+          "estimated_viirs_max_zenith": 56.91,
+          "nominal_gap_minutes": 43.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-11",
+          "aqua": "MYD14.A2020042.1640.061.2020327160717",
+          "viirs": "VNP14IMG.A2020042.1724.002.2024060115609",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-11T16:40:00.000Z",
+          "viirs_start": "2020-02-11T17:24:00.000Z",
+          "estimated_aqua_max_zenith": 38.94,
+          "estimated_viirs_max_zenith": 55.59,
+          "nominal_gap_minutes": 44.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-12",
+          "aqua": "MYD14.A2020043.0515.061.2020327155918",
+          "viirs": "VNP14IMG.A2020043.0430.002.2024060122528",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-12T05:15:00.000Z",
+          "viirs_start": "2020-02-12T04:30:00.000Z",
+          "estimated_aqua_max_zenith": 64.51,
+          "estimated_viirs_max_zenith": 29.28,
+          "nominal_gap_minutes": 45.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-14",
+          "aqua": "MYD14.A2020045.1710.061.2020327173458",
+          "viirs": "VNP14IMG.A2020045.1624.002.2024060131630",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-14T17:10:00.000Z",
+          "viirs_start": "2020-02-14T16:24:00.000Z",
+          "estimated_aqua_max_zenith": 34.02,
+          "estimated_viirs_max_zenith": 42.13,
+          "nominal_gap_minutes": 46.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-22",
+          "aqua": "MYD14.A2020053.1625.061.2020328175133",
+          "viirs": "VNP14IMG.A2020053.1712.002.2024060151607",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-22T16:25:00.000Z",
+          "viirs_start": "2020-02-22T17:12:00.000Z",
+          "estimated_aqua_max_zenith": 59.09,
+          "estimated_viirs_max_zenith": 49.35,
+          "nominal_gap_minutes": 47.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-17",
+          "aqua": "MYD14.A2020048.0355.061.2020327193849",
+          "viirs": "VNP14IMG.A2020048.0442.002.2024060141532",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-17T03:55:00.000Z",
+          "viirs_start": "2020-02-17T04:42:00.000Z",
+          "estimated_aqua_max_zenith": 62.01,
+          "estimated_viirs_max_zenith": 38.83,
+          "nominal_gap_minutes": 47.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-22",
+          "aqua": "MYD14.A2020053.1620.061.2020328174045",
+          "viirs": "VNP14IMG.A2020053.1712.002.2024060151607",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-22T16:20:00.000Z",
+          "viirs_start": "2020-02-22T17:12:00.000Z",
+          "estimated_aqua_max_zenith": 59.84,
+          "estimated_viirs_max_zenith": 49.35,
+          "nominal_gap_minutes": 52.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-25",
+          "aqua": "MYD14.A2020056.0445.061.2020328190340",
+          "viirs": "VNP14IMG.A2020056.0348.002.2024060155507",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-25T04:45:00.000Z",
+          "viirs_start": "2020-02-25T03:48:00.000Z",
+          "estimated_aqua_max_zenith": 28.71,
+          "estimated_viirs_max_zenith": 51.28,
+          "nominal_gap_minutes": 57.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-19",
+          "aqua": "MYD14.A2020050.1730.061.2020327210857",
+          "viirs": "VNP14IMG.A2020050.1630.002.2024060144104",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-19T17:30:00.000Z",
+          "viirs_start": "2020-02-19T16:30:00.000Z",
+          "estimated_aqua_max_zenith": 57.43,
+          "estimated_viirs_max_zenith": 33.46,
+          "nominal_gap_minutes": 60.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-14",
+          "aqua": "MYD14.A2020045.0500.061.2020327173035",
+          "viirs": "VNP14IMG.A2020045.0354.002.2024060131636",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-14T05:00:00.000Z",
+          "viirs_start": "2020-02-14T03:54:00.000Z",
+          "estimated_aqua_max_zenith": 54.58,
+          "estimated_viirs_max_zenith": 44.65,
+          "nominal_gap_minutes": 66.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-16",
+          "aqua": "MYD14.A2020047.1700.061.2020327185930",
+          "viirs": "VNP14IMG.A2020047.1548.002.2024060140037",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-16T17:00:00.000Z",
+          "viirs_start": "2020-02-16T15:48:00.000Z",
+          "estimated_aqua_max_zenith": 10.62,
+          "estimated_viirs_max_zenith": 71.35,
+          "nominal_gap_minutes": 72.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-15",
+          "aqua": "MYD14.A2020046.0405.061.2020327181204",
+          "viirs": "VNP14IMG.A2020046.0518.002.2024060133331",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-15T04:05:00.000Z",
+          "viirs_start": "2020-02-15T05:18:00.000Z",
+          "estimated_aqua_max_zenith": 50.61,
+          "estimated_viirs_max_zenith": 70.41,
+          "nominal_gap_minutes": 73.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-19",
+          "aqua": "MYD14.A2020050.0520.061.2020327210543",
+          "viirs": "VNP14IMG.A2020050.0400.002.2024060144102",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-19T05:20:00.000Z",
+          "viirs_start": "2020-02-19T04:00:00.000Z",
+          "estimated_aqua_max_zenith": 68.58,
+          "estimated_viirs_max_zenith": 36.56,
+          "nominal_gap_minutes": 80.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-10",
+          "aqua": "MYD14.A2020041.0350.061.2020327145412",
+          "viirs": "VNP14IMG.A2020041.0512.002.2024060113904",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-10T03:50:00.000Z",
+          "viirs_start": "2020-02-10T05:12:00.000Z",
+          "estimated_aqua_max_zenith": 66.55,
+          "estimated_viirs_max_zenith": 67.03,
+          "nominal_gap_minutes": 82.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-21",
+          "aqua": "MYD14.A2020052.1720.061.2020328172540",
+          "viirs": "VNP14IMG.A2020052.1554.002.2024060150323",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-21T17:20:00.000Z",
+          "viirs_start": "2020-02-21T15:54:00.000Z",
+          "estimated_aqua_max_zenith": 44.79,
+          "estimated_viirs_max_zenith": 68.14,
+          "nominal_gap_minutes": 86.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-16",
+          "aqua": "MYD14.A2020047.0450.061.2020327185442",
+          "viirs": "VNP14IMG.A2020047.0318.002.2024060140044",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-16T04:50:00.000Z",
+          "viirs_start": "2020-02-16T03:18:00.000Z",
+          "estimated_aqua_max_zenith": 39.42,
+          "estimated_viirs_max_zenith": 72.26,
+          "nominal_gap_minutes": 92.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-15",
+          "aqua": "MYD14.A2020046.1615.061.2020327181915",
+          "viirs": "VNP14IMG.A2020046.1748.002.2024060133341",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-15T16:15:00.000Z",
+          "viirs_start": "2020-02-15T17:48:00.000Z",
+          "estimated_aqua_max_zenith": 64.46,
+          "estimated_viirs_max_zenith": 71.48,
+          "nominal_gap_minutes": 93.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-10",
+          "aqua": "MYD14.A2020041.1735.061.2020327152918",
+          "viirs": "VNP14IMG.A2020041.1600.002.2024060113905",
+          "day_night": "DAY",
+          "aqua_start": "2020-02-10T17:35:00.000Z",
+          "viirs_start": "2020-02-10T16:00:00.000Z",
+          "estimated_aqua_max_zenith": 62.12,
+          "estimated_viirs_max_zenith": 64.52,
+          "nominal_gap_minutes": 95.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-21",
+          "aqua": "MYD14.A2020052.0505.061.2020328171626",
+          "viirs": "VNP14IMG.A2020052.0324.002.2024060150311",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-21T05:05:00.000Z",
+          "viirs_start": "2020-02-21T03:24:00.000Z",
+          "estimated_aqua_max_zenith": 60.04,
+          "estimated_viirs_max_zenith": 69.18,
+          "nominal_gap_minutes": 101.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2020-02-21",
+          "aqua": "MYD14.A2020052.0510.061.2020328171606",
+          "viirs": "VNP14IMG.A2020052.0324.002.2024060150311",
+          "day_night": "NIGHT",
+          "aqua_start": "2020-02-21T05:10:00.000Z",
+          "viirs_start": "2020-02-21T03:24:00.000Z",
+          "estimated_aqua_max_zenith": 59.59,
+          "estimated_viirs_max_zenith": 69.18,
+          "nominal_gap_minutes": 106.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        }
+      ]
+    },
+    {
+      "first": "2021-07-10",
+      "last": "2021-07-25",
+      "turn": "NIGHT",
+      "activity_target": "high",
+      "delay_target": "moderate",
+      "selected": {
+        "date": "2021-07-19",
+        "aqua": "MYD14.A2021200.0455.061.2021202155928",
+        "viirs": "VNP14IMG.A2021200.0430.002.2024074024325",
+        "day_night": "NIGHT",
+        "aqua_start": "2021-07-19T04:55:00.000Z",
+        "viirs_start": "2021-07-19T04:30:00.000Z",
+        "estimated_aqua_max_zenith": 47.86,
+        "estimated_viirs_max_zenith": 20.13,
+        "nominal_gap_minutes": 25.0,
+        "full_roi_in_both_catalog_polygons": true,
+        "reasons": [],
+        "firms_records": 2,
+        "activity": "high",
+        "decision": "selected",
+        "estimated_mib": 193.59124370599383,
+        "target_activity": "high",
+        "target_delay": "moderate"
+      },
+      "dates_without_same_turn_pair": [],
+      "candidates": [
+        {
+          "date": "2021-07-14",
+          "aqua": "MYD14.A2021195.1645.061.2021196125601",
+          "viirs": "VNP14IMG.A2021195.1648.002.2024074012500",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-14T16:45:00.000Z",
+          "viirs_start": "2021-07-14T16:48:00.000Z",
+          "estimated_aqua_max_zenith": 28.76,
+          "estimated_viirs_max_zenith": 12.35,
+          "nominal_gap_minutes": 3.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 2,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-19",
+          "aqua": "MYD14.A2021200.1705.061.2021202160937",
+          "viirs": "VNP14IMG.A2021200.1654.002.2024074024328",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-19T17:05:00.000Z",
+          "viirs_start": "2021-07-19T16:54:00.000Z",
+          "estimated_aqua_max_zenith": 23.27,
+          "estimated_viirs_max_zenith": 23.9,
+          "nominal_gap_minutes": 11.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 1,
+          "activity": "intermediate",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-25",
+          "aqua": "MYD14.A2021206.1630.061.2021207114335",
+          "viirs": "VNP14IMG.A2021206.1642.002.2024074044105",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-25T16:30:00.000Z",
+          "viirs_start": "2021-07-25T16:42:00.000Z",
+          "estimated_aqua_max_zenith": 53.58,
+          "estimated_viirs_max_zenith": 10.52,
+          "nominal_gap_minutes": 12.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 4,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-16",
+          "aqua": "MYD14.A2021197.1635.061.2021198113912",
+          "viirs": "VNP14IMG.A2021197.1612.002.2024074015601",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-16T16:35:00.000Z",
+          "viirs_start": "2021-07-16T16:12:00.000Z",
+          "estimated_aqua_max_zenith": 46.98,
+          "estimated_viirs_max_zenith": 54.9,
+          "nominal_gap_minutes": 23.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-24",
+          "aqua": "MYD14.A2021205.1725.061.2021206114329",
+          "viirs": "VNP14IMG.A2021205.1700.002.2024074042833",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-24T17:25:00.000Z",
+          "viirs_start": "2021-07-24T17:00:00.000Z",
+          "estimated_aqua_max_zenith": 51.81,
+          "estimated_viirs_max_zenith": 34.18,
+          "nominal_gap_minutes": 25.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 2,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-17",
+          "aqua": "MYD14.A2021198.0505.061.2021198115557",
+          "viirs": "VNP14IMG.A2021198.0506.002.2024074021003",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-17T05:05:00.000Z",
+          "viirs_start": "2021-07-17T05:06:00.000Z",
+          "estimated_aqua_max_zenith": 60.03,
+          "estimated_viirs_max_zenith": 63.53,
+          "nominal_gap_minutes": 1.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-20",
+          "aqua": "MYD14.A2021201.0400.061.2021201120758",
+          "viirs": "VNP14IMG.A2021201.0406.002.2024074030401",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-20T04:00:00.000Z",
+          "viirs_start": "2021-07-20T04:06:00.000Z",
+          "estimated_aqua_max_zenith": 56.83,
+          "estimated_viirs_max_zenith": 26.44,
+          "nominal_gap_minutes": 6.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-22",
+          "aqua": "MYD14.A2021203.1735.061.2021204124232",
+          "viirs": "VNP14IMG.A2021203.1742.002.2024074035904",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-22T17:35:00.000Z",
+          "viirs_start": "2021-07-22T17:42:00.000Z",
+          "estimated_aqua_max_zenith": 62.19,
+          "estimated_viirs_max_zenith": 68.49,
+          "nominal_gap_minutes": 7.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-25",
+          "aqua": "MYD14.A2021206.0420.061.2021206114338",
+          "viirs": "VNP14IMG.A2021206.0412.002.2024074044106",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-25T04:20:00.000Z",
+          "viirs_start": "2021-07-25T04:12:00.000Z",
+          "estimated_aqua_max_zenith": 34.03,
+          "estimated_viirs_max_zenith": 15.26,
+          "nominal_gap_minutes": 8.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi"
+          ],
+          "firms_records": 6,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-11",
+          "aqua": "MYD14.A2021192.1615.061.2021193122035",
+          "viirs": "VNP14IMG.A2021192.1606.002.2024074004537",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-11T16:15:00.000Z",
+          "viirs_start": "2021-07-11T16:06:00.000Z",
+          "estimated_aqua_max_zenith": 64.46,
+          "estimated_viirs_max_zenith": 60.0,
+          "nominal_gap_minutes": 9.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 6,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-12",
+          "aqua": "MYD14.A2021193.0450.061.2021193122533",
+          "viirs": "VNP14IMG.A2021193.0500.002.2024074005832",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-12T04:50:00.000Z",
+          "viirs_start": "2021-07-12T05:00:00.000Z",
+          "estimated_aqua_max_zenith": 39.25,
+          "estimated_viirs_max_zenith": 59.05,
+          "nominal_gap_minutes": 10.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-14",
+          "aqua": "MYD14.A2021195.0435.061.2021195183141",
+          "viirs": "VNP14IMG.A2021195.0424.002.2024074012433",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-14T04:35:00.000Z",
+          "viirs_start": "2021-07-14T04:24:00.000Z",
+          "estimated_aqua_max_zenith": 17.09,
+          "estimated_viirs_max_zenith": 7.82,
+          "nominal_gap_minutes": 11.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2021-07-14",
+          "aqua": "MYD14.A2021195.0435.061.2021195183141",
+          "viirs": "VNP14IMG.A2021195.0418.002.2024074012435",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-14T04:35:00.000Z",
+          "viirs_start": "2021-07-14T04:18:00.000Z",
+          "estimated_aqua_max_zenith": 17.09,
+          "estimated_viirs_max_zenith": 7.45,
+          "nominal_gap_minutes": 17.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-24",
+          "aqua": "MYD14.A2021205.1725.061.2021206114329",
+          "viirs": "VNP14IMG.A2021205.1706.002.2024074042833",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-24T17:25:00.000Z",
+          "viirs_start": "2021-07-24T17:06:00.000Z",
+          "estimated_aqua_max_zenith": 51.81,
+          "estimated_viirs_max_zenith": 34.45,
+          "nominal_gap_minutes": 19.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 2,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-22",
+          "aqua": "MYD14.A2021203.0350.061.2021203134244",
+          "viirs": "VNP14IMG.A2021203.0330.002.2024074035903",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-22T03:50:00.000Z",
+          "viirs_start": "2021-07-22T03:30:00.000Z",
+          "estimated_aqua_max_zenith": 66.57,
+          "estimated_viirs_max_zenith": 65.46,
+          "nominal_gap_minutes": 20.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 5,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-17",
+          "aqua": "MYD14.A2021198.1715.061.2021199113446",
+          "viirs": "VNP14IMG.A2021198.1736.002.2024074020933",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-17T17:15:00.000Z",
+          "viirs_start": "2021-07-17T17:36:00.000Z",
+          "estimated_aqua_max_zenith": 43.35,
+          "estimated_viirs_max_zenith": 64.88,
+          "nominal_gap_minutes": 21.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 7,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-23",
+          "aqua": "MYD14.A2021204.0430.061.2021204125624",
+          "viirs": "VNP14IMG.A2021204.0454.002.2024074041207",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-23T04:30:00.000Z",
+          "viirs_start": "2021-07-23T04:54:00.000Z",
+          "estimated_aqua_max_zenith": 8.68,
+          "estimated_viirs_max_zenith": 53.88,
+          "nominal_gap_minutes": 24.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 5,
+          "activity": "high",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2021-07-19",
+          "aqua": "MYD14.A2021200.0455.061.2021202155928",
+          "viirs": "VNP14IMG.A2021200.0430.002.2024074024325",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-19T04:55:00.000Z",
+          "viirs_start": "2021-07-19T04:30:00.000Z",
+          "estimated_aqua_max_zenith": 47.86,
+          "estimated_viirs_max_zenith": 20.13,
+          "nominal_gap_minutes": 25.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 2,
+          "activity": "high",
+          "decision": "selected",
+          "estimated_mib": 193.59124370599383,
+          "target_activity": "high",
+          "target_delay": "moderate"
+        },
+        {
+          "date": "2021-07-20",
+          "aqua": "MYD14.A2021201.1610.061.2021202121718",
+          "viirs": "VNP14IMG.A2021201.1636.002.2024074030401",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-20T16:10:00.000Z",
+          "viirs_start": "2021-07-20T16:36:00.000Z",
+          "estimated_aqua_max_zenith": 68.19,
+          "estimated_viirs_max_zenith": 22.37,
+          "nominal_gap_minutes": 26.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 8,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-13",
+          "aqua": "MYD14.A2021194.1740.061.2021195130054",
+          "viirs": "VNP14IMG.A2021194.1712.002.2024074011209",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-13T17:40:00.000Z",
+          "viirs_start": "2021-07-13T17:12:00.000Z",
+          "estimated_aqua_max_zenith": 66.41,
+          "estimated_viirs_max_zenith": 42.76,
+          "nominal_gap_minutes": 28.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 5,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-11",
+          "aqua": "MYD14.A2021192.0405.061.2021192114839",
+          "viirs": "VNP14IMG.A2021192.0336.002.2024074004536",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-11T04:05:00.000Z",
+          "viirs_start": "2021-07-11T03:36:00.000Z",
+          "estimated_aqua_max_zenith": 50.65,
+          "estimated_viirs_max_zenith": 61.45,
+          "nominal_gap_minutes": 29.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-12",
+          "aqua": "MYD14.A2021193.1700.061.2021194113008",
+          "viirs": "VNP14IMG.A2021193.1730.002.2024074005833",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-12T17:00:00.000Z",
+          "viirs_start": "2021-07-12T17:30:00.000Z",
+          "estimated_aqua_max_zenith": 10.76,
+          "estimated_viirs_max_zenith": 60.68,
+          "nominal_gap_minutes": 30.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 17,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-21",
+          "aqua": "MYD14.A2021202.1655.061.2021203133740",
+          "viirs": "VNP14IMG.A2021202.1618.002.2024074033536",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-21T16:55:00.000Z",
+          "viirs_start": "2021-07-21T16:18:00.000Z",
+          "estimated_aqua_max_zenith": 14.52,
+          "estimated_viirs_max_zenith": 48.78,
+          "nominal_gap_minutes": 37.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-18",
+          "aqua": "MYD14.A2021199.0410.061.2021199115022",
+          "viirs": "VNP14IMG.A2021199.0448.002.2024074023005",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-18T04:10:00.000Z",
+          "viirs_start": "2021-07-18T04:48:00.000Z",
+          "estimated_aqua_max_zenith": 43.1,
+          "estimated_viirs_max_zenith": 47.54,
+          "nominal_gap_minutes": 38.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2021-07-24",
+          "aqua": "MYD14.A2021205.0515.061.2021205114511",
+          "viirs": "VNP14IMG.A2021205.0436.002.2024074042829",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-24T05:15:00.000Z",
+          "viirs_start": "2021-07-24T04:36:00.000Z",
+          "estimated_aqua_max_zenith": 64.49,
+          "estimated_viirs_max_zenith": 30.92,
+          "nominal_gap_minutes": 39.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-16",
+          "aqua": "MYD14.A2021197.0425.061.2021197114131",
+          "viirs": "VNP14IMG.A2021197.0342.002.2024074015600",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-16T04:25:00.000Z",
+          "viirs_start": "2021-07-16T03:42:00.000Z",
+          "estimated_aqua_max_zenith": 22.14,
+          "estimated_viirs_max_zenith": 56.67,
+          "nominal_gap_minutes": 43.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-23",
+          "aqua": "MYD14.A2021204.1640.061.2021205113724",
+          "viirs": "VNP14IMG.A2021204.1724.002.2024074041207",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-23T16:40:00.000Z",
+          "viirs_start": "2021-07-23T17:24:00.000Z",
+          "estimated_aqua_max_zenith": 38.8,
+          "estimated_viirs_max_zenith": 55.86,
+          "nominal_gap_minutes": 44.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 3,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-10",
+          "aqua": "MYD14.A2021191.1710.061.2021192114643",
+          "viirs": "VNP14IMG.A2021191.1624.002.2024074002859",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-10T17:10:00.000Z",
+          "viirs_start": "2021-07-10T16:24:00.000Z",
+          "estimated_aqua_max_zenith": 34.04,
+          "estimated_viirs_max_zenith": 41.64,
+          "nominal_gap_minutes": 46.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-13",
+          "aqua": "MYD14.A2021194.0355.061.2021194114304",
+          "viirs": "VNP14IMG.A2021194.0442.002.2024074011206",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-13T03:55:00.000Z",
+          "viirs_start": "2021-07-13T04:42:00.000Z",
+          "estimated_aqua_max_zenith": 62.11,
+          "estimated_viirs_max_zenith": 39.85,
+          "nominal_gap_minutes": 47.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 2,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-21",
+          "aqua": "MYD14.A2021202.0445.061.2021202121911",
+          "viirs": "VNP14IMG.A2021202.0348.002.2024074033530",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-21T04:45:00.000Z",
+          "viirs_start": "2021-07-21T03:48:00.000Z",
+          "estimated_aqua_max_zenith": 28.31,
+          "estimated_viirs_max_zenith": 50.96,
+          "nominal_gap_minutes": 57.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-18",
+          "aqua": "MYD14.A2021199.1620.061.2021200111803",
+          "viirs": "VNP14IMG.A2021199.1718.002.2024074023009",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-18T16:20:00.000Z",
+          "viirs_start": "2021-07-18T17:18:00.000Z",
+          "estimated_aqua_max_zenith": 59.87,
+          "estimated_viirs_max_zenith": 49.89,
+          "nominal_gap_minutes": 58.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 9,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-15",
+          "aqua": "MYD14.A2021196.1730.061.2021197112444",
+          "viirs": "VNP14IMG.A2021196.1630.002.2024074013706",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-15T17:30:00.000Z",
+          "viirs_start": "2021-07-15T16:30:00.000Z",
+          "estimated_aqua_max_zenith": 57.51,
+          "estimated_viirs_max_zenith": 32.85,
+          "nominal_gap_minutes": 60.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 1,
+          "activity": "intermediate",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-10",
+          "aqua": "MYD14.A2021191.0500.061.2021191115546",
+          "viirs": "VNP14IMG.A2021191.0354.002.2024074002859",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-10T05:00:00.000Z",
+          "viirs_start": "2021-07-10T03:54:00.000Z",
+          "estimated_aqua_max_zenith": 54.54,
+          "estimated_viirs_max_zenith": 44.29,
+          "nominal_gap_minutes": 66.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 7,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-12",
+          "aqua": "MYD14.A2021193.1700.061.2021194113008",
+          "viirs": "VNP14IMG.A2021193.1548.002.2024074005833",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-12T17:00:00.000Z",
+          "viirs_start": "2021-07-12T15:48:00.000Z",
+          "estimated_aqua_max_zenith": 10.76,
+          "estimated_viirs_max_zenith": 71.19,
+          "nominal_gap_minutes": 72.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 17,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-11",
+          "aqua": "MYD14.A2021192.0405.061.2021192114839",
+          "viirs": "VNP14IMG.A2021192.0518.002.2024074004535",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-11T04:05:00.000Z",
+          "viirs_start": "2021-07-11T05:18:00.000Z",
+          "estimated_aqua_max_zenith": 50.65,
+          "estimated_viirs_max_zenith": 70.62,
+          "nominal_gap_minutes": 73.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-15",
+          "aqua": "MYD14.A2021196.0520.061.2021196125929",
+          "viirs": "VNP14IMG.A2021196.0400.002.2024074013701",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-15T05:20:00.000Z",
+          "viirs_start": "2021-07-15T04:00:00.000Z",
+          "estimated_aqua_max_zenith": 68.53,
+          "estimated_viirs_max_zenith": 36.14,
+          "nominal_gap_minutes": 80.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-17",
+          "aqua": "MYD14.A2021198.1715.061.2021199113446",
+          "viirs": "VNP14IMG.A2021198.1554.002.2024074021003",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-17T17:15:00.000Z",
+          "viirs_start": "2021-07-17T15:54:00.000Z",
+          "estimated_aqua_max_zenith": 43.35,
+          "estimated_viirs_max_zenith": 67.94,
+          "nominal_gap_minutes": 81.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 7,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-22",
+          "aqua": "MYD14.A2021203.0350.061.2021203134244",
+          "viirs": "VNP14IMG.A2021203.0512.002.2024074035904",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-22T03:50:00.000Z",
+          "viirs_start": "2021-07-22T05:12:00.000Z",
+          "estimated_aqua_max_zenith": 66.57,
+          "estimated_viirs_max_zenith": 67.37,
+          "nominal_gap_minutes": 82.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 5,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-12",
+          "aqua": "MYD14.A2021193.0450.061.2021193122533",
+          "viirs": "VNP14IMG.A2021193.0318.002.2024074005829",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-12T04:50:00.000Z",
+          "viirs_start": "2021-07-12T03:18:00.000Z",
+          "estimated_aqua_max_zenith": 39.25,
+          "estimated_viirs_max_zenith": 72.09,
+          "nominal_gap_minutes": 92.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-11",
+          "aqua": "MYD14.A2021192.1615.061.2021193122035",
+          "viirs": "VNP14IMG.A2021192.1748.002.2024074004534",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-11T16:15:00.000Z",
+          "viirs_start": "2021-07-11T17:48:00.000Z",
+          "estimated_aqua_max_zenith": 64.46,
+          "estimated_viirs_max_zenith": 71.59,
+          "nominal_gap_minutes": 93.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 6,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-22",
+          "aqua": "MYD14.A2021203.1735.061.2021204124232",
+          "viirs": "VNP14IMG.A2021203.1600.002.2024074035900",
+          "day_night": "DAY",
+          "aqua_start": "2021-07-22T17:35:00.000Z",
+          "viirs_start": "2021-07-22T16:00:00.000Z",
+          "estimated_aqua_max_zenith": 62.19,
+          "estimated_viirs_max_zenith": 64.23,
+          "nominal_gap_minutes": 95.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2021-07-17",
+          "aqua": "MYD14.A2021198.0505.061.2021198115557",
+          "viirs": "VNP14IMG.A2021198.0324.002.2024074021003",
+          "day_night": "NIGHT",
+          "aqua_start": "2021-07-17T05:05:00.000Z",
+          "viirs_start": "2021-07-17T03:24:00.000Z",
+          "estimated_aqua_max_zenith": 60.03,
+          "estimated_viirs_max_zenith": 69.0,
+          "nominal_gap_minutes": 101.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        }
+      ]
+    },
+    {
+      "first": "2022-09-08",
+      "last": "2022-09-23",
+      "turn": "DAY",
+      "activity_target": "high",
+      "delay_target": "short",
+      "selected": {
+        "date": "2022-09-18",
+        "aqua": "MYD14.A2022261.1710.061.2022263105846",
+        "viirs": "VNP14IMG.A2022261.1712.002.2024077015356",
+        "day_night": "DAY",
+        "aqua_start": "2022-09-18T17:10:00.000Z",
+        "viirs_start": "2022-09-18T17:12:00.000Z",
+        "estimated_aqua_max_zenith": 20.28,
+        "estimated_viirs_max_zenith": 42.95,
+        "nominal_gap_minutes": 2.0,
+        "full_roi_in_both_catalog_polygons": true,
+        "reasons": [],
+        "firms_records": 1,
+        "activity": "intermediate",
+        "decision": "selected",
+        "estimated_mib": 223.6413391345216,
+        "target_activity": "high",
+        "target_delay": "short"
+      },
+      "dates_without_same_turn_pair": [],
+      "candidates": [
+        {
+          "date": "2022-09-18",
+          "aqua": "MYD14.A2022261.1710.061.2022263105846",
+          "viirs": "VNP14IMG.A2022261.1712.002.2024077015356",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-18T17:10:00.000Z",
+          "viirs_start": "2022-09-18T17:12:00.000Z",
+          "estimated_aqua_max_zenith": 20.28,
+          "estimated_viirs_max_zenith": 42.95,
+          "nominal_gap_minutes": 2.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 1,
+          "activity": "intermediate",
+          "decision": "selected",
+          "estimated_mib": 223.6413391345216,
+          "target_activity": "high",
+          "target_delay": "short"
+        },
+        {
+          "date": "2022-09-23",
+          "aqua": "MYD14.A2022266.1725.061.2022267120419",
+          "viirs": "VNP14IMG.A2022266.1718.002.2024077023801",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-23T17:25:00.000Z",
+          "viirs_start": "2022-09-23T17:18:00.000Z",
+          "estimated_aqua_max_zenith": 47.22,
+          "estimated_viirs_max_zenith": 49.86,
+          "nominal_gap_minutes": 7.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2022-09-13",
+          "aqua": "MYD14.A2022256.1650.061.2022257155738",
+          "viirs": "VNP14IMG.A2022256.1706.002.2024077011105",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-13T16:50:00.000Z",
+          "viirs_start": "2022-09-13T17:06:00.000Z",
+          "estimated_aqua_max_zenith": 29.54,
+          "estimated_viirs_max_zenith": 34.54,
+          "nominal_gap_minutes": 16.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2022-09-15",
+          "aqua": "MYD14.A2022258.1640.061.2022259114811",
+          "viirs": "VNP14IMG.A2022258.1624.002.2024077012854",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-15T16:40:00.000Z",
+          "viirs_start": "2022-09-15T16:24:00.000Z",
+          "estimated_aqua_max_zenith": 47.96,
+          "estimated_viirs_max_zenith": 41.17,
+          "nominal_gap_minutes": 16.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2022-09-20",
+          "aqua": "MYD14.A2022263.1655.061.2022264161451",
+          "viirs": "VNP14IMG.A2022263.1630.002.2024077021207",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-20T16:55:00.000Z",
+          "viirs_start": "2022-09-20T16:30:00.000Z",
+          "estimated_aqua_max_zenith": 21.39,
+          "estimated_viirs_max_zenith": 32.28,
+          "nominal_gap_minutes": 25.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2022-09-08",
+          "aqua": "MYD14.A2022251.1635.061.2022252121931",
+          "viirs": "VNP14IMG.A2022251.1700.002.2024077002227",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-08T16:35:00.000Z",
+          "viirs_start": "2022-09-08T17:00:00.000Z",
+          "estimated_aqua_max_zenith": 52.87,
+          "estimated_viirs_max_zenith": 24.8,
+          "nominal_gap_minutes": 25.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 1,
+          "activity": "intermediate",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2022-09-10",
+          "aqua": "MYD14.A2022253.1620.061.2022255205116",
+          "viirs": "VNP14IMG.A2022253.1618.002.2024077004004",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-10T16:20:00.000Z",
+          "viirs_start": "2022-09-10T16:18:00.000Z",
+          "estimated_aqua_max_zenith": 64.2,
+          "estimated_viirs_max_zenith": 48.57,
+          "nominal_gap_minutes": 2.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-13",
+          "aqua": "MYD14.A2022256.0440.061.2022257135911",
+          "viirs": "VNP14IMG.A2022256.0436.002.2024077011105",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-13T04:40:00.000Z",
+          "viirs_start": "2022-09-13T04:36:00.000Z",
+          "estimated_aqua_max_zenith": 16.74,
+          "estimated_viirs_max_zenith": 31.32,
+          "nominal_gap_minutes": 4.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-08",
+          "aqua": "MYD14.A2022251.0425.061.2022251122312",
+          "viirs": "VNP14IMG.A2022251.0430.002.2024077002229",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-08T04:25:00.000Z",
+          "viirs_start": "2022-09-08T04:30:00.000Z",
+          "estimated_aqua_max_zenith": 31.49,
+          "estimated_viirs_max_zenith": 20.67,
+          "nominal_gap_minutes": 5.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-21",
+          "aqua": "MYD14.A2022264.0350.061.2022264170659",
+          "viirs": "VNP14IMG.A2022264.0342.002.2024077022156",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-21T03:50:00.000Z",
+          "viirs_start": "2022-09-21T03:42:00.000Z",
+          "estimated_aqua_max_zenith": 67.78,
+          "estimated_viirs_max_zenith": 56.63,
+          "nominal_gap_minutes": 8.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-16",
+          "aqua": "MYD14.A2022259.0510.061.2022259120833",
+          "viirs": "VNP14IMG.A2022259.0518.002.2024077013822",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-16T05:10:00.000Z",
+          "viirs_start": "2022-09-16T05:18:00.000Z",
+          "estimated_aqua_max_zenith": 59.2,
+          "estimated_viirs_max_zenith": 70.72,
+          "nominal_gap_minutes": 8.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-11",
+          "aqua": "MYD14.A2022254.0455.061.2022255233149",
+          "viirs": "VNP14IMG.A2022254.0512.002.2024077005224",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-11T04:55:00.000Z",
+          "viirs_start": "2022-09-11T05:12:00.000Z",
+          "estimated_aqua_max_zenith": 39.94,
+          "estimated_viirs_max_zenith": 67.43,
+          "nominal_gap_minutes": 17.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-18",
+          "aqua": "MYD14.A2022261.0500.061.2022263105409",
+          "viirs": "VNP14IMG.A2022261.0442.002.2024077015354",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-18T05:00:00.000Z",
+          "viirs_start": "2022-09-18T04:42:00.000Z",
+          "estimated_aqua_max_zenith": 45.42,
+          "estimated_viirs_max_zenith": 40.33,
+          "nominal_gap_minutes": 18.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-19",
+          "aqua": "MYD14.A2022262.0405.061.2022263110203",
+          "viirs": "VNP14IMG.A2022262.0424.002.2024077020120",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-19T04:05:00.000Z",
+          "viirs_start": "2022-09-19T04:24:00.000Z",
+          "estimated_aqua_max_zenith": 58.91,
+          "estimated_viirs_max_zenith": 8.72,
+          "nominal_gap_minutes": 19.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-12",
+          "aqua": "MYD14.A2022255.1745.061.2022256164844",
+          "viirs": "VNP14IMG.A2022255.1724.002.2024077010327",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-12T17:45:00.000Z",
+          "viirs_start": "2022-09-12T17:24:00.000Z",
+          "estimated_aqua_max_zenith": 66.29,
+          "estimated_viirs_max_zenith": 55.77,
+          "nominal_gap_minutes": 21.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-10",
+          "aqua": "MYD14.A2022253.0410.061.2022253180354",
+          "viirs": "VNP14IMG.A2022253.0348.002.2024077004004",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-10T04:10:00.000Z",
+          "viirs_start": "2022-09-10T03:48:00.000Z",
+          "estimated_aqua_max_zenith": 49.92,
+          "estimated_viirs_max_zenith": 50.97,
+          "nominal_gap_minutes": 22.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-23",
+          "aqua": "MYD14.A2022266.0515.061.2022266135759",
+          "viirs": "VNP14IMG.A2022266.0448.002.2024077023749",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-23T05:15:00.000Z",
+          "viirs_start": "2022-09-23T04:48:00.000Z",
+          "estimated_aqua_max_zenith": 62.5,
+          "estimated_viirs_max_zenith": 47.82,
+          "nominal_gap_minutes": 27.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-16",
+          "aqua": "MYD14.A2022259.1720.061.2022260115823",
+          "viirs": "VNP14IMG.A2022259.1748.002.2024077013820",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-16T17:20:00.000Z",
+          "viirs_start": "2022-09-16T17:48:00.000Z",
+          "estimated_aqua_max_zenith": 41.51,
+          "estimated_viirs_max_zenith": 71.64,
+          "nominal_gap_minutes": 28.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-22",
+          "aqua": "MYD14.A2022265.0435.061.2022269182930",
+          "viirs": "VNP14IMG.A2022265.0506.002.2024077022955",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-22T04:35:00.000Z",
+          "viirs_start": "2022-09-22T05:06:00.000Z",
+          "estimated_aqua_max_zenith": 16.25,
+          "estimated_viirs_max_zenith": 63.67,
+          "nominal_gap_minutes": 31.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-15",
+          "aqua": "MYD14.A2022258.0430.061.2022258175351",
+          "viirs": "VNP14IMG.A2022258.0354.002.2024077012857",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-15T04:30:00.000Z",
+          "viirs_start": "2022-09-15T03:54:00.000Z",
+          "estimated_aqua_max_zenith": 24.04,
+          "estimated_viirs_max_zenith": 44.2,
+          "nominal_gap_minutes": 36.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-11",
+          "aqua": "MYD14.A2022254.1705.061.2022255233821",
+          "viirs": "VNP14IMG.A2022254.1742.002.2024077005224",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-11T17:05:00.000Z",
+          "viirs_start": "2022-09-11T17:42:00.000Z",
+          "estimated_aqua_max_zenith": 10.91,
+          "estimated_viirs_max_zenith": 68.49,
+          "nominal_gap_minutes": 37.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-17",
+          "aqua": "MYD14.A2022260.1625.061.2022263105227",
+          "viirs": "VNP14IMG.A2022260.1548.002.2024077014556",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-17T16:25:00.000Z",
+          "viirs_start": "2022-09-17T15:48:00.000Z",
+          "estimated_aqua_max_zenith": 61.07,
+          "estimated_viirs_max_zenith": 71.1,
+          "nominal_gap_minutes": 37.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-09",
+          "aqua": "MYD14.A2022252.1715.061.2022253175126",
+          "viirs": "VNP14IMG.A2022252.1636.002.2024077003057",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-09T17:15:00.000Z",
+          "viirs_start": "2022-09-09T16:36:00.000Z",
+          "estimated_aqua_max_zenith": 35.07,
+          "estimated_viirs_max_zenith": 21.88,
+          "nominal_gap_minutes": 39.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2022-09-20",
+          "aqua": "MYD14.A2022263.0445.061.2022263144713",
+          "viirs": "VNP14IMG.A2022263.0406.002.2024077021207",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-20T04:45:00.000Z",
+          "viirs_start": "2022-09-20T04:06:00.000Z",
+          "estimated_aqua_max_zenith": 25.19,
+          "estimated_viirs_max_zenith": 35.73,
+          "nominal_gap_minutes": 39.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-20",
+          "aqua": "MYD14.A2022263.0445.061.2022263144713",
+          "viirs": "VNP14IMG.A2022263.0400.002.2024077021156",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-20T04:45:00.000Z",
+          "viirs_start": "2022-09-20T04:00:00.000Z",
+          "estimated_aqua_max_zenith": 25.19,
+          "estimated_viirs_max_zenith": 36.08,
+          "nominal_gap_minutes": 45.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-17",
+          "aqua": "MYD14.A2022260.0415.061.2022263104757",
+          "viirs": "VNP14IMG.A2022260.0500.002.2024077014555",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-17T04:15:00.000Z",
+          "viirs_start": "2022-09-17T05:00:00.000Z",
+          "estimated_aqua_max_zenith": 44.75,
+          "estimated_viirs_max_zenith": 59.25,
+          "nominal_gap_minutes": 45.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-14",
+          "aqua": "MYD14.A2022257.1735.061.2022258170147",
+          "viirs": "VNP14IMG.A2022257.1648.002.2024077012020",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-14T17:35:00.000Z",
+          "viirs_start": "2022-09-14T16:48:00.000Z",
+          "estimated_aqua_max_zenith": 56.98,
+          "estimated_viirs_max_zenith": 9.41,
+          "nominal_gap_minutes": 47.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-22",
+          "aqua": "MYD14.A2022265.1645.061.2022266135747",
+          "viirs": "VNP14IMG.A2022265.1736.002.2024077022957",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-22T16:45:00.000Z",
+          "viirs_start": "2022-09-22T17:36:00.000Z",
+          "estimated_aqua_max_zenith": 42.36,
+          "estimated_viirs_max_zenith": 64.86,
+          "nominal_gap_minutes": 51.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-22",
+          "aqua": "MYD14.A2022265.1645.061.2022266135747",
+          "viirs": "VNP14IMG.A2022265.1554.002.2024077022955",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-22T16:45:00.000Z",
+          "viirs_start": "2022-09-22T15:54:00.000Z",
+          "estimated_aqua_max_zenith": 42.36,
+          "estimated_viirs_max_zenith": 67.86,
+          "nominal_gap_minutes": 51.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-09",
+          "aqua": "MYD14.A2022252.0505.061.2022252131819",
+          "viirs": "VNP14IMG.A2022252.0412.002.2024077003056",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-09T05:05:00.000Z",
+          "viirs_start": "2022-09-09T04:12:00.000Z",
+          "estimated_aqua_max_zenith": 55.4,
+          "estimated_viirs_max_zenith": 25.9,
+          "nominal_gap_minutes": 53.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-14",
+          "aqua": "MYD14.A2022257.1735.061.2022258170147",
+          "viirs": "VNP14IMG.A2022257.1642.002.2024077012018",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-14T17:35:00.000Z",
+          "viirs_start": "2022-09-14T16:42:00.000Z",
+          "estimated_aqua_max_zenith": 56.98,
+          "estimated_viirs_max_zenith": 9.89,
+          "nominal_gap_minutes": 53.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-12",
+          "aqua": "MYD14.A2022255.0400.061.2022255234725",
+          "viirs": "VNP14IMG.A2022255.0454.002.2024077010329",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-12T04:00:00.000Z",
+          "viirs_start": "2022-09-12T04:54:00.000Z",
+          "estimated_aqua_max_zenith": 62.01,
+          "estimated_viirs_max_zenith": 54.04,
+          "nominal_gap_minutes": 54.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-19",
+          "aqua": "MYD14.A2022262.1750.061.2022263145257",
+          "viirs": "VNP14IMG.A2022262.1654.002.2024077020119",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-19T17:50:00.000Z",
+          "viirs_start": "2022-09-19T16:54:00.000Z",
+          "estimated_aqua_max_zenith": 68.83,
+          "estimated_viirs_max_zenith": 13.51,
+          "nominal_gap_minutes": 56.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-17",
+          "aqua": "MYD14.A2022260.0415.061.2022263104757",
+          "viirs": "VNP14IMG.A2022260.0318.002.2024077014555",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-17T04:15:00.000Z",
+          "viirs_start": "2022-09-17T03:18:00.000Z",
+          "estimated_aqua_max_zenith": 44.75,
+          "estimated_viirs_max_zenith": 72.06,
+          "nominal_gap_minutes": 57.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-17",
+          "aqua": "MYD14.A2022260.1625.061.2022263105227",
+          "viirs": "VNP14IMG.A2022260.1730.002.2024077014556",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-17T16:25:00.000Z",
+          "viirs_start": "2022-09-17T17:30:00.000Z",
+          "estimated_aqua_max_zenith": 61.07,
+          "estimated_viirs_max_zenith": 60.74,
+          "nominal_gap_minutes": 65.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-11",
+          "aqua": "MYD14.A2022254.1705.061.2022255233821",
+          "viirs": "VNP14IMG.A2022254.1600.002.2024077005224",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-11T17:05:00.000Z",
+          "viirs_start": "2022-09-11T16:00:00.000Z",
+          "estimated_aqua_max_zenith": 10.91,
+          "estimated_viirs_max_zenith": 64.16,
+          "nominal_gap_minutes": 65.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-14",
+          "aqua": "MYD14.A2022257.0525.061.2022257160707",
+          "viirs": "VNP14IMG.A2022257.0418.002.2024077012019",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-14T05:25:00.000Z",
+          "viirs_start": "2022-09-14T04:18:00.000Z",
+          "estimated_aqua_max_zenith": 68.18,
+          "estimated_viirs_max_zenith": 14.42,
+          "nominal_gap_minutes": 67.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-22",
+          "aqua": "MYD14.A2022265.0435.061.2022269182930",
+          "viirs": "VNP14IMG.A2022265.0324.002.2024077022953",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-22T04:35:00.000Z",
+          "viirs_start": "2022-09-22T03:24:00.000Z",
+          "estimated_aqua_max_zenith": 16.25,
+          "estimated_viirs_max_zenith": 68.99,
+          "nominal_gap_minutes": 71.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-16",
+          "aqua": "MYD14.A2022259.1720.061.2022260115823",
+          "viirs": "VNP14IMG.A2022259.1606.002.2024077013823",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-16T17:20:00.000Z",
+          "viirs_start": "2022-09-16T16:06:00.000Z",
+          "estimated_aqua_max_zenith": 41.51,
+          "estimated_viirs_max_zenith": 59.81,
+          "nominal_gap_minutes": 74.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-11",
+          "aqua": "MYD14.A2022254.0455.061.2022255233149",
+          "viirs": "VNP14IMG.A2022254.0330.002.2024077005229",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-11T04:55:00.000Z",
+          "viirs_start": "2022-09-11T03:30:00.000Z",
+          "estimated_aqua_max_zenith": 39.94,
+          "estimated_viirs_max_zenith": 65.47,
+          "nominal_gap_minutes": 85.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-21",
+          "aqua": "MYD14.A2022264.1740.061.2022265120719",
+          "viirs": "VNP14IMG.A2022264.1612.002.2024077022158",
+          "day_night": "DAY",
+          "aqua_start": "2022-09-21T17:40:00.000Z",
+          "viirs_start": "2022-09-21T16:12:00.000Z",
+          "estimated_aqua_max_zenith": 60.7,
+          "estimated_viirs_max_zenith": 54.68,
+          "nominal_gap_minutes": 88.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2022-09-16",
+          "aqua": "MYD14.A2022259.0510.061.2022259120833",
+          "viirs": "VNP14IMG.A2022259.0336.002.2024077013822",
+          "day_night": "NIGHT",
+          "aqua_start": "2022-09-16T05:10:00.000Z",
+          "viirs_start": "2022-09-16T03:36:00.000Z",
+          "estimated_aqua_max_zenith": 59.2,
+          "estimated_viirs_max_zenith": 61.38,
+          "nominal_gap_minutes": 94.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        }
+      ]
+    },
+    {
+      "first": "2023-03-10",
+      "last": "2023-03-25",
+      "turn": "NIGHT",
+      "activity_target": "low",
+      "delay_target": "moderate",
+      "selected": {
+        "date": "2023-03-24",
+        "aqua": "MYD14.A2023083.0455.061.2023083155536",
+        "viirs": "VNP14IMG.A2023083.0436.002.2024078233654",
+        "day_night": "NIGHT",
+        "aqua_start": "2023-03-24T04:55:00.000Z",
+        "viirs_start": "2023-03-24T04:36:00.000Z",
+        "estimated_aqua_max_zenith": 32.27,
+        "estimated_viirs_max_zenith": 30.2,
+        "nominal_gap_minutes": 19.0,
+        "full_roi_in_both_catalog_polygons": true,
+        "reasons": [],
+        "firms_records": 0,
+        "activity": "low",
+        "decision": "selected",
+        "estimated_mib": 206.3341522527462,
+        "target_activity": "low",
+        "target_delay": "moderate"
+      },
+      "dates_without_same_turn_pair": [],
+      "candidates": [
+        {
+          "date": "2023-03-24",
+          "aqua": "MYD14.A2023083.1705.061.2023084111629",
+          "viirs": "VNP14IMG.A2023083.1706.002.2024078233656",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-24T17:05:00.000Z",
+          "viirs_start": "2023-03-24T17:06:00.000Z",
+          "estimated_aqua_max_zenith": 13.53,
+          "estimated_viirs_max_zenith": 33.33,
+          "nominal_gap_minutes": 1.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-19",
+          "aqua": "MYD14.A2023078.1650.061.2023079111456",
+          "viirs": "VNP14IMG.A2023078.1700.002.2024078225150",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-19T16:50:00.000Z",
+          "viirs_start": "2023-03-19T17:00:00.000Z",
+          "estimated_aqua_max_zenith": 40.58,
+          "estimated_viirs_max_zenith": 23.19,
+          "nominal_gap_minutes": 10.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-13",
+          "aqua": "MYD14.A2023072.1730.061.2023073164622",
+          "viirs": "VNP14IMG.A2023072.1712.002.2024078215722",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-13T17:30:00.000Z",
+          "viirs_start": "2023-03-13T17:12:00.000Z",
+          "estimated_aqua_max_zenith": 47.43,
+          "estimated_viirs_max_zenith": 41.79,
+          "nominal_gap_minutes": 18.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-14",
+          "aqua": "MYD14.A2023073.0425.061.2023073154632",
+          "viirs": "VNP14IMG.A2023073.0424.002.2024078220554",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-14T04:25:00.000Z",
+          "viirs_start": "2023-03-14T04:24:00.000Z",
+          "estimated_aqua_max_zenith": 38.48,
+          "estimated_viirs_max_zenith": 7.54,
+          "nominal_gap_minutes": 1.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2023-03-22",
+          "aqua": "MYD14.A2023081.0510.061.2023081111949",
+          "viirs": "VNP14IMG.A2023081.0512.002.2024078231740",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-22T05:10:00.000Z",
+          "viirs_start": "2023-03-22T05:12:00.000Z",
+          "estimated_aqua_max_zenith": 51.26,
+          "estimated_viirs_max_zenith": 66.99,
+          "nominal_gap_minutes": 2.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-11",
+          "aqua": "MYD14.A2023070.1745.061.2023071134908",
+          "viirs": "VNP14IMG.A2023070.1748.002.2024078213915",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-11T17:45:00.000Z",
+          "viirs_start": "2023-03-11T17:48:00.000Z",
+          "estimated_aqua_max_zenith": 61.33,
+          "estimated_viirs_max_zenith": 71.18,
+          "nominal_gap_minutes": 3.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-16",
+          "aqua": "MYD14.A2023075.1620.061.2023076113855",
+          "viirs": "VNP14IMG.A2023075.1612.002.2024078222042",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-16T16:20:00.000Z",
+          "viirs_start": "2023-03-16T16:12:00.000Z",
+          "estimated_aqua_max_zenith": 67.78,
+          "estimated_viirs_max_zenith": 55.23,
+          "nominal_gap_minutes": 8.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-19",
+          "aqua": "MYD14.A2023078.0440.061.2023078112601",
+          "viirs": "VNP14IMG.A2023078.0430.002.2024078225149",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-19T04:40:00.000Z",
+          "viirs_start": "2023-03-19T04:30:00.000Z",
+          "estimated_aqua_max_zenith": 10.3,
+          "estimated_viirs_max_zenith": 19.54,
+          "nominal_gap_minutes": 10.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2023-03-17",
+          "aqua": "MYD14.A2023076.0455.061.2023076114433",
+          "viirs": "VNP14IMG.A2023076.0506.002.2024078222949",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-17T04:55:00.000Z",
+          "viirs_start": "2023-03-17T05:06:00.000Z",
+          "estimated_aqua_max_zenith": 30.45,
+          "estimated_viirs_max_zenith": 63.13,
+          "nominal_gap_minutes": 11.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-21",
+          "aqua": "MYD14.A2023080.1635.061.2023081111841",
+          "viirs": "VNP14IMG.A2023080.1618.002.2024078230846",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-21T16:35:00.000Z",
+          "viirs_start": "2023-03-21T16:18:00.000Z",
+          "estimated_aqua_max_zenith": 56.96,
+          "estimated_viirs_max_zenith": 49.05,
+          "nominal_gap_minutes": 17.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-25",
+          "aqua": "MYD14.A2023084.0400.061.2023084112415",
+          "viirs": "VNP14IMG.A2023084.0418.002.2024078234518",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-25T04:00:00.000Z",
+          "viirs_start": "2023-03-25T04:18:00.000Z",
+          "estimated_aqua_max_zenith": 65.7,
+          "estimated_viirs_max_zenith": 15.27,
+          "nominal_gap_minutes": 18.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 4,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-24",
+          "aqua": "MYD14.A2023083.0455.061.2023083155536",
+          "viirs": "VNP14IMG.A2023083.0436.002.2024078233654",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-24T04:55:00.000Z",
+          "viirs_start": "2023-03-24T04:36:00.000Z",
+          "estimated_aqua_max_zenith": 32.27,
+          "estimated_viirs_max_zenith": 30.2,
+          "nominal_gap_minutes": 19.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "selected",
+          "estimated_mib": 206.3341522527462,
+          "target_activity": "low",
+          "target_delay": "moderate"
+        },
+        {
+          "date": "2023-03-14",
+          "aqua": "MYD14.A2023073.1635.061.2023074121739",
+          "viirs": "VNP14IMG.A2023073.1654.002.2024078220551",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-14T16:35:00.000Z",
+          "viirs_start": "2023-03-14T16:54:00.000Z",
+          "estimated_aqua_max_zenith": 57.57,
+          "estimated_viirs_max_zenith": 11.6,
+          "nominal_gap_minutes": 19.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-11",
+          "aqua": "MYD14.A2023070.0355.061.2023070105307",
+          "viirs": "VNP14IMG.A2023070.0336.002.2024078214003",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-11T03:55:00.000Z",
+          "viirs_start": "2023-03-11T03:36:00.000Z",
+          "estimated_aqua_max_zenith": 66.88,
+          "estimated_viirs_max_zenith": 62.06,
+          "nominal_gap_minutes": 19.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-12",
+          "aqua": "MYD14.A2023071.0440.061.2023071183942",
+          "viirs": "VNP14IMG.A2023071.0500.002.2024078214916",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-12T04:40:00.000Z",
+          "viirs_start": "2023-03-12T05:00:00.000Z",
+          "estimated_aqua_max_zenith": 12.85,
+          "estimated_viirs_max_zenith": 58.62,
+          "nominal_gap_minutes": 20.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-16",
+          "aqua": "MYD14.A2023075.0410.061.2023075133231",
+          "viirs": "VNP14IMG.A2023075.0348.002.2024078222041",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-16T04:10:00.000Z",
+          "viirs_start": "2023-03-16T03:48:00.000Z",
+          "estimated_aqua_max_zenith": 55.45,
+          "estimated_viirs_max_zenith": 57.08,
+          "nominal_gap_minutes": 22.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-22",
+          "aqua": "MYD14.A2023081.1720.061.2023082112025",
+          "viirs": "VNP14IMG.A2023081.1742.002.2024078231744",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-22T17:20:00.000Z",
+          "viirs_start": "2023-03-22T17:42:00.000Z",
+          "estimated_aqua_max_zenith": 28.99,
+          "estimated_viirs_max_zenith": 68.01,
+          "nominal_gap_minutes": 22.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-18",
+          "aqua": "MYD14.A2023077.1745.061.2023078111457",
+          "viirs": "VNP14IMG.A2023077.1718.002.2024078224003",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-18T17:45:00.000Z",
+          "viirs_start": "2023-03-18T17:18:00.000Z",
+          "estimated_aqua_max_zenith": 61.72,
+          "estimated_viirs_max_zenith": 48.99,
+          "nominal_gap_minutes": 27.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-21",
+          "aqua": "MYD14.A2023080.0425.061.2023080130419",
+          "viirs": "VNP14IMG.A2023080.0354.002.2024078230846",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-21T04:25:00.000Z",
+          "viirs_start": "2023-03-21T03:54:00.000Z",
+          "estimated_aqua_max_zenith": 37.16,
+          "estimated_viirs_max_zenith": 51.35,
+          "nominal_gap_minutes": 31.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2023-03-17",
+          "aqua": "MYD14.A2023076.1705.061.2023077110805",
+          "viirs": "VNP14IMG.A2023076.1736.002.2024078222950",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-17T17:05:00.000Z",
+          "viirs_start": "2023-03-17T17:36:00.000Z",
+          "estimated_aqua_max_zenith": 14.61,
+          "estimated_viirs_max_zenith": 64.32,
+          "nominal_gap_minutes": 31.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-10",
+          "aqua": "MYD14.A2023069.1700.061.2023070105144",
+          "viirs": "VNP14IMG.A2023069.1624.002.2024078212941",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-10T17:00:00.000Z",
+          "viirs_start": "2023-03-10T16:24:00.000Z",
+          "estimated_aqua_max_zenith": 18.22,
+          "estimated_viirs_max_zenith": 41.99,
+          "nominal_gap_minutes": 36.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-13",
+          "aqua": "MYD14.A2023072.0520.061.2023072112957",
+          "viirs": "VNP14IMG.A2023072.0442.002.2024078215722",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-13T05:20:00.000Z",
+          "viirs_start": "2023-03-13T04:42:00.000Z",
+          "estimated_aqua_max_zenith": 62.97,
+          "estimated_viirs_max_zenith": 39.36,
+          "nominal_gap_minutes": 38.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-15",
+          "aqua": "MYD14.A2023074.1715.061.2023075113239",
+          "viirs": "VNP14IMG.A2023074.1636.002.2024078221315",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-15T17:15:00.000Z",
+          "viirs_start": "2023-03-15T16:36:00.000Z",
+          "estimated_aqua_max_zenith": 25.93,
+          "estimated_viirs_max_zenith": 33.06,
+          "nominal_gap_minutes": 39.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-23",
+          "aqua": "MYD14.A2023082.0415.061.2023082112251",
+          "viirs": "VNP14IMG.A2023082.0454.002.2024078232654",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-23T04:15:00.000Z",
+          "viirs_start": "2023-03-23T04:54:00.000Z",
+          "estimated_aqua_max_zenith": 55.02,
+          "estimated_viirs_max_zenith": 53.39,
+          "nominal_gap_minutes": 39.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-12",
+          "aqua": "MYD14.A2023071.1650.061.2023072112813",
+          "viirs": "VNP14IMG.A2023071.1730.002.2024078214918",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-12T16:50:00.000Z",
+          "viirs_start": "2023-03-12T17:30:00.000Z",
+          "estimated_aqua_max_zenith": 41.52,
+          "estimated_viirs_max_zenith": 59.99,
+          "nominal_gap_minutes": 40.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-10",
+          "aqua": "MYD14.A2023069.1705.061.2023070105016",
+          "viirs": "VNP14IMG.A2023069.1624.002.2024078212941",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-10T17:05:00.000Z",
+          "viirs_start": "2023-03-10T16:24:00.000Z",
+          "estimated_aqua_max_zenith": 16.06,
+          "estimated_viirs_max_zenith": 41.99,
+          "nominal_gap_minutes": 41.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-20",
+          "aqua": "MYD14.A2023079.1730.061.2023080112624",
+          "viirs": "VNP14IMG.A2023079.1642.002.2024078230044",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-20T17:30:00.000Z",
+          "viirs_start": "2023-03-20T16:42:00.000Z",
+          "estimated_aqua_max_zenith": 48.37,
+          "estimated_viirs_max_zenith": 22.88,
+          "nominal_gap_minutes": 48.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-18",
+          "aqua": "MYD14.A2023077.0400.061.2023077212402",
+          "viirs": "VNP14IMG.A2023077.0448.002.2024078224003",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-18T04:00:00.000Z",
+          "viirs_start": "2023-03-18T04:48:00.000Z",
+          "estimated_aqua_max_zenith": 66.42,
+          "estimated_viirs_max_zenith": 47.02,
+          "nominal_gap_minutes": 48.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-10",
+          "aqua": "MYD14.A2023069.0450.061.2023069152935",
+          "viirs": "VNP14IMG.A2023069.0400.002.2024078212945",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-10T04:50:00.000Z",
+          "viirs_start": "2023-03-10T04:00:00.000Z",
+          "estimated_aqua_max_zenith": 28.62,
+          "estimated_viirs_max_zenith": 44.69,
+          "nominal_gap_minutes": 50.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-10",
+          "aqua": "MYD14.A2023069.0455.061.2023069153337",
+          "viirs": "VNP14IMG.A2023069.0400.002.2024078212945",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-10T04:55:00.000Z",
+          "viirs_start": "2023-03-10T04:00:00.000Z",
+          "estimated_aqua_max_zenith": 27.67,
+          "estimated_viirs_max_zenith": 44.69,
+          "nominal_gap_minutes": 55.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-25",
+          "aqua": "MYD14.A2023084.1745.061.2023085122706",
+          "viirs": "VNP14IMG.A2023084.1648.002.2024078234516",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-25T17:45:00.000Z",
+          "viirs_start": "2023-03-25T16:48:00.000Z",
+          "estimated_aqua_max_zenith": 62.23,
+          "estimated_viirs_max_zenith": 11.27,
+          "nominal_gap_minutes": 57.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-15",
+          "aqua": "MYD14.A2023074.0505.061.2023074155732",
+          "viirs": "VNP14IMG.A2023074.0406.002.2024078221316",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-15T05:05:00.000Z",
+          "viirs_start": "2023-03-15T04:06:00.000Z",
+          "estimated_aqua_max_zenith": 50.35,
+          "estimated_viirs_max_zenith": 36.42,
+          "nominal_gap_minutes": 59.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-23",
+          "aqua": "MYD14.A2023082.1625.061.2023083114011",
+          "viirs": "VNP14IMG.A2023082.1724.002.2024078232652",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-23T16:25:00.000Z",
+          "viirs_start": "2023-03-23T17:24:00.000Z",
+          "estimated_aqua_max_zenith": 66.74,
+          "estimated_viirs_max_zenith": 54.92,
+          "nominal_gap_minutes": 59.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-12",
+          "aqua": "MYD14.A2023071.1650.061.2023072112813",
+          "viirs": "VNP14IMG.A2023071.1548.002.2024078214918",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-12T16:50:00.000Z",
+          "viirs_start": "2023-03-12T15:48:00.000Z",
+          "estimated_aqua_max_zenith": 41.52,
+          "estimated_viirs_max_zenith": 71.5,
+          "nominal_gap_minutes": 62.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-15",
+          "aqua": "MYD14.A2023074.0510.061.2023074155509",
+          "viirs": "VNP14IMG.A2023074.0406.002.2024078221316",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-15T05:10:00.000Z",
+          "viirs_start": "2023-03-15T04:06:00.000Z",
+          "estimated_aqua_max_zenith": 49.69,
+          "estimated_viirs_max_zenith": 36.42,
+          "nominal_gap_minutes": 64.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-23",
+          "aqua": "MYD14.A2023082.1620.061.2023083114119",
+          "viirs": "VNP14IMG.A2023082.1724.002.2024078232652",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-23T16:20:00.000Z",
+          "viirs_start": "2023-03-23T17:24:00.000Z",
+          "estimated_aqua_max_zenith": 67.27,
+          "estimated_viirs_max_zenith": 54.92,
+          "nominal_gap_minutes": 64.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-20",
+          "aqua": "MYD14.A2023079.0520.061.2023079114618",
+          "viirs": "VNP14IMG.A2023079.0412.002.2024078230044",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-20T05:20:00.000Z",
+          "viirs_start": "2023-03-20T04:12:00.000Z",
+          "estimated_aqua_max_zenith": 63.56,
+          "estimated_viirs_max_zenith": 26.61,
+          "nominal_gap_minutes": 68.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-17",
+          "aqua": "MYD14.A2023076.1705.061.2023077110805",
+          "viirs": "VNP14IMG.A2023076.1554.002.2024078222951",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-17T17:05:00.000Z",
+          "viirs_start": "2023-03-17T15:54:00.000Z",
+          "estimated_aqua_max_zenith": 14.61,
+          "estimated_viirs_max_zenith": 68.26,
+          "nominal_gap_minutes": 71.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-22",
+          "aqua": "MYD14.A2023081.1720.061.2023082112025",
+          "viirs": "VNP14IMG.A2023081.1600.002.2024078231742",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-22T17:20:00.000Z",
+          "viirs_start": "2023-03-22T16:00:00.000Z",
+          "estimated_aqua_max_zenith": 28.99,
+          "estimated_viirs_max_zenith": 64.54,
+          "nominal_gap_minutes": 80.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-12",
+          "aqua": "MYD14.A2023071.0440.061.2023071183942",
+          "viirs": "VNP14IMG.A2023071.0318.002.2024078214918",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-12T04:40:00.000Z",
+          "viirs_start": "2023-03-12T03:18:00.000Z",
+          "estimated_aqua_max_zenith": 12.85,
+          "estimated_viirs_max_zenith": 72.49,
+          "nominal_gap_minutes": 82.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-11",
+          "aqua": "MYD14.A2023070.0355.061.2023070105307",
+          "viirs": "VNP14IMG.A2023070.0518.002.2024078213916",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-11T03:55:00.000Z",
+          "viirs_start": "2023-03-11T05:18:00.000Z",
+          "estimated_aqua_max_zenith": 66.88,
+          "estimated_viirs_max_zenith": 70.29,
+          "nominal_gap_minutes": 83.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-17",
+          "aqua": "MYD14.A2023076.0455.061.2023076114433",
+          "viirs": "VNP14IMG.A2023076.0324.002.2024078222948",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-17T04:55:00.000Z",
+          "viirs_start": "2023-03-17T03:24:00.000Z",
+          "estimated_aqua_max_zenith": 30.45,
+          "estimated_viirs_max_zenith": 69.45,
+          "nominal_gap_minutes": 91.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-22",
+          "aqua": "MYD14.A2023081.0510.061.2023081111949",
+          "viirs": "VNP14IMG.A2023081.0336.002.2024078231740",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-22T05:10:00.000Z",
+          "viirs_start": "2023-03-22T03:36:00.000Z",
+          "estimated_aqua_max_zenith": 51.26,
+          "estimated_viirs_max_zenith": 65.88,
+          "nominal_gap_minutes": 94.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-11",
+          "aqua": "MYD14.A2023070.1745.061.2023071134908",
+          "viirs": "VNP14IMG.A2023070.1606.002.2024078213918",
+          "day_night": "DAY",
+          "aqua_start": "2023-03-11T17:45:00.000Z",
+          "viirs_start": "2023-03-11T16:06:00.000Z",
+          "estimated_aqua_max_zenith": 61.33,
+          "estimated_viirs_max_zenith": 60.36,
+          "nominal_gap_minutes": 99.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2023-03-22",
+          "aqua": "MYD14.A2023081.0510.061.2023081111949",
+          "viirs": "VNP14IMG.A2023081.0330.002.2024078231744",
+          "day_night": "NIGHT",
+          "aqua_start": "2023-03-22T05:10:00.000Z",
+          "viirs_start": "2023-03-22T03:30:00.000Z",
+          "estimated_aqua_max_zenith": 51.26,
+          "estimated_viirs_max_zenith": 66.0,
+          "nominal_gap_minutes": 100.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        }
+      ]
+    },
+    {
+      "first": "2024-05-08",
+      "last": "2024-05-23",
+      "turn": "DAY",
+      "activity_target": "low",
+      "delay_target": "moderate",
+      "selected": {
+        "date": "2024-05-18",
+        "aqua": "MYD14.A2024139.1740.061.2024141121221",
+        "viirs": "VNP14IMG.A2024139.1712.002.2024140010349",
+        "day_night": "DAY",
+        "aqua_start": "2024-05-18T17:40:00.000Z",
+        "viirs_start": "2024-05-18T17:12:00.000Z",
+        "estimated_aqua_max_zenith": 26.43,
+        "estimated_viirs_max_zenith": 42.97,
+        "nominal_gap_minutes": 28.0,
+        "full_roi_in_both_catalog_polygons": true,
+        "reasons": [],
+        "firms_records": 0,
+        "activity": "low",
+        "decision": "selected",
+        "estimated_mib": 218.19683456420918,
+        "target_activity": "low",
+        "target_delay": "moderate"
+      },
+      "dates_without_same_turn_pair": [],
+      "candidates": [
+        {
+          "date": "2024-05-13",
+          "aqua": "MYD14.A2024134.1730.061.2024135111619",
+          "viirs": "VNP14IMG.A2024134.1706.002.2024135010617",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-13T17:30:00.000Z",
+          "viirs_start": "2024-05-13T17:06:00.000Z",
+          "estimated_aqua_max_zenith": 9.95,
+          "estimated_viirs_max_zenith": 34.73,
+          "nominal_gap_minutes": 24.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 17,
+          "activity": "high",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2024-05-23",
+          "aqua": "MYD14.A2024144.1745.061.2024145113458",
+          "viirs": "VNP14IMG.A2024144.1718.002.2024147082038",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-23T17:45:00.000Z",
+          "viirs_start": "2024-05-23T17:18:00.000Z",
+          "estimated_aqua_max_zenith": 38.43,
+          "estimated_viirs_max_zenith": 49.96,
+          "nominal_gap_minutes": 27.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 3,
+          "activity": "high",
+          "decision": "lower_prespecified_rank"
+        },
+        {
+          "date": "2024-05-18",
+          "aqua": "MYD14.A2024139.1740.061.2024141121221",
+          "viirs": "VNP14IMG.A2024139.1712.002.2024140010349",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-18T17:40:00.000Z",
+          "viirs_start": "2024-05-18T17:12:00.000Z",
+          "estimated_aqua_max_zenith": 26.43,
+          "estimated_viirs_max_zenith": 42.97,
+          "nominal_gap_minutes": 28.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "selected",
+          "estimated_mib": 218.19683456420918,
+          "target_activity": "low",
+          "target_delay": "moderate"
+        },
+        {
+          "date": "2024-05-19",
+          "aqua": "MYD14.A2024140.1645.061.2024142153806",
+          "viirs": "VNP14IMG.A2024140.1648.002.2024147053136",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-19T16:45:00.000Z",
+          "viirs_start": "2024-05-19T16:48:00.000Z",
+          "estimated_aqua_max_zenith": 68.17,
+          "estimated_viirs_max_zenith": 13.04,
+          "nominal_gap_minutes": 3.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-22",
+          "aqua": "MYD14.A2024143.0500.061.2024143143339",
+          "viirs": "VNP14IMG.A2024143.0506.002.2024147073448",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-22T05:00:00.000Z",
+          "viirs_start": "2024-05-22T05:06:00.000Z",
+          "estimated_aqua_max_zenith": 22.32,
+          "estimated_viirs_max_zenith": 63.61,
+          "nominal_gap_minutes": 6.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-14",
+          "aqua": "MYD14.A2024135.0425.061.2024135112335",
+          "viirs": "VNP14IMG.A2024135.0418.002.2024135124033",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-14T04:25:00.000Z",
+          "viirs_start": "2024-05-14T04:18:00.000Z",
+          "estimated_aqua_max_zenith": 62.27,
+          "estimated_viirs_max_zenith": 14.48,
+          "nominal_gap_minutes": 7.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-16",
+          "aqua": "MYD14.A2024137.1755.061.2024138120833",
+          "viirs": "VNP14IMG.A2024137.1748.002.2024138032059",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-16T17:55:00.000Z",
+          "viirs_start": "2024-05-16T17:48:00.000Z",
+          "estimated_aqua_max_zenith": 50.61,
+          "estimated_viirs_max_zenith": 71.71,
+          "nominal_gap_minutes": 7.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-09",
+          "aqua": "MYD14.A2024130.0420.061.2024130115034",
+          "viirs": "VNP14IMG.A2024130.0412.002.2024130123545",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-09T04:20:00.000Z",
+          "viirs_start": "2024-05-09T04:12:00.000Z",
+          "estimated_aqua_max_zenith": 67.72,
+          "estimated_viirs_max_zenith": 25.78,
+          "nominal_gap_minutes": 8.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-11",
+          "aqua": "MYD14.A2024132.1750.061.2024133112432",
+          "viirs": "VNP14IMG.A2024132.1742.002.2024133012309",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-11T17:50:00.000Z",
+          "viirs_start": "2024-05-11T17:42:00.000Z",
+          "estimated_aqua_max_zenith": 42.17,
+          "estimated_viirs_max_zenith": 68.6,
+          "nominal_gap_minutes": 8.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-17",
+          "aqua": "MYD14.A2024138.0450.061.2024138120156",
+          "viirs": "VNP14IMG.A2024138.0500.002.2024138170248",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-17T04:50:00.000Z",
+          "viirs_start": "2024-05-17T05:00:00.000Z",
+          "estimated_aqua_max_zenith": 34.86,
+          "estimated_viirs_max_zenith": 59.29,
+          "nominal_gap_minutes": 10.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-19",
+          "aqua": "MYD14.A2024140.0435.061.2024142151424",
+          "viirs": "VNP14IMG.A2024140.0424.002.2024147052850",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-19T04:35:00.000Z",
+          "viirs_start": "2024-05-19T04:24:00.000Z",
+          "estimated_aqua_max_zenith": 56.17,
+          "estimated_viirs_max_zenith": 8.47,
+          "nominal_gap_minutes": 11.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-12",
+          "aqua": "MYD14.A2024133.0440.061.2024133113555",
+          "viirs": "VNP14IMG.A2024133.0454.002.2024133134646",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-12T04:40:00.000Z",
+          "viirs_start": "2024-05-12T04:54:00.000Z",
+          "estimated_aqua_max_zenith": 46.09,
+          "estimated_viirs_max_zenith": 54.12,
+          "nominal_gap_minutes": 14.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-09",
+          "aqua": "MYD14.A2024130.0420.061.2024130115034",
+          "viirs": "VNP14IMG.A2024130.0406.002.2024130124134",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-09T04:20:00.000Z",
+          "viirs_start": "2024-05-09T04:06:00.000Z",
+          "estimated_aqua_max_zenith": 67.72,
+          "estimated_viirs_max_zenith": 26.1,
+          "nominal_gap_minutes": 14.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-08",
+          "aqua": "MYD14.A2024129.1725.061.2024130113733",
+          "viirs": "VNP14IMG.A2024129.1700.002.2024130010541",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-08T17:25:00.000Z",
+          "viirs_start": "2024-05-08T17:00:00.000Z",
+          "estimated_aqua_max_zenith": 18.08,
+          "estimated_viirs_max_zenith": 25.14,
+          "nominal_gap_minutes": 25.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-16",
+          "aqua": "MYD14.A2024137.0545.061.2024137112244",
+          "viirs": "VNP14IMG.A2024137.0518.002.2024137120601",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-16T05:45:00.000Z",
+          "viirs_start": "2024-05-16T05:18:00.000Z",
+          "estimated_aqua_max_zenith": 65.44,
+          "estimated_viirs_max_zenith": 70.76,
+          "nominal_gap_minutes": 27.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-11",
+          "aqua": "MYD14.A2024132.0540.061.2024132195757",
+          "viirs": "VNP14IMG.A2024132.0512.002.2024132140614",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-11T05:40:00.000Z",
+          "viirs_start": "2024-05-11T05:12:00.000Z",
+          "estimated_aqua_max_zenith": 59.9,
+          "estimated_viirs_max_zenith": 67.5,
+          "nominal_gap_minutes": 28.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-17",
+          "aqua": "MYD14.A2024138.1700.061.2024139122751",
+          "viirs": "VNP14IMG.A2024138.1730.002.2024139014336",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-17T17:00:00.000Z",
+          "viirs_start": "2024-05-17T17:30:00.000Z",
+          "estimated_aqua_max_zenith": 56.06,
+          "estimated_viirs_max_zenith": 60.84,
+          "nominal_gap_minutes": 30.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-22",
+          "aqua": "MYD14.A2024143.1705.061.2024144111719",
+          "viirs": "VNP14IMG.A2024143.1736.002.2024147074501",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-22T17:05:00.000Z",
+          "viirs_start": "2024-05-22T17:36:00.000Z",
+          "estimated_aqua_max_zenith": 48.81,
+          "estimated_viirs_max_zenith": 64.91,
+          "nominal_gap_minutes": 31.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 3,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-23",
+          "aqua": "MYD14.A2024144.1750.061.2024145112752",
+          "viirs": "VNP14IMG.A2024144.1718.002.2024147082038",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-23T17:50:00.000Z",
+          "viirs_start": "2024-05-23T17:18:00.000Z",
+          "estimated_aqua_max_zenith": 40.02,
+          "estimated_viirs_max_zenith": 49.96,
+          "nominal_gap_minutes": 32.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi"
+          ],
+          "firms_records": 3,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-21",
+          "aqua": "MYD14.A2024142.0415.061.2024142134208",
+          "viirs": "VNP14IMG.A2024142.0342.002.2024147070349",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-21T04:15:00.000Z",
+          "viirs_start": "2024-05-21T03:42:00.000Z",
+          "estimated_aqua_max_zenith": 68.42,
+          "estimated_viirs_max_zenith": 56.59,
+          "nominal_gap_minutes": 33.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-12",
+          "aqua": "MYD14.A2024133.1650.061.2024134112333",
+          "viirs": "VNP14IMG.A2024133.1724.002.2024134013644",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-12T16:50:00.000Z",
+          "viirs_start": "2024-05-12T17:24:00.000Z",
+          "estimated_aqua_max_zenith": 62.71,
+          "estimated_viirs_max_zenith": 56.0,
+          "nominal_gap_minutes": 34.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-08",
+          "aqua": "MYD14.A2024129.0515.061.2024129115046",
+          "viirs": "VNP14IMG.A2024129.0430.002.2024129125724",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-08T05:15:00.000Z",
+          "viirs_start": "2024-05-08T04:30:00.000Z",
+          "estimated_aqua_max_zenith": 29.55,
+          "estimated_viirs_max_zenith": 20.87,
+          "nominal_gap_minutes": 45.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-18",
+          "aqua": "MYD14.A2024139.0530.061.2024141155144",
+          "viirs": "VNP14IMG.A2024139.0442.002.2024139133606",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-18T05:30:00.000Z",
+          "viirs_start": "2024-05-18T04:42:00.000Z",
+          "estimated_aqua_max_zenith": 51.37,
+          "estimated_viirs_max_zenith": 40.26,
+          "nominal_gap_minutes": 48.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-13",
+          "aqua": "MYD14.A2024134.0525.061.2024134112036",
+          "viirs": "VNP14IMG.A2024134.0436.002.2024134132242",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-13T05:25:00.000Z",
+          "viirs_start": "2024-05-13T04:36:00.000Z",
+          "estimated_aqua_max_zenith": 41.26,
+          "estimated_viirs_max_zenith": 31.37,
+          "nominal_gap_minutes": 49.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-15",
+          "aqua": "MYD14.A2024136.1715.061.2024137112907",
+          "viirs": "VNP14IMG.A2024136.1624.002.2024137001905",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-15T17:15:00.000Z",
+          "viirs_start": "2024-05-15T16:24:00.000Z",
+          "estimated_aqua_max_zenith": 35.62,
+          "estimated_viirs_max_zenith": 41.13,
+          "nominal_gap_minutes": 51.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-10",
+          "aqua": "MYD14.A2024131.1710.061.2024132112851",
+          "viirs": "VNP14IMG.A2024131.1618.002.2024132000818",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-10T17:10:00.000Z",
+          "viirs_start": "2024-05-10T16:18:00.000Z",
+          "estimated_aqua_max_zenith": 45.64,
+          "estimated_viirs_max_zenith": 48.43,
+          "nominal_gap_minutes": 52.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-23",
+          "aqua": "MYD14.A2024144.0540.061.2024144113656",
+          "viirs": "VNP14IMG.A2024144.0448.002.2024147080448",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-23T05:40:00.000Z",
+          "viirs_start": "2024-05-23T04:48:00.000Z",
+          "estimated_aqua_max_zenith": 58.28,
+          "estimated_viirs_max_zenith": 47.66,
+          "nominal_gap_minutes": 52.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-20",
+          "aqua": "MYD14.A2024141.1725.061.2024142121739",
+          "viirs": "VNP14IMG.A2024141.1630.002.2024147063451",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-20T17:25:00.000Z",
+          "viirs_start": "2024-05-20T16:30:00.000Z",
+          "estimated_aqua_max_zenith": 20.84,
+          "estimated_viirs_max_zenith": 32.47,
+          "nominal_gap_minutes": 55.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-15",
+          "aqua": "MYD14.A2024136.0505.061.2024136155112",
+          "viirs": "VNP14IMG.A2024136.0354.002.2024136123301",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-15T05:05:00.000Z",
+          "viirs_start": "2024-05-15T03:54:00.000Z",
+          "estimated_aqua_max_zenith": 11.35,
+          "estimated_viirs_max_zenith": 44.03,
+          "nominal_gap_minutes": 71.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-22",
+          "aqua": "MYD14.A2024143.1705.061.2024144111719",
+          "viirs": "VNP14IMG.A2024143.1554.002.2024147074419",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-22T17:05:00.000Z",
+          "viirs_start": "2024-05-22T15:54:00.000Z",
+          "estimated_aqua_max_zenith": 48.81,
+          "estimated_viirs_max_zenith": 67.88,
+          "nominal_gap_minutes": 71.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 3,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-10",
+          "aqua": "MYD14.A2024131.0500.061.2024131121036",
+          "viirs": "VNP14IMG.A2024131.0348.002.2024131114921",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-10T05:00:00.000Z",
+          "viirs_start": "2024-05-10T03:48:00.000Z",
+          "estimated_aqua_max_zenith": 18.37,
+          "estimated_viirs_max_zenith": 50.8,
+          "nominal_gap_minutes": 72.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 2,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-17",
+          "aqua": "MYD14.A2024138.1700.061.2024139122751",
+          "viirs": "VNP14IMG.A2024138.1548.002.2024139012636",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-17T17:00:00.000Z",
+          "viirs_start": "2024-05-17T15:48:00.000Z",
+          "estimated_aqua_max_zenith": 56.06,
+          "estimated_viirs_max_zenith": 71.07,
+          "nominal_gap_minutes": 72.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-20",
+          "aqua": "MYD14.A2024141.0515.061.2024141122025",
+          "viirs": "VNP14IMG.A2024141.0400.002.2024147063453",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-20T05:15:00.000Z",
+          "viirs_start": "2024-05-20T04:00:00.000Z",
+          "estimated_aqua_max_zenith": 26.73,
+          "estimated_viirs_max_zenith": 35.95,
+          "nominal_gap_minutes": 75.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-09",
+          "aqua": "MYD14.A2024130.1805.061.2024131120430",
+          "viirs": "VNP14IMG.A2024130.1636.002.2024131003207",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-09T18:05:00.000Z",
+          "viirs_start": "2024-05-09T16:36:00.000Z",
+          "estimated_aqua_max_zenith": 59.7,
+          "estimated_viirs_max_zenith": 21.67,
+          "nominal_gap_minutes": 89.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-17",
+          "aqua": "MYD14.A2024138.0450.061.2024138120156",
+          "viirs": "VNP14IMG.A2024138.0318.002.2024138170516",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-17T04:50:00.000Z",
+          "viirs_start": "2024-05-17T03:18:00.000Z",
+          "estimated_aqua_max_zenith": 34.86,
+          "estimated_viirs_max_zenith": 72.02,
+          "nominal_gap_minutes": 92.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-14",
+          "aqua": "MYD14.A2024135.1815.061.2024136111510",
+          "viirs": "VNP14IMG.A2024135.1642.002.2024136004609",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-14T18:15:00.000Z",
+          "viirs_start": "2024-05-14T16:42:00.000Z",
+          "estimated_aqua_max_zenith": 65.79,
+          "estimated_viirs_max_zenith": 9.92,
+          "nominal_gap_minutes": 93.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 1,
+          "activity": "intermediate",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-22",
+          "aqua": "MYD14.A2024143.0500.061.2024143143339",
+          "viirs": "VNP14IMG.A2024143.0324.002.2024147073416",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-22T05:00:00.000Z",
+          "viirs_start": "2024-05-22T03:24:00.000Z",
+          "estimated_aqua_max_zenith": 22.32,
+          "estimated_viirs_max_zenith": 68.96,
+          "nominal_gap_minutes": 96.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-16",
+          "aqua": "MYD14.A2024137.1755.061.2024138120833",
+          "viirs": "VNP14IMG.A2024137.1606.002.2024138025529",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-16T17:55:00.000Z",
+          "viirs_start": "2024-05-16T16:06:00.000Z",
+          "estimated_aqua_max_zenith": 50.61,
+          "estimated_viirs_max_zenith": 59.76,
+          "nominal_gap_minutes": 109.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-11",
+          "aqua": "MYD14.A2024132.1750.061.2024133112432",
+          "viirs": "VNP14IMG.A2024132.1600.002.2024133012309",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-11T17:50:00.000Z",
+          "viirs_start": "2024-05-11T16:00:00.000Z",
+          "estimated_aqua_max_zenith": 42.17,
+          "estimated_viirs_max_zenith": 64.05,
+          "nominal_gap_minutes": 110.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-21",
+          "aqua": "MYD14.A2024142.1805.061.2024143141457",
+          "viirs": "VNP14IMG.A2024142.1612.002.2024147070543",
+          "day_night": "DAY",
+          "aqua_start": "2024-05-21T18:05:00.000Z",
+          "viirs_start": "2024-05-21T16:12:00.000Z",
+          "estimated_aqua_max_zenith": 58.56,
+          "estimated_viirs_max_zenith": 54.74,
+          "nominal_gap_minutes": 113.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 7,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-16",
+          "aqua": "MYD14.A2024137.0545.061.2024137112244",
+          "viirs": "VNP14IMG.A2024137.0336.002.2024137102722",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-16T05:45:00.000Z",
+          "viirs_start": "2024-05-16T03:36:00.000Z",
+          "estimated_aqua_max_zenith": 65.44,
+          "estimated_viirs_max_zenith": 61.31,
+          "nominal_gap_minutes": 129.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-05-11",
+          "aqua": "MYD14.A2024132.0540.061.2024132195757",
+          "viirs": "VNP14IMG.A2024132.0330.002.2024132101316",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-05-11T05:40:00.000Z",
+          "viirs_start": "2024-05-11T03:30:00.000Z",
+          "estimated_aqua_max_zenith": 59.9,
+          "estimated_viirs_max_zenith": 65.36,
+          "nominal_gap_minutes": 130.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        }
+      ]
+    },
+    {
+      "first": "2024-11-08",
+      "last": "2024-11-23",
+      "turn": "NIGHT",
+      "activity_target": "high",
+      "delay_target": "short",
+      "selected": null,
+      "dates_without_same_turn_pair": [],
+      "candidates": [
+        {
+          "date": "2024-11-21",
+          "aqua": "MYD14.A2024326.1730.061.2024327104434",
+          "viirs": "VNP14IMG.A2024326.1700.002.2024327013937",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-21T17:30:00.000Z",
+          "viirs_start": "2024-11-21T17:00:00.000Z",
+          "estimated_aqua_max_zenith": 34.73,
+          "estimated_viirs_max_zenith": 32.56,
+          "nominal_gap_minutes": 30.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-10",
+          "aqua": "MYD14.A2024315.0440.061.2024317194521",
+          "viirs": "VNP14IMG.A2024315.0442.002.2024319220810",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-10T04:40:00.000Z",
+          "viirs_start": "2024-11-10T04:42:00.000Z",
+          "estimated_aqua_max_zenith": 64.02,
+          "estimated_viirs_max_zenith": 38.48,
+          "nominal_gap_minutes": 2.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-15",
+          "aqua": "MYD14.A2024320.0440.061.2024320120016",
+          "viirs": "VNP14IMG.A2024320.0448.002.2024320164909",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-15T04:40:00.000Z",
+          "viirs_start": "2024-11-15T04:48:00.000Z",
+          "estimated_aqua_max_zenith": 62.02,
+          "estimated_viirs_max_zenith": 46.42,
+          "nominal_gap_minutes": 8.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 3,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-19",
+          "aqua": "MYD14.A2024324.1750.061.2024325110606",
+          "viirs": "VNP14IMG.A2024324.1742.002.2024325013524",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-19T17:50:00.000Z",
+          "viirs_start": "2024-11-19T17:42:00.000Z",
+          "estimated_aqua_max_zenith": 17.05,
+          "estimated_viirs_max_zenith": 68.16,
+          "nominal_gap_minutes": 8.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-20",
+          "aqua": "MYD14.A2024325.0445.061.2024325112726",
+          "viirs": "VNP14IMG.A2024325.0454.002.2024326173520",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-20T04:45:00.000Z",
+          "viirs_start": "2024-11-20T04:54:00.000Z",
+          "estimated_aqua_max_zenith": 60.8,
+          "estimated_viirs_max_zenith": 52.72,
+          "nominal_gap_minutes": 9.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-14",
+          "aqua": "MYD14.A2024319.1745.061.2024320104745",
+          "viirs": "VNP14IMG.A2024319.1736.002.2024320160719",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-14T17:45:00.000Z",
+          "viirs_start": "2024-11-14T17:36:00.000Z",
+          "estimated_aqua_max_zenith": 11.58,
+          "estimated_viirs_max_zenith": 64.57,
+          "nominal_gap_minutes": 9.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-09",
+          "aqua": "MYD14.A2024314.1745.061.2024317202503",
+          "viirs": "VNP14IMG.A2024314.1730.002.2024317205953",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-09T17:45:00.000Z",
+          "viirs_start": "2024-11-09T17:30:00.000Z",
+          "estimated_aqua_max_zenith": 7.68,
+          "estimated_viirs_max_zenith": 60.4,
+          "nominal_gap_minutes": 15.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-08",
+          "aqua": "MYD14.A2024313.0455.061.2024313111320",
+          "viirs": "VNP14IMG.A2024313.0518.002.2024317202941",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-08T04:55:00.000Z",
+          "viirs_start": "2024-11-08T05:18:00.000Z",
+          "estimated_aqua_max_zenith": 45.69,
+          "estimated_viirs_max_zenith": 70.33,
+          "nominal_gap_minutes": 23.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-19",
+          "aqua": "MYD14.A2024324.0540.061.2024324132825",
+          "viirs": "VNP14IMG.A2024324.0512.002.2024324190544",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-19T05:40:00.000Z",
+          "viirs_start": "2024-11-19T05:12:00.000Z",
+          "estimated_aqua_max_zenith": 46.56,
+          "estimated_viirs_max_zenith": 66.85,
+          "nominal_gap_minutes": 28.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-14",
+          "aqua": "MYD14.A2024319.0540.061.2024319110005",
+          "viirs": "VNP14IMG.A2024319.0506.002.2024320160750",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-14T05:40:00.000Z",
+          "viirs_start": "2024-11-14T05:06:00.000Z",
+          "estimated_aqua_max_zenith": 43.45,
+          "estimated_viirs_max_zenith": 63.0,
+          "nominal_gap_minutes": 34.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-09",
+          "aqua": "MYD14.A2024314.0535.061.2024317194440",
+          "viirs": "VNP14IMG.A2024314.0500.002.2024317210000",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-09T05:35:00.000Z",
+          "viirs_start": "2024-11-09T05:00:00.000Z",
+          "estimated_aqua_max_zenith": 40.76,
+          "estimated_viirs_max_zenith": 58.5,
+          "nominal_gap_minutes": 35.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-16",
+          "aqua": "MYD14.A2024321.1730.061.2024322105829",
+          "viirs": "VNP14IMG.A2024321.1654.002.2024322003303",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-16T17:30:00.000Z",
+          "viirs_start": "2024-11-16T16:54:00.000Z",
+          "estimated_aqua_max_zenith": 37.08,
+          "estimated_viirs_max_zenith": 22.3,
+          "nominal_gap_minutes": 36.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-11",
+          "aqua": "MYD14.A2024316.1725.061.2024317233234",
+          "viirs": "VNP14IMG.A2024316.1648.002.2024320120744",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-11T17:25:00.000Z",
+          "viirs_start": "2024-11-11T16:48:00.000Z",
+          "estimated_aqua_max_zenith": 41.23,
+          "estimated_viirs_max_zenith": 10.85,
+          "nominal_gap_minutes": 37.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-08",
+          "aqua": "MYD14.A2024313.1705.061.2024317202517",
+          "viirs": "VNP14IMG.A2024313.1748.002.2024317202944",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-08T17:05:00.000Z",
+          "viirs_start": "2024-11-08T17:48:00.000Z",
+          "estimated_aqua_max_zenith": 62.77,
+          "estimated_viirs_max_zenith": 71.38,
+          "nominal_gap_minutes": 43.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-23",
+          "aqua": "MYD14.A2024328.1710.061.2024330102917",
+          "viirs": "VNP14IMG.A2024328.1624.002.2024331170633",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-23T17:10:00.000Z",
+          "viirs_start": "2024-11-23T16:24:00.000Z",
+          "estimated_aqua_max_zenith": 57.97,
+          "estimated_viirs_max_zenith": 42.48,
+          "nominal_gap_minutes": 46.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-21",
+          "aqua": "MYD14.A2024326.0520.061.2024326113421",
+          "viirs": "VNP14IMG.A2024326.0430.002.2024326182926",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-21T05:20:00.000Z",
+          "viirs_start": "2024-11-21T04:30:00.000Z",
+          "estimated_aqua_max_zenith": 13.83,
+          "estimated_viirs_max_zenith": 28.9,
+          "nominal_gap_minutes": 50.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-18",
+          "aqua": "MYD14.A2024323.1710.061.2024324133039",
+          "viirs": "VNP14IMG.A2024323.1618.002.2024324000525",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-18T17:10:00.000Z",
+          "viirs_start": "2024-11-18T16:18:00.000Z",
+          "estimated_aqua_max_zenith": 59.41,
+          "estimated_viirs_max_zenith": 49.64,
+          "nominal_gap_minutes": 52.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-13",
+          "aqua": "MYD14.A2024318.1705.061.2024320122533",
+          "viirs": "VNP14IMG.A2024318.1612.002.2024320145841",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-13T17:05:00.000Z",
+          "viirs_start": "2024-11-13T16:12:00.000Z",
+          "estimated_aqua_max_zenith": 61.36,
+          "estimated_viirs_max_zenith": 55.48,
+          "nominal_gap_minutes": 53.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-16",
+          "aqua": "MYD14.A2024321.0520.061.2024321201518",
+          "viirs": "VNP14IMG.A2024321.0424.002.2024321130433",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-16T05:20:00.000Z",
+          "viirs_start": "2024-11-16T04:24:00.000Z",
+          "estimated_aqua_max_zenith": 9.6,
+          "estimated_viirs_max_zenith": 18.2,
+          "nominal_gap_minutes": 56.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-11",
+          "aqua": "MYD14.A2024316.0515.061.2024317232333",
+          "viirs": "VNP14IMG.A2024316.0418.002.2024320120745",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-11T05:15:00.000Z",
+          "viirs_start": "2024-11-11T04:18:00.000Z",
+          "estimated_aqua_max_zenith": 7.9,
+          "estimated_viirs_max_zenith": 6.43,
+          "nominal_gap_minutes": 57.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-08",
+          "aqua": "MYD14.A2024313.1705.061.2024317202517",
+          "viirs": "VNP14IMG.A2024313.1606.002.2024317202945",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-08T17:05:00.000Z",
+          "viirs_start": "2024-11-08T16:06:00.000Z",
+          "estimated_aqua_max_zenith": 62.77,
+          "estimated_viirs_max_zenith": 60.39,
+          "nominal_gap_minutes": 59.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-23",
+          "aqua": "MYD14.A2024328.0505.061.2024328215653",
+          "viirs": "VNP14IMG.A2024328.0354.002.2024331170628",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-23T05:05:00.000Z",
+          "viirs_start": "2024-11-23T03:54:00.000Z",
+          "estimated_aqua_max_zenith": 36.72,
+          "estimated_viirs_max_zenith": 44.92,
+          "nominal_gap_minutes": 71.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-18",
+          "aqua": "MYD14.A2024323.0500.061.2024323112023",
+          "viirs": "VNP14IMG.A2024323.0348.002.2024323114443",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-18T05:00:00.000Z",
+          "viirs_start": "2024-11-18T03:48:00.000Z",
+          "estimated_aqua_max_zenith": 39.6,
+          "estimated_viirs_max_zenith": 51.61,
+          "nominal_gap_minutes": 72.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-20",
+          "aqua": "MYD14.A2024325.1830.061.2024326113218",
+          "viirs": "VNP14IMG.A2024325.1718.002.2024326173534",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-20T18:30:00.000Z",
+          "viirs_start": "2024-11-20T17:18:00.000Z",
+          "estimated_aqua_max_zenith": 66.54,
+          "estimated_viirs_max_zenith": 54.97,
+          "nominal_gap_minutes": 72.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-15",
+          "aqua": "MYD14.A2024320.1825.061.2024321200131",
+          "viirs": "VNP14IMG.A2024320.1712.002.2024321013416",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-15T18:25:00.000Z",
+          "viirs_start": "2024-11-15T17:12:00.000Z",
+          "estimated_aqua_max_zenith": 64.79,
+          "estimated_viirs_max_zenith": 48.91,
+          "nominal_gap_minutes": 73.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-13",
+          "aqua": "MYD14.A2024318.0500.061.2024318121450",
+          "viirs": "VNP14IMG.A2024318.0342.002.2024320145838",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-13T05:00:00.000Z",
+          "viirs_start": "2024-11-13T03:42:00.000Z",
+          "estimated_aqua_max_zenith": 42.88,
+          "estimated_viirs_max_zenith": 57.1,
+          "nominal_gap_minutes": 78.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 6,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-08",
+          "aqua": "MYD14.A2024313.0455.061.2024313111320",
+          "viirs": "VNP14IMG.A2024313.0336.002.2024317202945",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-08T04:55:00.000Z",
+          "viirs_start": "2024-11-08T03:36:00.000Z",
+          "estimated_aqua_max_zenith": 45.69,
+          "estimated_viirs_max_zenith": 61.77,
+          "nominal_gap_minutes": 79.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-10",
+          "aqua": "MYD14.A2024315.1825.061.2024317212209",
+          "viirs": "VNP14IMG.A2024315.1706.002.2024319222040",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-10T18:25:00.000Z",
+          "viirs_start": "2024-11-10T17:06:00.000Z",
+          "estimated_aqua_max_zenith": 63.73,
+          "estimated_viirs_max_zenith": 41.57,
+          "nominal_gap_minutes": 79.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-22",
+          "aqua": "MYD14.A2024327.1810.061.2024328101555",
+          "viirs": "VNP14IMG.A2024327.1642.002.2024331152522",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-22T18:10:00.000Z",
+          "viirs_start": "2024-11-22T16:42:00.000Z",
+          "estimated_aqua_max_zenith": 50.28,
+          "estimated_viirs_max_zenith": 12.36,
+          "nominal_gap_minutes": 88.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-17",
+          "aqua": "MYD14.A2024322.1810.061.2024323110026",
+          "viirs": "VNP14IMG.A2024322.1636.002.2024323001023",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-17T18:10:00.000Z",
+          "viirs_start": "2024-11-17T16:36:00.000Z",
+          "estimated_aqua_max_zenith": 48.78,
+          "estimated_viirs_max_zenith": 23.94,
+          "nominal_gap_minutes": 94.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-12",
+          "aqua": "MYD14.A2024317.1805.061.2024318120913",
+          "viirs": "VNP14IMG.A2024317.1630.002.2024320132619",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-12T18:05:00.000Z",
+          "viirs_start": "2024-11-12T16:30:00.000Z",
+          "estimated_aqua_max_zenith": 45.29,
+          "estimated_viirs_max_zenith": 33.89,
+          "nominal_gap_minutes": 95.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-22",
+          "aqua": "MYD14.A2024327.0600.061.2024327143040",
+          "viirs": "VNP14IMG.A2024327.0412.002.2024331152525",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-22T06:00:00.000Z",
+          "viirs_start": "2024-11-22T04:12:00.000Z",
+          "estimated_aqua_max_zenith": 65.55,
+          "estimated_viirs_max_zenith": 16.5,
+          "nominal_gap_minutes": 108.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-19",
+          "aqua": "MYD14.A2024324.1750.061.2024325110606",
+          "viirs": "VNP14IMG.A2024324.1600.002.2024325013526",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-19T17:50:00.000Z",
+          "viirs_start": "2024-11-19T16:00:00.000Z",
+          "estimated_aqua_max_zenith": 17.05,
+          "estimated_viirs_max_zenith": 64.73,
+          "nominal_gap_minutes": 110.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-14",
+          "aqua": "MYD14.A2024319.1745.061.2024320104745",
+          "viirs": "VNP14IMG.A2024319.1554.002.2024320160908",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-14T17:45:00.000Z",
+          "viirs_start": "2024-11-14T15:54:00.000Z",
+          "estimated_aqua_max_zenith": 11.58,
+          "estimated_viirs_max_zenith": 68.3,
+          "nominal_gap_minutes": 111.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-17",
+          "aqua": "MYD14.A2024322.0600.061.2024322142839",
+          "viirs": "VNP14IMG.A2024322.0406.002.2024322121146",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-17T06:00:00.000Z",
+          "viirs_start": "2024-11-17T04:06:00.000Z",
+          "estimated_aqua_max_zenith": 64.21,
+          "estimated_viirs_max_zenith": 27.46,
+          "nominal_gap_minutes": 114.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-12",
+          "aqua": "MYD14.A2024317.0555.061.2024317233726",
+          "viirs": "VNP14IMG.A2024317.0400.002.2024320132619",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-12T05:55:00.000Z",
+          "viirs_start": "2024-11-12T04:00:00.000Z",
+          "estimated_aqua_max_zenith": 62.62,
+          "estimated_viirs_max_zenith": 36.86,
+          "nominal_gap_minutes": 115.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 1,
+          "activity": "high",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-09",
+          "aqua": "MYD14.A2024314.1745.061.2024317202503",
+          "viirs": "VNP14IMG.A2024314.1548.002.2024317205956",
+          "day_night": "DAY",
+          "aqua_start": "2024-11-09T17:45:00.000Z",
+          "viirs_start": "2024-11-09T15:48:00.000Z",
+          "estimated_aqua_max_zenith": 7.68,
+          "estimated_viirs_max_zenith": 71.44,
+          "nominal_gap_minutes": 117.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "different_turn_from_stratum",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-19",
+          "aqua": "MYD14.A2024324.0540.061.2024324132825",
+          "viirs": "VNP14IMG.A2024324.0330.002.2024324100914",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-19T05:40:00.000Z",
+          "viirs_start": "2024-11-19T03:30:00.000Z",
+          "estimated_aqua_max_zenith": 46.56,
+          "estimated_viirs_max_zenith": 65.88,
+          "nominal_gap_minutes": 130.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-14",
+          "aqua": "MYD14.A2024319.0540.061.2024319110005",
+          "viirs": "VNP14IMG.A2024319.0324.002.2024320160720",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-14T05:40:00.000Z",
+          "viirs_start": "2024-11-14T03:24:00.000Z",
+          "estimated_aqua_max_zenith": 43.45,
+          "estimated_viirs_max_zenith": 69.3,
+          "nominal_gap_minutes": 136.0,
+          "full_roi_in_both_catalog_polygons": true,
+          "reasons": [
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        },
+        {
+          "date": "2024-11-09",
+          "aqua": "MYD14.A2024314.0535.061.2024317194440",
+          "viirs": "VNP14IMG.A2024314.0318.002.2024317205955",
+          "day_night": "NIGHT",
+          "aqua_start": "2024-11-09T05:35:00.000Z",
+          "viirs_start": "2024-11-09T03:18:00.000Z",
+          "estimated_aqua_max_zenith": 40.76,
+          "estimated_viirs_max_zenith": 72.33,
+          "nominal_gap_minutes": 137.0,
+          "full_roi_in_both_catalog_polygons": false,
+          "reasons": [
+            "catalog_corners_do_not_enclose_full_roi",
+            "estimated_angle_above_55",
+            "nominal_gap_over_45"
+          ],
+          "firms_records": 0,
+          "activity": "low",
+          "decision": "excluded"
+        }
+      ]
+    }
+  ]
+}

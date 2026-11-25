@@ -33,7 +33,11 @@ def _agreement(matched):
     neither = categories["observed_without_detection"]
     total = both + aqua + viirs + neither
     positives = both + aqua + viirs
+    expected_matches = (both + aqua) * (both + viirs) + (neither + viirs) * (neither + aqua)
+    kappa_denominator = total ** 2 - expected_matches
     return {
+        "cohen_kappa": ((both + neither) * total - expected_matches) / kappa_denominator
+        if kappa_denominator else None,
         "both_detected": both,
         "aqua_only_viirs_valid": aqua,
         "viirs_only_aqua_valid": viirs,
@@ -92,6 +96,7 @@ def summarize(rows, factor=1.0):
                 "baselines_on_eligible_cells": {name: _sum_observed([r[name] for r in eligible]) for name in BASELINES},
                 **{name: _sum_observed([r[name] for r in matched]) for name in (
                     "aqua_on_common_support", "viirs_on_common_support", "coverage_conditioned",
+                    "detection_conditioned_on_common_support",
                     "aqua_center_with_viirs_clear", "viirs_center_with_aqua_clear",
                 )},
             })
@@ -139,11 +144,7 @@ def _save_geojson(path, rows):
     })
 
 
-def run_pilot(manifest, calibration, output, min_joint, max_zenith=MAX_ZENITH):
-    if not 0 < min_joint <= 1:
-        raise ValueError("The minimum common coverage fraction must be in (0, 1].")
-    if not 0 < max_zenith <= 70:
-        raise ValueError("The zenith limit must be in (0, 70] degrees.")
+def verified_inputs(manifest, calibration):
     plan = verified_plan(manifest)
     sources = {}
     for row in plan["granules"]:
@@ -164,6 +165,15 @@ def run_pilot(manifest, calibration, output, min_joint, max_zenith=MAX_ZENITH):
     # This bounded pilot is limited to its preregistered region.
     if bounds != [-48.433, -21.215243, -47.181633, -20.8087035]:
         raise ValueError("Unexpected pilot region.")
+    return plan, sources, bounds, factor, hashlib.sha256(calibration_bytes).hexdigest()
+
+
+def run_pilot(manifest, calibration, output, min_joint, max_zenith=MAX_ZENITH):
+    if not 0 < min_joint <= 1:
+        raise ValueError("The minimum common coverage fraction must be in (0, 1].")
+    if not 0 < max_zenith <= 70:
+        raise ValueError("The zenith limit must be in (0, 70] degrees.")
+    plan, sources, bounds, factor, calibration_hash = verified_inputs(manifest, calibration)
     projection, crs = local_projection(bounds)
     aqua, time_aqua = sources["MYD14"]
     viirs, time_viirs = sources["VNP14IMG"]
@@ -188,7 +198,7 @@ def run_pilot(manifest, calibration, output, min_joint, max_zenith=MAX_ZENITH):
         "max_sensor_zenith_degrees": max_zenith,
         "angle_analysis": "preregistered" if max_zenith == MAX_ZENITH else "exploratory_sensitivity",
         "calibration": {"method": "monthly_shrunk_union", "factor": factor,
-                        "source_sha256": hashlib.sha256(calibration_bytes).hexdigest()},
+                        "source_sha256": calibration_hash},
         "summary_by_record_category": summarize(rows, factor),
     })
 

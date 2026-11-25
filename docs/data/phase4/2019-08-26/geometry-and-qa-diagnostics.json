@@ -1,0 +1,81 @@
+{
+  "aqua_geometry_by_legacy_disposition": {
+    "retained": {
+      "centers": 4,
+      "covering_states": {},
+      "covering_scan_offsets": {},
+      "across_track_m_min_median_max": [
+        1117.3859057294887,
+        1127.2104132766694,
+        1214.810244163884
+      ],
+      "along_track_m_min_median_max": [
+        1058.8737842855317,
+        1059.7142865285055,
+        1105.5707112001662
+      ],
+      "footprint_area_m2_min_median_max": [
+        1184449.155248424,
+        1193872.519069776,
+        1342934.232902868
+      ],
+      "footprint_overlap_m2_min_median_max": null,
+      "covering_center_distance_m_min_median_max": null,
+      "covering_scan_time_offset_s_min_median_max": null,
+      "abs_error_vs_firms_across_m": [
+        14.810244163883908,
+        21.794282523113452,
+        28.218167236600948
+      ],
+      "abs_error_vs_firms_along_m": [
+        5.570711200166215,
+        40.285713471494546,
+        41.126215714468344
+      ]
+    }
+  },
+  "viirs_input_qa_by_bit6": {
+    "False": {
+      "count": 3,
+      "confidence": {
+        "8": 2,
+        "7": 1
+      },
+      "input_bits": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      },
+      "frp_mw_min_median_max": [
+        2.0108227729797363,
+        2.046478271484375,
+        7.392344951629639
+      ]
+    },
+    "True": {
+      "count": 6,
+      "confidence": {
+        "8": 4,
+        "9": 2
+      },
+      "input_bits": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 0,
+        "5": 0,
+        "6": 6
+      },
+      "frp_mw_min_median_max": [
+        16.731090545654297,
+        19.635973930358887,
+        110.63238525390625
+      ]
+    }
+  }
+}

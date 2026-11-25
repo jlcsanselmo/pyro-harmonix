@@ -1,0 +1,133 @@
+{
+  "aqua_geometry_by_legacy_disposition": {
+    "center_assigned_to_overlapping_footprint": {
+      "centers": 35,
+      "covering_states": {
+        "fire": 22,
+        "clear_no_fire": 13
+      },
+      "covering_scan_offsets": {
+        "1": 16,
+        "-1": 19
+      },
+      "across_track_m_min_median_max": [
+        3363.000227277466,
+        3544.789581034256,
+        4005.9537899334723
+      ],
+      "along_track_m_min_median_max": [
+        1728.6027881787372,
+        1772.241838932424,
+        1852.133185567548
+      ],
+      "footprint_area_m2_min_median_max": [
+        5832904.7387103755,
+        6271939.442378139,
+        7419545.987471003
+      ],
+      "footprint_overlap_m2_min_median_max": [
+        3041347.8016941384,
+        3363598.2665781016,
+        4269838.761464649
+      ],
+      "covering_center_distance_m_min_median_max": [
+        730.509466029608,
+        903.1484476995207,
+        1150.1788860455026
+      ],
+      "covering_scan_time_offset_s_min_median_max": [
+        -1.4771130084991455,
+        -1.4771130084991455,
+        1.4771130084991455
+      ],
+      "abs_error_vs_firms_across_m": [
+        0.2703273153902046,
+        38.4346584064142,
+        139.43149597395723
+      ],
+      "abs_error_vs_firms_along_m": [
+        13.268534329084105,
+        31.67639260757801,
+        58.986660737250986
+      ]
+    },
+    "retained": {
+      "centers": 32,
+      "covering_states": {},
+      "covering_scan_offsets": {},
+      "across_track_m_min_median_max": [
+        3393.5742733449383,
+        3598.28319942468,
+        4028.2251388212007
+      ],
+      "along_track_m_min_median_max": [
+        1728.5151158371752,
+        1771.702498712601,
+        1851.8005234060295
+      ],
+      "footprint_area_m2_min_median_max": [
+        5889937.641620291,
+        6366691.089265844,
+        7443000.638613452
+      ],
+      "footprint_overlap_m2_min_median_max": null,
+      "covering_center_distance_m_min_median_max": null,
+      "covering_scan_time_offset_s_min_median_max": null,
+      "abs_error_vs_firms_across_m": [
+        2.1157647073332555,
+        44.162549019088374,
+        138.01467539046735
+      ],
+      "abs_error_vs_firms_along_m": [
+        13.220802158866718,
+        33.00862848449435,
+        59.008973127313766
+      ]
+    }
+  },
+  "viirs_input_qa_by_bit6": {
+    "False": {
+      "count": 83,
+      "confidence": {
+        "7": 16,
+        "8": 67
+      },
+      "input_bits": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0
+      },
+      "frp_mw_min_median_max": [
+        2.6652615070343018,
+        7.194637298583984,
+        22.40220069885254
+      ]
+    },
+    "True": {
+      "count": 280,
+      "confidence": {
+        "8": 193,
+        "9": 40,
+        "7": 47
+      },
+      "input_bits": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 15,
+        "4": 0,
+        "5": 0,
+        "6": 280
+      },
+      "frp_mw_min_median_max": [
+        9.919340133666992,
+        44.26738929748535,
+        435.8647155761719
+      ]
+    }
+  }
+}

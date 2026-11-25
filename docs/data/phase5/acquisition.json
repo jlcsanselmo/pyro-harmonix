@@ -1,0 +1,40 @@
+{
+  "authorized_bytes": 1610612736,
+  "receipts": [
+    {
+      "date": "2020-02-23",
+      "pair": "altinopolis-pitangueiras-2020-02-23-day",
+      "status": "verified",
+      "bytes": 198447775,
+      "elapsed_seconds": 36.765846199996304
+    },
+    {
+      "date": "2021-07-19",
+      "pair": "altinopolis-pitangueiras-2021-07-19-night",
+      "status": "verified",
+      "bytes": 202995132,
+      "elapsed_seconds": 34.78380059999472
+    },
+    {
+      "date": "2022-09-18",
+      "pair": "altinopolis-pitangueiras-2022-09-18-day",
+      "status": "verified",
+      "bytes": 234504941,
+      "elapsed_seconds": 40.141720899991924
+    },
+    {
+      "date": "2023-03-24",
+      "pair": "altinopolis-pitangueiras-2023-03-24-night",
+      "status": "verified",
+      "bytes": 216357040,
+      "elapsed_seconds": 37.706174000006285
+    },
+    {
+      "date": "2024-05-18",
+      "pair": "altinopolis-pitangueiras-2024-05-18-day",
+      "status": "verified",
+      "bytes": 228795964,
+      "elapsed_seconds": 38.7962797999935
+    }
+  ]
+}

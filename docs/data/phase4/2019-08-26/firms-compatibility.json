@@ -1,0 +1,93 @@
+{
+  "aqua": {
+    "granule": "MYD14.A2019238.1645.061.2020305001451.hdf",
+    "firms_source": "MODIS_SP_2019.csv.gz",
+    "firms_sha256": "484315d51f415af3f367d78d5968ebcb19532861a67e66ef471eaf993ce4592c",
+    "firms_window_hhmm_utc": [
+      "1645",
+      "1650"
+    ],
+    "firms": 4,
+    "native_mask": 4,
+    "firms_duplicate_coordinates_at_5dp": 0,
+    "orbital_duplicate_coordinates_at_5dp": 0,
+    "maximum_one_to_one_matches_by_distance_m": {
+      "10": 4,
+      "100": 4,
+      "500": 4
+    },
+    "firms_confidence_by_orbital_mask": {
+      "8:67": 1,
+      "9:100": 2,
+      "8:76": 1
+    },
+    "firms_type_counts": {
+      "0": 4
+    },
+    "matched_firms_versions": [
+      "6.03"
+    ],
+    "matched_distance_m": [
+      2.5371896330434476,
+      3.4370758126779517
+    ],
+    "matched_scan_seconds_from_firms_minute": [
+      9.013678,
+      10.490791
+    ]
+  },
+  "viirs": {
+    "granule": "VNP14IMG.A2019238.1648.002.2024095081424.nc",
+    "firms_source": "VIIRS_SNPP_SP_2019.csv.gz",
+    "firms_sha256": "014d880bb791d6180a1c12c33a740e39adb71703517edb638930e858694e3d41",
+    "firms_window_hhmm_utc": [
+      "1648",
+      "1654"
+    ],
+    "firms": 9,
+    "native_mask": 9,
+    "firms_duplicate_coordinates_at_5dp": 0,
+    "orbital_duplicate_coordinates_at_5dp": 0,
+    "maximum_one_to_one_matches_by_distance_m": {
+      "10": 9,
+      "100": 9,
+      "500": 9
+    },
+    "firms_confidence_by_orbital_mask": {
+      "8:n": 6,
+      "9:h": 2,
+      "7:l": 1
+    },
+    "firms_type_counts": {
+      "0": 9
+    },
+    "matched_firms_versions": [
+      "2"
+    ],
+    "matched_distance_m": [
+      0.17165088539077325,
+      0.4957826286343319
+    ],
+    "matched_scan_seconds_from_firms_minute": [
+      31.210699,
+      38.327768
+    ],
+    "algorithm_qa_storage": {
+      "netcdf_dtype": "uint32",
+      "fill_value": null,
+      "unsigned_attribute": null,
+      "dimensions": {
+        "phony_dim_1": 6496,
+        "phony_dim_2": 6400
+      }
+    },
+    "fire_frp_status_by_bit6": {
+      "1": {
+        "positive_frp": 6
+      },
+      "0": {
+        "positive_frp": 3
+      }
+    }
+  }
+}

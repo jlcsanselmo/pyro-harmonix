@@ -25,3 +25,17 @@
 A busca CMR confirmou candidatos na mesma caixa de 24/08/2024. A coleção VJ114IMG.002 tem início catalogado em 01/01/2018 e retornou dois grânulos, às 04:24 e 16:54 UTC. VJ214IMG.002 tem início catalogado em 10/02/2023 e retornou quatro grânulos, às 03:36, 05:18, 16:06 e 17:48 UTC. MCD64A1.061 retornou o tile h13v11, abrangendo o mês de agosto de 2024. A proximidade de horários torna NOAA-20 às 16:54 um candidato ao piloto com Aqua de 17:00. Os horários são nominais e a cobertura ainda exige verificação geolocalizada. [Consulta CMR](https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html)
 
 Os arquivos de nível 2 e geolocalização protegidos e um conjunto externo com cobertura pareada ainda são necessários para medir concordância. O estudo atual preserva as estimativas condicionadas às detecções como referência de comparação. As fontes de área queimada permitem um teste complementar de associação e não substituem a referência de presença por passagem.
+
+
+## Atualização da etapa 5
+
+Separar três perguntas antes de escolher a fonte. A **concordância entre produtos** usa observações próximas no mesmo espaço e tempo, com suporte válido demonstrado para cada produto. A **transferência de calibração** usa passes e plataformas reservados para avaliação, aplica o fator congelado e relaciona resíduo a QA, turno, ângulo e área. A **validação independente de presença** exige referência com observação de fogo ativa e amostragem documentada, idealmente com tempo e posição suficientes para separar mudança física do fogo e erro de detecção.
+
+| Ensaio futuro | Fonte e procedimento | Unidade e limitação |
+| --- | --- | --- |
+| Transferência VIIRS | NOAA-20 e NOAA-21, cada um com geolocalização e máscara da coleção declarada. Manter a regra de 55° e o suporte mínimo de 80%. Verificar os arquivos em metadados e congelar calibração antes da comparação. | Dupla ou bloco orbital. Sensores da família VIIRS compartilham características. |
+| Associação com cicatrizes | MapBiomas Fogo, coleção congelada e recorte mensal. Medir associação da presença ou índice ativo com presença e fração queimada, registrando a incerteza da data da cicatriz. | H3-mês com blocos de região/evento. Hectares queimados são um desfecho distinto de centros de fogo. |
+| Consistência com área queimada | MCD64A1.061 com flags de qualidade, janela de data e área terrestre válida. Usar comparação complementar com MapBiomas. | H3-mês. O produto MCD64A1 compartilha entradas MODIS e dá evidência dependente. |
+| Presença independente | Observação de campo, imagens térmicas aéreas ou sensores térmicos de maior resolução com metadados e cobertura utilizável. Separar áreas confirmadas de áreas sem observação. | Evento ou bloco de sobrevoo. Para sensibilidade e falsos positivos, amostrar controles e períodos sem detecção. |
+
+Aplicar em paralelo QA estrito e M13 sinalizada. Onde os suportes mudarem, publicar os efeitos no próprio suporte e na interseção fixa, seguindo o [protocolo orbital](ORBITAL_EXPERIMENT_PROTOCOL.md). Uma próxima validação requer autorização e lista própria de arquivos. Nesta etapa, foram utilizados somente os quatro produtos autorizados por dupla Aqua–S-NPP e arquivos FIRMS locais. [Guia NASA VIIRS C2](https://ladsweb.modaps.eosdis.nasa.gov/archive/Document%20Archive/Science%20Data%20Product%20Documentation/VIIRS_C2_AF-375m_User_Guide_1.2.pdf) · [MCD64A1](https://modis-land.gsfc.nasa.gov/burn.html) · [MapBiomas Fogo](https://brasil.mapbiomas.org/produtos/)

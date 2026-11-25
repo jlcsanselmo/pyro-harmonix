@@ -1,0 +1,87 @@
+{
+  "version": "orbital_pilot_phase5_v1",
+  "pair_id": "altinopolis-pitangueiras-2020-02-23-day",
+  "date": "2020-02-23",
+  "turn": "DAY",
+  "bounds_w_s_e_n": [
+    -48.433,
+    -21.215243,
+    -47.181633,
+    -20.8087035
+  ],
+  "download_cap_mib": 250,
+  "sample": {
+    "date": "2020-02-23",
+    "aqua": "MYD14.A2020054.1705.061.2020328182241",
+    "viirs": "VNP14IMG.A2020054.1654.002.2024060152833",
+    "day_night": "DAY",
+    "aqua_start": "2020-02-23T17:05:00.000Z",
+    "viirs_start": "2020-02-23T16:54:00.000Z",
+    "estimated_aqua_max_zenith": 23.14,
+    "estimated_viirs_max_zenith": 23.0,
+    "nominal_gap_minutes": 11.0,
+    "full_roi_in_both_catalog_polygons": true,
+    "reasons": [],
+    "firms_records": 0,
+    "activity": "low",
+    "decision": "selected",
+    "estimated_mib": 189.25454571197537,
+    "target_activity": "low",
+    "target_delay": "short"
+  },
+  "nominal_gap_minutes": 11.0,
+  "granules": [
+    {
+      "product": "MYD14",
+      "collection": "061",
+      "filename": "MYD14.A2020054.1705.061.2020328182241.hdf",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MYD14/2020/054/MYD14.A2020054.1705.061.2020328182241.hdf",
+      "acquisition_start_utc": "2020-02-23T17:05:00.000Z",
+      "acquisition_end_utc": "2020-02-23T17:10:00.000Z",
+      "catalog_size": 0.45223,
+      "catalog_size_source": "CMR",
+      "cmr_granule_concept_id": "G2288776594-LPCLOUD",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "product": "VNP14IMG",
+      "collection": "002",
+      "filename": "VNP14IMG.A2020054.1654.002.2024060152833.nc",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/5200/VNP14IMG/2020/054/VNP14IMG.A2020054.1654.002.2024060152833.nc",
+      "acquisition_start_utc": "2020-02-23T16:54:00.000Z",
+      "acquisition_end_utc": "2020-02-23T17:00:00.000Z",
+      "catalog_size": 1.71994018554688,
+      "catalog_size_source": "CMR",
+      "cmr_granule_concept_id": "G2915577829-LPCLOUD",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "product": "MYD03",
+      "collection": "061",
+      "filename": "MYD03.A2020054.1705.061.2020055152245.hdf",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MYD03/2020/054/MYD03.A2020054.1705.061.2020055152245.hdf",
+      "acquisition_start_utc": "2020-02-23T17:05:00.000Z",
+      "acquisition_end_utc": "2020-02-23T17:10:00.000Z",
+      "catalog_size": 35.1473932266235,
+      "catalog_size_source": "CMR",
+      "cmr_granule_concept_id": "G1698116785-LAADS",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "product": "VNP03IMG",
+      "collection": "002",
+      "filename": "VNP03IMG.A2020054.1654.002.2021124191946.nc",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/5200/VNP03IMG/2020/054/VNP03IMG.A2020054.1654.002.2021124191946.nc",
+      "acquisition_start_utc": "2020-02-23T16:54:00.000Z",
+      "acquisition_end_utc": "2020-02-23T17:00:00.000Z",
+      "catalog_size": 151.934982299805,
+      "catalog_size_source": "CMR",
+      "cmr_granule_concept_id": "G2127058797-LAADS",
+      "bytes": null,
+      "sha256": null
+    }
+  ]
+}

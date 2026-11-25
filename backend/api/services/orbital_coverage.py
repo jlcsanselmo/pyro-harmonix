@@ -96,7 +96,22 @@ def _matched_fragments(aqua, snpp):
     return results
 
 
-def _time_sensitivity(fragments, area, thresholds, min_joint, factor):
+def _center_evidence(fragments, centers):
+    tree = STRtree([item[2] for item in fragments])
+    evidence = [[], []]
+    for sensor, pixels in enumerate(centers):
+        for pixel in pixels:
+            for index in tree.query(pixel.center, predicate="covered_by"):
+                fragment = fragments[index]
+                other = fragment[1 - sensor].pixel
+                if (pixel.solar_zenith < 90) == (other.solar_zenith < 90):
+                    evidence[sensor].append((id(pixel), max(fragment[3], abs(pixel.time - other.time)),
+                                             other.state == "clear_no_fire"))
+    return evidence
+
+
+def _time_sensitivity(fragments, area, thresholds, min_joint, factor, independent_centers=None):
+    evidence = _center_evidence(fragments, independent_centers) if independent_centers is not None else None
     results = []
     for minutes in thresholds:
         overlap_area = 0.0
@@ -114,6 +129,13 @@ def _time_sensitivity(fragments, area, thresholds, min_joint, factor):
                     fire_set.add(id(pixel))
                     if other.pixel.state == "clear_no_fire":
                         clear_set.add(id(pixel))
+        if evidence is not None:
+            aqua_fires, viirs_fires = (
+                {key for key, delta, _ in sensor if delta <= minutes * 60} for sensor in evidence
+            )
+            aqua_over_clear, viirs_over_clear = (
+                {key for key, delta, clear in sensor if clear and delta <= minutes * 60} for sensor in evidence
+            )
         enough = overlap_area / area >= min_joint
         m, v = len(aqua_fires), len(viirs_fires)
         if not enough:
@@ -144,27 +166,76 @@ def _time_sensitivity(fragments, area, thresholds, min_joint, factor):
     return results
 
 
-def coverage_grid(bounds, projection, aqua_swath, viirs_swath, factor, thresholds, min_joint):
+def _native_centers(clipped, cell, candidates, pieces, audit):
+    selected = []
+    owners = {id(piece.pixel): piece for piece in pieces}
+    for pixel in candidates:
+        if pixel.state != "fire" or pixel.cell != cell:
+            continue
+        piece = owners.get(id(pixel))
+        record = audit.get(pixel.native_index) if audit is not None else None
+        if not clipped.covers(pixel.center):
+            reason = "outside_projected_cell_or_roi"
+        elif not pixel.shape.covers(pixel.center):
+            reason = "center_outside_reconstructed_footprint"
+        else:
+            selected.append(pixel)
+            reason = "retained"
+        if record is None:
+            continue
+        record["independent_disposition"] = reason
+        record["owned_area_in_cell_m2"] = piece.geometry.area if piece is not None else 0.0
+        record["legacy_disposition"] = reason
+        if reason != "retained" or piece is not None and piece.has_center:
+            continue
+        blockers = [previous.pixel for previous in pieces
+                    if previous.pixel is not pixel and previous.geometry.covers(pixel.center)]
+        if blockers:
+            blocker = blockers[0]
+            record.update(legacy_disposition="center_assigned_to_overlapping_footprint",
+                          covering_row=blocker.native_index[0], covering_column=blocker.native_index[1],
+                          covering_zenith=blocker.zenith, covering_state=blocker.state,
+                          covering_center_distance_m=pixel.center.distance(blocker.center),
+                          covering_scan_time_offset_s=blocker.time - pixel.time,
+                          footprint_overlap_m2=pixel.shape.intersection(blocker.shape).area)
+        else:
+            record["legacy_disposition"] = "center_lost_at_overlay_boundary"
+    return selected
+
+
+def regional_cells(bounds, projection):
     west, south, east, north = bounds
     # Keep the geographic box's parallels and meridians when projecting its edges.
     roi = set_precision(transform(projection.transform, segmentize(box(*bounds), 0.005)),
                         OVERLAY_GRID_METERS)
     geographic = h3.LatLngPoly(((south, west), (south, east), (north, east), (north, west)))
     cells = h3.h3shape_to_cells_experimental(geographic, 7, contain="overlap")
-    sensors = (aqua_swath, viirs_swath)
-    trees = [STRtree([pixel.shape for pixel in pixels]) for pixels, _ in sensors]
     for cell in sorted(cells):
         boundary = [(lon, lat) for lat, lon in h3.cell_to_boundary(cell)]
         polygon = set_precision(transform(projection.transform, Polygon(boundary)), OVERLAY_GRID_METERS)
         clipped = _surface(intersection(roi, polygon, grid_size=OVERLAY_GRID_METERS))
-        if clipped.area == 0:
-            continue
-        pieces = [
-            _pieces(clipped, [pixels[i] for i in tree.query(clipped, predicate="intersects")], cell)
-            for (pixels, _), tree in zip(sensors, trees)
-        ]
-        aqua, viirs = [_sensor_stats(clipped, envelope, sensor_pieces, polygon.area)
+        if clipped.area > 0:
+            yield cell, clipped, polygon.area, mapping(Polygon(boundary))
+
+
+def coverage_grid(bounds, projection, aqua_swath, viirs_swath, factor, thresholds, min_joint,
+                  independent=False, fire_audits=(None, None)):
+    sensors = (aqua_swath, viirs_swath)
+    trees = [STRtree([pixel.shape for pixel in pixels]) for pixels, _ in sensors]
+    for cell, clipped, full_area, boundary in regional_cells(bounds, projection):
+        candidates = [[pixels[i] for i in tree.query(clipped, predicate="intersects")]
+                      for (pixels, _), tree in zip(sensors, trees)]
+        pieces = [_pieces(clipped, pixels, cell) for pixels in candidates]
+        centers = None
+        if independent or any(audit is not None for audit in fire_audits):
+            centers = [_native_centers(clipped, cell, pixels, partitions, audit)
+                       for pixels, partitions, audit in zip(candidates, pieces, fire_audits)]
+        aqua, viirs = [_sensor_stats(clipped, envelope, sensor_pieces, full_area)
                        for (_, envelope), sensor_pieces in zip(sensors, pieces)]
+        if independent:
+            for stats, selected in zip((aqua, viirs), centers):
+                if selected or stats["valid_fraction"] > 0:
+                    stats["native_fire_centers"] = len(selected)
         match = _matched_fragments(*pieces)
         m, v = aqua["native_fire_centers"], viirs["native_fire_centers"]
         if m and v:
@@ -175,7 +246,7 @@ def coverage_grid(bounds, projection, aqua_swath, viirs_swath, factor, threshold
             category = "no_positive_record"
         # Native zeros refer to the observed portion only, as quantified by valid_fraction.
         yield {
-            "cell": cell, "assessed_fraction": clipped.area / polygon.area, "cell_area_m2": polygon.area,
+            "cell": cell, "assessed_fraction": clipped.area / full_area, "cell_area_m2": full_area,
             **{f"aqua_{k}": val for k, val in aqua.items()},
             **{f"viirs_{k}": val for k, val in viirs.items()},
             "viirs_adjusted": v * factor if v is not None else None,
@@ -184,6 +255,7 @@ def coverage_grid(bounds, projection, aqua_swath, viirs_swath, factor, threshold
                 Observation.from_detection(m or 0, True), Observation.from_detection(v or 0, True), factor,
             ),
             "category": category,
-            "geometry": mapping(Polygon(boundary)),
-            "time_sensitivity": _time_sensitivity(match, polygon.area, thresholds, min_joint, factor),
+            "geometry": boundary,
+            "time_sensitivity": _time_sensitivity(match, full_area, thresholds, min_joint, factor,
+                                                  centers if independent else None),
         }

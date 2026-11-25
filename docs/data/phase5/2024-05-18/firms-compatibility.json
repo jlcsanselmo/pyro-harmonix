@@ -1,0 +1,58 @@
+{
+  "aqua": {
+    "granule": "MYD14.A2024139.1740.061.2024141121221.hdf",
+    "firms_source": "MODIS_SP_2024.csv.gz",
+    "firms_sha256": "228a7aeb28a0836b1e314638ccdf0e67185ebef29666779b3ab38475bec46653",
+    "firms_window_hhmm_utc": [
+      "1740",
+      "1745"
+    ],
+    "firms": 0,
+    "native_mask": 0,
+    "firms_duplicate_coordinates_at_5dp": 0,
+    "orbital_duplicate_coordinates_at_5dp": 0,
+    "maximum_one_to_one_matches_by_distance_m": {
+      "10": 0,
+      "100": 0,
+      "500": 0
+    },
+    "firms_confidence_by_orbital_mask": {},
+    "firms_type_counts": {},
+    "matched_firms_versions": [],
+    "matched_distance_m": null,
+    "matched_scan_seconds_from_firms_minute": null
+  },
+  "viirs": {
+    "granule": "VNP14IMG.A2024139.1712.002.2024140010349.nc",
+    "firms_source": "VIIRS_SNPP_SP_2024.csv.gz",
+    "firms_sha256": "cddf7c1f29d1c8427a186fed49b4dbf179265cf3802ed45fcbb188eff9a43e4c",
+    "firms_window_hhmm_utc": [
+      "1712",
+      "1718"
+    ],
+    "firms": 0,
+    "native_mask": 0,
+    "firms_duplicate_coordinates_at_5dp": 0,
+    "orbital_duplicate_coordinates_at_5dp": 0,
+    "maximum_one_to_one_matches_by_distance_m": {
+      "10": 0,
+      "100": 0,
+      "500": 0
+    },
+    "firms_confidence_by_orbital_mask": {},
+    "firms_type_counts": {},
+    "matched_firms_versions": [],
+    "matched_distance_m": null,
+    "matched_scan_seconds_from_firms_minute": null,
+    "algorithm_qa_storage": {
+      "netcdf_dtype": "uint32",
+      "fill_value": null,
+      "unsigned_attribute": null,
+      "dimensions": {
+        "phony_dim_1": 6496,
+        "phony_dim_2": 6400
+      }
+    },
+    "fire_frp_status_by_bit6": {}
+  }
+}

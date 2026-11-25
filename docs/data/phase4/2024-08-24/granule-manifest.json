@@ -1,0 +1,74 @@
+{
+  "version": "orbital_pilot_2024_v1",
+  "pair_id": "altinopolis-pitangueiras-2024-08-24-day",
+  "date": "2024-08-24",
+  "bounds_w_s_e_n": [
+    -48.433,
+    -21.215243,
+    -47.181633,
+    -20.8087035
+  ],
+  "nominal_gap_minutes": 30,
+  "download_cap_mib": 225,
+  "granules": [
+    {
+      "product": "MYD14",
+      "collection": "061",
+      "filename": "MYD14.A2024237.1700.061.2024238111721.hdf",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MYD14/2024/237/MYD14.A2024237.1700.061.2024238111721.hdf",
+      "acquisition_start_utc": "2024-08-24T17:00:00Z",
+      "acquisition_end_utc": "2024-08-24T17:05:00Z",
+      "catalog_size": 0.4,
+      "catalog_size_source": "CMR",
+      "bytes": 423515,
+      "sha256": "8fc673f526ffe612a61f7c5430ce420d9afce612ca91c0ccee1ecc94114cda92",
+      "acquisition": "NASA_earthdata",
+      "acquired_from": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/MYD14.061/MYD14.A2024237.1700.061.2024238111721/MYD14.A2024237.1700.061.2024238111721.hdf",
+      "verification_note": "Transfer completed in the first authenticated attempt and was verified again on continuation."
+    },
+    {
+      "product": "MYD03",
+      "collection": "061",
+      "filename": "MYD03.A2024237.1700.061.2024238150600.hdf",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MYD03/2024/237/MYD03.A2024237.1700.061.2024238150600.hdf",
+      "acquisition_start_utc": "2024-08-24T17:00:00Z",
+      "acquisition_end_utc": "2024-08-24T17:05:00Z",
+      "catalog_size": 33.36,
+      "catalog_size_source": "LAADS",
+      "bytes": 34980498,
+      "sha256": "3913e1f07d6d8b2d58dbee017718f37bf90ae7415415c8e93ac451f5de23df40",
+      "acquisition": "NASA_earthdata",
+      "acquired_from": "https://data.laadsdaac.earthdatacloud.nasa.gov/prod-lads/MYD03/MYD03.A2024237.1700.061.2024238150600.hdf",
+      "cmr_granule_id": "G3211212083-LAADS"
+    },
+    {
+      "product": "VNP14IMG",
+      "collection": "002",
+      "filename": "VNP14IMG.A2024237.1630.002.2024242164535.nc",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/5200/VNP14IMG/2024/237/VNP14IMG.A2024237.1630.002.2024242164535.nc",
+      "acquisition_start_utc": "2024-08-24T16:30:00Z",
+      "acquisition_end_utc": "2024-08-24T16:36:00Z",
+      "catalog_size": 2.3,
+      "catalog_size_source": "CMR",
+      "bytes": 2414507,
+      "sha256": "44a54e5deafaeb1bd126c97da0320df872cab76281563608af8cbab71aaeb587",
+      "acquisition": "NASA_earthdata",
+      "acquired_from": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/VNP14IMG.002/VNP14IMG.A2024237.1630.002.2024242164535/VNP14IMG.A2024237.1630.002.2024242164535.nc"
+    },
+    {
+      "product": "VNP03IMG",
+      "collection": "002",
+      "filename": "VNP03IMG.A2024237.1630.002.2024242143135.nc",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/5200/VNP03IMG/2024/237/VNP03IMG.A2024237.1630.002.2024242143135.nc",
+      "acquisition_start_utc": "2024-08-24T16:30:00Z",
+      "acquisition_end_utc": "2024-08-24T16:36:00Z",
+      "catalog_size": 149.48,
+      "catalog_size_source": "LAADS",
+      "bytes": 156736553,
+      "sha256": "fdb58ed9b2716211e637853527f06a64f136e2f00dd600340850f04fbda37128",
+      "acquisition": "NASA_earthdata",
+      "acquired_from": "https://data.laadsdaac.earthdatacloud.nasa.gov/prod-lads/VNP03IMG/VNP03IMG.A2024237.1630.002.2024242143135.nc",
+      "cmr_granule_id": "G3209923408-LAADS"
+    }
+  ]
+}

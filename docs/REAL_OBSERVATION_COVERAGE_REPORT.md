@@ -60,3 +60,28 @@ O piloto exige QA geométrico nominal, ângulo zenital do sensor até 55° e cla
 Os footprints são aproximados por meios passos entre centros vizinhos dentro da mesma varredura. O piloto projeta os vértices em Lambert azimutal equivalente local, recorta-os à caixa e intersecta-os com H3 7. Em possíveis sobreposições do mesmo sensor, prioriza a observação mais próxima do nadir e conserva as áreas como partes disjuntas. Uma geometria ausente dentro de um envelope orbital conservador permanece desconhecida. Fora do envelope é reportado separadamente. O envelope aproximado, a topografia e as bordas de varredura limitam a precisão da cobertura. Na execução real, a caixa geográfica foi segmentada antes de projetar os limites. As operações de interseção e diferença usam precisão comum de 1 cm no plano projetado e conservam apenas superfícies. Essa correção resolveu excesso de área por sobreposição numérica detectado em dois hexágonos Aqua na primeira conferência. A taxa de retenção dos centros nos footprints reconstruídos deve ser verificada em outras geometrias antes da expansão.
 
 O tempo vem do início da varredura TAI93, convertido para UTC para 2019–2024. O teste principal usa até 60 min, com sensibilidades em 30, 45 e 90 min. A interseção também exige iluminação concordante pelo ângulo solar. O denominador é a área inteira da célula e a área efetivamente avaliada é publicada em separado. [Tempo MODIS](https://atmosphere-imager.gsfc.nasa.gov/issues/cloud) · [Guia de nível 1 VIIRS](https://oceandata.sci.gsfc.nasa.gov/files/resources/docs/technical/VIIRS_Level-1_DataProductUsersGuide.pdf)
+
+
+## Cobertura medida em H3 resolução 7
+
+A caixa atravessa **1.175 células** e soma **5.855,67 km²** avaliados. Aqua apresentou ângulos zenitais de **59,03° a 63,16°** na região. S-NPP apresentou **22,82° a 31,52°**. O limite de 55°, definido antes do processamento, excluiu todos os footprints válidos de Aqua na caixa. Após observar esse resultado, repetimos a análise com 60° e 65°, mantendo os demais filtros.
+
+| Limite zenital | Aqua válido (km²) | S-NPP válido (km²) | Interseção válida pareada (km²) | Células com ≥80% de suporte comum |
+| --- | ---: | ---: | ---: | ---: |
+| 55° | 0,00 | 5.568,57 | 0,00 | 0 |
+| 60° | 1.062,92 | 5.568,57 | 981,88 | 148 |
+| 65° | 5.627,63 | 5.568,57 | 5.380,48 | 910 |
+
+A área de interseção soma as partes comuns de todas as células e a última coluna aplica o limiar de 80% à célula inteira. Os horários regionais das varreduras foram 17:00:28,586–17:00:37,449 UTC para Aqua e 16:34:45,976–16:34:56,652 UTC para S-NPP. Os extremos implicam separação de 25 min 32 s a 25 min 51 s. As tolerâncias de **30, 45, 60 e 90 minutos** produziram as mesmas áreas, classes e métricas em cada cenário angular. [Horários regionais](data/phase3/orbital-2024-08-24/regional-scan-times.json) · [Comparativo das 12 combinações](data/phase3/orbital-2024-08-24/comparacao.csv)
+
+A área desconhecida foi de 2,49 km² em Aqua e 3,22 km² em S-NPP em cada cenário. A 65°, Aqua teve 79,54 km² sem observação válida e 146,00 km² de nuvens, além de 5.406,56 km² de terra observada sem detecção. S-NPP teve 222,33 km² sem observação válida, 61,55 km² de nuvens e 5.552,92 km² observados sem detecção em todos os cenários. Os CSVs registram separadamente essas frações e a classe de cada sensor por célula. Uma célula pode conter tanto área desconhecida quanto inválida. A checagem da soma das áreas por célula encontrou desvio máximo de 0,00035 ponto percentual. [Áreas por estado](data/phase3/orbital-2024-08-24/areas-by-coverage-state.json)
+
+As máscaras brutas continham 67 centros Aqua e 363 S-NPP classificados como fogo na caixa. A 65°, os filtros de entrada mantiveram 67 Aqua e 82 S-NPP candidatos antes da resolução de footprints sobrepostos. Entre os 362 candidatos S-NPP com terra, geolocalização nominal e sem descarte bow-tie, 280 apresentaram o bit 6 do QA, relacionado a qualidade não nominal em M13. Depois da atribuição geométrica, as contagens regionais foram 32 Aqua e 80 S-NPP. A retenção de Aqua é sensível à geometria aproximada em ângulos altos. Recomenda-se revisar amostras dos footprints e o efeito das regras de QA antes de interpretar as diferenças como desempenho dos sensores. [Diagnóstico das máscaras e do QA](data/phase3/orbital-2024-08-24/qa-diagnostic.json)
+
+| Cenário | Mapa | Tabela por H3 | Geometrias H3 | Resumo |
+| --- | --- | --- | --- | --- |
+| 55° | [PNG](assets/orbital-coverage-maps-z55.png) | [CSV.gz](data/phase3/orbital-2024-08-24/coverage-cells-z55.csv.gz) | [GeoJSON.gz](data/phase3/orbital-2024-08-24/coverage-z55.geojson.gz) | [JSON](data/phase3/orbital-2024-08-24/summary-z55.json) |
+| 60° | [PNG](assets/orbital-coverage-maps-z60.png) | [CSV.gz](data/phase3/orbital-2024-08-24/coverage-cells-z60.csv.gz) | [GeoJSON.gz](data/phase3/orbital-2024-08-24/coverage-z60.geojson.gz) | [JSON](data/phase3/orbital-2024-08-24/summary-z60.json) |
+| 65° | [PNG](assets/orbital-coverage-maps-z65.png) | [CSV.gz](data/phase3/orbital-2024-08-24/coverage-cells-z65.csv.gz) | [GeoJSON.gz](data/phase3/orbital-2024-08-24/coverage-z65.geojson.gz) | [JSON](data/phase3/orbital-2024-08-24/summary-z65.json) |
+
+O piloto real analisou uma única dupla diurna. As métricas publicadas nesta seção vieram dos grânulos científicos. Os cenários sintéticos usados nos testes automatizados servem à verificação da implementação. A suíte completa passou com 94 testes no PostgreSQL. [Comparação das regras de fusão](COVERAGE_AWARE_FUSION_REPORT.md)

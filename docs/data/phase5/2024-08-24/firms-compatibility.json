@@ -1,0 +1,122 @@
+{
+  "aqua": {
+    "granule": "MYD14.A2024237.1700.061.2024238111721.hdf",
+    "firms_source": "MODIS_SP_2024.csv.gz",
+    "firms_sha256": "228a7aeb28a0836b1e314638ccdf0e67185ebef29666779b3ab38475bec46653",
+    "firms_window_hhmm_utc": [
+      "1700",
+      "1705"
+    ],
+    "firms": 67,
+    "native_mask": 67,
+    "firms_duplicate_coordinates_at_5dp": 0,
+    "orbital_duplicate_coordinates_at_5dp": 0,
+    "maximum_one_to_one_matches_by_distance_m": {
+      "10": 67,
+      "100": 67,
+      "500": 67
+    },
+    "firms_confidence_by_orbital_mask": {
+      "8:67": 2,
+      "9:95": 3,
+      "9:85": 3,
+      "9:90": 2,
+      "8:46": 2,
+      "9:88": 2,
+      "9:94": 3,
+      "8:56": 2,
+      "9:98": 1,
+      "8:68": 3,
+      "8:76": 3,
+      "9:97": 4,
+      "9:80": 1,
+      "9:99": 2,
+      "9:100": 10,
+      "8:61": 1,
+      "8:74": 1,
+      "8:73": 2,
+      "9:84": 1,
+      "9:93": 3,
+      "8:59": 1,
+      "8:43": 2,
+      "8:69": 2,
+      "8:49": 1,
+      "8:45": 1,
+      "9:96": 1,
+      "9:89": 1,
+      "9:87": 3,
+      "8:42": 1,
+      "9:82": 1,
+      "8:57": 1,
+      "8:52": 1
+    },
+    "firms_type_counts": {
+      "0": 67
+    },
+    "matched_firms_versions": [
+      "61.03"
+    ],
+    "matched_distance_m": [
+      0.6719022274277543,
+      7.519032292735926
+    ],
+    "matched_scan_seconds_from_firms_minute": [
+      30.063611,
+      35.97206
+    ]
+  },
+  "viirs": {
+    "granule": "VNP14IMG.A2024237.1630.002.2024242164535.nc",
+    "firms_source": "VIIRS_SNPP_SP_2024.csv.gz",
+    "firms_sha256": "cddf7c1f29d1c8427a186fed49b4dbf179265cf3802ed45fcbb188eff9a43e4c",
+    "firms_window_hhmm_utc": [
+      "1630",
+      "1636"
+    ],
+    "firms": 363,
+    "native_mask": 363,
+    "firms_duplicate_coordinates_at_5dp": 0,
+    "orbital_duplicate_coordinates_at_5dp": 0,
+    "maximum_one_to_one_matches_by_distance_m": {
+      "10": 363,
+      "100": 363,
+      "500": 363
+    },
+    "firms_confidence_by_orbital_mask": {
+      "8:n": 260,
+      "7:l": 63,
+      "9:h": 40
+    },
+    "firms_type_counts": {
+      "0": 363
+    },
+    "matched_firms_versions": [
+      "2"
+    ],
+    "matched_distance_m": [
+      0.030084657190487484,
+      0.7437303647134775
+    ],
+    "matched_scan_seconds_from_firms_minute": [
+      47.755274,
+      53.093076
+    ],
+    "algorithm_qa_storage": {
+      "netcdf_dtype": "uint32",
+      "fill_value": null,
+      "unsigned_attribute": null,
+      "dimensions": {
+        "phony_dim_1": 6464,
+        "phony_dim_2": 6400
+      }
+    },
+    "fire_frp_status_by_bit6": {
+      "1": {
+        "positive_frp": 280
+      },
+      "0": {
+        "positive_frp": 83
+      }
+    }
+  }
+}

@@ -1,0 +1,357 @@
+{
+  "metadata_only": true,
+  "search_window_utc": "2019-08-20T00:00:00Z,2019-08-28T00:00:00Z",
+  "bounds": [
+    -48.433,
+    -21.215243,
+    -47.181633,
+    -20.8087035
+  ],
+  "selected": {
+    "date": "2019-08-26",
+    "aqua": "MYD14.A2019238.1645.061.2020305001451",
+    "viirs": "VNP14IMG.A2019238.1648.002.2024095081424",
+    "day_night": "DAY",
+    "aqua_start": "2019-08-26T16:45:00.000Z",
+    "viirs_start": "2019-08-26T16:48:00.000Z",
+    "estimated_aqua_max_zenith": 28.83,
+    "estimated_viirs_max_zenith": 12.29,
+    "nominal_gap_minutes": 3.0,
+    "full_roi_in_both_catalog_polygons": true,
+    "reasons": []
+  },
+  "candidates": [
+    {
+      "date": "2019-08-26",
+      "aqua": "MYD14.A2019238.1645.061.2020305001451",
+      "viirs": "VNP14IMG.A2019238.1648.002.2024095081424",
+      "day_night": "DAY",
+      "aqua_start": "2019-08-26T16:45:00.000Z",
+      "viirs_start": "2019-08-26T16:48:00.000Z",
+      "estimated_aqua_max_zenith": 28.83,
+      "estimated_viirs_max_zenith": 12.29,
+      "nominal_gap_minutes": 3.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": []
+    },
+    {
+      "date": "2019-08-21",
+      "aqua": "MYD14.A2019233.1630.061.2020304201527",
+      "viirs": "VNP14IMG.A2019233.1642.002.2024095053043",
+      "day_night": "DAY",
+      "aqua_start": "2019-08-21T16:30:00.000Z",
+      "viirs_start": "2019-08-21T16:42:00.000Z",
+      "estimated_aqua_max_zenith": 53.65,
+      "estimated_viirs_max_zenith": 10.85,
+      "nominal_gap_minutes": 12.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": []
+    },
+    {
+      "date": "2019-08-21",
+      "aqua": "MYD14.A2019233.0420.061.2020304193645",
+      "viirs": "VNP14IMG.A2019233.0418.002.2024095053047",
+      "day_night": "NIGHT",
+      "aqua_start": "2019-08-21T04:20:00.000Z",
+      "viirs_start": "2019-08-21T04:18:00.000Z",
+      "estimated_aqua_max_zenith": 34.29,
+      "estimated_viirs_max_zenith": 15.37,
+      "nominal_gap_minutes": 2.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "night_instead_of_comparable_daylight"
+      ]
+    },
+    {
+      "date": "2019-08-21",
+      "aqua": "MYD14.A2019233.0420.061.2020304193645",
+      "viirs": "VNP14IMG.A2019233.0412.002.2024095053047",
+      "day_night": "NIGHT",
+      "aqua_start": "2019-08-21T04:20:00.000Z",
+      "viirs_start": "2019-08-21T04:12:00.000Z",
+      "estimated_aqua_max_zenith": 34.29,
+      "estimated_viirs_max_zenith": 15.64,
+      "nominal_gap_minutes": 8.0,
+      "full_roi_in_both_catalog_polygons": false,
+      "reasons": [
+        "night_instead_of_comparable_daylight",
+        "catalog_corners_do_not_enclose_full_roi"
+      ]
+    },
+    {
+      "date": "2019-08-23",
+      "aqua": "MYD14.A2019235.1615.061.2020304214636",
+      "viirs": "VNP14IMG.A2019235.1606.002.2024095065844",
+      "day_night": "DAY",
+      "aqua_start": "2019-08-23T16:15:00.000Z",
+      "viirs_start": "2019-08-23T16:06:00.000Z",
+      "estimated_aqua_max_zenith": 64.47,
+      "estimated_viirs_max_zenith": 60.05,
+      "nominal_gap_minutes": 9.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "estimated_angle_above_55"
+      ]
+    },
+    {
+      "date": "2019-08-24",
+      "aqua": "MYD14.A2019236.0450.061.2020304215614",
+      "viirs": "VNP14IMG.A2019236.0500.002.2024095072522",
+      "day_night": "NIGHT",
+      "aqua_start": "2019-08-24T04:50:00.000Z",
+      "viirs_start": "2019-08-24T05:00:00.000Z",
+      "estimated_aqua_max_zenith": 39.14,
+      "estimated_viirs_max_zenith": 59.0,
+      "nominal_gap_minutes": 10.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "night_instead_of_comparable_daylight",
+        "estimated_angle_above_55"
+      ]
+    },
+    {
+      "date": "2019-08-26",
+      "aqua": "MYD14.A2019238.0435.061.2020304232529",
+      "viirs": "VNP14IMG.A2019238.0424.002.2024095081428",
+      "day_night": "NIGHT",
+      "aqua_start": "2019-08-26T04:35:00.000Z",
+      "viirs_start": "2019-08-26T04:24:00.000Z",
+      "estimated_aqua_max_zenith": 16.93,
+      "estimated_viirs_max_zenith": 7.79,
+      "nominal_gap_minutes": 11.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "night_instead_of_comparable_daylight"
+      ]
+    },
+    {
+      "date": "2019-08-20",
+      "aqua": "MYD14.A2019232.1725.061.2020304193337",
+      "viirs": "VNP14IMG.A2019232.1706.002.2024095042640",
+      "day_night": "DAY",
+      "aqua_start": "2019-08-20T17:25:00.000Z",
+      "viirs_start": "2019-08-20T17:06:00.000Z",
+      "estimated_aqua_max_zenith": 51.74,
+      "estimated_viirs_max_zenith": 34.17,
+      "nominal_gap_minutes": 19.0,
+      "full_roi_in_both_catalog_polygons": false,
+      "reasons": [
+        "catalog_corners_do_not_enclose_full_roi"
+      ]
+    },
+    {
+      "date": "2019-08-25",
+      "aqua": "MYD14.A2019237.1740.061.2020304230601",
+      "viirs": "VNP14IMG.A2019237.1712.002.2024095075301",
+      "day_night": "DAY",
+      "aqua_start": "2019-08-25T17:40:00.000Z",
+      "viirs_start": "2019-08-25T17:12:00.000Z",
+      "estimated_aqua_max_zenith": 66.38,
+      "estimated_viirs_max_zenith": 42.6,
+      "nominal_gap_minutes": 28.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "estimated_angle_above_55"
+      ]
+    },
+    {
+      "date": "2019-08-23",
+      "aqua": "MYD14.A2019235.0405.061.2020304205841",
+      "viirs": "VNP14IMG.A2019235.0336.002.2024095065818",
+      "day_night": "NIGHT",
+      "aqua_start": "2019-08-23T04:05:00.000Z",
+      "viirs_start": "2019-08-23T03:36:00.000Z",
+      "estimated_aqua_max_zenith": 50.71,
+      "estimated_viirs_max_zenith": 61.54,
+      "nominal_gap_minutes": 29.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "night_instead_of_comparable_daylight",
+        "estimated_angle_above_55"
+      ]
+    },
+    {
+      "date": "2019-08-24",
+      "aqua": "MYD14.A2019236.1700.061.2020304223052",
+      "viirs": "VNP14IMG.A2019236.1730.002.2024095072520",
+      "day_night": "DAY",
+      "aqua_start": "2019-08-24T17:00:00.000Z",
+      "viirs_start": "2019-08-24T17:30:00.000Z",
+      "estimated_aqua_max_zenith": 10.7,
+      "estimated_viirs_max_zenith": 60.6,
+      "nominal_gap_minutes": 30.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "estimated_angle_above_55"
+      ]
+    },
+    {
+      "date": "2019-08-20",
+      "aqua": "MYD14.A2019232.0515.061.2020304190934",
+      "viirs": "VNP14IMG.A2019232.0436.002.2024095042640",
+      "day_night": "NIGHT",
+      "aqua_start": "2019-08-20T05:15:00.000Z",
+      "viirs_start": "2019-08-20T04:36:00.000Z",
+      "estimated_aqua_max_zenith": 64.39,
+      "estimated_viirs_max_zenith": 30.67,
+      "nominal_gap_minutes": 39.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "night_instead_of_comparable_daylight",
+        "estimated_angle_above_55",
+        "nominal_start_gap_over_30"
+      ]
+    },
+    {
+      "date": "2019-08-22",
+      "aqua": "MYD14.A2019234.1710.061.2020304210624",
+      "viirs": "VNP14IMG.A2019234.1624.002.2024095062816",
+      "day_night": "DAY",
+      "aqua_start": "2019-08-22T17:10:00.000Z",
+      "viirs_start": "2019-08-22T16:24:00.000Z",
+      "estimated_aqua_max_zenith": 34.01,
+      "estimated_viirs_max_zenith": 41.68,
+      "nominal_gap_minutes": 46.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "nominal_start_gap_over_30"
+      ]
+    },
+    {
+      "date": "2019-08-25",
+      "aqua": "MYD14.A2019237.0355.061.2020304224021",
+      "viirs": "VNP14IMG.A2019237.0442.002.2024095075300",
+      "day_night": "NIGHT",
+      "aqua_start": "2019-08-25T03:55:00.000Z",
+      "viirs_start": "2019-08-25T04:42:00.000Z",
+      "estimated_aqua_max_zenith": 62.16,
+      "estimated_viirs_max_zenith": 39.78,
+      "nominal_gap_minutes": 47.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "night_instead_of_comparable_daylight",
+        "estimated_angle_above_55",
+        "nominal_start_gap_over_30"
+      ]
+    },
+    {
+      "date": "2019-08-27",
+      "aqua": "MYD14.A2019239.1730.061.2020305005313",
+      "viirs": "VNP14IMG.A2019239.1630.002.2024095083500",
+      "day_night": "DAY",
+      "aqua_start": "2019-08-27T17:30:00.000Z",
+      "viirs_start": "2019-08-27T16:30:00.000Z",
+      "estimated_aqua_max_zenith": 57.48,
+      "estimated_viirs_max_zenith": 32.98,
+      "nominal_gap_minutes": 60.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "estimated_angle_above_55",
+        "nominal_start_gap_over_30"
+      ]
+    },
+    {
+      "date": "2019-08-22",
+      "aqua": "MYD14.A2019234.0500.061.2020304202311",
+      "viirs": "VNP14IMG.A2019234.0354.002.2024095062815",
+      "day_night": "NIGHT",
+      "aqua_start": "2019-08-22T05:00:00.000Z",
+      "viirs_start": "2019-08-22T03:54:00.000Z",
+      "estimated_aqua_max_zenith": 54.5,
+      "estimated_viirs_max_zenith": 44.43,
+      "nominal_gap_minutes": 66.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "night_instead_of_comparable_daylight",
+        "nominal_start_gap_over_30"
+      ]
+    },
+    {
+      "date": "2019-08-24",
+      "aqua": "MYD14.A2019236.1700.061.2020304223052",
+      "viirs": "VNP14IMG.A2019236.1548.002.2024095072520",
+      "day_night": "DAY",
+      "aqua_start": "2019-08-24T17:00:00.000Z",
+      "viirs_start": "2019-08-24T15:48:00.000Z",
+      "estimated_aqua_max_zenith": 10.7,
+      "estimated_viirs_max_zenith": 71.24,
+      "nominal_gap_minutes": 72.0,
+      "full_roi_in_both_catalog_polygons": false,
+      "reasons": [
+        "catalog_corners_do_not_enclose_full_roi",
+        "estimated_angle_above_55",
+        "nominal_start_gap_over_30"
+      ]
+    },
+    {
+      "date": "2019-08-23",
+      "aqua": "MYD14.A2019235.0405.061.2020304205841",
+      "viirs": "VNP14IMG.A2019235.0518.002.2024095065819",
+      "day_night": "NIGHT",
+      "aqua_start": "2019-08-23T04:05:00.000Z",
+      "viirs_start": "2019-08-23T05:18:00.000Z",
+      "estimated_aqua_max_zenith": 50.71,
+      "estimated_viirs_max_zenith": 70.58,
+      "nominal_gap_minutes": 73.0,
+      "full_roi_in_both_catalog_polygons": true,
+      "reasons": [
+        "night_instead_of_comparable_daylight",
+        "estimated_angle_above_55",
+        "nominal_start_gap_over_30"
+      ]
+    },
+    {
+      "date": "2019-08-27",
+      "aqua": "MYD14.A2019239.0520.061.2020305000125",
+      "viirs": "VNP14IMG.A2019239.0400.002.2024095083459",
+      "day_night": "NIGHT",
+      "aqua_start": "2019-08-27T05:20:00.000Z",
+      "viirs_start": "2019-08-27T04:00:00.000Z",
+      "estimated_aqua_max_zenith": 68.48,
+      "estimated_viirs_max_zenith": 36.37,
+      "nominal_gap_minutes": 80.0,
+      "full_roi_in_both_catalog_polygons": false,
+      "reasons": [
+        "night_instead_of_comparable_daylight",
+        "catalog_corners_do_not_enclose_full_roi",
+        "estimated_angle_above_55",
+        "nominal_start_gap_over_30"
+      ]
+    },
+    {
+      "date": "2019-08-24",
+      "aqua": "MYD14.A2019236.0450.061.2020304215614",
+      "viirs": "VNP14IMG.A2019236.0318.002.2024095072519",
+      "day_night": "NIGHT",
+      "aqua_start": "2019-08-24T04:50:00.000Z",
+      "viirs_start": "2019-08-24T03:18:00.000Z",
+      "estimated_aqua_max_zenith": 39.14,
+      "estimated_viirs_max_zenith": 72.16,
+      "nominal_gap_minutes": 92.0,
+      "full_roi_in_both_catalog_polygons": false,
+      "reasons": [
+        "night_instead_of_comparable_daylight",
+        "catalog_corners_do_not_enclose_full_roi",
+        "estimated_angle_above_55",
+        "nominal_start_gap_over_30"
+      ]
+    },
+    {
+      "date": "2019-08-23",
+      "aqua": "MYD14.A2019235.1615.061.2020304214636",
+      "viirs": "VNP14IMG.A2019235.1748.002.2024095065844",
+      "day_night": "DAY",
+      "aqua_start": "2019-08-23T16:15:00.000Z",
+      "viirs_start": "2019-08-23T17:48:00.000Z",
+      "estimated_aqua_max_zenith": 64.47,
+      "estimated_viirs_max_zenith": 71.53,
+      "nominal_gap_minutes": 93.0,
+      "full_roi_in_both_catalog_polygons": false,
+      "reasons": [
+        "catalog_corners_do_not_enclose_full_roi",
+        "estimated_angle_above_55",
+        "nominal_start_gap_over_30"
+      ]
+    }
+  ]
+}

@@ -17,6 +17,9 @@ TAI93_EPOCH = datetime(1993, 1, 1, tzinfo=timezone.utc).timestamp()
 TAI93_LEAP_SECONDS = 10
 MAX_ZENITH = 55
 MAX_PIXEL_DIAGONAL_METERS = 15_000
+VIIRS_QA_FILL = 0xffffffff
+VIIRS_RESIDUAL_BOWTIE = 1 << 22
+VIIRS_QA_POLICIES = {"strict": 0x7f, "presence_m13_flagged": 0x3f}
 
 
 @dataclass
@@ -55,6 +58,7 @@ class Pixel:
     zenith: float
     solar_zenith: float
     cell: str
+    native_index: tuple[int, int] | None = None
 
 
 def _tai93(raw, acquired_at):
@@ -104,6 +108,8 @@ def _nc_field(group, name, fill):
         return np.ma.asarray(variable[:], dtype=np.float32 if name != "scan_start_time" else np.float64).filled(fill)
     data = np.ma.asarray(variable[:])
     if name == "algorithm QA":
+        if data.dtype.kind not in "iu" or data.dtype.itemsize != 4:
+            raise ValueError("Expected a 32-bit integer VIIRS algorithm QA bitfield.")
         data = data.astype(np.uint32)
     return data.filled(fill)
 
@@ -120,7 +126,7 @@ def read_viirs(fire_path, geo_path, acquired_at):
             zenith=_nc_field(loc, "sensor_zenith", np.nan),
             solar_zenith=_nc_field(loc, "solar_zenith", np.nan),
             mask=_nc_field(fire, "fire mask", 0),
-            fire_qa=_nc_field(fire, "algorithm QA", 0xffffffff),
+            fire_qa=_nc_field(fire, "algorithm QA", VIIRS_QA_FILL),
             geo_qa=_nc_field(loc, "quality_flag", 255),
             land_water=_nc_field(loc, "land_water_mask", 255),
             scan_times=_tai93(_nc_field(scans, "scan_start_time", np.nan), acquired_at),
@@ -136,7 +142,7 @@ def local_projection(bounds):
     return Transformer.from_crs("EPSG:4326", crs, always_xy=True), crs
 
 
-def _quality_state(swath, row, col, sensor, max_zenith):
+def _quality_state(swath, row, col, sensor, max_zenith, viirs_qa="strict", enforce_land=True):
     mask = int(swath.mask[row, col])
     fire_qa = int(swath.fire_qa[row, col])
     geo_qa = int(swath.geo_qa[row, col])
@@ -146,9 +152,11 @@ def _quality_state(swath, row, col, sensor, max_zenith):
     if sensor == "aqua":
         passed_science = fire_qa & 3 == 2   # Fire-product QA classifies the surface as land.
     else:
-        if mask == 1 or (fire_qa != 0xffffffff and fire_qa & (1 << 22)):
+        if mask == 1 or (fire_qa != VIIRS_QA_FILL and fire_qa & VIIRS_RESIDUAL_BOWTIE):
             return None   # Deleted or duplicate VIIRS observation.
-        passed_science = fire_qa & 0x7f == 0 and swath.land_water[row, col] == 1
+        nominal_qa = fire_qa != VIIRS_QA_FILL and fire_qa & VIIRS_QA_POLICIES[viirs_qa] == 0
+        # The phase 3 classifier used identity checks and accepted NumPy False for non-land.
+        passed_science = nominal_qa and (not enforce_land or bool(swath.land_water[row, col] == 1))
     if not passed_geometry:
         return "no_valid_observation"
     if mask == 4:
@@ -167,7 +175,7 @@ def _axis_offsets(center, previous, following):
     return negative, positive
 
 
-def _footprint(xy, row, col, rows_per_scan):
+def _footprint(xy, row, col, rows_per_scan, audit=None):
     middle = xy[row, col]
 
     def neighbor(r, c):
@@ -183,15 +191,30 @@ def _footprint(xy, row, col, rows_per_scan):
     )
     across = _axis_offsets(middle, neighbor(row, col - 1), neighbor(row, col + 1))
     if along is None or across is None:
+        if audit is not None:
+            audit["footprint_issue"] = "missing_neighbor"
         return None
     corners = [middle + along[a] + across[b] for a, b in ((0, 0), (0, 1), (1, 1), (1, 0))]
     if max(np.linalg.norm(corner - middle) for corner in corners) > MAX_PIXEL_DIAGONAL_METERS / 2:
+        if audit is not None:
+            audit["footprint_issue"] = "exceeds_maximum_radius"
         return None
     shape = Polygon(corners)
-    return shape if shape.is_valid and shape.area > 0 else None
+    if shape.is_valid and shape.area > 0:
+        return shape
+    if audit is not None:
+        audit["footprint_issue"] = "invalid_or_zero_area_polygon"
+    return None
 
 
-def swath_pixels(swath, sensor, bounds, projection, max_zenith=MAX_ZENITH):
+def _footprint_dimensions(shape):
+    corners = np.asarray(shape.exterior.coords)[:4]
+    sides = np.linalg.norm(corners - np.roll(corners, -1, axis=0), axis=1)
+    return (sides[0] + sides[2]) / 2, (sides[1] + sides[3]) / 2
+
+
+def swath_pixels(swath, sensor, bounds, projection, max_zenith=MAX_ZENITH,
+                 viirs_qa="strict", fire_audit=None, enforce_land=False):
     west, south, east, north = bounds
     latitude, longitude = swath.latitude, swath.longitude
     valid_coordinates = (np.isfinite(latitude) & np.isfinite(longitude)
@@ -225,16 +248,35 @@ def swath_pixels(swath, sensor, bounds, projection, max_zenith=MAX_ZENITH):
         xy = np.pad(xy, ((row_padding, 0), (0, 0), (0, 0)), constant_values=np.nan)
     for row, col in zip(rows, cols):
         r, c = row - row0 + row_padding, col - col0
-        state = _quality_state(swath, row, col, sensor, max_zenith)
+        state = _quality_state(swath, row, col, sensor, max_zenith, viirs_qa, enforce_land)
+        time = float(swath.scan_times[row // swath.rows_per_scan])
+        lat, lon = float(latitude[row, col]), float(longitude[row, col])
+        audit = None
+        if (fire_audit is not None and 7 <= swath.mask[row, col] <= 9
+                and west <= lon <= east and south <= lat <= north):
+            audit = {
+                "row": int(row), "column": int(col), "scan": int(row // swath.rows_per_scan),
+                "longitude": lon, "latitude": lat, "scan_time_unix": time if isfinite(time) else None,
+                "zenith": float(swath.zenith[row, col]), "mask": int(swath.mask[row, col]),
+                "fire_qa": int(swath.fire_qa[row, col]), "geo_qa": int(swath.geo_qa[row, col]),
+                "land_water": int(swath.land_water[row, col]) if swath.land_water is not None else None,
+                "quality_state": state if isfinite(time) else "unknown",
+                "h3_cell": h3.latlng_to_cell(lat, lon, 7), "footprint_issue": None,
+            }
+            fire_audit[(int(row), int(col))] = audit
         if state is None:
             continue
-        shape = _footprint(xy, r, c, swath.rows_per_scan)
+        shape = _footprint(xy, r, c, swath.rows_per_scan, audit)
         if shape is None:
             continue
-        time = float(swath.scan_times[row // swath.rows_per_scan])
+        if audit is not None:
+            width, height = _footprint_dimensions(shape)
+            audit.update(footprint_wkt=shape.wkt, footprint_area_m2=shape.area,
+                         across_track_m=width, along_track_m=height)
         if not isfinite(time):
             state = "unknown"
         pixels.append(Pixel(shape, Point(xy[r, c]), state, time,
                             float(swath.zenith[row, col]), float(swath.solar_zenith[row, col]),
-                            h3.latlng_to_cell(float(latitude[row, col]), float(longitude[row, col]), 7)))
+                            h3.latlng_to_cell(lat, lon, 7),
+                            (int(row), int(col)) if fire_audit is not None else None))
     return pixels, envelope

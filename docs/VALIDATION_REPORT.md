@@ -2,7 +2,7 @@
 
 ## Segunda etapa
 
-A [decomposição de viés](FUSION_BIAS_ANALYSIS.md) reproduziu a diferença regional de 49,2% frente a Aqua e atribuiu os 141,72 equivalentes adicionais de agosto de 2024 a contribuições exclusivas. A [comparação de modelos](MODEL_COMPARISON_REPORT.md) acrescenta a razão regularizada ajustada na união e mostra o contraste entre erro fino e agregado. A [prova de cobertura](OBSERVATION_COVERAGE_STUDY.md) localizou grânulos de 24/08/2024 e verificou o bloqueio de acesso sem autenticação. O [protocolo externo](EXTERNAL_VALIDATION_PROTOCOL.md) registra a independência e as métricas por fonte.
+A [decomposição de viés](FUSION_BIAS_ANALYSIS.md) reproduziu a diferença regional de 49,2% frente a Aqua e atribuiu os 141,72 equivalentes adicionais de agosto de 2024 a contribuições exclusivas. A [comparação de modelos](MODEL_COMPARISON_REPORT.md) acrescenta a razão regularizada ajustada na união e mostra o contraste entre erro fino e agregado. A [prova de cobertura](OBSERVATION_COVERAGE_STUDY.md) documentou a seleção dos grânulos de 24/08/2024 e a aquisição autenticada posterior. O [protocolo externo](EXTERNAL_VALIDATION_PROTOCOL.md) registra a independência e as métricas por fonte.
 
 ## Reprodução histórica
 
@@ -89,4 +89,4 @@ python docs/plot_science_audit.py docs/scientific-audit-full.json docs/assets/sc
 
 O gráfico foi gerado com Matplotlib 3.10.6. O ensaio científico roda apenas com as dependências congeladas em `backend/requirements.txt`. A suíte passou no PostgreSQL com 73 testes, comparados a 57 na linha de base. Migrations sem alterações pendentes, configuração Compose válida e build React/Vite concluído. Não foram verificados sensibilidade/especificidade frente a cobertura, concordância independente da fusão, transferibilidade regional ou desempenho em escala nacional.
 
-A etapa orbital posterior usou os grânulos reais da dupla diurna de 24/08/2024. Os resultados estão no [relatório de cobertura](REAL_OBSERVATION_COVERAGE_REPORT.md) e no [relatório de fusão condicionada](COVERAGE_AWARE_FUSION_REPORT.md).
+A etapa orbital posterior processou os quatro grânulos reais da dupla diurna de 24/08/2024. A suíte completa com PostgreSQL passou com 94 testes e a verificação de migrations passou. O cenário angular principal de 55° ficou sem suporte comum. Os resultados pareados de 60° e 65° são exploratórios. Os resultados estão no [relatório de cobertura](REAL_OBSERVATION_COVERAGE_REPORT.md) e no [relatório de fusão condicionada](COVERAGE_AWARE_FUSION_REPORT.md).

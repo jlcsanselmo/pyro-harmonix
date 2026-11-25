@@ -1,0 +1,31 @@
+{
+  "MYD14": {
+    "SHORTNAME": "MYD14",
+    "VERSIONID": "61",
+    "LOCALGRANULEID": "MYD14.A2022261.1710.061.2022263105846.hdf",
+    "RANGEBEGINNINGDATE": "2022-09-18",
+    "RANGEBEGINNINGTIME": "17:10:00.000000"
+  },
+  "VNP14IMG": {
+    "ShortName": "VNP14IMG",
+    "VersionID": "002",
+    "LocalGranuleID": "VNP14IMG.A2022261.1712.002.2024077015356.nc",
+    "RangeBeginningDate": "2022-09-18",
+    "RangeBeginningTime": "17:12:00.00000"
+  },
+  "MYD03": {
+    "SHORTNAME": "MYD03",
+    "VERSIONID": "61",
+    "LOCALGRANULEID": "MYD03.A2022261.1710.061.2022262152512.hdf",
+    "RANGEBEGINNINGDATE": "2022-09-18",
+    "RANGEBEGINNINGTIME": "17:10:00.000000"
+  },
+  "VNP03IMG": {
+    "ShortName": "VNP03IMG",
+    "LocalGranuleID": "VNP03IMG.A2022261.1712.002.2022262143517.nc",
+    "product_name": "VNP03IMG.A2022261.1712.002.2022262143517.nc",
+    "RangeBeginningDate": "2022-09-18",
+    "RangeBeginningTime": "17:12:00.000000",
+    "time_coverage_start": "2022-09-18T17:12:00.000Z"
+  }
+}

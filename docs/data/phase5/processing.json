@@ -1,0 +1,29 @@
+{
+  "receipts": [
+    {
+      "date": "2020-02-23",
+      "pair": "altinopolis-pitangueiras-2020-02-23-day",
+      "status": "processed_with_support"
+    },
+    {
+      "date": "2021-07-19",
+      "pair": "altinopolis-pitangueiras-2021-07-19-night",
+      "status": "processed_with_support"
+    },
+    {
+      "date": "2022-09-18",
+      "pair": "altinopolis-pitangueiras-2022-09-18-day",
+      "status": "processed_with_support"
+    },
+    {
+      "date": "2023-03-24",
+      "pair": "altinopolis-pitangueiras-2023-03-24-night",
+      "status": "processed_with_support"
+    },
+    {
+      "date": "2024-05-18",
+      "pair": "altinopolis-pitangueiras-2024-05-18-day",
+      "status": "processed_with_support"
+    }
+  ]
+}

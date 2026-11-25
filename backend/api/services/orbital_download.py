@@ -58,8 +58,9 @@ def verified_plan(path):
     if (acquisitions["MYD14"] != acquisitions["MYD03"]
             or acquisitions["VNP14IMG"] != acquisitions["VNP03IMG"]):
         raise ValueError("Fire and geolocation granules must have identical acquisition times per sensor.")
-    if not 0 < plan["download_cap_mib"] <= 225:
-        raise ValueError("The four-file pilot cannot exceed 225 MiB.")
+    cap = {"orbital_pilot_phase4_v1": 300, "orbital_pilot_phase5_v1": 250}.get(plan["version"], 225)
+    if not 0 < plan["download_cap_mib"] <= cap:
+        raise ValueError(f"The four-file pilot cannot exceed {cap} MiB.")
     return plan
 
 

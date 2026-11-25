@@ -1,0 +1,60 @@
+{
+  "MYD14": {
+    "SHORTNAME": "MYD14",
+    "VERSIONID": "61",
+    "LOCALGRANULEID": "MYD14.A2019238.1645.061.2020305001451.hdf",
+    "RANGEBEGINNINGDATE": "2019-08-26",
+    "RANGEBEGINNINGTIME": "16:45:00.000000",
+    "RANGEENDINGDATE": "2019-08-26",
+    "RANGEENDINGTIME": "16:50:00.000000"
+  },
+  "VNP14IMG": {
+    "ShortName": "VNP14IMG",
+    "RangeEndingTime": "16:54:00.00000",
+    "LocalGranuleID": "VNP14IMG.A2019238.1648.002.2024095081424.nc",
+    "VersionID": "002",
+    "RangeEndingDate": "2019-08-26",
+    "RangeBeginningDate": "2019-08-26",
+    "RangeBeginningTime": "16:48:00.00000",
+    "title": "VIIRS 375m Active Fire Data"
+  },
+  "MYD03": {
+    "SHORTNAME": "MYD03",
+    "VERSIONID": "61",
+    "LOCALGRANULEID": "MYD03.A2019238.1645.061.2019239160830.hdf",
+    "RANGEBEGINNINGDATE": "2019-08-26",
+    "RANGEBEGINNINGTIME": "16:45:00.000000",
+    "RANGEENDINGDATE": "2019-08-26",
+    "RANGEENDINGTIME": "16:50:00.000000"
+  },
+  "VNP03IMG": {
+    "title": "VIIRS I-band Geolocation Data",
+    "product_name": "VNP03IMG.A2019238.1648.002.2021111011816.nc",
+    "LocalGranuleID": "VNP03IMG.A2019238.1648.002.2021111011816.nc",
+    "ShortName": "VNP03IMG",
+    "time_coverage_start": "2019-08-26T16:48:00.000Z",
+    "time_coverage_end": "2019-08-26T16:54:00.000Z",
+    "RangeBeginningDate": "2019-08-26",
+    "RangeBeginningTime": "16:48:00.000000",
+    "RangeEndingDate": "2019-08-26",
+    "RangeEndingTime": "16:54:00.000000",
+    "land_water_flags": "Shallow_Ocean Land Coastline Shallow_Inland Ephemeral Deep_Inland Continental Deep_Ocean",
+    "land_water_flag_values": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "geo_quality_flags": "Input_invalid Pointing_bad Terrain_bad SolarAngle_bad",
+    "geo_quality_flag_masks": [
+      1,
+      2,
+      4,
+      8
+    ]
+  }
+}

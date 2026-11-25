@@ -1,0 +1,67 @@
+{
+  "version": "orbital_pilot_phase4_v1",
+  "pair_id": "altinopolis-pitangueiras-2019-08-26-day",
+  "date": "2019-08-26",
+  "bounds_w_s_e_n": [
+    -48.433,
+    -21.215243,
+    -47.181633,
+    -20.8087035
+  ],
+  "nominal_gap_minutes": 3.0,
+  "download_cap_mib": 300,
+  "granules": [
+    {
+      "product": "MYD14",
+      "collection": "061",
+      "filename": "MYD14.A2019238.1645.061.2020305001451.hdf",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MYD14/2019/238/MYD14.A2019238.1645.061.2020305001451.hdf",
+      "acquisition_start_utc": "2019-08-26T16:45:00.000Z",
+      "acquisition_end_utc": "2019-08-26T16:50:00.000Z",
+      "catalog_size": 0.362283,
+      "catalog_size_source": "CMR",
+      "cmr_granule_concept_id": "G2288635824-LPCLOUD",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "product": "VNP14IMG",
+      "collection": "002",
+      "filename": "VNP14IMG.A2019238.1648.002.2024095081424.nc",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/5200/VNP14IMG/2019/238/VNP14IMG.A2019238.1648.002.2024095081424.nc",
+      "acquisition_start_utc": "2019-08-26T16:48:00.000Z",
+      "acquisition_end_utc": "2019-08-26T16:54:00.000Z",
+      "catalog_size": 2.00741863250732,
+      "catalog_size_source": "CMR",
+      "cmr_granule_concept_id": "G2923602663-LPCLOUD",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "product": "MYD03",
+      "collection": "061",
+      "filename": "MYD03.A2019238.1645.061.2019239160830.hdf",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MYD03/2019/238/MYD03.A2019238.1645.061.2019239160830.hdf",
+      "acquisition_start_utc": "2019-08-26T16:45:00.000Z",
+      "acquisition_end_utc": "2019-08-26T16:50:00.000Z",
+      "catalog_size": 30.7465543746948,
+      "catalog_size_source": "CMR",
+      "cmr_granule_concept_id": "G1631083465-LAADS",
+      "bytes": null,
+      "sha256": null
+    },
+    {
+      "product": "VNP03IMG",
+      "collection": "002",
+      "filename": "VNP03IMG.A2019238.1648.002.2021111011816.nc",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/5200/VNP03IMG/2019/238/VNP03IMG.A2019238.1648.002.2021111011816.nc",
+      "acquisition_start_utc": "2019-08-26T16:48:00.000Z",
+      "acquisition_end_utc": "2019-08-26T16:54:00.000Z",
+      "catalog_size": 145.675523757935,
+      "catalog_size_source": "CMR",
+      "cmr_granule_concept_id": "G2126759712-LAADS",
+      "bytes": null,
+      "sha256": null
+    }
+  ]
+}

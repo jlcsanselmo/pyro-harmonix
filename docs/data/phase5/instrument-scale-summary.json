@@ -1,0 +1,48 @@
+{
+  "groups": [
+    {
+      "sensor": "aqua",
+      "bin_zenith_degrees": [
+        0,
+        30
+      ],
+      "n": 4,
+      "min_area_ratio": 1.007405813821614,
+      "median_area_ratio": 1.0174773294518757,
+      "max_area_ratio": 1.0249557770406774
+    },
+    {
+      "sensor": "aqua",
+      "bin_zenith_degrees": [
+        55,
+        75
+      ],
+      "n": 67,
+      "min_area_ratio": 0.9605091058378933,
+      "median_area_ratio": 0.9932747290310869,
+      "max_area_ratio": 1.039216880812386
+    },
+    {
+      "sensor": "viirs",
+      "bin_zenith_degrees": [
+        0,
+        30
+      ],
+      "n": 372,
+      "min_area_ratio": 0.9615599937130749,
+      "median_area_ratio": 1.011793826299152,
+      "max_area_ratio": 1.0713155133032037
+    },
+    {
+      "sensor": "viirs",
+      "bin_zenith_degrees": [
+        30,
+        55
+      ],
+      "n": 3,
+      "min_area_ratio": 0.9992707981460914,
+      "median_area_ratio": 1.003799763492261,
+      "max_area_ratio": 1.0342493513061808
+    }
+  ]
+}

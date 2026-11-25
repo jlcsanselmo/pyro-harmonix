@@ -44,6 +44,23 @@ class OrbitalAcquisitionTests(TestCase):
         request = urllib.request.Request("https://ladsweb.modaps.eosdis.nasa.gov/", headers={"Authorization": "Bearer fixture"})
         self.assertIsNone(NoRedirect().redirect_request(request, None, 302, "", {}, "https://example.invalid"))
 
+    @skipUnless(PLAN.is_file(), "repository pilot plan is needed")
+    def test_phase4_cap_preserves_phase3_budget(self):
+        plan = verified_plan(PLAN)
+        with TemporaryDirectory() as directory:
+            path = Path(directory) / "plan.json"
+            plan["download_cap_mib"] = 300
+            path.write_text(json.dumps(plan))
+            with self.assertRaisesRegex(ValueError, "225 MiB"):
+                verified_plan(path)
+            plan["version"] = "orbital_pilot_phase4_v1"
+            path.write_text(json.dumps(plan))
+            self.assertEqual(verified_plan(path)["download_cap_mib"], 300)
+            plan["download_cap_mib"] = 301
+            path.write_text(json.dumps(plan))
+            with self.assertRaisesRegex(ValueError, "300 MiB"):
+                verified_plan(path)
+
     def test_cloud_redirect_keeps_bearer_at_original_host_only(self):
         original = urllib.request.Request(f"https://{LAADS_CLOUD}/a")
         original.add_unredirected_header("Authorization", "Bearer fixture")
@@ -148,6 +165,72 @@ class OrbitalProcessingTests(TestCase):
         self.assertEqual(stats[1]["coverage_conditioned"], 0.5)
         self.assertEqual(stats[1]["common_detection_class"], "aqua_only_viirs_valid")
         self.assertEqual(stats[1]["detection_conditioned_on_common_support"], 1)
+
+    def test_area_priority_does_not_deduplicate_independent_fire_centers(self):
+        from shapely.geometry import Point, box
+
+        from api.services.orbital_coverage import _matched_fragments, _native_centers, _pieces, _time_sensitivity
+        from api.services.orbital_swath import Pixel
+
+        region = box(0, 0, 10, 10)
+        fire = Pixel(region, Point(4, 5), "fire", 100, 40, 30, "cell", (10, 1))
+        prior = Pixel(region, Point(5, 5), "clear_no_fire", 99, 35, 30, "cell", (0, 1))
+        viirs = Pixel(region, Point(5, 5), "clear_no_fire", 100, 25, 30, "cell")
+        audit = {fire.native_index: {}}
+        pieces = _pieces(region, [fire, prior], "cell")
+        centers = _native_centers(region, "cell", [fire, prior], pieces, audit)
+        self.assertEqual(centers, [fire])
+        self.assertEqual(audit[fire.native_index]["legacy_disposition"], "center_assigned_to_overlapping_footprint")
+        fragments = _matched_fragments(pieces, _pieces(region, [viirs], "cell"))
+        legacy = _time_sensitivity(fragments, 100, (30,), 0.8, 0.2)[0]
+        independent = _time_sensitivity(fragments, 100, (30,), 0.8, 0.2, [centers, []])[0]
+        self.assertEqual(legacy["aqua_on_common_support"], 0)
+        self.assertEqual(independent["aqua_on_common_support"], 1)
+        self.assertEqual(legacy["joint_valid_fraction"], independent["joint_valid_fraction"])
+        late_fire = Pixel(fire.shape, fire.center, "fire", 2400, 40, 30, "cell")
+        outside_time = _time_sensitivity(fragments, 100, (30,), 0.8, 0.2, [[late_fire], []])[0]
+        self.assertTrue(outside_time["eligible"])
+        self.assertEqual(outside_time["aqua_on_common_support"], 0)
+
+    def test_viirs_m13_sensitivity_preserves_remaining_quality_filters(self):
+        from types import SimpleNamespace
+
+        import numpy as np
+
+        from api.services.orbital_swath import VIIRS_QA_FILL, _quality_state
+
+        data = SimpleNamespace(mask=np.full((1, 5), 8),
+                               fire_qa=np.array([[64, 64 | 8, VIIRS_QA_FILL, 1 << 22, 0]], dtype=np.uint32),
+                               geo_qa=np.zeros((1, 5)), zenith=np.full((1, 5), 20),
+                               solar_zenith=np.full((1, 5), 40), land_water=np.ones((1, 5)))
+        self.assertEqual(_quality_state(data, 0, 0, "snpp", 55), "no_valid_observation")
+        self.assertEqual([_quality_state(data, 0, i, "snpp", 55, "presence_m13_flagged") for i in range(5)],
+                         ["fire", "no_valid_observation", "no_valid_observation", None, "fire"])
+        data.land_water[0, 4] = 2
+        self.assertEqual(_quality_state(data, 0, 4, "snpp", 55), "no_valid_observation")
+        self.assertEqual(_quality_state(data, 0, 4, "snpp", 55, enforce_land=False), "fire")
+
+    def test_signed_viirs_bitfield_preserves_high_bits_and_masked_fill(self):
+        from netCDF4 import Dataset
+        import numpy as np
+
+        from api.services.orbital_swath import VIIRS_QA_FILL, _nc_field
+
+        with Dataset("fixture", "w", diskless=True) as file:
+            file.createDimension("sample", 3)
+            qa = file.createVariable("algorithm QA", "i4", ("sample",), fill_value=-1)
+            qa[:] = [64, -2147483648, -1]
+            values = _nc_field(file, "algorithm QA", VIIRS_QA_FILL)
+        self.assertEqual(values.dtype, np.dtype("uint32"))
+        self.assertEqual(values.tolist(), [64, 0x80000000, VIIRS_QA_FILL])
+
+    def test_kappa_is_undefined_for_single_identical_category(self):
+        from orbital_pilot import _agreement
+
+        absent = {"common_detection_class": "observed_without_detection"}
+        self.assertIsNone(_agreement([absent, absent])["cohen_kappa"])
+        both = {"common_detection_class": "both_detected"}
+        self.assertEqual(_agreement([absent, both])["cohen_kappa"], 1)
 
     def test_polygon_partition_drops_zero_area_overlay_fragments(self):
         from shapely.geometry import GeometryCollection, LineString, Point, box
