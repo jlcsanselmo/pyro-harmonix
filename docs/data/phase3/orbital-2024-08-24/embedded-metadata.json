@@ -1,0 +1,74 @@
+{
+  "MYD14": {
+    "embedded_metadata": {
+      "SHORTNAME": "MYD14",
+      "VERSIONID": "61",
+      "LOCALGRANULEID": "MYD14.A2024237.1700.061.2024238111721.hdf",
+      "RANGEBEGINNINGDATE": "2024-08-24",
+      "RANGEBEGINNINGTIME": "17:00:00.000000",
+      "RANGEENDINGDATE": "2024-08-24",
+      "RANGEENDINGTIME": "17:05:00.000000"
+    },
+    "dimensions": {
+      "fire mask": [
+        2040,
+        1354
+      ]
+    }
+  },
+  "MYD03": {
+    "embedded_metadata": {
+      "SHORTNAME": "MYD03",
+      "VERSIONID": "61",
+      "LOCALGRANULEID": "MYD03.A2024237.1700.061.2024238150600.hdf",
+      "RANGEBEGINNINGDATE": "2024-08-24",
+      "RANGEBEGINNINGTIME": "17:00:00.000000",
+      "RANGEENDINGDATE": "2024-08-24",
+      "RANGEENDINGTIME": "17:05:00.000000"
+    },
+    "dimensions": {
+      "Latitude": [
+        2040,
+        1354
+      ],
+      "EV start time": [
+        204
+      ]
+    }
+  },
+  "VNP14IMG": {
+    "embedded_metadata": {
+      "title": "VIIRS 375m Active Fire Data",
+      "ShortName": "VNP14IMG",
+      "LocalGranuleID": "VNP14IMG.A2024237.1630.002.2024242164535.nc",
+      "DayNightFlag": "Day",
+      "RangeBeginningDate": "2024-08-24",
+      "RangeBeginningTime": "16:30:00.00000"
+    },
+    "dimensions": {
+      "phony_dim_0": 3156,
+      "phony_dim_1": 6464,
+      "phony_dim_2": 6400
+    }
+  },
+  "VNP03IMG": {
+    "embedded_metadata": {
+      "title": "VIIRS I-band Geolocation Data",
+      "ShortName": "VNP03IMG",
+      "LocalGranuleID": "VNP03IMG.A2024237.1630.002.2024242143135.nc",
+      "platform": "Suomi-NPP",
+      "DayNightFlag": "Day",
+      "time_coverage_start": "2024-08-24T16:30:00.000Z",
+      "time_coverage_end": "2024-08-24T16:36:00.000Z",
+      "RangeBeginningDate": "2024-08-24",
+      "RangeBeginningTime": "16:30:00.000000"
+    },
+    "dimensions": {
+      "number_of_scans": 202,
+      "number_of_lines": 6464,
+      "number_of_pixels": 6400,
+      "vector_elements": 3,
+      "quaternion_elements": 4
+    }
+  }
+}

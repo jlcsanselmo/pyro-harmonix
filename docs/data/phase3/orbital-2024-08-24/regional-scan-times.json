@@ -1,0 +1,10 @@
+{
+  "aqua": {
+    "local_scan_time_min_utc": "2024-08-24T17:00:28.586499+00:00",
+    "local_scan_time_max_utc": "2024-08-24T17:00:37.449174+00:00"
+  },
+  "snpp": {
+    "local_scan_time_min_utc": "2024-08-24T16:34:45.976000+00:00",
+    "local_scan_time_max_utc": "2024-08-24T16:34:56.651619+00:00"
+  }
+}

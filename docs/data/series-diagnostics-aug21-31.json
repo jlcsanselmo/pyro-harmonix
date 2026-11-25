@@ -1,0 +1,162 @@
+{
+  "start": "2024-08-21",
+  "end": "2024-08-31",
+  "bounds": {
+    "south": -21.215243,
+    "north": -20.8087035,
+    "west": -48.433,
+    "east": -47.181633
+  },
+  "years": [
+    {
+      "year": 2019,
+      "internal": {
+        "raw_aqua": 6,
+        "raw_snpp": 31,
+        "automated_hotspots": 19,
+        "harmonized_sum": 6.257396758984115,
+        "ratio_to_aqua": 1.0428994598306858,
+        "low_count": true,
+        "parent_count": 24
+      },
+      "boundary": {
+        "raw_aqua": 0,
+        "raw_snpp": 1,
+        "automated_hotspots": 0,
+        "harmonized_sum": 0,
+        "parent_count": 2
+      },
+      "factor_check": {
+        "month_factor": 0.2101546296118783,
+        "implied_factor": 0.21015462961187836,
+        "relative_difference": 2.641443176092669e-16,
+        "within_tolerance": true
+      }
+    },
+    {
+      "year": 2020,
+      "internal": {
+        "raw_aqua": 15,
+        "raw_snpp": 43,
+        "automated_hotspots": 29,
+        "harmonized_sum": 12.018324536655385,
+        "ratio_to_aqua": 0.8012216357770257,
+        "low_count": false,
+        "parent_count": 28
+      },
+      "boundary": {
+        "raw_aqua": 0,
+        "raw_snpp": 2,
+        "automated_hotspots": 1,
+        "harmonized_sum": 0.2101546296118783,
+        "parent_count": 1
+      },
+      "factor_check": {
+        "month_factor": 0.2101546296118783,
+        "implied_factor": 0.21015462961187836,
+        "relative_difference": 2.641443176092669e-16,
+        "within_tolerance": true
+      }
+    },
+    {
+      "year": 2021,
+      "internal": {
+        "raw_aqua": 54,
+        "raw_snpp": 358,
+        "automated_hotspots": 93,
+        "harmonized_sum": 64.61767870052623,
+        "ratio_to_aqua": 1.1966236796393745,
+        "low_count": false,
+        "parent_count": 78
+      },
+      "boundary": {
+        "raw_aqua": 12,
+        "raw_snpp": 34,
+        "automated_hotspots": 11,
+        "harmonized_sum": 6.047242129372235,
+        "parent_count": 11
+      },
+      "factor_check": {
+        "month_factor": 0.2101546296118783,
+        "implied_factor": 0.21015462961187836,
+        "relative_difference": 2.641443176092669e-16,
+        "within_tolerance": true
+      }
+    },
+    {
+      "year": 2022,
+      "internal": {
+        "raw_aqua": 9,
+        "raw_snpp": 51,
+        "automated_hotspots": 26,
+        "harmonized_sum": 9.858943055102896,
+        "ratio_to_aqua": 1.0954381172336551,
+        "low_count": true,
+        "parent_count": 23
+      },
+      "boundary": {
+        "raw_aqua": 0,
+        "raw_snpp": 1,
+        "automated_hotspots": 1,
+        "harmonized_sum": 0.10507731480593915,
+        "parent_count": 1
+      },
+      "factor_check": {
+        "month_factor": 0.2101546296118783,
+        "implied_factor": 0.21015462961187828,
+        "relative_difference": 1.3207215880463345e-16,
+        "within_tolerance": true
+      }
+    },
+    {
+      "year": 2023,
+      "internal": {
+        "raw_aqua": 0,
+        "raw_snpp": 7,
+        "automated_hotspots": 5,
+        "harmonized_sum": 0.7355412036415742,
+        "ratio_to_aqua": null,
+        "low_count": true,
+        "parent_count": 5
+      },
+      "boundary": {
+        "raw_aqua": 0,
+        "raw_snpp": 2,
+        "automated_hotspots": 1,
+        "harmonized_sum": 0.2101546296118783,
+        "parent_count": 1
+      },
+      "factor_check": {
+        "month_factor": 0.2101546296118783,
+        "implied_factor": 0.21015462961187834,
+        "relative_difference": 1.3207215880463345e-16,
+        "within_tolerance": true
+      }
+    },
+    {
+      "year": 2024,
+      "internal": {
+        "raw_aqua": 436,
+        "raw_snpp": 2034,
+        "automated_hotspots": 388,
+        "harmonized_sum": 431.72725831527987,
+        "ratio_to_aqua": 0.9902001337506419,
+        "low_count": false,
+        "parent_count": 279
+      },
+      "boundary": {
+        "raw_aqua": 29,
+        "raw_snpp": 82,
+        "automated_hotspots": 23,
+        "harmonized_sum": 18.435102777191986,
+        "parent_count": 28
+      },
+      "factor_check": {
+        "month_factor": 0.2101546296118783,
+        "implied_factor": 0.21015462961187795,
+        "relative_difference": 1.7169380644602347e-15,
+        "within_tolerance": true
+      }
+    }
+  ]
+}

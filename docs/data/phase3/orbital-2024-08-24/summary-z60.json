@@ -1,0 +1,976 @@
+{
+  "version": "orbital_coverage_v1",
+  "status": "processed_granules",
+  "pair_id": "altinopolis-pitangueiras-2024-08-24-day",
+  "granules": [
+    {
+      "product": "MYD14",
+      "collection": "061",
+      "filename": "MYD14.A2024237.1700.061.2024238111721.hdf",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MYD14/2024/237/MYD14.A2024237.1700.061.2024238111721.hdf",
+      "acquisition_start_utc": "2024-08-24T17:00:00Z",
+      "acquisition_end_utc": "2024-08-24T17:05:00Z",
+      "catalog_size": 0.4,
+      "catalog_size_source": "CMR",
+      "bytes": 423515,
+      "sha256": "8fc673f526ffe612a61f7c5430ce420d9afce612ca91c0ccee1ecc94114cda92",
+      "acquisition": "NASA_earthdata",
+      "acquired_from": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/MYD14.061/MYD14.A2024237.1700.061.2024238111721/MYD14.A2024237.1700.061.2024238111721.hdf",
+      "verification_note": "Transfer completed in the first authenticated attempt and was verified again on continuation."
+    },
+    {
+      "product": "MYD03",
+      "collection": "061",
+      "filename": "MYD03.A2024237.1700.061.2024238150600.hdf",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/61/MYD03/2024/237/MYD03.A2024237.1700.061.2024238150600.hdf",
+      "acquisition_start_utc": "2024-08-24T17:00:00Z",
+      "acquisition_end_utc": "2024-08-24T17:05:00Z",
+      "catalog_size": 33.36,
+      "catalog_size_source": "LAADS",
+      "bytes": 34980498,
+      "sha256": "3913e1f07d6d8b2d58dbee017718f37bf90ae7415415c8e93ac451f5de23df40",
+      "acquisition": "NASA_earthdata",
+      "acquired_from": "https://data.laadsdaac.earthdatacloud.nasa.gov/prod-lads/MYD03/MYD03.A2024237.1700.061.2024238150600.hdf",
+      "cmr_granule_id": "G3211212083-LAADS"
+    },
+    {
+      "product": "VNP14IMG",
+      "collection": "002",
+      "filename": "VNP14IMG.A2024237.1630.002.2024242164535.nc",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/5200/VNP14IMG/2024/237/VNP14IMG.A2024237.1630.002.2024242164535.nc",
+      "acquisition_start_utc": "2024-08-24T16:30:00Z",
+      "acquisition_end_utc": "2024-08-24T16:36:00Z",
+      "catalog_size": 2.3,
+      "catalog_size_source": "CMR",
+      "bytes": 2414507,
+      "sha256": "44a54e5deafaeb1bd126c97da0320df872cab76281563608af8cbab71aaeb587",
+      "acquisition": "NASA_earthdata",
+      "acquired_from": "https://data.lpdaac.earthdatacloud.nasa.gov/lp-prod-protected/VNP14IMG.002/VNP14IMG.A2024237.1630.002.2024242164535/VNP14IMG.A2024237.1630.002.2024242164535.nc"
+    },
+    {
+      "product": "VNP03IMG",
+      "collection": "002",
+      "filename": "VNP03IMG.A2024237.1630.002.2024242143135.nc",
+      "source_url": "https://ladsweb.modaps.eosdis.nasa.gov/archive/allData/5200/VNP03IMG/2024/237/VNP03IMG.A2024237.1630.002.2024242143135.nc",
+      "acquisition_start_utc": "2024-08-24T16:30:00Z",
+      "acquisition_end_utc": "2024-08-24T16:36:00Z",
+      "catalog_size": 149.48,
+      "catalog_size_source": "LAADS",
+      "bytes": 156736553,
+      "sha256": "fdb58ed9b2716211e637853527f06a64f136e2f00dd600340850f04fbda37128",
+      "acquisition": "NASA_earthdata",
+      "acquired_from": "https://data.laadsdaac.earthdatacloud.nasa.gov/prod-lads/VNP03IMG/VNP03IMG.A2024237.1630.002.2024242143135.nc",
+      "cmr_granule_id": "G3209923408-LAADS"
+    }
+  ],
+  "projected_crs": "+proj=laea +lat_0=-21.01197325 +lon_0=-47.8073165 +datum=WGS84 +units=m +type=crs",
+  "overlay_precision_grid_meters": 0.01,
+  "processing_packages": {
+    "h3": "4.2.2",
+    "pyproj": "3.7.1",
+    "shapely": "2.1.1",
+    "pyhdf": "0.11.6",
+    "netCDF4": "1.7.2",
+    "numpy": "2.2.6"
+  },
+  "primary_tolerance_minutes": 60,
+  "min_joint_full_cell_fraction": 0.8,
+  "max_sensor_zenith_degrees": 60.0,
+  "angle_analysis": "exploratory_sensitivity",
+  "calibration": {
+    "method": "monthly_shrunk_union",
+    "factor": 0.2101546296118783,
+    "source_sha256": "cbcb89128df9a9ce3bb1153b09249d406c293a494b913fa7a0c82196409a1247"
+  },
+  "summary_by_record_category": {
+    "all": {
+      "cells": 1175,
+      "coverage_status_by_sensor": {
+        "aqua": {
+          "invalid": 268,
+          "partially_valid": 200,
+          "unknown": 653,
+          "valid": 54
+        },
+        "viirs": {
+          "partially_valid": 1166,
+          "unknown": 3,
+          "valid": 6
+        }
+      },
+      "areas_km2": {
+        "assessed_fraction": 5855.6707117823,
+        "aqua_valid_fraction": 1062.9151485592001,
+        "viirs_valid_fraction": 5568.57063198965,
+        "aqua_unknown_fraction": 2.493426099749997,
+        "viirs_unknown_fraction": 3.2215977666499307
+      },
+      "native_baselines": {
+        "aqua_native_fire_centers": 8,
+        "viirs_native_fire_centers": 80,
+        "viirs_adjusted": 16.812370368950265,
+        "zero_filled": 12.406185184475133,
+        "detection_conditioned": 20.551442591278995
+      },
+      "time_sensitivity": [
+        {
+          "tolerance_minutes": 30,
+          "eligible_cells": 148,
+          "joint_valid_area_km2": 981.8751645922,
+          "agreement_on_common_support": {
+            "both_detected": 2,
+            "aqua_only_viirs_valid": 1,
+            "viirs_only_aqua_valid": 10,
+            "observed_without_detection": 135,
+            "overall_agreement": 0.9256756756756757,
+            "positive_jaccard": 0.15384615384615385,
+            "positive_agreement": 0.26666666666666666
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": 0.010968931428792721,
+            "mae": 0.04582961711495817,
+            "rmse": 0.17692225558216565
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 16.739741665548333,
+            "cells_below_coverage_threshold": 13.743272684235489,
+            "restrict_centers_to_common_support": 0.3949226851940608,
+            "use_confirmed_zero_on_common_support": 2.601546296118783
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 4,
+            "viirs_native_fire_centers": 22,
+            "viirs_adjusted": 4.623401851461323,
+            "zero_filled": 4.311700925730661,
+            "detection_conditioned": 6.8081699070435056
+          },
+          "aqua_on_common_support": 3,
+          "viirs_on_common_support": 22,
+          "coverage_conditioned": 3.8117009257306615,
+          "aqua_center_with_viirs_clear": 3,
+          "viirs_center_with_aqua_clear": 17
+        },
+        {
+          "tolerance_minutes": 45,
+          "eligible_cells": 148,
+          "joint_valid_area_km2": 981.8751645922,
+          "agreement_on_common_support": {
+            "both_detected": 2,
+            "aqua_only_viirs_valid": 1,
+            "viirs_only_aqua_valid": 10,
+            "observed_without_detection": 135,
+            "overall_agreement": 0.9256756756756757,
+            "positive_jaccard": 0.15384615384615385,
+            "positive_agreement": 0.26666666666666666
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": 0.010968931428792721,
+            "mae": 0.04582961711495817,
+            "rmse": 0.17692225558216565
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 16.739741665548333,
+            "cells_below_coverage_threshold": 13.743272684235489,
+            "restrict_centers_to_common_support": 0.3949226851940608,
+            "use_confirmed_zero_on_common_support": 2.601546296118783
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 4,
+            "viirs_native_fire_centers": 22,
+            "viirs_adjusted": 4.623401851461323,
+            "zero_filled": 4.311700925730661,
+            "detection_conditioned": 6.8081699070435056
+          },
+          "aqua_on_common_support": 3,
+          "viirs_on_common_support": 22,
+          "coverage_conditioned": 3.8117009257306615,
+          "aqua_center_with_viirs_clear": 3,
+          "viirs_center_with_aqua_clear": 17
+        },
+        {
+          "tolerance_minutes": 60,
+          "eligible_cells": 148,
+          "joint_valid_area_km2": 981.8751645922,
+          "agreement_on_common_support": {
+            "both_detected": 2,
+            "aqua_only_viirs_valid": 1,
+            "viirs_only_aqua_valid": 10,
+            "observed_without_detection": 135,
+            "overall_agreement": 0.9256756756756757,
+            "positive_jaccard": 0.15384615384615385,
+            "positive_agreement": 0.26666666666666666
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": 0.010968931428792721,
+            "mae": 0.04582961711495817,
+            "rmse": 0.17692225558216565
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 16.739741665548333,
+            "cells_below_coverage_threshold": 13.743272684235489,
+            "restrict_centers_to_common_support": 0.3949226851940608,
+            "use_confirmed_zero_on_common_support": 2.601546296118783
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 4,
+            "viirs_native_fire_centers": 22,
+            "viirs_adjusted": 4.623401851461323,
+            "zero_filled": 4.311700925730661,
+            "detection_conditioned": 6.8081699070435056
+          },
+          "aqua_on_common_support": 3,
+          "viirs_on_common_support": 22,
+          "coverage_conditioned": 3.8117009257306615,
+          "aqua_center_with_viirs_clear": 3,
+          "viirs_center_with_aqua_clear": 17
+        },
+        {
+          "tolerance_minutes": 90,
+          "eligible_cells": 148,
+          "joint_valid_area_km2": 981.8751645922,
+          "agreement_on_common_support": {
+            "both_detected": 2,
+            "aqua_only_viirs_valid": 1,
+            "viirs_only_aqua_valid": 10,
+            "observed_without_detection": 135,
+            "overall_agreement": 0.9256756756756757,
+            "positive_jaccard": 0.15384615384615385,
+            "positive_agreement": 0.26666666666666666
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": 0.010968931428792721,
+            "mae": 0.04582961711495817,
+            "rmse": 0.17692225558216565
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 16.739741665548333,
+            "cells_below_coverage_threshold": 13.743272684235489,
+            "restrict_centers_to_common_support": 0.3949226851940608,
+            "use_confirmed_zero_on_common_support": 2.601546296118783
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 4,
+            "viirs_native_fire_centers": 22,
+            "viirs_adjusted": 4.623401851461323,
+            "zero_filled": 4.311700925730661,
+            "detection_conditioned": 6.8081699070435056
+          },
+          "aqua_on_common_support": 3,
+          "viirs_on_common_support": 22,
+          "coverage_conditioned": 3.8117009257306615,
+          "aqua_center_with_viirs_clear": 3,
+          "viirs_center_with_aqua_clear": 17
+        }
+      ]
+    },
+    "both": {
+      "cells": 6,
+      "coverage_status_by_sensor": {
+        "aqua": {
+          "partially_valid": 4,
+          "valid": 2
+        },
+        "viirs": {
+          "partially_valid": 6
+        }
+      },
+      "areas_km2": {
+        "assessed_fraction": 32.48150634779999,
+        "aqua_valid_fraction": 32.481472857400014,
+        "viirs_valid_fraction": 26.01843456715,
+        "aqua_unknown_fraction": 3.562014998029918e-05,
+        "viirs_unknown_fraction": 0.026920717349991203
+      },
+      "native_baselines": {
+        "aqua_native_fire_centers": 6,
+        "viirs_native_fire_centers": 12,
+        "viirs_adjusted": 2.5218555553425395,
+        "zero_filled": 4.26092777767127,
+        "detection_conditioned": 4.26092777767127
+      },
+      "time_sensitivity": [
+        {
+          "tolerance_minutes": 30,
+          "eligible_cells": 3,
+          "joint_valid_area_km2": 26.01837069625,
+          "agreement_on_common_support": {
+            "both_detected": 2,
+            "aqua_only_viirs_valid": 0,
+            "viirs_only_aqua_valid": 1,
+            "observed_without_detection": 0,
+            "overall_agreement": 0.6666666666666666,
+            "positive_jaccard": 0.6666666666666666,
+            "positive_agreement": 0.8
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": -0.4565120370547883,
+            "mae": 0.5966151234627072,
+            "rmse": 0.6562205895871712
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 2.9456958332534526,
+            "cells_below_coverage_threshold": 2.4456958332534526,
+            "restrict_centers_to_common_support": 0.3949226851940608,
+            "use_confirmed_zero_on_common_support": 0.10507731480593918
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 3,
+            "viirs_native_fire_centers": 3,
+            "viirs_adjusted": 0.6304638888356349,
+            "zero_filled": 1.8152319444178175,
+            "detection_conditioned": 1.8152319444178175
+          },
+          "aqua_on_common_support": 2,
+          "viirs_on_common_support": 3,
+          "coverage_conditioned": 1.3152319444178175,
+          "aqua_center_with_viirs_clear": 2,
+          "viirs_center_with_aqua_clear": 1
+        },
+        {
+          "tolerance_minutes": 45,
+          "eligible_cells": 3,
+          "joint_valid_area_km2": 26.01837069625,
+          "agreement_on_common_support": {
+            "both_detected": 2,
+            "aqua_only_viirs_valid": 0,
+            "viirs_only_aqua_valid": 1,
+            "observed_without_detection": 0,
+            "overall_agreement": 0.6666666666666666,
+            "positive_jaccard": 0.6666666666666666,
+            "positive_agreement": 0.8
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": -0.4565120370547883,
+            "mae": 0.5966151234627072,
+            "rmse": 0.6562205895871712
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 2.9456958332534526,
+            "cells_below_coverage_threshold": 2.4456958332534526,
+            "restrict_centers_to_common_support": 0.3949226851940608,
+            "use_confirmed_zero_on_common_support": 0.10507731480593918
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 3,
+            "viirs_native_fire_centers": 3,
+            "viirs_adjusted": 0.6304638888356349,
+            "zero_filled": 1.8152319444178175,
+            "detection_conditioned": 1.8152319444178175
+          },
+          "aqua_on_common_support": 2,
+          "viirs_on_common_support": 3,
+          "coverage_conditioned": 1.3152319444178175,
+          "aqua_center_with_viirs_clear": 2,
+          "viirs_center_with_aqua_clear": 1
+        },
+        {
+          "tolerance_minutes": 60,
+          "eligible_cells": 3,
+          "joint_valid_area_km2": 26.01837069625,
+          "agreement_on_common_support": {
+            "both_detected": 2,
+            "aqua_only_viirs_valid": 0,
+            "viirs_only_aqua_valid": 1,
+            "observed_without_detection": 0,
+            "overall_agreement": 0.6666666666666666,
+            "positive_jaccard": 0.6666666666666666,
+            "positive_agreement": 0.8
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": -0.4565120370547883,
+            "mae": 0.5966151234627072,
+            "rmse": 0.6562205895871712
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 2.9456958332534526,
+            "cells_below_coverage_threshold": 2.4456958332534526,
+            "restrict_centers_to_common_support": 0.3949226851940608,
+            "use_confirmed_zero_on_common_support": 0.10507731480593918
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 3,
+            "viirs_native_fire_centers": 3,
+            "viirs_adjusted": 0.6304638888356349,
+            "zero_filled": 1.8152319444178175,
+            "detection_conditioned": 1.8152319444178175
+          },
+          "aqua_on_common_support": 2,
+          "viirs_on_common_support": 3,
+          "coverage_conditioned": 1.3152319444178175,
+          "aqua_center_with_viirs_clear": 2,
+          "viirs_center_with_aqua_clear": 1
+        },
+        {
+          "tolerance_minutes": 90,
+          "eligible_cells": 3,
+          "joint_valid_area_km2": 26.01837069625,
+          "agreement_on_common_support": {
+            "both_detected": 2,
+            "aqua_only_viirs_valid": 0,
+            "viirs_only_aqua_valid": 1,
+            "observed_without_detection": 0,
+            "overall_agreement": 0.6666666666666666,
+            "positive_jaccard": 0.6666666666666666,
+            "positive_agreement": 0.8
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": -0.4565120370547883,
+            "mae": 0.5966151234627072,
+            "rmse": 0.6562205895871712
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 2.9456958332534526,
+            "cells_below_coverage_threshold": 2.4456958332534526,
+            "restrict_centers_to_common_support": 0.3949226851940608,
+            "use_confirmed_zero_on_common_support": 0.10507731480593918
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 3,
+            "viirs_native_fire_centers": 3,
+            "viirs_adjusted": 0.6304638888356349,
+            "zero_filled": 1.8152319444178175,
+            "detection_conditioned": 1.8152319444178175
+          },
+          "aqua_on_common_support": 2,
+          "viirs_on_common_support": 3,
+          "coverage_conditioned": 1.3152319444178175,
+          "aqua_center_with_viirs_clear": 2,
+          "viirs_center_with_aqua_clear": 1
+        }
+      ]
+    },
+    "aqua_only": {
+      "cells": 2,
+      "coverage_status_by_sensor": {
+        "aqua": {
+          "partially_valid": 2
+        },
+        "viirs": {
+          "partially_valid": 2
+        }
+      },
+      "areas_km2": {
+        "assessed_fraction": 10.819993452549987,
+        "aqua_valid_fraction": 10.819984971849987,
+        "viirs_valid_fraction": 9.626504473249998,
+        "aqua_unknown_fraction": 8.480699999257923e-06,
+        "viirs_unknown_fraction": 0.005400520099987276
+      },
+      "native_baselines": {
+        "aqua_native_fire_centers": 2,
+        "viirs_native_fire_centers": 0,
+        "viirs_adjusted": 0.0,
+        "zero_filled": 1.0,
+        "detection_conditioned": 2
+      },
+      "time_sensitivity": [
+        {
+          "tolerance_minutes": 30,
+          "eligible_cells": 1,
+          "joint_valid_area_km2": 9.626500930900004,
+          "agreement_on_common_support": {
+            "both_detected": 0,
+            "aqua_only_viirs_valid": 1,
+            "viirs_only_aqua_valid": 0,
+            "observed_without_detection": 0,
+            "overall_agreement": 0.0,
+            "positive_jaccard": 0.0,
+            "positive_agreement": 0.0
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": -1.0,
+            "mae": 1.0,
+            "rmse": 1.0
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 1.5,
+            "cells_below_coverage_threshold": 1,
+            "restrict_centers_to_common_support": 0,
+            "use_confirmed_zero_on_common_support": 0.5
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 1,
+            "viirs_native_fire_centers": 0,
+            "viirs_adjusted": 0.0,
+            "zero_filled": 0.5,
+            "detection_conditioned": 1
+          },
+          "aqua_on_common_support": 1,
+          "viirs_on_common_support": 0,
+          "coverage_conditioned": 0.5,
+          "aqua_center_with_viirs_clear": 1,
+          "viirs_center_with_aqua_clear": 0
+        },
+        {
+          "tolerance_minutes": 45,
+          "eligible_cells": 1,
+          "joint_valid_area_km2": 9.626500930900004,
+          "agreement_on_common_support": {
+            "both_detected": 0,
+            "aqua_only_viirs_valid": 1,
+            "viirs_only_aqua_valid": 0,
+            "observed_without_detection": 0,
+            "overall_agreement": 0.0,
+            "positive_jaccard": 0.0,
+            "positive_agreement": 0.0
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": -1.0,
+            "mae": 1.0,
+            "rmse": 1.0
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 1.5,
+            "cells_below_coverage_threshold": 1,
+            "restrict_centers_to_common_support": 0,
+            "use_confirmed_zero_on_common_support": 0.5
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 1,
+            "viirs_native_fire_centers": 0,
+            "viirs_adjusted": 0.0,
+            "zero_filled": 0.5,
+            "detection_conditioned": 1
+          },
+          "aqua_on_common_support": 1,
+          "viirs_on_common_support": 0,
+          "coverage_conditioned": 0.5,
+          "aqua_center_with_viirs_clear": 1,
+          "viirs_center_with_aqua_clear": 0
+        },
+        {
+          "tolerance_minutes": 60,
+          "eligible_cells": 1,
+          "joint_valid_area_km2": 9.626500930900004,
+          "agreement_on_common_support": {
+            "both_detected": 0,
+            "aqua_only_viirs_valid": 1,
+            "viirs_only_aqua_valid": 0,
+            "observed_without_detection": 0,
+            "overall_agreement": 0.0,
+            "positive_jaccard": 0.0,
+            "positive_agreement": 0.0
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": -1.0,
+            "mae": 1.0,
+            "rmse": 1.0
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 1.5,
+            "cells_below_coverage_threshold": 1,
+            "restrict_centers_to_common_support": 0,
+            "use_confirmed_zero_on_common_support": 0.5
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 1,
+            "viirs_native_fire_centers": 0,
+            "viirs_adjusted": 0.0,
+            "zero_filled": 0.5,
+            "detection_conditioned": 1
+          },
+          "aqua_on_common_support": 1,
+          "viirs_on_common_support": 0,
+          "coverage_conditioned": 0.5,
+          "aqua_center_with_viirs_clear": 1,
+          "viirs_center_with_aqua_clear": 0
+        },
+        {
+          "tolerance_minutes": 90,
+          "eligible_cells": 1,
+          "joint_valid_area_km2": 9.626500930900004,
+          "agreement_on_common_support": {
+            "both_detected": 0,
+            "aqua_only_viirs_valid": 1,
+            "viirs_only_aqua_valid": 0,
+            "observed_without_detection": 0,
+            "overall_agreement": 0.0,
+            "positive_jaccard": 0.0,
+            "positive_agreement": 0.0
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": -1.0,
+            "mae": 1.0,
+            "rmse": 1.0
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 1.5,
+            "cells_below_coverage_threshold": 1,
+            "restrict_centers_to_common_support": 0,
+            "use_confirmed_zero_on_common_support": 0.5
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 1,
+            "viirs_native_fire_centers": 0,
+            "viirs_adjusted": 0.0,
+            "zero_filled": 0.5,
+            "detection_conditioned": 1
+          },
+          "aqua_on_common_support": 1,
+          "viirs_on_common_support": 0,
+          "coverage_conditioned": 0.5,
+          "aqua_center_with_viirs_clear": 1,
+          "viirs_center_with_aqua_clear": 0
+        }
+      ]
+    },
+    "viirs_only": {
+      "cells": 37,
+      "coverage_status_by_sensor": {
+        "aqua": {
+          "invalid": 6,
+          "partially_valid": 12,
+          "unknown": 14,
+          "valid": 5
+        },
+        "viirs": {
+          "partially_valid": 37
+        }
+      },
+      "areas_km2": {
+        "assessed_fraction": 199.3550737242,
+        "aqua_valid_fraction": 92.00583227895001,
+        "viirs_valid_fraction": 155.15599487720002,
+        "aqua_unknown_fraction": 0.09509706470002327,
+        "viirs_unknown_fraction": 0.12055689160001465
+      },
+      "native_baselines": {
+        "aqua_native_fire_centers": 0,
+        "viirs_native_fire_centers": 68,
+        "viirs_adjusted": 14.290514813607725,
+        "zero_filled": 7.145257406803863,
+        "detection_conditioned": 14.290514813607725
+      },
+      "time_sensitivity": [
+        {
+          "tolerance_minutes": 30,
+          "eligible_cells": 9,
+          "joint_valid_area_km2": 69.73529377125001,
+          "agreement_on_common_support": {
+            "both_detected": 0,
+            "aqua_only_viirs_valid": 0,
+            "viirs_only_aqua_valid": 9,
+            "observed_without_detection": 0,
+            "overall_agreement": 0.0,
+            "positive_jaccard": 0.0,
+            "positive_agreement": 0.0
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": 0.44365977362507647,
+            "mae": 0.44365977362507647,
+            "rmse": 0.5099829324385066
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 12.29404583229488,
+            "cells_below_coverage_threshold": 10.297576850982036,
+            "restrict_centers_to_common_support": 0.0,
+            "use_confirmed_zero_on_common_support": 1.996468981312844
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 0,
+            "viirs_native_fire_centers": 19,
+            "viirs_adjusted": 3.992937962625688,
+            "zero_filled": 1.996468981312844,
+            "detection_conditioned": 3.992937962625688
+          },
+          "aqua_on_common_support": 0,
+          "viirs_on_common_support": 19,
+          "coverage_conditioned": 1.996468981312844,
+          "aqua_center_with_viirs_clear": 0,
+          "viirs_center_with_aqua_clear": 16
+        },
+        {
+          "tolerance_minutes": 45,
+          "eligible_cells": 9,
+          "joint_valid_area_km2": 69.73529377125001,
+          "agreement_on_common_support": {
+            "both_detected": 0,
+            "aqua_only_viirs_valid": 0,
+            "viirs_only_aqua_valid": 9,
+            "observed_without_detection": 0,
+            "overall_agreement": 0.0,
+            "positive_jaccard": 0.0,
+            "positive_agreement": 0.0
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": 0.44365977362507647,
+            "mae": 0.44365977362507647,
+            "rmse": 0.5099829324385066
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 12.29404583229488,
+            "cells_below_coverage_threshold": 10.297576850982036,
+            "restrict_centers_to_common_support": 0.0,
+            "use_confirmed_zero_on_common_support": 1.996468981312844
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 0,
+            "viirs_native_fire_centers": 19,
+            "viirs_adjusted": 3.992937962625688,
+            "zero_filled": 1.996468981312844,
+            "detection_conditioned": 3.992937962625688
+          },
+          "aqua_on_common_support": 0,
+          "viirs_on_common_support": 19,
+          "coverage_conditioned": 1.996468981312844,
+          "aqua_center_with_viirs_clear": 0,
+          "viirs_center_with_aqua_clear": 16
+        },
+        {
+          "tolerance_minutes": 60,
+          "eligible_cells": 9,
+          "joint_valid_area_km2": 69.73529377125001,
+          "agreement_on_common_support": {
+            "both_detected": 0,
+            "aqua_only_viirs_valid": 0,
+            "viirs_only_aqua_valid": 9,
+            "observed_without_detection": 0,
+            "overall_agreement": 0.0,
+            "positive_jaccard": 0.0,
+            "positive_agreement": 0.0
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": 0.44365977362507647,
+            "mae": 0.44365977362507647,
+            "rmse": 0.5099829324385066
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 12.29404583229488,
+            "cells_below_coverage_threshold": 10.297576850982036,
+            "restrict_centers_to_common_support": 0.0,
+            "use_confirmed_zero_on_common_support": 1.996468981312844
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 0,
+            "viirs_native_fire_centers": 19,
+            "viirs_adjusted": 3.992937962625688,
+            "zero_filled": 1.996468981312844,
+            "detection_conditioned": 3.992937962625688
+          },
+          "aqua_on_common_support": 0,
+          "viirs_on_common_support": 19,
+          "coverage_conditioned": 1.996468981312844,
+          "aqua_center_with_viirs_clear": 0,
+          "viirs_center_with_aqua_clear": 16
+        },
+        {
+          "tolerance_minutes": 90,
+          "eligible_cells": 9,
+          "joint_valid_area_km2": 69.73529377125001,
+          "agreement_on_common_support": {
+            "both_detected": 0,
+            "aqua_only_viirs_valid": 0,
+            "viirs_only_aqua_valid": 9,
+            "observed_without_detection": 0,
+            "overall_agreement": 0.0,
+            "positive_jaccard": 0.0,
+            "positive_agreement": 0.0
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": 0.44365977362507647,
+            "mae": 0.44365977362507647,
+            "rmse": 0.5099829324385066
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 12.29404583229488,
+            "cells_below_coverage_threshold": 10.297576850982036,
+            "restrict_centers_to_common_support": 0.0,
+            "use_confirmed_zero_on_common_support": 1.996468981312844
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 0,
+            "viirs_native_fire_centers": 19,
+            "viirs_adjusted": 3.992937962625688,
+            "zero_filled": 1.996468981312844,
+            "detection_conditioned": 3.992937962625688
+          },
+          "aqua_on_common_support": 0,
+          "viirs_on_common_support": 19,
+          "coverage_conditioned": 1.996468981312844,
+          "aqua_center_with_viirs_clear": 0,
+          "viirs_center_with_aqua_clear": 16
+        }
+      ]
+    },
+    "no_positive_record": {
+      "cells": 1130,
+      "coverage_status_by_sensor": {
+        "aqua": {
+          "invalid": 262,
+          "partially_valid": 182,
+          "unknown": 639,
+          "valid": 47
+        },
+        "viirs": {
+          "partially_valid": 1121,
+          "unknown": 3,
+          "valid": 6
+        }
+      },
+      "areas_km2": {
+        "assessed_fraction": 5613.01413825775,
+        "aqua_valid_fraction": 927.607858451,
+        "viirs_valid_fraction": 5377.76969807205,
+        "aqua_unknown_fraction": 2.3982849341999946,
+        "viirs_unknown_fraction": 3.0687196375999375
+      },
+      "native_baselines": {
+        "aqua_native_fire_centers": 0,
+        "viirs_native_fire_centers": 0,
+        "viirs_adjusted": 0.0,
+        "zero_filled": null,
+        "detection_conditioned": null
+      },
+      "time_sensitivity": [
+        {
+          "tolerance_minutes": 30,
+          "eligible_cells": 135,
+          "joint_valid_area_km2": 876.4949991938001,
+          "agreement_on_common_support": {
+            "both_detected": 0,
+            "aqua_only_viirs_valid": 0,
+            "viirs_only_aqua_valid": 0,
+            "observed_without_detection": 135,
+            "overall_agreement": 1.0,
+            "positive_jaccard": null,
+            "positive_agreement": null
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": 0.0,
+            "mae": 0.0,
+            "rmse": 0.0
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 0.0,
+            "cells_below_coverage_threshold": 0,
+            "restrict_centers_to_common_support": 0.0,
+            "use_confirmed_zero_on_common_support": 0.0
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 0,
+            "viirs_native_fire_centers": 0,
+            "viirs_adjusted": 0.0,
+            "zero_filled": null,
+            "detection_conditioned": null
+          },
+          "aqua_on_common_support": 0,
+          "viirs_on_common_support": 0,
+          "coverage_conditioned": 0.0,
+          "aqua_center_with_viirs_clear": 0,
+          "viirs_center_with_aqua_clear": 0
+        },
+        {
+          "tolerance_minutes": 45,
+          "eligible_cells": 135,
+          "joint_valid_area_km2": 876.4949991938001,
+          "agreement_on_common_support": {
+            "both_detected": 0,
+            "aqua_only_viirs_valid": 0,
+            "viirs_only_aqua_valid": 0,
+            "observed_without_detection": 135,
+            "overall_agreement": 1.0,
+            "positive_jaccard": null,
+            "positive_agreement": null
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": 0.0,
+            "mae": 0.0,
+            "rmse": 0.0
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 0.0,
+            "cells_below_coverage_threshold": 0,
+            "restrict_centers_to_common_support": 0.0,
+            "use_confirmed_zero_on_common_support": 0.0
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 0,
+            "viirs_native_fire_centers": 0,
+            "viirs_adjusted": 0.0,
+            "zero_filled": null,
+            "detection_conditioned": null
+          },
+          "aqua_on_common_support": 0,
+          "viirs_on_common_support": 0,
+          "coverage_conditioned": 0.0,
+          "aqua_center_with_viirs_clear": 0,
+          "viirs_center_with_aqua_clear": 0
+        },
+        {
+          "tolerance_minutes": 60,
+          "eligible_cells": 135,
+          "joint_valid_area_km2": 876.4949991938001,
+          "agreement_on_common_support": {
+            "both_detected": 0,
+            "aqua_only_viirs_valid": 0,
+            "viirs_only_aqua_valid": 0,
+            "observed_without_detection": 135,
+            "overall_agreement": 1.0,
+            "positive_jaccard": null,
+            "positive_agreement": null
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": 0.0,
+            "mae": 0.0,
+            "rmse": 0.0
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 0.0,
+            "cells_below_coverage_threshold": 0,
+            "restrict_centers_to_common_support": 0.0,
+            "use_confirmed_zero_on_common_support": 0.0
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 0,
+            "viirs_native_fire_centers": 0,
+            "viirs_adjusted": 0.0,
+            "zero_filled": null,
+            "detection_conditioned": null
+          },
+          "aqua_on_common_support": 0,
+          "viirs_on_common_support": 0,
+          "coverage_conditioned": 0.0,
+          "aqua_center_with_viirs_clear": 0,
+          "viirs_center_with_aqua_clear": 0
+        },
+        {
+          "tolerance_minutes": 90,
+          "eligible_cells": 135,
+          "joint_valid_area_km2": 876.4949991938001,
+          "agreement_on_common_support": {
+            "both_detected": 0,
+            "aqua_only_viirs_valid": 0,
+            "viirs_only_aqua_valid": 0,
+            "observed_without_detection": 135,
+            "overall_agreement": 1.0,
+            "positive_jaccard": null,
+            "positive_agreement": null
+          },
+          "count_comparison_on_common_support": {
+            "mean_viirs_adjusted_minus_aqua": 0.0,
+            "mae": 0.0,
+            "rmse": 0.0
+          },
+          "fusion_difference_components": {
+            "native_minus_experimental": 0.0,
+            "cells_below_coverage_threshold": 0,
+            "restrict_centers_to_common_support": 0.0,
+            "use_confirmed_zero_on_common_support": 0.0
+          },
+          "baselines_on_eligible_cells": {
+            "aqua_native_fire_centers": 0,
+            "viirs_native_fire_centers": 0,
+            "viirs_adjusted": 0.0,
+            "zero_filled": null,
+            "detection_conditioned": null
+          },
+          "aqua_on_common_support": 0,
+          "viirs_on_common_support": 0,
+          "coverage_conditioned": 0.0,
+          "aqua_center_with_viirs_clear": 0,
+          "viirs_center_with_aqua_clear": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,888 @@
+{
+  "shrinkage_prior_pairs": 30,
+  "summary": [
+    {
+      "pair_mode": "union",
+      "h3_resolution": 7,
+      "factor_policy": "unshrunk",
+      "co_detected_activity_fraction": 0.5077495511845719,
+      "ratios_to_modis": {
+        "present_average": 1.4922504488154293,
+        "zero_filled_mean": 1.0000000000000049,
+        "maximum": 1.6761328651605727
+      },
+      "factor_error": {
+        "mean_relative_bias": 0.10827179484795925,
+        "median_relative_bias": 0.15605074587916845,
+        "mean_absolute_percentage_error_monthly": 83.55042673541566,
+        "worst_fold": {
+          "held_out_year": 2021,
+          "relative_bias": 0.3442774316755912
+        },
+        "folds_used": 6
+      },
+      "correlations": {
+        "mean_held_out_year": {
+          "pearson": 0.8719761604912502,
+          "spearman": 0.7263431546777728
+        },
+        "pooled": {
+          "pearson": 0.9883467383648069,
+          "spearman": 0.7571533063885855,
+          "n": 72
+        }
+      },
+      "methods": [
+        {
+          "method": "present_average",
+          "mean_relative_bias": 0.6867328477385628,
+          "median_relative_bias": 0.776724537204449,
+          "mean_absolute_percentage_error_monthly": 106.51227885428652,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 0.9990320561707047
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "zero_filled_mean",
+          "mean_relative_bias": 0.054135897423978896,
+          "median_relative_bias": 0.07802537293958423,
+          "mean_absolute_percentage_error_monthly": 41.77521336770782,
+          "worst_fold": {
+            "held_out_year": 2021,
+            "relative_bias": 0.1721387158377965
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "maximum",
+          "mean_relative_bias": 0.8560275740235754,
+          "median_relative_bias": 0.9439988680730982,
+          "mean_absolute_percentage_error_monthly": 118.09806401899046,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 1.1283486698994847
+          },
+          "folds_used": 6
+        }
+      ]
+    },
+    {
+      "pair_mode": "union",
+      "h3_resolution": 7,
+      "factor_policy": "monthly_shrunk",
+      "co_detected_activity_fraction": 0.5077821240009435,
+      "ratios_to_modis": {
+        "present_average": 1.4918617073901024,
+        "zero_filled_mean": 0.9997613159481089,
+        "maximum": 1.6752856770227815
+      },
+      "factor_error": {
+        "mean_relative_bias": 0.09404895202286646,
+        "median_relative_bias": 0.12514174859001137,
+        "mean_absolute_percentage_error_monthly": 76.06302484434741,
+        "worst_fold": {
+          "held_out_year": 2021,
+          "relative_bias": 0.3173574405042767
+        },
+        "folds_used": 6
+      },
+      "correlations": {
+        "mean_held_out_year": {
+          "pearson": 0.8838290628568521,
+          "spearman": 0.7210487679625937
+        },
+        "pooled": {
+          "pearson": 0.9896380969779763,
+          "spearman": 0.7612374755572167,
+          "n": 72
+        }
+      },
+      "methods": [
+        {
+          "method": "present_average",
+          "mean_relative_bias": 0.6735979654960498,
+          "median_relative_bias": 0.7364608255448646,
+          "mean_absolute_percentage_error_monthly": 101.84040149578126,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 1.0195641462725535
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "zero_filled_mean",
+          "mean_relative_bias": 0.047024476011433926,
+          "median_relative_bias": 0.06257087429500563,
+          "mean_absolute_percentage_error_monthly": 38.03151242217371,
+          "worst_fold": {
+            "held_out_year": 2021,
+            "relative_bias": 0.15867872025213803
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "maximum",
+          "mean_relative_bias": 0.8417883399762559,
+          "median_relative_bias": 0.9038116823386046,
+          "mean_absolute_percentage_error_monthly": 113.55683500422394,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 1.1466838724539556
+          },
+          "folds_used": 6
+        }
+      ]
+    },
+    {
+      "pair_mode": "union",
+      "h3_resolution": 6,
+      "factor_policy": "unshrunk",
+      "co_detected_activity_fraction": 0.6119344100665073,
+      "ratios_to_modis": {
+        "present_average": 1.3880655899334935,
+        "zero_filled_mean": 1.0000000000000038,
+        "maximum": 1.5965670867065493
+      },
+      "factor_error": {
+        "mean_relative_bias": 0.108271794847959,
+        "median_relative_bias": 0.15605074587916856,
+        "mean_absolute_percentage_error_monthly": 83.55042673541566,
+        "worst_fold": {
+          "held_out_year": 2021,
+          "relative_bias": 0.34427743167559055
+        },
+        "folds_used": 6
+      },
+      "correlations": {
+        "mean_held_out_year": {
+          "pearson": 0.8719761604912503,
+          "spearman": 0.7263431546777728
+        },
+        "pooled": {
+          "pearson": 0.988346738364807,
+          "spearman": 0.7571533063885855,
+          "n": 72
+        }
+      },
+      "methods": [
+        {
+          "method": "present_average",
+          "mean_relative_bias": 0.6037305414268678,
+          "median_relative_bias": 0.6963788659254692,
+          "mean_absolute_percentage_error_monthly": 102.34767049164189,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 0.9723659243778078
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "zero_filled_mean",
+          "mean_relative_bias": 0.0541358974239791,
+          "median_relative_bias": 0.07802537293958434,
+          "mean_absolute_percentage_error_monthly": 41.77521336770783,
+          "worst_fold": {
+            "held_out_year": 2021,
+            "relative_bias": 0.17213871583779583
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "maximum",
+          "mean_relative_bias": 0.8023162422088883,
+          "median_relative_bias": 0.9024244812154945,
+          "mean_absolute_percentage_error_monthly": 115.3158693207159,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 1.09940665021613
+          },
+          "folds_used": 6
+        }
+      ]
+    },
+    {
+      "pair_mode": "union",
+      "h3_resolution": 6,
+      "factor_policy": "monthly_shrunk",
+      "co_detected_activity_fraction": 0.611882116489277,
+      "ratios_to_modis": {
+        "present_average": 1.3878707998410575,
+        "zero_filled_mean": 0.9998220009463104,
+        "maximum": 1.5956090416914295
+      },
+      "factor_error": {
+        "mean_relative_bias": 0.0930839626880293,
+        "median_relative_bias": 0.12093820882334794,
+        "mean_absolute_percentage_error_monthly": 75.78113638362956,
+        "worst_fold": {
+          "held_out_year": 2021,
+          "relative_bias": 0.31715178275839584
+        },
+        "folds_used": 6
+      },
+      "correlations": {
+        "mean_held_out_year": {
+          "pearson": 0.8842607906786615,
+          "spearman": 0.7210487679625937
+        },
+        "pooled": {
+          "pearson": 0.9896925681110815,
+          "spearman": 0.7578635966787822,
+          "n": 72
+        }
+      },
+      "methods": [
+        {
+          "method": "present_average",
+          "mean_relative_bias": 0.5897239020892534,
+          "median_relative_bias": 0.6509659370057161,
+          "mean_absolute_percentage_error_monthly": 96.89101339874243,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 0.9951020563039243
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "zero_filled_mean",
+          "mean_relative_bias": 0.04654198134401479,
+          "median_relative_bias": 0.06046910441167408,
+          "mean_absolute_percentage_error_monthly": 37.89056819181477,
+          "worst_fold": {
+            "held_out_year": 2021,
+            "relative_bias": 0.1585758913791966
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "maximum",
+          "mean_relative_bias": 0.7861242867362417,
+          "median_relative_bias": 0.8554957207954533,
+          "mean_absolute_percentage_error_monthly": 110.36361848184886,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 1.119741630522514
+          },
+          "folds_used": 6
+        }
+      ]
+    },
+    {
+      "pair_mode": "codetect",
+      "h3_resolution": 7,
+      "factor_policy": "unshrunk",
+      "co_detected_activity_fraction": 0.4613776971905237,
+      "ratios_to_modis": {
+        "present_average": 2.0771932187937177,
+        "zero_filled_mean": 1.35003451789359,
+        "maximum": 2.275772339091553
+      },
+      "factor_error": {
+        "mean_relative_bias": 1.0081137800565907,
+        "median_relative_bias": 1.042541171881324,
+        "mean_absolute_percentage_error_monthly": 190.26450625297747,
+        "worst_fold": {
+          "held_out_year": 2023,
+          "relative_bias": 1.4875115950495372
+        },
+        "folds_used": 6
+      },
+      "correlations": {
+        "mean_held_out_year": {
+          "pearson": 0.8369995460157759,
+          "spearman": 0.7011201996188543
+        },
+        "pooled": {
+          "pearson": 0.9868474265394811,
+          "spearman": 0.716436134714677,
+          "n": 72
+        }
+      },
+      "methods": [
+        {
+          "method": "present_average",
+          "mean_relative_bias": 1.4710895605804624,
+          "median_relative_bias": 1.5093678527491303,
+          "mean_absolute_percentage_error_monthly": 232.06608278311018,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 2.189794838642727
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "zero_filled_mean",
+          "mean_relative_bias": 0.5040568900282965,
+          "median_relative_bias": 0.521270585940665,
+          "mean_absolute_percentage_error_monthly": 95.13225312648875,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 0.7437557975247686
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "maximum",
+          "mean_relative_bias": 1.6574058999169032,
+          "median_relative_bias": 1.675541313995539,
+          "mean_absolute_percentage_error_monthly": 246.75628655228883,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 2.3006775290551267
+          },
+          "folds_used": 6
+        }
+      ]
+    },
+    {
+      "pair_mode": "codetect",
+      "h3_resolution": 7,
+      "factor_policy": "monthly_shrunk",
+      "co_detected_activity_fraction": 0.47233102028825114,
+      "ratios_to_modis": {
+        "present_average": 1.9912376549777044,
+        "zero_filled_mean": 1.3034483788192235,
+        "maximum": 2.188332697080113
+      },
+      "factor_error": {
+        "mean_relative_bias": 0.7972418756944368,
+        "median_relative_bias": 0.8426311037027151,
+        "mean_absolute_percentage_error_monthly": 139.1306630498373,
+        "worst_fold": {
+          "held_out_year": 2023,
+          "relative_bias": 1.1320775610542175
+        },
+        "folds_used": 6
+      },
+      "correlations": {
+        "mean_held_out_year": {
+          "pearson": 0.8643589741927408,
+          "spearman": 0.6740368203291284
+        },
+        "pooled": {
+          "pearson": 0.991138207593178,
+          "spearman": 0.7361997428277816,
+          "n": 72
+        }
+      },
+      "methods": [
+        {
+          "method": "present_average",
+          "mean_relative_bias": 1.2793058315405628,
+          "median_relative_bias": 1.301426475450551,
+          "mean_absolute_percentage_error_monthly": 181.71401389590775,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 1.8555120534048188
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "zero_filled_mean",
+          "mean_relative_bias": 0.39862093784721747,
+          "median_relative_bias": 0.42131555185135505,
+          "mean_absolute_percentage_error_monthly": 69.56533152491862,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 0.566038780527109
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "maximum",
+          "mean_relative_bias": 1.4569584097669366,
+          "median_relative_bias": 1.4574687054258606,
+          "mean_absolute_percentage_error_monthly": 193.0329133822955,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 1.970721396927733
+          },
+          "folds_used": 6
+        }
+      ]
+    },
+    {
+      "pair_mode": "codetect",
+      "h3_resolution": 6,
+      "factor_policy": "unshrunk",
+      "co_detected_activity_fraction": 0.563452975066154,
+      "ratios_to_modis": {
+        "present_average": 1.8929932757876522,
+        "zero_filled_mean": 1.3177384679591864,
+        "maximum": 2.11194944449484
+      },
+      "factor_error": {
+        "mean_relative_bias": 0.9379100126933354,
+        "median_relative_bias": 0.9553068270727437,
+        "mean_absolute_percentage_error_monthly": 182.98453486203283,
+        "worst_fold": {
+          "held_out_year": 2023,
+          "relative_bias": 1.4510874457223095
+        },
+        "folds_used": 6
+      },
+      "correlations": {
+        "mean_held_out_year": {
+          "pearson": 0.8338194582793704,
+          "spearman": 0.6987426239192804
+        },
+        "pooled": {
+          "pearson": 0.9865335291679563,
+          "spearman": 0.7150097830021048,
+          "n": 72
+        }
+      },
+      "methods": [
+        {
+          "method": "present_average",
+          "mean_relative_bias": 1.3036736738932297,
+          "median_relative_bias": 1.3152481544621348,
+          "mean_absolute_percentage_error_monthly": 214.9078355046657,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 2.110822138703803
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "zero_filled_mean",
+          "mean_relative_bias": 0.46895500634666665,
+          "median_relative_bias": 0.4776534135363685,
+          "mean_absolute_percentage_error_monthly": 91.4922674310164,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 0.7255437228611545
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "maximum",
+          "mean_relative_bias": 1.5148969723380117,
+          "median_relative_bias": 1.5536256906493706,
+          "mean_absolute_percentage_error_monthly": 232.58022095194627,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 2.2413170784416794
+          },
+          "folds_used": 6
+        }
+      ]
+    },
+    {
+      "pair_mode": "codetect",
+      "h3_resolution": 6,
+      "factor_policy": "monthly_shrunk",
+      "co_detected_activity_fraction": 0.574580490221415,
+      "ratios_to_modis": {
+        "present_average": 1.8240972428389552,
+        "zero_filled_mean": 1.2796915085877418,
+        "maximum": 2.0431178519084003
+      },
+      "factor_error": {
+        "mean_relative_bias": 0.7380197168324266,
+        "median_relative_bias": 0.744952080152694,
+        "mean_absolute_percentage_error_monthly": 133.21931500835544,
+        "worst_fold": {
+          "held_out_year": 2023,
+          "relative_bias": 1.079249212218886
+        },
+        "folds_used": 6
+      },
+      "correlations": {
+        "mean_held_out_year": {
+          "pearson": 0.8656908398107807,
+          "spearman": 0.6757943140012398
+        },
+        "pooled": {
+          "pearson": 0.991233414360082,
+          "spearman": 0.7342464445297405,
+          "n": 72
+        }
+      },
+      "methods": [
+        {
+          "method": "present_average",
+          "mean_relative_bias": 1.1252202271240692,
+          "median_relative_bias": 1.1539008882971795,
+          "mean_absolute_percentage_error_monthly": 168.51126948695168,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 1.769766598058275
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "zero_filled_mean",
+          "mean_relative_bias": 0.3690098584162138,
+          "median_relative_bias": 0.3724760400763477,
+          "mean_absolute_percentage_error_monthly": 66.60965750417773,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 0.539624606109443
+          },
+          "folds_used": 6
+        },
+        {
+          "method": "maximum",
+          "mean_relative_bias": 1.3253218663402064,
+          "median_relative_bias": 1.3351051822205966,
+          "mean_absolute_percentage_error_monthly": 181.6768127174975,
+          "worst_fold": {
+            "held_out_year": 2023,
+            "relative_bias": 1.886533561361046
+          },
+          "folds_used": 6
+        }
+      ]
+    }
+  ],
+  "skipped_folds": [],
+  "continuity": [
+    {
+      "pair_mode": "union",
+      "h3_resolution": 7,
+      "factor_policy": "unshrunk",
+      "years": [
+        {
+          "year": 2019,
+          "modis_aqua_sum": 120.0,
+          "adjusted_viirs_sum": 134.29148810910024,
+          "zero_filled_mean_sum": 127.14574405455019
+        },
+        {
+          "year": 2020,
+          "modis_aqua_sum": 300.0,
+          "adjusted_viirs_sum": 243.51242608157574,
+          "zero_filled_mean_sum": 271.756213040788
+        },
+        {
+          "year": 2021,
+          "modis_aqua_sum": 289.0,
+          "adjusted_viirs_sum": 352.17288118532673,
+          "zero_filled_mean_sum": 320.5864405926635
+        },
+        {
+          "year": 2022,
+          "modis_aqua_sum": 70.0,
+          "adjusted_viirs_sum": 74.51412024048742,
+          "zero_filled_mean_sum": 72.25706012024371
+        },
+        {
+          "year": 2023,
+          "modis_aqua_sum": 41.0,
+          "adjusted_viirs_sum": 49.88663787467881,
+          "zero_filled_mean_sum": 45.44331893733941
+        },
+        {
+          "year": 2024,
+          "modis_aqua_sum": 710.0,
+          "adjusted_viirs_sum": 675.6224465088295,
+          "zero_filled_mean_sum": 692.8112232544161
+        }
+      ]
+    },
+    {
+      "pair_mode": "union",
+      "h3_resolution": 7,
+      "factor_policy": "monthly_shrunk",
+      "years": [
+        {
+          "year": 2019,
+          "modis_aqua_sum": 120.0,
+          "adjusted_viirs_sum": 131.58417803809522,
+          "zero_filled_mean_sum": 125.79208901904762
+        },
+        {
+          "year": 2020,
+          "modis_aqua_sum": 300.0,
+          "adjusted_viirs_sum": 245.1394545178523,
+          "zero_filled_mean_sum": 272.56972725892643
+        },
+        {
+          "year": 2021,
+          "modis_aqua_sum": 289.0,
+          "adjusted_viirs_sum": 351.2492850564953,
+          "zero_filled_mean_sum": 320.124642528248
+        },
+        {
+          "year": 2022,
+          "modis_aqua_sum": 70.0,
+          "adjusted_viirs_sum": 74.06826010233124,
+          "zero_filled_mean_sum": 72.03413005116563
+        },
+        {
+          "year": 2023,
+          "modis_aqua_sum": 41.0,
+          "adjusted_viirs_sum": 50.704441800331374,
+          "zero_filled_mean_sum": 45.852220900165676
+        },
+        {
+          "year": 2024,
+          "modis_aqua_sum": 710.0,
+          "adjusted_viirs_sum": 676.5240072860893,
+          "zero_filled_mean_sum": 693.2620036430465
+        }
+      ]
+    },
+    {
+      "pair_mode": "union",
+      "h3_resolution": 6,
+      "factor_policy": "unshrunk",
+      "years": [
+        {
+          "year": 2019,
+          "modis_aqua_sum": 120.0,
+          "adjusted_viirs_sum": 134.29148810910024,
+          "zero_filled_mean_sum": 127.14574405455015
+        },
+        {
+          "year": 2020,
+          "modis_aqua_sum": 300.0,
+          "adjusted_viirs_sum": 243.51242608157563,
+          "zero_filled_mean_sum": 271.75621304078794
+        },
+        {
+          "year": 2021,
+          "modis_aqua_sum": 289.0,
+          "adjusted_viirs_sum": 352.1728811853265,
+          "zero_filled_mean_sum": 320.5864405926634
+        },
+        {
+          "year": 2022,
+          "modis_aqua_sum": 70.0,
+          "adjusted_viirs_sum": 74.51412024048742,
+          "zero_filled_mean_sum": 72.25706012024371
+        },
+        {
+          "year": 2023,
+          "modis_aqua_sum": 41.0,
+          "adjusted_viirs_sum": 49.88663787467881,
+          "zero_filled_mean_sum": 45.44331893733941
+        },
+        {
+          "year": 2024,
+          "modis_aqua_sum": 710.0,
+          "adjusted_viirs_sum": 675.6224465088305,
+          "zero_filled_mean_sum": 692.8112232544164
+        }
+      ]
+    },
+    {
+      "pair_mode": "union",
+      "h3_resolution": 6,
+      "factor_policy": "monthly_shrunk",
+      "years": [
+        {
+          "year": 2019,
+          "modis_aqua_sum": 120.0,
+          "adjusted_viirs_sum": 131.37525207005118,
+          "zero_filled_mean_sum": 125.68762603502562
+        },
+        {
+          "year": 2020,
+          "modis_aqua_sum": 300.0,
+          "adjusted_viirs_sum": 245.5273789514933,
+          "zero_filled_mean_sum": 272.7636894757467
+        },
+        {
+          "year": 2021,
+          "modis_aqua_sum": 289.0,
+          "adjusted_viirs_sum": 351.2090742122034,
+          "zero_filled_mean_sum": 320.1045371061015
+        },
+        {
+          "year": 2022,
+          "modis_aqua_sum": 70.0,
+          "adjusted_viirs_sum": 74.0787432733544,
+          "zero_filled_mean_sum": 72.0393716366772
+        },
+        {
+          "year": 2023,
+          "modis_aqua_sum": 41.0,
+          "adjusted_viirs_sum": 50.78624060275929,
+          "zero_filled_mean_sum": 45.893120301379646
+        },
+        {
+          "year": 2024,
+          "modis_aqua_sum": 710.0,
+          "adjusted_viirs_sum": 676.4786337858611,
+          "zero_filled_mean_sum": 693.239316892931
+        }
+      ]
+    },
+    {
+      "pair_mode": "codetect",
+      "h3_resolution": 7,
+      "factor_policy": "unshrunk",
+      "years": [
+        {
+          "year": 2019,
+          "modis_aqua_sum": 120.0,
+          "adjusted_viirs_sum": 232.54131773869113,
+          "zero_filled_mean_sum": 176.27065886934554
+        },
+        {
+          "year": 2020,
+          "modis_aqua_sum": 300.0,
+          "adjusted_viirs_sum": 440.7956529427226,
+          "zero_filled_mean_sum": 370.39782647136116
+        },
+        {
+          "year": 2021,
+          "modis_aqua_sum": 289.0,
+          "adjusted_viirs_sum": 585.5357774447502,
+          "zero_filled_mean_sum": 437.26788872237523
+        },
+        {
+          "year": 2022,
+          "modis_aqua_sum": 70.0,
+          "adjusted_viirs_sum": 153.7425794655958,
+          "zero_filled_mean_sum": 111.87128973279792
+        },
+        {
+          "year": 2023,
+          "modis_aqua_sum": 41.0,
+          "adjusted_viirs_sum": 106.9565889333013,
+          "zero_filled_mean_sum": 73.97829446665065
+        },
+        {
+          "year": 2024,
+          "modis_aqua_sum": 710.0,
+          "adjusted_viirs_sum": 1081.5337082293327,
+          "zero_filled_mean_sum": 895.7668541146653
+        }
+      ]
+    },
+    {
+      "pair_mode": "codetect",
+      "h3_resolution": 7,
+      "factor_policy": "monthly_shrunk",
+      "years": [
+        {
+          "year": 2019,
+          "modis_aqua_sum": 120.0,
+          "adjusted_viirs_sum": 211.29271944183208,
+          "zero_filled_mean_sum": 165.64635972091594
+        },
+        {
+          "year": 2020,
+          "modis_aqua_sum": 300.0,
+          "adjusted_viirs_sum": 416.49638594498794,
+          "zero_filled_mean_sum": 358.2481929724939
+        },
+        {
+          "year": 2021,
+          "modis_aqua_sum": 289.0,
+          "adjusted_viirs_sum": 564.6022551193281,
+          "zero_filled_mean_sum": 426.80112755966354
+        },
+        {
+          "year": 2022,
+          "modis_aqua_sum": 70.0,
+          "adjusted_viirs_sum": 128.38442449581277,
+          "zero_filled_mean_sum": 99.19221224790638
+        },
+        {
+          "year": 2023,
+          "modis_aqua_sum": 41.0,
+          "adjusted_viirs_sum": 89.61013511011258,
+          "zero_filled_mean_sum": 65.3050675550563
+        },
+        {
+          "year": 2024,
+          "modis_aqua_sum": 710.0,
+          "adjusted_viirs_sum": 1048.1661190747518,
+          "zero_filled_mean_sum": 879.0830595373757
+        }
+      ]
+    },
+    {
+      "pair_mode": "codetect",
+      "h3_resolution": 6,
+      "factor_policy": "unshrunk",
+      "years": [
+        {
+          "year": 2019,
+          "modis_aqua_sum": 120.0,
+          "adjusted_viirs_sum": 220.95935166018384,
+          "zero_filled_mean_sum": 170.47967583009194
+        },
+        {
+          "year": 2020,
+          "modis_aqua_sum": 300.0,
+          "adjusted_viirs_sum": 421.6955483767471,
+          "zero_filled_mean_sum": 360.84777418837376
+        },
+        {
+          "year": 2021,
+          "modis_aqua_sum": 289.0,
+          "adjusted_viirs_sum": 565.7032363313997,
+          "zero_filled_mean_sum": 427.3516181657
+        },
+        {
+          "year": 2022,
+          "modis_aqua_sum": 70.0,
+          "adjusted_viirs_sum": 151.22011498119613,
+          "zero_filled_mean_sum": 110.61005749059807
+        },
+        {
+          "year": 2023,
+          "modis_aqua_sum": 41.0,
+          "adjusted_viirs_sum": 100.06262621857657,
+          "zero_filled_mean_sum": 70.53131310928829
+        },
+        {
+          "year": 2024,
+          "modis_aqua_sum": 710.0,
+          "adjusted_viirs_sum": 1042.638834387002,
+          "zero_filled_mean_sum": 876.3194171935021
+        }
+      ]
+    },
+    {
+      "pair_mode": "codetect",
+      "h3_resolution": 6,
+      "factor_policy": "monthly_shrunk",
+      "years": [
+        {
+          "year": 2019,
+          "modis_aqua_sum": 120.0,
+          "adjusted_viirs_sum": 203.54097282833868,
+          "zero_filled_mean_sum": 161.7704864141694
+        },
+        {
+          "year": 2020,
+          "modis_aqua_sum": 300.0,
+          "adjusted_viirs_sum": 402.1266727891352,
+          "zero_filled_mean_sum": 351.06333639456756
+        },
+        {
+          "year": 2021,
+          "modis_aqua_sum": 289.0,
+          "adjusted_viirs_sum": 549.7192395627628,
+          "zero_filled_mean_sum": 419.3596197813813
+        },
+        {
+          "year": 2022,
+          "modis_aqua_sum": 70.0,
+          "adjusted_viirs_sum": 124.99431803434584,
+          "zero_filled_mean_sum": 97.4971590171729
+        },
+        {
+          "year": 2023,
+          "modis_aqua_sum": 41.0,
+          "adjusted_viirs_sum": 86.79668857394532,
+          "zero_filled_mean_sum": 63.89834428697266
+        },
+        {
+          "year": 2024,
+          "modis_aqua_sum": 710.0,
+          "adjusted_viirs_sum": 1018.678124489952,
+          "zero_filled_mean_sum": 864.3390622449768
+        }
+      ]
+    }
+  ]
+}

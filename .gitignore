@@ -6,3 +6,6 @@ __pycache__/
 node_modules/
 frontend/dist/
 coverage/
+
+# Local downloads and experimental runs
+.orbital-data/

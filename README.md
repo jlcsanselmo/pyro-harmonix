@@ -4,9 +4,21 @@
 
 PyroHarmonix combines Django, React, and Docker to support reading seasonal patterns and changes in fire activity. Select an area and year, process FIRMS observations already stored in the database or request new data, and explore the map, calendar, and compare the activity with previous years.
 
-[Submission presentation (PDF, 7 slides)](docs/pyroharmonix-spaceapps-demo.pdf) · [Demo harmonized CSV](docs/data/ribeirao-preto-2024-harmonized-snapshot.csv)
+[Archived submission presentation (PDF, 7 slides)](docs/pyroharmonix-spaceapps-demo.pdf) · [Legacy Ribeirão Preto CSV](docs/data/ribeirao-preto-2024-harmonized-snapshot.csv)
 
 > **Scientific prototype:** counts and calibration are exploratory and do not represent burned area, fire prediction, or a validated product for operational decision-making. Results reflect only the data currently in the database; the absence of points does not mean no fire occurred.
+
+## NASA Space Apps Challenge 2026 — Ribeirão Preto
+
+PyroHarmonix was developed by team **ThermalGrid** for the **NASA Space Apps Challenge 2026 (Ribeirão Preto local stage)**, finishing in **6th place** among **22 participating teams** based on NASA's official judging criteria (Impact, Creativity, Validity, Relevance, and Presentation).
+
+![Final ranking of the NASA Space Apps Challenge 2026 local judging in Ribeirão Preto, showing PyroHarmonix (team ThermalGrid) in 6th place](docs/assets/spaceapps-2026-ribeirao-preto-ranking.jpg)
+
+*NASA Space Apps Challenge Ribeirão Preto 2026 — local judging final classification (`@nasa_spaceapps_ribeirao`), with PyroHarmonix (team ThermalGrid) in 6th place.*
+
+![Participating teams banner from the NASA Space Apps Challenge Ribeirão Preto 2026, featuring 22 teams including ThermalGrid](docs/assets/spaceapps-2026-ribeirao-preto-teams.jpg)
+
+*NASA Space Apps Challenge Ribeirão Preto 2026 — official recognition of all 22 participating teams, including ThermalGrid.*
 
 ## Real-world case: fires in inland São Paulo in 2024
 
@@ -26,7 +38,15 @@ In August and September 2024, fires affected municipalities around Ribeirão Pre
 
 **Case sources:** [g1 Ribeirão Preto — six of the ten cities with the most hotspots were in the region](https://g1.globo.com/sp/ribeirao-preto-franca/noticia/2024/09/09/incendios-em-sp-6-das-10-cidades-com-mais-focos-sao-da-regiao-de-ribeirao-preto.ghtml) · [NASA Earthdata — smoke from fires in Brazil and Bolivia, observed on August 28, 2024](https://www.earthdata.nasa.gov/news/worldview-image-archive/thick-smoke-from-fires-brazil-bolivia) · [Open NASA Worldview](https://worldview.earthdata.nasa.gov/).
 
-**Image attribution:** We acknowledge the use of images provided by the NASA Global Imagery Browse Services (GIBS), part of the NASA Earth Science Data and Information System (ESDIS). The images above are examples for context and are **not yet an integrated image layer in the interactive PyroHarmonix map**.
+**Image attribution:** We acknowledge the use of images provided by the NASA Global Imagery Browse Services (GIBS), part of the NASA Earth Science Data and Information System (ESDIS). The still image and animation are available in the WebGIS image viewer as contextual references; they are **not georeferenced layers overlaid on the interactive map**.
+
+## Scientific audit
+
+The current series uses a detection-conditioned estimator. An unmatched detection keeps its recorded Aqua count or its factor-adjusted VIIRS count. Two detections in the same H3 cell, UTC day and known day/night class are averaged on the Aqua scale. A missing FIRMS row leaves coverage unknown. Existing derived records retain a historical label until rebuilt.
+
+[Technical audit](docs/TECHNICAL_AUDIT.md) · [Scientific methodology](docs/SCIENTIFIC_METHODOLOGY.md) · [Validation report and reproduction commands](docs/VALIDATION_REPORT.md) · [Improvement roadmap](docs/IMPROVEMENT_ROADMAP.md)
+
+The second-stage study quantified positive-detection selection, reproduced the 49.2% difference against Aqua and extended the year-held-out comparison to recorded union totals. It retains the regional method as a descriptive index. [Fusion bias](docs/FUSION_BIAS_ANALYSIS.md) · [Model comparison](docs/MODEL_COMPARISON_REPORT.md) · [Coverage pilot](docs/OBSERVATION_COVERAGE_STUDY.md) · [External validation protocol](docs/EXTERNAL_VALIDATION_PROTOCOL.md)
 
 ## What the WebGIS offers
 
@@ -34,16 +54,22 @@ In August and September 2024, fires affected municipalities around Ribeirão Pre
 - Filters for period and area by coordinates.
 - Monthly calendar and seasonality chart.
 - Comparison of the selected month’s activity with the historical median.
+- Regional MODIS-Aqua/VIIRS-SNPP calibration factors for counts and FRP, with bootstrap intervals and a fusion-method comparison.
+- Contextual viewer for the 2024 satellite image and daily fire animation.
 - CSV export for filtered results.
 - Processing, without external calls, of raw FIRMS data already stored for a given region and year.
 - On-demand requests for new FIRMS data for a region and year, including estimated number of calls and collection time.
 - Upload of external harmonized CSV data.
 
-The interactive map uses OpenStreetMap as the basemap and shows the detected activity cells. It **currently does not display satellite imagery like the composition above or calculate scars/burned areas**.
+The interactive map uses OpenStreetMap as the basemap and shows the detected activity cells. The historical image viewer is separate from the map: it does not align imagery with map coordinates or filters, and PyroHarmonix **does not calculate scars/burned areas**.
 
 ### Data snapshot for reproduction
 
-The repository includes a [harmonized CSV for Ribeirão Preto in 2024](docs/data/ribeirao-preto-2024-harmonized-snapshot.csv), exported from the local database. It contains 7,747 records by H3 cell/day, totaling 12,535 equivalent detections. Dates with records fall between January 1 and February 19 and between August 21 and August 31, 2024; this does not mean continuous coverage in those intervals. Annual collection was interrupted before completion. Dates without records in the CSV do not imply absence of fires. All records are marked as uncalibrated. Use it to reproduce the map and calendar, not as a complete time series or as an operational product.
+**Legacy dataset — not comparable to Aqua-eq:** the repository retains an older [Ribeirão Preto 2024 CSV](docs/data/ribeirao-preto-2024-harmonized-snapshot.csv), exported before the Aqua-eq update. It contains 7,747 H3 res. 8 cell/day records and is uncalibrated; dates with records are intermittent and the annual collection was interrupted. The CSV and the Ribeirão Preto screenshots below are archival examples of the former series, not current WebGIS results. They are retained for historical reproduction only, not as a complete time series or operational product.
+
+The [Altinópolis–Pitangueiras 2024 export](docs/data/altinopolis-pitangueiras-2024-harmonized.csv), [2019–2024 series](docs/data/altinopolis-pitangueiras-2019-2024-harmonized.csv), and [2022–2024 subset](docs/data/altinopolis-pitangueiras-2022-2024-harmonized.csv) archive the historical zero-filled H3 res. 7 series. Their `harmonized_count` values preserve the fractional weights, so summing that column gives the series totals. The exports contain 859 records / 682.01 equivalent detections in 2024, 2,750 records / 1,497.10 detections for 2019–2024, and 1,254 records / 797.80 detections for 2022–2024. The annual totals in the six-year export are 123.18 (2019), 266.94 (2020), 309.18 (2021), 71.25 (2022), 44.54 (2023), and 682.01 (2024). These are totals of records currently in the local database, not proof of complete annual coverage.
+
+The archived [August 21–31, 2024 export](docs/data/current-window-harmonized.csv) contains 411 H3 res. 7 cell/day records totaling 450.16 equivalent detections. The database has automated Hotspots for all five historical years in that window. Their median is 9.964, interquartile range 6.257–12.228, and the 2024 value ranks `1 de 6` with a `ratio_to_historical_max` of 6.37 (`450.162 / 70.665`); because the historical median is below 30, `anomaly_reliable` is `false` and `anomaly_percent` is `null`. Exact year-by-year harmonized values and raw `MODIS-Aqua` / `VIIRS-SNPP` detection counts are in the [series summary](docs/data/series-summary.json). The scale decrease from the legacy res. 8 series reflects Aqua-eq calibration/fusion and the coarser H3 grid, not evidence of less fire. These series are not like-for-like and do not establish a change in fire activity. The separate [calibration sensitivity summary](docs/data/calibration-summary.md) reports count-only diagnostics; FRP is not independently validated.
 
 ### How the project addresses the challenge
 
@@ -54,17 +80,23 @@ The repository includes a [harmonized CSV for Ribeirão Preto in 2024](docs/data
 | Fire activity calendar | Aggregates detections by H3 cell and day; shows monthly totals, seasonality, and comparison with the median of available years. |
 | Explore patterns/anomalies | Compares with the historical median of the same window when there are at least two previous years with records; it is not an alert, forecast, or statistical test. |
 | Download the search data | Exports the displayed hotspots to CSV. |
-| Harmonize sensors | Computes an empirical monthly calibration when enough samples are present. While no calibration is available, results are marked as uncalibrated and should be interpreted cautiously. |
+| Harmonize sensors | Uses a regional, exploratory MODIS-Aqua/VIIRS-SNPP calibration for the Altinópolis–Pitangueiras sample; it is not applied outside that scope. |
+
+### Regional calibration (experimental)
+
+See the [scientific methodology](docs/SCIENTIFIC_METHODOLOGY.md) for the Altinópolis–Pitangueiras scope, the 2019–2024 assessment interval, H3 cell boundaries and factor estimation. The reported annual ratios and historical monthly errors are reproducible. The historical 38.03% fusion MAPE follows algebraically from averaging the target Aqua measurement with the VIIRS estimate. The holdout comparison evaluates VIIRS alone against Aqua detections recorded in the held-out year. See the [validation report](docs/VALIDATION_REPORT.md) for results by fold and scale and for the 2024 event sensitivity.
+
+Use `validate_calibration` for the historical method comparison and `audit_science` for the expanded analysis. `rebuild_harmonized --start YYYY-MM-DD --end YYYY-MM-DD` reconstructs automated records with the current estimator from stored detections. Use a disposable database to reproduce the scientific reports and review results before rebuilding your application database.
 
 ### Example of the WebGIS with real data: Ribeirão Preto, August 2024
 
-![PyroHarmonix dashboard filtered for Ribeirão Preto in 2024, with map, seasonality, and calendar](docs/assets/pyroharmonix-ribeirao-preto-2024-current.png)
+![Legacy PyroHarmonix dashboard capture from the pre-Aqua-eq Ribeirão Preto 2024 series](docs/assets/pyroharmonix-ribeirao-preto-2024-current.png)
 
-*Actual application capture filtered for 2024 in the area `-50,-23,-46,-20`. The local database contains **12,535 equivalent detections** in records from January–February and August 21–31; the map displays up to 5,000 cells. The annual collection was cancelled before finishing. Months without records in the dashboard should not be interpreted as months without fire.*
+*LEGACY capture (H3 res. 8, uncalibrated): filtered for 2024 in the area `-50,-23,-46,-20`. Its stored counts and incomplete collection predate Aqua-eq and are not comparable with the current series. The map displays up to 5,000 cells. Months without records should not be interpreted as months without fire.*
 
-![PyroHarmonix calendar for the window of August 21–31, 2024 in Ribeirão Preto, with 12,476 equivalent detections](docs/assets/pyroharmonix-ribeirao-preto-2024-08-calendario.png)
+![Legacy PyroHarmonix calendar capture for August 21–31, 2024 in Ribeirão Preto, from the pre-Aqua-eq series](docs/assets/pyroharmonix-ribeirao-preto-2024-08-calendario.png)
 
-*The August value corresponds to the completed request for August 21–31, 2024, not the entire month. The demo CSV [`docs/data/ribeirao-preto-2024-harmonized-snapshot.csv`](docs/data/ribeirao-preto-2024-harmonized-snapshot.csv) contains 7,747 H3/day records, all marked as **uncalibrated**. It is a sample of the data actually stored, not a complete annual coverage.*
+*LEGACY capture (H3 res. 8, uncalibrated): the displayed window is August 21–31, 2024, not the entire month. Its accompanying [Ribeirão Preto CSV](docs/data/ribeirao-preto-2024-harmonized-snapshot.csv) is an archival sample, not the current Aqua-eq series or complete annual coverage.*
 
 ## Run with Docker
 
@@ -85,6 +117,7 @@ docker compose up -d --build
 
 - WebGIS: <http://localhost:8081> (or the port defined by `WEB_PORT`).
 - API health: <http://localhost:8081/api/health/>.
+- Regional calibration factors and fusion totals: <http://localhost:8081/api/calibration/>.
 - Collection status and progress: <http://localhost:8081/api/ingestion-status/>.
 - Worker logs: `docker compose logs -f firms-sync`.
 
@@ -124,28 +157,19 @@ NASA FIRMS Standard Processing products:
 
 The pipeline:
 
-1. Stores raw fire detections and FIRMS attributes in PostgreSQL.
-2. Groups detections by H3 cell of resolution 8 (approximately 1 km², varying geographically) and UTC day.
-3. When a calibration is available, it adjusts the VIIRS count for each month of the year; each product must have at least 500 detections in that calibration month.
-4. When both sensors have records in the same cell/day, it calculates the average between the MODIS count and the adjusted VIIRS count. If only one sensor has records, it uses the available count, adjusted when applicable. Without a valid calibration, it keeps the neutral factor and marks results as uncalibrated.
+1. Stores raw FIRMS detections and attributes in PostgreSQL. The Compose worker archives validated CSV responses by SHA-256 in the firms_raw volume.
+2. Stores detections at H3 resolution 8 and aggregates into resolution 7 parents by UTC date and day/night class for calibration and harmonized output.
+3. In the Altinópolis–Pitangueiras scope, applies the monthly MODIS-Aqua / VIIRS-SNPP factor to VIIRS counts and FRP when regional calibration is available.
+4. Uses the mean of observed Aqua and adjusted VIIRS within the same eligible stratum, or the single recorded measurement when only one eligible sensor detected. Outside the regional rectangle, the comparable series uses Aqua observations.
+5. Exposes provenance for observed, adjusted, fused, mixed, extrapolated, historical and external records. Results outside 2019–2024 that use a regional VIIRS factor are temporal extrapolations.
 
-### How MODIS and VIIRS are harmonized
-
-The goal is to transform counts from the two sensors into a single H3/day series that can feed the same map and calendar:
-
-1. The original FIRMS detections are stored with the product identifier (`MODIS_SP` or `VIIRS_SNPP_SP`), timestamp, coordinates, and attributes. This source is not deleted: raw records remain available for auditing and reprocessing.
-2. Each detection is assigned to an H3 cell of resolution 8 and to a UTC day. The system counts MODIS and VIIRS records separately for each cell/day.
-3. When a monthly calibration exists, it computes `factor = total MODIS / total VIIRS` for that month and applies the factor to the VIIRS count. The implemented calibration uses the Brazil study area and the configured historical window; it is only considered calibrated when both products have at least 500 records in the month.
-4. If both sensors have counts in the same cell/day, the combined value is the average between the MODIS count and the adjusted VIIRS count. If only one sensor has records, the available count is used, with VIIRS adjustment when a calibrated factor exists.
-5. The result is written as a harmonized observation (`MODIS+VIIRS-SNPP`) per cell/day. The map and analyses use this combined series instead of presenting two independent sensor series.
-
-**Important limitations:** this is an empirical exploratory method, not a validated scientific harmonization. The factor is aggregated for Brazil and is not recalculated by region, biome, or requested area; applying it elsewhere in the world may not compensate for local sensor differences. On-demand collection does not compute calibration from a partial sample. Since national backfill is disabled by default, data may remain with a neutral factor and a **uncalibrated** status. Therefore, the source is no longer separated in the visualization, but it should not be considered irrelevant to scientific interpretation. Thermal anomaly detection also does not by itself identify the cause of the fire or measure burned area. This version does not include VIIRS NOAA-20/21, NRT products, cloud masking, biome stratification, or independent validation.
+NASA FIRMS announced the end of S-NPP delivery on November 2, 2026. The pipeline stops planning new SNPP acquisitions from that date. Standard Processing files may appear after acquisition. The worker checks the published archive limits and reports partial requests when some requested dates are still outside those limits. [NASA FIRMS notices](https://firms.modaps.eosdis.nasa.gov/content/notifications/firms/news.html)
 
 ### Why the historical median may appear as “—”
 
 The median and anomaly are calculated only when there are harmonized data for the current period and records in at least **two historical years** in the same month/day window. Periods without records are no longer automatically converted to zeros because they may indicate that data has not yet been collected or processed. Therefore, “—” means insufficient history, not an absence of fire.
 
-In the example region, the demonstration database contains the request for **August 21–31, 2024**; that is not enough to calculate a multi-year median. To obtain a comparison, process existing data or download and analyze for the same area other years that include the desired month/period. The anomaly is `(observed − median) / median × 100` and remains unavailable when no reliable median exists. In the calendar, `—` and in the chart, an absence of recorded hotspots indicates missing stored records, not proof that no fire occurred, and may reflect incomplete coverage.
+In the example region, the demonstration database contains the request for **August 21–31, 2024**; that is not enough to calculate a multi-year median. To obtain a comparison, process existing data or download and analyze for the same area other years that include the desired month/period. The percentage anomaly `(observed − median) / median × 100` is reported only when at least two historical years are available and `historical_median >= 30` (`anomaly_reliable: true`); when the median is below 30 (such as `9.964` in the August 21–31 regional window), `anomaly_reliable` is `false` and `anomaly_percent` is `null` (displayed as `—`), while the historical percentile and `ratio_to_historical_max` remain available where computable. In the calendar, `—` and in the chart, an absence of recorded hotspots indicates missing stored records, not proof that no fire occurred, and may reflect incomplete coverage.
 
 The FIRMS service limits queries to five days and documents up to 5,000 transactions per ten-minute interval; longer queries consume additional calls. The call estimate is not a guarantee of limits or duration. The worker maintains pauses and checkpoints, but the key is shared with any other use of the same MAP_KEY.
 
@@ -163,12 +187,14 @@ Manual upload remains available for external harmonized datasets. The template c
 | `sensor` | No | Sensor or source |
 | `confidence` | No | Confidence provided by the product |
 | `frp` | No | Fire radiative power, non-negative value |
+| `harmonized_count` | No | Non-negative weight for an aggregated hotspot; omitted means `1` |
 
-Each row represents one detection with weight 1. Imports are additive; duplicates are ignored. UTF-8 files have a 10 MB limit and 200,000 rows.
+Each row represents one detection by default. `harmonized_count` is optional and lets an exported aggregate preserve its count weight. Imports are additive; duplicates are ignored. UTF-8 files have a 10 MB limit and 200,000 rows.
 
 ## API
 
 - `GET /api/health/` — service health.
+- `GET /api/calibration/` — regional count and FRP factors, fusion totals, and calibration scope.
 - `GET /api/ingestion-status/` — worker status and checkpoints per product.
 - `GET /api/area-requests/` — recent area requests and their states.
 - `GET /api/area-requests/estimate/?year=2024&south=-23&north=-20&west=-50&east=-46` — estimate calls and collection duration.
@@ -179,7 +205,7 @@ Each row represents one detection with weight 1. Imports are additive; duplicate
 - `GET /api/template.csv` — template for upload.
 - `POST /api/upload/` — import multipart CSV using the `file` field.
 
-Analytical endpoints accept `start`, `end`, `south`, `north`, `west`, and `east`. The comparison uses previous years with records in the same window as the final month and requires at least two historical years. Periods without records are not assumed to be zero because coverage may be incomplete.
+The map and analytics return a null total for empty selections and report coverage as unknown. An explicit recorded zero is numeric. Historical comparisons use the same estimate generation regime. Analytical endpoints accept `start`, `end`, `south`, `north`, `west`, and `east`. The comparison uses previous years with records in the same window as the final month and requires at least two historical years. Periods without records are not assumed to be zero because coverage may be incomplete.
 
 ## Local development
 
@@ -221,4 +247,4 @@ An AI assistant was used to support implementation and debugging, documentation 
 
 ## Scope and limitations
 
-Calendars and medians are summaries of counts, not predictions. MODIS and VIIRS data are not directly equivalent; the result should only be treated as harmonized when calibration is available and validated. Stored coverage depends on the requests made and may be incomplete, even within the selected year. The application depends on internet access for the OpenStreetMap basemap and for new FIRMS downloads. For public deployment, configure `DJANGO_SECRET_KEY`, `POSTGRES_PASSWORD`, `DJANGO_DEBUG=false`, allowed hosts, upload authentication, and a production application server.
+Calendars and medians are summaries of counts, not predictions. The Aqua-equivalent series is experimental and limited to the regional calibration scope; it has not been independently validated. Stored coverage depends on the requests made and may be incomplete, even within the selected year. The application depends on internet access for the OpenStreetMap basemap and for new FIRMS downloads. Compose publishes the WebGIS on localhost by default. For public deployment, configure `DJANGO_SECRET_KEY`, `POSTGRES_PASSWORD`, `DJANGO_DEBUG=false`, allowed hosts, upload authentication, and a production application server.

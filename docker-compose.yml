@@ -17,7 +17,8 @@ services:
     build: ./backend
     command: ["sh", "-c", "python manage.py migrate --noinput && python manage.py migrate_legacy_hotspots && python manage.py runserver 0.0.0.0:8000"]
     environment:
-      DJANGO_DEBUG: "true"
+      DJANGO_DEBUG: ${DJANGO_DEBUG:-true}
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-*}
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:-local-development-only-not-for-production}
       DB_ENGINE: postgresql
       DB_NAME: ${POSTGRES_DB:-pyro_harmonix}
@@ -45,11 +46,15 @@ services:
       DB_USER: ${POSTGRES_USER:-pyro}
       DB_PASSWORD: ${POSTGRES_PASSWORD:-local-development-only}
       DB_HOST: db
+      FIRMS_RAW_ARCHIVE_DIR: /firms_raw
       FIRMS_MAP_KEY: ${FIRMS_MAP_KEY:-}
       FIRMS_BRAZIL_BACKFILL_ENABLED: ${FIRMS_BRAZIL_BACKFILL_ENABLED:-false}
     depends_on:
       api:
         condition: service_healthy
+      # The archive preserves exact validated FIRMS responses.
+    volumes:
+      - firms_raw:/firms_raw
     restart: unless-stopped
 
   web:
@@ -63,3 +68,4 @@ services:
 volumes:
   postgres_data:
   fire_data:
+  firms_raw:

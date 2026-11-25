@@ -1,0 +1,86 @@
+{
+  "bounds": {
+    "south": -21.215243,
+    "north": -20.8087035,
+    "west": -48.433,
+    "east": -47.181633
+  },
+  "yearly_totals": [
+    {
+      "year": 2019,
+      "total": 123.1792151749145
+    },
+    {
+      "year": 2020,
+      "total": 266.9429404014045
+    },
+    {
+      "year": 2021,
+      "total": 309.1830055107031
+    },
+    {
+      "year": 2022,
+      "total": 71.24507641318213
+    },
+    {
+      "year": 2023,
+      "total": 44.54259816099142
+    },
+    {
+      "year": 2024,
+      "total": 682.0092497882978
+    }
+  ],
+  "comparison_window": {
+    "start": "2024-08-21",
+    "end": "2024-08-31",
+    "observed": 450.16236109247154,
+    "historical_years": 5,
+    "historical_median": 9.964020369908837,
+    "p25": 6.257396758984115,
+    "p75": 12.228479166267263,
+    "anomaly_absolute": 440.1983407225627,
+    "anomaly_percent": null,
+    "anomaly_reliable": false,
+    "ratio_to_historical_max": 6.370379472667675,
+    "rank": "1 de 6",
+    "values_by_year": [
+      {
+        "year": 2019,
+        "value": 6.257396758984115,
+        "raw_aqua": 6,
+        "raw_snpp": 32
+      },
+      {
+        "year": 2020,
+        "value": 12.228479166267263,
+        "raw_aqua": 15,
+        "raw_snpp": 45
+      },
+      {
+        "year": 2021,
+        "value": 70.66492082989846,
+        "raw_aqua": 66,
+        "raw_snpp": 392
+      },
+      {
+        "year": 2022,
+        "value": 9.964020369908837,
+        "raw_aqua": 9,
+        "raw_snpp": 52
+      },
+      {
+        "year": 2023,
+        "value": 0.9456958332534524,
+        "raw_aqua": 0,
+        "raw_snpp": 9
+      },
+      {
+        "year": 2024,
+        "value": 450.16236109247154,
+        "raw_aqua": 465,
+        "raw_snpp": 2116
+      }
+    ]
+  }
+}

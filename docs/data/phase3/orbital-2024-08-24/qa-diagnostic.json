@@ -1,0 +1,96 @@
+{
+  "aqua": {
+    "matching_centres": 1576,
+    "mask_counts": {
+      "3": 15,
+      "4": 43,
+      "5": 1451,
+      "8": 26,
+      "9": 41
+    },
+    "geo_qa_counts": {
+      "0": 1576
+    },
+    "native_fire_without_filter": 67,
+    "min_zenith": 59.03,
+    "max_zenith": 63.160000000000004,
+    "min_solar_zenith": 40.74,
+    "max_solar_zenith": 41.77,
+    "valid_class_and_nonangle_qa": 1518,
+    "valid_class_zenith_min": 59.03,
+    "valid_class_zenith_max": 63.160000000000004,
+    "valid_and_fire_by_angle": {
+      "55": [
+        0,
+        0
+      ],
+      "60": [
+        307,
+        20
+      ],
+      "65": [
+        1518,
+        67
+      ],
+      "70": [
+        1518,
+        67
+      ]
+    }
+  },
+  "viirs": {
+    "matching_centres": 32600,
+    "mask_counts": {
+      "3": 629,
+      "4": 358,
+      "5": 31250,
+      "7": 63,
+      "8": 260,
+      "9": 40
+    },
+    "geo_qa_counts": {
+      "0": 32600
+    },
+    "native_fire_without_filter": 363,
+    "min_zenith": 22.81999969482422,
+    "max_zenith": 31.51999855041504,
+    "min_solar_zenith": 37.07999801635742,
+    "max_solar_zenith": 38.040000915527344,
+    "valid_class_and_nonangle_qa": 30790,
+    "valid_class_zenith_min": 22.81999969482422,
+    "valid_class_zenith_max": 31.51999855041504,
+    "valid_and_fire_by_angle": {
+      "55": [
+        30790,
+        82
+      ],
+      "60": [
+        30790,
+        82
+      ],
+      "65": [
+        30790,
+        82
+      ],
+      "70": [
+        30790,
+        82
+      ]
+    },
+    "fire_candidate_gate_diagnostic": {
+      "native_fire_mask_centers": 363,
+      "land_nominal_geolocation_centers": 362,
+      "after_excluding_bowtie_centers": 362,
+      "approved_after_strict_input_qa": 82,
+      "per_bit_counts_among_land_nondeduplicated": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 15,
+        "4": 0,
+        "5": 0,
+        "6": 280
+      }
+    }
+  }
+}

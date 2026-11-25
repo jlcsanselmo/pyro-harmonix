@@ -1,0 +1,116 @@
+{
+  "version": "external_recorded_positives_v1",
+  "date_utc": "2024-08-24",
+  "roi_w_s_e_n": [
+    -48.433,
+    -21.215243,
+    -47.181633,
+    -20.8087035
+  ],
+  "h3_resolution": 7,
+  "support": "observed_positive_firms_cells_only",
+  "coverage_status": "unknown",
+  "csv_sha256": {
+    "MODIS_SP": "b8ea592a650c0a6f5e653e83756912476e5d29fac65d471a27b4e2b45e531ec3",
+    "VIIRS_SNPP_SP": "f04937fcdac68401c9e934def4a912ca2f275405e3f59e024c7f4830890aa3b8",
+    "VIIRS_NOAA20_SP": "228139f4db3f11bce2ddffca3220d790fdde9cc425ed34aab30659d80751fd54",
+    "VIIRS_NOAA21_SP": "0267d6d6bcc0418a4478e39ddc38b75b5aa856a3e91bc57c2b31a71db458cb49"
+  },
+  "matches": [
+    {
+      "reference_product": "MODIS_SP",
+      "external_product": "VIIRS_NOAA20_SP",
+      "reference_time_utc": "17:00",
+      "external_time_utc": "16:58",
+      "separation_minutes": 2,
+      "eligible_tolerances_minutes": [
+        30,
+        45,
+        60,
+        90
+      ],
+      "reference_positive_cells": 47,
+      "external_positive_cells": 75,
+      "both_positive_cells": 32,
+      "recorded_positive_jaccard": 0.35555555555555557
+    },
+    {
+      "reference_product": "MODIS_SP",
+      "external_product": "VIIRS_NOAA21_SP",
+      "reference_time_utc": "17:00",
+      "external_time_utc": "16:09",
+      "separation_minutes": 51,
+      "eligible_tolerances_minutes": [
+        60,
+        90
+      ],
+      "reference_positive_cells": 47,
+      "external_positive_cells": 64,
+      "both_positive_cells": 29,
+      "recorded_positive_jaccard": 0.35365853658536583
+    },
+    {
+      "reference_product": "MODIS_SP",
+      "external_product": "VIIRS_NOAA21_SP",
+      "reference_time_utc": "17:00",
+      "external_time_utc": "17:49",
+      "separation_minutes": 49,
+      "eligible_tolerances_minutes": [
+        60,
+        90
+      ],
+      "reference_positive_cells": 47,
+      "external_positive_cells": 18,
+      "both_positive_cells": 6,
+      "recorded_positive_jaccard": 0.1016949152542373
+    },
+    {
+      "reference_product": "VIIRS_SNPP_SP",
+      "external_product": "VIIRS_NOAA20_SP",
+      "reference_time_utc": "16:34",
+      "external_time_utc": "16:58",
+      "separation_minutes": 24,
+      "eligible_tolerances_minutes": [
+        30,
+        45,
+        60,
+        90
+      ],
+      "reference_positive_cells": 73,
+      "external_positive_cells": 75,
+      "both_positive_cells": 67,
+      "recorded_positive_jaccard": 0.8271604938271605
+    },
+    {
+      "reference_product": "VIIRS_SNPP_SP",
+      "external_product": "VIIRS_NOAA21_SP",
+      "reference_time_utc": "16:34",
+      "external_time_utc": "16:09",
+      "separation_minutes": 25,
+      "eligible_tolerances_minutes": [
+        30,
+        45,
+        60,
+        90
+      ],
+      "reference_positive_cells": 73,
+      "external_positive_cells": 64,
+      "both_positive_cells": 57,
+      "recorded_positive_jaccard": 0.7125
+    },
+    {
+      "reference_product": "VIIRS_SNPP_SP",
+      "external_product": "VIIRS_NOAA21_SP",
+      "reference_time_utc": "16:34",
+      "external_time_utc": "17:49",
+      "separation_minutes": 75,
+      "eligible_tolerances_minutes": [
+        90
+      ],
+      "reference_positive_cells": 73,
+      "external_positive_cells": 18,
+      "both_positive_cells": 11,
+      "recorded_positive_jaccard": 0.1375
+    }
+  ]
+}

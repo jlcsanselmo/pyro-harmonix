@@ -1,0 +1,25 @@
+{
+  "version": "orbital_pilot_2024_v1",
+  "status": "processed_real_granules",
+  "planned_pair": "altinopolis-pitangueiras-2024-08-24-day",
+  "nasa_archive_probe": {
+    "provider": "LAADS",
+    "method": "anonymous GET with Range bytes=0-7; read capped to 8 bytes",
+    "products": [
+      "MYD14",
+      "MYD03",
+      "VNP14IMG",
+      "VNP03IMG"
+    ],
+    "response_status_after_redirects": 200,
+    "range_honored": false,
+    "observed_prefix_hex": "3c21444f43545950",
+    "body_type": "HTML"
+  },
+  "observed_coverage": "orbital-2024-08-24/comparacao.csv",
+  "experimental_fusion": "orbital-2024-08-24/summary-z65.json",
+  "external_concordance": null,
+  "bytes_of_scientific_data_acquired": 194555073,
+  "external_recorded_positive_overlap": "noaa-positive-overlap-2024-08-24.json",
+  "granule_manifest": "orbital-2024-08-24/granule-manifest.json"
+}

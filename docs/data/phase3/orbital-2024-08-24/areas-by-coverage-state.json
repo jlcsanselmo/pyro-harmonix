@@ -1,0 +1,44 @@
+{
+  "55": {
+    "aqua_fire_km2": 0.0,
+    "aqua_clear_no_fire_km2": 0.0,
+    "aqua_cloud_km2": 0.0,
+    "aqua_no_valid_observation_km2": 5853.17856440109,
+    "aqua_outside_swath_km2": 0.0,
+    "aqua_unknown_km2": 2.493426099749988,
+    "viirs_fire_km2": 15.654742738500001,
+    "viirs_clear_no_fire_km2": 5552.915889251151,
+    "viirs_cloud_km2": 61.549140715049994,
+    "viirs_no_valid_observation_km2": 222.32935127095004,
+    "viirs_outside_swath_km2": 0.0,
+    "viirs_unknown_km2": 3.2215977666499325
+  },
+  "60": {
+    "aqua_fire_km2": 52.44233602560001,
+    "aqua_clear_no_fire_km2": 1010.4728125336002,
+    "aqua_cloud_km2": 121.13695675229997,
+    "aqua_no_valid_observation_km2": 4669.126459089591,
+    "aqua_outside_swath_km2": 0.0,
+    "aqua_unknown_km2": 2.4934260997499957,
+    "viirs_fire_km2": 15.654742738500001,
+    "viirs_clear_no_fire_km2": 5552.915889251151,
+    "viirs_cloud_km2": 61.549140715049994,
+    "viirs_no_valid_observation_km2": 222.32935127095004,
+    "viirs_outside_swath_km2": 0.0,
+    "viirs_unknown_km2": 3.2215977666499325
+  },
+  "65": {
+    "aqua_fire_km2": 221.07612350305004,
+    "aqua_clear_no_fire_km2": 5406.558175421442,
+    "aqua_cloud_km2": 146.0008851555,
+    "aqua_no_valid_observation_km2": 79.5433803211,
+    "aqua_outside_swath_km2": 0.0,
+    "aqua_unknown_km2": 2.4934260997500077,
+    "viirs_fire_km2": 15.654742738500001,
+    "viirs_clear_no_fire_km2": 5552.915889251151,
+    "viirs_cloud_km2": 61.549140715049994,
+    "viirs_no_valid_observation_km2": 222.32935127095004,
+    "viirs_outside_swath_km2": 0.0,
+    "viirs_unknown_km2": 3.2215977666499325
+  }
+}
